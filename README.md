@@ -1,10 +1,10 @@
-# athwela - testing
+# athwela
 
 **Athwela** is a web based learning center and an online market
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 These things should be installed on your system
@@ -17,7 +17,7 @@ These things should be installed on your system
 
 ```
 $ git clone https://github.com/ppkavinda/group-project-testing-1.git
-$ cd athwela
+$ cd group-project-testing-1
 $ composer install
 $ npm install
 $ php artisan serve
@@ -26,9 +26,9 @@ $ npm run watch
 
 goto `localhost:8000`
 
-## Deployment
+<!-- ## Deployment -->
 
-Add additional notes about how to deploy this on a live system
+ <!-- These are the notes on how to deploy the project on a live system. -->
 
 ## Built With
 
