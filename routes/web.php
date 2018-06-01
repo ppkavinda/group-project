@@ -15,6 +15,18 @@ Route::get('/admin', function () {
     return view('admin.admin');
 });
 
+Route::get('/login', function () {
+	return  view('session.login');
+});
+
+Route::get('/register', function () {
+	return  view('session.register');
+});
+
 Route::get('/', function () {
 	return view('home');
+});
+
+Route::get('shop', function () {
+	return view('shop.index');
 });

@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -15,10 +14,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('nav-bar', require('./components/NavBar.vue'));
-Vue.component('side-bar', require('./components/SideBar.vue'));
-Vue.component('content-panel', require('./components/ContentPanel.vue'));
-Vue.component('footer-bar', require('./components/FooterBar.vue'));
+Vue.component('nav-bar', require('./partials/NavBar.vue'));
+Vue.component('side-bar', require('./partials/SideBar.vue'));
+Vue.component('content-panel', require('./partials/ContentPanel.vue'));
+Vue.component('footer-bar', require('./partials/FooterBar.vue'));
 
 const app = new Vue({
     el: '#app'

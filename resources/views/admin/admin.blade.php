@@ -1,17 +1,13 @@
-@extends('master')
+@extends('admin.master')
 @section('content')
-	<div class="wrapper" id="app">
 
-		<nav-bar></nav-bar>
+	@include('admin.nav')
+	@include('admin.sidebar')	
+	@include('admin.content')
+	@include('admin.footer')
 
-		<side-bar></side-bar>
-
-		<content-panel></content-panel>
-
-		<footer-bar></footer-bar>
-
-		<aside class="control-sidebar control-sidebar-dark">
-		</aside>
+		{{-- <aside class="control-sidebar control-sidebar-dark"> --}}
+		{{-- </aside> --}}
 
 	</div>
 @endsection

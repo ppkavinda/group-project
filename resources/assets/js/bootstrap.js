@@ -1,5 +1,4 @@
-
-window._ = require('lodash');
+// window._ = require('lodash');
 window.Popper = require('popper.js').default;
 
 /**
@@ -10,8 +9,14 @@ window.Popper = require('popper.js').default;
 
 try {
     window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap');
+    window.Bootstrap = require('bootstrap');
+    require('./styles/easy-responsive-tabs.js');
+    require('jquery-easing');
+    require('./styles/totop.js')
+    require('minicart/dist/minicart.min.js');
+    require('./styles/waypoint');
+    require('./styles/countup.js');
+    // require('morris')
 } catch (e) {}
 
 /**

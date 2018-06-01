@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>AdminLTE 3 | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- Font Awesome -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/font-awesome.css">
@@ -14,7 +16,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -- >
-  {{-- <link rel="stylesheet" href="dist/css/adminlte.min.css"> --}}
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- iCheck -->
 
   <link rel="stylesheet" href="css/blue.css">
@@ -32,9 +34,12 @@
   {{-- my styles --}}
   <link rel="stylesheet" href="css/app.css">
 </head>
+
 <body class="hold-transition sidebar-mini">
-  
-  @yield('content')
+
+  <div class="wrapper" id="app">
+      @yield('content')
+  </div> 
 
 <script src="/js/manifest.js"></script>
 <script src="/js/vendor.js"></script>
@@ -73,6 +78,5 @@
 <script src="js/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="js/demo.js"></script>
-
 </body>
 </html>
