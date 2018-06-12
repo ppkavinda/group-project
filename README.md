@@ -19,6 +19,8 @@ These things should be installed on your system
 $ git clone https://github.com/ppkavinda/group-project-testing-1.git
 $ cd group-project-testing-1
 $ composer install
+$ rename .env.example .env
+$ php artisan key:generate
 $ npm install
 $ php artisan serve
 $ npm run watch
