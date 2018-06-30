@@ -30,3 +30,7 @@ Route::get('/', function () {
 Route::get('shop', function () {
 	return view('shop.index');
 });
+
+Route::get('study', function () {
+	return view('study.index');
+});

@@ -19,7 +19,7 @@
 				<h1>
 					<a href="/">
 						<img src="dist/img/logo_without_vidatha.png" alt="logo">
-						<span>Shopping</span>Center
+						<span>Info</span>Center
 					</a>
 				</h1>
 			</div>
@@ -53,7 +53,7 @@
 				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 				  <ul class="navbar-nav menu__list">
 					<li class="active nav-item menu__item menu__item--current">
-						<a class="nav-link menu__link" href="/">Home <span class="sr-only">(current)</span></a>
+						<a class="nav-link menu__link" href="index.html">Home <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item menu__item">
 						<a class="nav-link menu__link" href="about.html">About</a>

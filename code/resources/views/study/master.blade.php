@@ -17,7 +17,8 @@
 <!-- Ionicons -->
 {{-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
 
-<link rel="stylesheet" href="css/shop.css">
+{{-- <link rel="stylesheet" href="css/shop.css"> --}}
+<link rel="stylesheet" href="css/study.css">
 <!-- //for bootstrap working -->
 {{-- <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet"> --}}
 {{-- <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'> --}}
