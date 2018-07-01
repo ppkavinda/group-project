@@ -1,8 +1,6 @@
 @extends('study.master')
 @section('content')
-<!-- header -->
-	@include('study.partials.nav')
-<!-- //banner-top -->
+
 
 
 <!-- banner -->
@@ -47,75 +45,6 @@
 							<div class="overlay">
 							   <h4>Mastering</h4>
 							    <p>Education</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-				<div class="team-w3ls-row">
-				   <h3 class="w3l_header w3_agileits_header">Our <span>Insrtuctors</span></h3>
-				   <div class="agileits_banner_bottom_grids row">
-					<div class="col-md-3 col-sm-6 team-grids">
-						<img src="/dist/img/t1.jpg" alt=""/>
-						<div class="img-caption w3-agileits">
-							<div class="img-agileinfo-text">
-								<h4>Alan Ipsum</h4>
-								<p>English Instructor</p> 
-								<div class="w3social-icons"> 
-									<ul>
-										<li><a href="#"><i class="fa fa-google-plus"></i> </a></li>
-										<li><a href="#"><i class="fa fa-facebook"></i> </a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i> </a></li> 
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 team-grids">
-						<img src="/dist/img/t2.jpg" alt=""/>
-						<div class="img-caption">
-							<div class="img-agileinfo-text">
-								<h4>Lana del Rey</h4>
-								<p>PHP Instructor </p>
-								<div class="w3social-icons"> 
-									<ul>
-										<li><a href="#"><i class="fa fa-google-plus"></i> </a></li>
-										<li><a href="#"><i class="fa fa-facebook"></i> </a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i> </a></li> 
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 team-grids">
-						<img src="/dist/img/t3.jpg" alt=""/>
-						<div class="img-caption">
-							<div class="img-agileinfo-text">
-								<h4>Mark John</h4>
-								<p>English Instructor</p> 
-								<div class="w3social-icons"> 
-									<ul>
-										<li><a href="#"><i class="fa fa-google-plus"></i> </a></li>
-										<li><a href="#"><i class="fa fa-facebook"></i> </a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i> </a></li> 
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 team-grids">
-						<img src="/dist/img/t4.jpg" alt=""/>
-						<div class="img-caption">
-							<div class="img-agileinfo-text">
-								<h4>Peter Parker</h4>
-								<p>PHP Instructor</p>
-								<div class="w3social-icons"> 
-									<ul>
-										<li><a href="#"><i class="fa fa-google-plus"></i> </a></li>
-										<li><a href="#"><i class="fa fa-facebook"></i> </a></li>
-										<li><a href="#"><i class="fa fa-twitter"></i> </a></li> 
-									</ul>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -296,9 +225,7 @@
 			</ul>
 		</div>
 	</div>
-<!-- footer -->
-	@include('shop.partials.footer')
-<!-- //footer -->
+
 
 <!-- login -->
 			<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

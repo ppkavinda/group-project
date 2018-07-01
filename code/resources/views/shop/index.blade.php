@@ -1,8 +1,6 @@
 @extends('shop.master')
 @section('content')
-<!-- header -->
-	@include('shop.partials.nav')
-<!-- //banner-top -->
+
 <!-- Modal1 -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
@@ -244,9 +242,7 @@
 		</div>
 </div>
 <!--grids-->
-<!-- footer -->
-	@include('shop.partials.footer')
-<!-- //footer -->
+
 
 <!-- login -->
 			<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

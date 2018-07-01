@@ -11,21 +11,27 @@
 <!--//tags -->
 <!-- Font Awesome -->
 {{-- <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css"> --}}
-<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="/css/font-awesome.css">
 <!-- Google Font: Source Sans Pro -->
 {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
 <!-- Ionicons -->
 {{-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
 
-<link rel="stylesheet" href="css/shop.css">
+<link rel="stylesheet" href="/css/shop.css">
 <!-- //for bootstrap working -->
 {{-- <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet"> --}}
 {{-- <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'> --}}
 </head>
 <body>
+	<!-- header -->
+	@include('shop.partials.nav')
+	<!-- //banner-top -->
 	<div id="app">
 		@yield('content')
 	</div>
+	<!-- footer -->
+	@include('shop.partials.footer')
+	<!-- //footer -->
 
 <script src="/js/manifest.js"></script>
 <script src="/js/vendor.js"></script>

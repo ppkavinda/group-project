@@ -11825,7 +11825,7 @@ button.close {
 }
 
 .gallery-grid {
-  padding: 0;
+  padding: 10px;
 }
 
 .gallery1 {
@@ -15417,31 +15417,6 @@ a.pinterest .front {
   padding: 1em 0em 0 0em;
 }
 
-.contact-form {
-  background: #181919;
-  padding: 5em 3em;
-}
-
-.contact input[type="text"],
-.contact input[type="email"],
-.contact textarea {
-  font-size: 15px;
-  letter-spacing: 1px;
-  color: #fff;
-  padding: 0.5em 1em;
-  border: 0;
-  width: 100%;
-  border-bottom: 1px solid #dcdcdc;
-  background: none;
-  -webkit-appearance: none;
-  outline: none;
-}
-
-.contact textarea {
-  min-height: 8em;
-  resize: none;
-}
-
 /*-- input-effect --*/
 
 .styled-input input:focus ~ label,
@@ -15459,35 +15434,6 @@ a.pinterest .front {
   width: 100%;
   margin: 2em 0 1em;
   position: relative;
-}
-
-.styled-input label {
-  color: #555;
-  padding: 0.5em 0em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  pointer-events: none;
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: 1px;
-  display: block;
-  line-height: 1em;
-}
-
-.styled-input input ~ span,
-.styled-input textarea ~ span {
-  display: block;
-  width: 0;
-  height: 2px;
-  background: #272727;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  -webkit-transition: all 0.125s;
-  transition: all 0.125s;
 }
 
 .styled-input textarea ~ span {
@@ -21863,7 +21809,8 @@ i.fa.fa-shopping-bag.top_logo_agile_bag {
   margin-top: 2em;
 }
 
-button.w3view-cart {
+a.w3view-cart {
+  display: inline-block;
   outline: none;
   border: none;
   background: #17c3a2;
@@ -22066,5 +22013,12 @@ p.copy-right a:hover {
   padding: 0 10px;
   background: #2fdab8;
   font-weight: 600;
+}
+
+.enroll-btn {
+  padding: 10px 20px;
+  margin: 10px;
+  text-transform: uppercase;
+  color: white;
 }
 

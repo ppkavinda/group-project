@@ -90,7 +90,8 @@
     margin: top;
     margin-top: 2em;
 }
-button.w3view-cart {
+a.w3view-cart {
+    display: inline-block;
     outline: none;
     border: none;
     background: #17c3a2;

@@ -11,26 +11,33 @@
 |
 */
 
+Route::get('/', function () {
+	return view('study.index');
+});
 Route::get('/admin', function () {
     return view('admin.admin');
 });
-
 Route::get('/login', function () {
 	return  view('session.login');
 });
-
 Route::get('/register', function () {
 	return  view('session.register');
 });
-
-Route::get('/', function () {
-	return view('home');
-});
-
-Route::get('shop', function () {
+Route::get('/shop', function () {
 	return view('shop.index');
 });
-
-Route::get('study', function () {
+Route::get('/study', function () {
 	return view('study.index');
+});
+Route::get('/courses', function () {
+	return view('study.courses');
+});
+Route::get('/courses/{course}', function () {
+	return view('study.course');
+});
+Route::get('contact', function () {
+	return view('contact');
+});
+Route::get('about', function () {
+	return view('about');
 });

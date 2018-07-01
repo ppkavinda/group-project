@@ -17156,7 +17156,8 @@ i.fa.fa-shopping-bag.top_logo_agile_bag {
   margin-top: 2em;
 }
 
-button.w3view-cart {
+a.w3view-cart {
+  display: inline-block;
   outline: none;
   border: none;
   background: #17c3a2;

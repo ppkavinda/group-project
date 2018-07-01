@@ -4,7 +4,7 @@
 			<div class="col-md-3 footer-left">
 				<h2>
 					<a href="/">
-						<img src="dist/img/logo_without_vidatha.png" alt="logo">
+						<img src="/dist/img/logo_without_vidatha.png" alt="logo">
 						<span>shopping</span>center 
 					</a>
 				</h2>
@@ -16,7 +16,7 @@
 				<div class="sign-grds">
 					<div class="row">
 						<div class="col-md-4 sign-gd">
-							<h4>Our <span>Information</span> </h4>
+							<h4>Shopping <span>Center</span> </h4>
 							<ul>
 								<li><a href="index.html">Home</a></li>
 								<li><a href="mens.html">Men's Wear</a></li>
@@ -26,7 +26,18 @@
 								<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</div>
-						<div class="col-md-5 sign-gd-two">
+						<div class="col-md-4 sign-gd">
+							<h4>Info <span>Center</span> </h4>
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="mens.html">Men's Wear</a></li>
+								<li><a href="womens.html">Women's wear</a></li>
+								<li><a href="about.html">About</a></li>
+								<li><a href="typography.html">Short Codes</a></li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+						</div>
+						<div class="col-md-4 sign-gd-two">
 							<h4>Store <span>Information</span></h4>
 							<div class="w3-address">
 								<div class="w3-address-grid">
@@ -63,20 +74,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 sign-gd flickr-post">
-							<h4>Flickr <span>Posts</span></h4>
-							<ul>
-								<li><a href="single.html"><img src="/dist/img/t1.jpg" alt=" " class="img-fluid" /></a></li>
-								<li><a href="single.html"><img src="/dist/img/t2.jpg" alt=" " class="img-fluid" /></a></li>
-								<li><a href="single.html"><img src="/dist/img/t3.jpg" alt=" " class="img-fluid" /></a></li>
-								<li><a href="single.html"><img src="/dist/img/t4.jpg" alt=" " class="img-fluid" /></a></li>
-								<li><a href="single.html"><img src="/dist/img/t1.jpg" alt=" " class="img-fluid" /></a></li>
-								<li><a href="single.html"><img src="/dist/img/t2.jpg" alt=" " class="img-fluid" /></a></li>
-								<li><a href="single.html"><img src="/dist/img/t3.jpg" alt=" " class="img-fluid" /></a></li>
-								<li><a href="single.html"><img src="/dist/img/t2.jpg" alt=" " class="img-fluid" /></a></li>
-								<li><a href="single.html"><img src="/dist/img/t4.jpg" alt=" " class="img-fluid" /></a></li>
-							</ul>
-						</div>
 						<div class="clearfix"></div>
 					</div>
 				</div>
@@ -97,6 +94,6 @@
 				<div class="clearfix"></div>
 			</div>
 		</div>
-		<p class="copy-right">&copy 2017 Elite shoppy. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+		<p class="copy-right">&copy 2017 Athwela. All rights reserved</p>
 	</div>
 </div>
