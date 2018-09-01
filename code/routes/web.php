@@ -14,27 +14,39 @@
 Route::get('/', function () {
 	return view('study.index');
 });
+// admin
 Route::get('/admin', function () {
     return view('admin.admin');
 });
+
+// sessions
 Route::get('/login', function () {
 	return  view('session.login');
 });
 Route::get('/register', function () {
 	return  view('session.register');
 });
+
+// shop
 Route::get('/shop', function () {
 	return view('shop.index');
 });
+
+// study
 Route::get('/study', function () {
 	return view('study.index');
 });
 Route::get('/courses', function () {
-	return view('study.courses');
+	return view('study.courses.index');
 });
 Route::get('/courses/{course}', function () {
-	return view('study.course');
+	return view('study.courses');
 });
+Route::get('tute/{id}', function () {
+	return view('study.tute.index');
+});
+
+// general
 Route::get('contact', function () {
 	return view('contact');
 });
