@@ -14,6 +14,7 @@
 Route::get('/', function () {
 	return view('study.index');
 });
+
 // admin
 Route::get('/admin', function () {
     return view('admin.admin');
@@ -23,6 +24,7 @@ Route::get('/admin', function () {
 Route::get('/login', function () {
 	return  view('session.login');
 });
+
 Route::get('/register', function () {
 	return  view('session.register');
 });
@@ -36,12 +38,13 @@ Route::get('/shop', function () {
 Route::get('/study', function () {
 	return view('study.index');
 });
-Route::get('/courses', function () {
-	return view('study.courses.index');
-});
+
+Route::get('/courses', 'CourseController@index');
+
 Route::get('/courses/{course}', function () {
-	return view('study.courses');
+	return view('study.courses.course');
 });
+
 Route::get('tute/{id}', function () {
 	return view('study.tute.index');
 });
@@ -50,6 +53,7 @@ Route::get('tute/{id}', function () {
 Route::get('contact', function () {
 	return view('contact');
 });
+
 Route::get('about', function () {
 	return view('about');
 });
