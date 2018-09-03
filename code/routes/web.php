@@ -41,9 +41,7 @@ Route::get('/study', function () {
 
 Route::get('/courses', 'CourseController@index');
 
-Route::get('/courses/{course}', function () {
-	return view('study.courses.course');
-});
+Route::get('/courses/{course}', 'CourseController@show');
 
 Route::get('tute/{id}', function () {
 	return view('study.tute.index');

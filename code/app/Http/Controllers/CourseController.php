@@ -9,4 +9,8 @@ class CourseController extends Controller
     public function index() {
 	    return view('study.courses.index');
     }
+
+    public function show($id) {
+	    return view('study.courses.course');
+    }
 }
