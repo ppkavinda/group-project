@@ -18,10 +18,13 @@ Route::get('/admin', function () {
     return view('admin.admin');
 });
 Route::get('/login', function () {
-	return  view('session.login');
+	return  view('login');
 });
 Route::get('/register', function () {
-	return  view('session.register');
+	return  view('register');
+});
+Route::get('/profile', function () {
+	return  view('profile');
 });
 Route::get('/shop', function () {
 	return view('shop.index');
@@ -41,3 +44,6 @@ Route::get('contact', function () {
 Route::get('about', function () {
 	return view('about');
 });
+Route::get('users',['uses' => 'UserController@index']);
+
+Route::post('register',['uses'=>'UserController@RegisterUser', 'as'=>'signup']);

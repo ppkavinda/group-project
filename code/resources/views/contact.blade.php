@@ -4,7 +4,7 @@
 
 @include('study.partials.banner')
 
-	<div class="contact">
+	<div class="contact ">
 		<div class="container">
 			<h3 class="w3l_header w3_agileits_header1">Get in <span>Touch</span></h3>
 			<div class="w3layouts_mail_grid row">
@@ -14,7 +14,7 @@
 					</div>
 					<div class="w3layouts_mail_grid_left2">
 						<h3>Mail Us</h3>
-						<a href="mailto:info@example.com">info@example.com</a>
+						<a href="vidathaKaduwela@gmail.com">info@example.com</a>
 					</div>
 				</div>
 				<div class="col-md-4 w3layouts_mail_grid_left">
@@ -23,7 +23,7 @@
 					</div>
 					<div class="w3layouts_mail_grid_left2">
 						<h3>Address</h3>
-						<p>PO Box 97845 Baker , Australia</p>
+						<p>Vidatha Kaduwela, Sri Lanka</p>
 					</div>
 				</div>
 				<div class="col-md-4 w3layouts_mail_grid_left">
@@ -38,8 +38,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="w3_agile_map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d50416.99204102258!2d144.93732617279937!3d-37.83543431360044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1saustralia+real+estate!5e0!3m2!1sen!2sin!4v1470915593791" style="border:0"></iframe>
+	<div class=src="https://www.google.com/maps/place/Divisional+Secretariat+Kaduwela+%E0%B6%9A%E0%B6%A9%E0%B7%94%E0%B7%80%E0%B7%99%E0%B6%BD+%E0%B6%B4%E0%B7%8A%E2%80%8D%E0%B6%BB%E0%B7%8F%E0%B6%AF%E0%B7%9A%E0%B7%81%E0%B7%93%E0%B6%BA+%E0%B6%BD%E0%B7%9A%E0%B6%9A%E0%B6%B8%E0%B7%8A+%E0%B6%9A%E0%B7%8F%E0%B6%BB%E0%B7%8A%E0%B6%BA%E0%B7%8F%E0%B6%BD%E0%B6%BA/@6.9034381,79.9519951,17z/data=!3m1!4b1!4m5!3m4!1s0x3ae2572d98e15c63:0xf7bc4d1d30bee97e!8m2!3d6.9034381!4d79.9541838 key=AIzaSyA-9VvcJNIAGT30WWkoU0JuPPqqbPo9H4k" allowfullscreen>" style="border:0"></iframe>
 	</div>
 	<div class="contact">
 		<div class="container">

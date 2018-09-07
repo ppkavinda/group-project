@@ -5,9 +5,9 @@
   <div class="card">
     <div class="card-body register-card-body">
 	  <div class="login-logo">
-	    <a href="/"><b><img src="/dist/img/logo.jpg" alt="logo" style="width: 40%; opacity: .2"></a>
+	    <a href="/"><b><img src="/dist/img/logo.jpg" alt="logo" style="width: 40%; opacity: .4"></a>
 	  </div>
-      <p class="login-box-msg">Register a new membership</p>
+      <p class="text-info login-box-msg">Sign Up and Strart Learning!  </p>
 
       <form action="../../index.html" method="post">
         <div class="form-group has-feedback">
