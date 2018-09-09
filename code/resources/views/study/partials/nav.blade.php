@@ -2,8 +2,8 @@
 <div class="header" id="home">
 	<div class="container">
 		<ul>
-		    <li> <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Sign In </a></li>
-			<li> <a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sign Up </a></li>
+		    <li> <a href="/login"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Sign In </a></li>
+			<li> <a href="/register"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sign Up </a></li>
 			<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a></li>
 			<li><a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> My cart</a></li>
 		</ul>

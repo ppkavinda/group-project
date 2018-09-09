@@ -10,14 +10,13 @@
     <!-- /.login-logo -->
       <p class="login-box-msg" style="color:DodgerBlue;font-size:110%";><b>Login to your Athwela Account!</b></p>
 
-     <form method="post" action="{{route ('signin') }}">
-  {{csrf_field() }}
+      <form action="../../index2.html" method="post">
         <div class="form-group has-feedback">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text fa fa-envelope form-control-feedback"></span>
             </div>
-              <input type="email" class="form-control" placeholder="Email"  email="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$">
+              <input type="email" class="form-control" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$">
           </div>
         </div>
         <div class="form-group has-feedback">
@@ -25,7 +24,7 @@
           <div class="input-group-prepend">
               <span class="input-group-text fa fa-key form-control-feedback"></span>
           </div>
-              <input type="password" class="form-control" placeholder="Password" name="pwd" required>
+              <input type="password" class="form-control" placeholder="Password" required>
           </div>
         </div>
         <div class="row">
@@ -38,7 +37,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat" name="login">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
