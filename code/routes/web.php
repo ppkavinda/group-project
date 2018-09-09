@@ -42,6 +42,8 @@ Route::get('/study', function () {
 	return view('study.index');
 });
 
+Route::get('/enroll/{id}', 'EnrollController@create');
+
 Route::get('/courses', 'CourseController@index');
 
 Route::get('/courses/{course}', 'CourseController@show');
