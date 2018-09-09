@@ -18,10 +18,10 @@ Route::get('/admin', function () {
     return view('admin.admin');
 });
 Route::get('/login', function () {
-	return  view('login');
+	return  view('session.login');
 });
 Route::get('/register', function () {
-	return  view('register');
+	return  view('session.register');
 });
 Route::get('/profile', function () {
 	return  view('profile');
@@ -46,4 +46,8 @@ Route::get('about', function () {
 });
 Route::get('users',['uses' => 'UserController@index']);
 
-Route::post('register',['uses'=>'UserController@RegisterUser', 'as'=>'signup']);
+Route::post('/register',['uses'=>'UserController@RegisterUser', 'as'=>'signup']);
+
+Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
+
+
