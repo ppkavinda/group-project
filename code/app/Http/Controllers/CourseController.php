@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     public function index() {
-	    return view('study.courses.index');
+        $courses = \App\Course::get();
+	    return view('study.courses.index', ['courses' => $courses]);
     }
 
-    public function show($id) {
-	    return view('study.courses.course');
+    public function show(\App\Course $course) {
+	    return view('study.courses.course', ['course' => $course]);
     }
 }
