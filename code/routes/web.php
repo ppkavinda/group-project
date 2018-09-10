@@ -48,9 +48,11 @@ Route::get('/courses', 'CourseController@index');
 
 Route::get('/courses/{course}', 'CourseController@show');
 
-Route::get('tute/{id}', function () {
-	return view('study.tute.index');
-});
+Route::get('/tute/create', 'TuteController@create');
+
+Route::post('/tute/create', 'TuteController@store');
+
+Route::get('tute/{id}', 'TuteController@show');
 
 // general
 Route::get('contact', function () {

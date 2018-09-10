@@ -1,7 +1,7 @@
 @extends('study.master')
 @section('content')
 
-@include('study.partials.banner')
+{{-- @include('study.partials.banner') --}}
 
 <div class="container">
 	<h3 class="w3l_header w3_agileits_header">Learn <span>{{ $course->title }}</span></h3>
@@ -10,10 +10,25 @@
 						
 				<h3>MAKING <span>{{ strtoupper($course->title) }}</span></h3>
 				<h4>{{ $course->subtitle }}</h4>
-				<a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
-				<p>{{ $course->description }}</p>
-				To see the full course: <a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
 
+				@if (! \App\User::find(1)->courses()->find($course->id))
+				<a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
+				@endif
+				
+				<p>{{ $course->description }}</p>
+				
+				@if (! \App\User::find(1)->courses()->find($course->id))
+					To see the full course: <a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
+				@endif
+
+				<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>
+				
 			</div>
 			<div class="col-md-6 wthree_services_grid_right">
 				<div class="row">
