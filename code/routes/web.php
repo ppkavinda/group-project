@@ -33,6 +33,7 @@ Route::get('/register', function () {
 Route::get('/profile', function () {
 	return  view('profile');
 });
+
 Route::get('/shop', function () {
 	return view('shop.index');
 });
