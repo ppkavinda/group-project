@@ -15,10 +15,13 @@ class TuteController extends Controller
 
     public function store (Request $request) {
         $request->validate([
-            'video' => 'required|max:20000|mimes:mp4,mov'
+            'video' => 'required | max:20000 | mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
+            'title' => 'required',
         ]);
         $a = $request->video->store('public/videos');
-
-        // return redirect()->back();
+        \App\Video::create([
+            'title' => ''
+        ]);
+        return redirect()->back();
     }
 }

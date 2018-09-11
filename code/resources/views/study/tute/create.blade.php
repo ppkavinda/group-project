@@ -43,11 +43,12 @@
             </div>
             <div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
 					<div class="agileits_mail_grid_right1 agile_mail_grid_right1">
+                        @include('study.partials.errors')
                         <form method="POST" action="/tute/create" enctype="multipart/form-data">
                             @csrf
 							<span>
 								<i>Title</i>
-								<input type="text" name="title" required>
+								<input type="text" name="title" >
 							</span>
 							<span>
 								<i>Tags</i>
@@ -55,7 +56,7 @@
 							</span>
 							<span style="margin-bottom:1em;">
 								<i>Video</i>
-                                <input style="margin-left:2em;" type="file" name="video" id="video" accept="video/*" aria-describedby="fileHelpId" required>
+                                <input style="margin-left:2em;" type="file" name="video" id="video" accept="video/*" aria-describedby="fileHelpId" >
 							</span>
 							<span>
 								<i>Description</i>
