@@ -69,5 +69,11 @@ Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
  
 
 // post add
-Route::post('/post','PostController@post');
+Route::get('/posts',function(){
+	return view('study.posts.index');
+
+});
+
+Route::get('/posts','PostController@showpost');
+
 

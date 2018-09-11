@@ -1,14 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function post(){
-        return add post form';
+    public function show(){
+        view('study.posts.index');
+
+    }
+    public function showpost(){
+        $posts =DB::table('posts')
+            ->join('courses','posts.id','=','courses.id')
+            ->select('posts.*','courses.title')
+            ->get();
+     
+       return view('study.posts.index',['posts'=> $posts]);
+
 
     }
 }
-ado 4n eka ussapn
