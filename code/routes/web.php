@@ -74,6 +74,8 @@ Route::get('/posts',function(){
 
 });
 
+
+
 Route::get('/posts','PostController@showpost');
 
 

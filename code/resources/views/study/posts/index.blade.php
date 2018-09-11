@@ -26,15 +26,17 @@ and is wrapped around the whole page content, except for the footer in this exam
 <!-- Grid -->
 <div class="w3-row">
 
-<!-- Blog entries -->
+<!-- Blog entries --> 
 <div class="w3-col l8 s12">
-<!-- Blog entry -->
+  <!-- Blog entry -->
 
-  @if(count($posts)> 0)
-  @foreach($posts->all() as $post)
-  <h2><b><u>{{$post->title}}</u></b></h2>
-  <div class="w3-card-4 w3-margin w3-white">
-   
+ 
+  
+  
+   @if(count($posts)> 0)
+    @foreach($posts as $post)
+    <div class="w3-card-4 w3-margin w3-white">
+    <h2><b><u>{{$post->title}}</u></b></h2>
    <div>
     <img src="{{asset($post->post_image)}}" alt="Nature" style="width:40%"></div>
     <div class="w3-container">
@@ -46,17 +48,16 @@ and is wrapped around the whole page content, except for the footer in this exam
       <p>{{$post->post_body}}
     </p>
      
-        
-        @endforeach
-  @else
-    <p>No Post Avaliable</p>
-  @endif
-      
+      <hr>
     </div>
   </div>
-
-
+  @endforeach
+    @else
+    <p>No Post Avaliable</p>
+    @endif
   <hr>
+
+  </table>
 
  </div>
 

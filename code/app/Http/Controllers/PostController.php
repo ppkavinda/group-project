@@ -10,13 +10,16 @@ class PostController extends Controller
         view('study.posts.index');
 
     }
+    
+    
     public function showpost(){
         $posts =DB::table('posts')
-            ->join('courses','posts.id','=','courses.id')
+            ->join('courses','posts.course_id','=','courses.id')
             ->select('posts.*','courses.title')
+            
             ->get();
-     
-       return view('study.posts.index',['posts'=> $posts]);
+      
+      return view('study.posts.index',['posts'=> $posts]);
 
 
     }
