@@ -1785,6 +1785,7 @@ h2.typoh2{
 }
 .rslides li {
   -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   display:none;
   width: 100%;
@@ -1964,11 +1965,6 @@ border-bottom: 1px solid #e5e3db;
 	display: block;
 }
 
-.css-treeview label,
-.css-treeview label::before
-{
-	
-}
 .css-treeview label,
 .css-treeview a,
 .css-treeview label::before
@@ -3921,8 +3917,6 @@ p.w3ls_para {
 	}
 }
 @media (max-width: 480px){
-	.timetable_sub th, .timetable_sub td {
-	}
 	td.invert-image a img {
 		width: 50%;
 	}
