@@ -66,5 +66,8 @@ Route::get('users',['uses' => 'UserController@index']);
 Route::post('/register',['uses'=>'UserController@RegisterUser', 'as'=>'signup']);
 
 Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
+ 
 
+// post add
+Route::post('/post','PostController@post');
 
