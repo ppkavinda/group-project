@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-	return view('study.index');
-});
+Route::get('/', 'studyController@index');
 
 // admin
 Route::get('/admin', function () {
@@ -68,4 +66,9 @@ Route::get('users',['uses' => 'UserController@index']);
 Route::post('/register',['uses'=>'UserController@RegisterUser', 'as'=>'signup']);
 
 Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
- 
+
+Route::get('/posts',function(){
+	return view('study.posts.index');
+
+});
+
