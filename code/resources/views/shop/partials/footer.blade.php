@@ -29,8 +29,8 @@
 							<h4>Learning <span>Center</span> </h4>
 							<ul>
 								<li><a href="/">Home</a></li>
-								<li><a href="/signup">Sign Up</a></li>
-								<li><a href="/signin">Sign In</a></li>
+								<li><a href="/register">Sign Up</a></li>
+								<li><a href="/login">Sign In</a></li>
 								<li><a href="/courses">Courses</a></li>
 								<li><a href="/about">About</a></li>
 								<li><a href="/contact">Contact</a></li>
@@ -56,18 +56,6 @@
 									<div class="w3-address-right">
 										<h6>Email Address</h6>
 										<p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>
-								<div class="w3-address-grid">
-									<div class="w3-address-left">
-										<i class="fa fa-map-marker" aria-hidden="true"></i>
-									</div>
-									<div class="w3-address-right">
-										<h6>Location</h6>
-										<p>Divisional Secretariat Office, Udawaththa Rd, Malabe.
-										
-										</p>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
