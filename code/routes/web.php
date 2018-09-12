@@ -76,6 +76,9 @@ Route::get('/posts',function(){
 
 
 
-Route::get('/posts','PostController@showpost');
+Route::get('/posts',function(){
+	return view('study.posts.index');
+
+});
 
 

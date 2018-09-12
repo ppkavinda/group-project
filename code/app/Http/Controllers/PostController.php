@@ -11,7 +11,8 @@ class PostController extends Controller
         return view('study.tute.create');
     }
     public function show() {
-    	return view('study.tute.index');
+        return view('study.tute.index');
+        
     }
   
 }
