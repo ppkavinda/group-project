@@ -1,6 +1,7 @@
 
 @extends('study.master')
 @section('content')
+
 <hr>
 <center><div class="card">
 <div class="card border-info mb-4" style="max-width: 58rem;">
