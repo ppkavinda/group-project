@@ -1,4 +1,4 @@
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -11,36 +11,36 @@
 			<div class="carousel-item item active"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>The Biggest <span>Sale</span></h3>
-						<p>Special for today</p>
-						<a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+						<h3>Clothes <span>Sale</span></h3>
+						<p>Special Offer</p>
+						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item item2"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Summer <span>Collection</span></h3>
+						<h3>Jewellery <span>Collection</span></h3>
 						<p>New Arrivals On Sale</p>
-						<a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item item3"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>The Biggest <span>Sale</span></h3>
-						<p>Special for today</p>
-						<a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+						<h3>Traditional <span>Masks</span></h3>
+						<p>Sri Lanka Special</p>
+						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item item4"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Summer <span>Collection</span></h3>
-						<p>New Arrivals On Sale</p>
-						<a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+						<h3>World Best <span>Spices</span></h3>
+						<p>Tasty And Healthly</p>
+						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
 			</div>
@@ -48,8 +48,8 @@
 				<div class="container">
 					<div class="carousel-caption">
 						<h3>The Biggest <span>Sale</span></h3>
-						<p>Special for today</p>
-						<a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+						<p>Choose your items now</p>
+						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
 			</div> 
