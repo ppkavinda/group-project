@@ -6,8 +6,10 @@
 			<li> <a href="/register"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sign Up </a></li>
 			<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a></li>
 			<li><a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> My cart</a></li>
+		
 		</ul>
 	</div>
+
 </div>
 <!-- //header -->
 <!-- logo and search bar -->
