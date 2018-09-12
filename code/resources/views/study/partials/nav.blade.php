@@ -3,7 +3,19 @@
 	<div class="container">
 		<ul>
 		    <li> <a href="/login"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Sign In </a></li>
-			<li> <a href="/register"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sign Up </a></li>
+
+			<li> <a href="/register" style="cursor:pointer" onclick="openNav()">&#9776;><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sign Up </a></li>
+
+			<script>
+			function openNav() {
+ 			document.getElementById("myNav").style.width = "100%";
+			}
+
+			function closeNav() {
+  			document.getElementById("myNav").style.width = "0%";
+			}
+			</script>
+
 			<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a></li>
 			<li><a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> My cart</a></li>
 		</ul>
