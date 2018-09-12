@@ -47,22 +47,23 @@
 			<div class="w3layouts_mail_grid">
 					<div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
 					<div class="agileits_mail_grid_right1 agile_mail_grid_right1">
-						<form action="#" method="post">
+						<form action="/inquiry" method="post">
+						@csrf
 							<span>
 								<i>Name</i>
-								<input type="text" name="Name" placeholder=" Enter your name " required="">
+								<input type="text" name="name" placeholder=" Enter your name " required="">
 							</span>
 							<span>
 								<i>Email</i>
-								<input type="email" name="Email" placeholder="Enter vaild e-mail" required="">
+								<input type="email" name="email" placeholder="Enter vaild e-mail" required="">
 							</span>
 							<span>
 								<i>Subject</i>
-								<input type="text" name="Subject" placeholder=" " required="">
+								<input type="text" name="subject" placeholder=" " required="">
 							</span>
 							<span>
 								<i>Message</i>
-								<textarea name="Message" placeholder=" " required=""></textarea>
+								<textarea name="message" placeholder=" " required=""></textarea>
 
 							</span>
 							<input type="submit" value="SUBMIT">

@@ -65,5 +65,5 @@ Route::post('/register',['uses'=>'UserController@RegisterUser', 'as'=>'signup'])
 
 Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
 
-Route::post('/inquiry','InquiryController');
+Route::post('/inquiry','InquiryController@store');
 
