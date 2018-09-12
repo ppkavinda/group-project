@@ -1,26 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use DB;
+
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function show(){
-        view('study.posts.index');
 
+    public function create () {
+        return view('study.tute.create');
     }
-    
-    
-    public function showpost(){
-        $posts =DB::table('posts')
-            ->join('courses','posts.course_id','=','courses.id')
-            ->select('posts.*','courses.title')
-            
-            ->get();
-      
-      return view('study.posts.index',['posts'=> $posts]);
-
-
+    public function show() {
+    	return view('study.tute.index');
     }
+  
 }

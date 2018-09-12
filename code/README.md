@@ -21,6 +21,8 @@ $ cd group-project-testing-1
 $ composer install
 $ rename .env.example .env
 $ php artisan key:generate
+$ php artisan migrate
+$ php artisan db:seed
 $ npm install
 $ php artisan serve
 $ npm run watch
