@@ -19,13 +19,13 @@ Route::get('/admin', function () {
 });
 
 // sessions
-Route::get('/login', function () {
-	return  view('session.login');
-});
+// Route::get('/login', function () {
+// 	return  view('session.login');
+// });
 
-Route::get('/register', function () {
-	return  view('session.register');
-});
+// Route::get('/register', function () {
+	// return  view('session.register');
+// });
 
 // shop
 Route::get('/profile', function () {
@@ -63,9 +63,9 @@ Route::get('about', function () {
 });
 Route::get('users',['uses' => 'UserController@index']);
 
-Route::post('/register',['uses'=>'UserController@RegisterUser', 'as'=>'signup']);
+// Route::post('/register',['uses'=>'UserController@RegisterUser', 'as'=>'signup']);
 
-Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
+// Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
 
 Route::post('/inquiry','InquiryController@store');
 
@@ -74,3 +74,7 @@ Route::get('/posts',function(){
 
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
