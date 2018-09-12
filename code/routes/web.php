@@ -67,6 +67,8 @@ Route::post('/register',['uses'=>'UserController@RegisterUser', 'as'=>'signup'])
 
 Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
 
+Route::post('/inquiry','InquiryController@store');
+
 Route::get('/posts',function(){
 	return view('study.posts.index');
 

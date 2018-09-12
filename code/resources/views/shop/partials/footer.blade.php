@@ -6,10 +6,10 @@
 					<a href="/">
 						<img src="/dist/img/logo_without_vidatha.png" alt="logo">
 						<span>ATHWELA</span>
-						<p>by VIJATHA</p> 
+						<p>by VIDATHA</p> 
 					</a>
 				</h2>
-				<p>"ATHWELA" has learning and shopping center. "VIJATHA" is goverment related orgnization.</p>
+				<p>"ATHWELA" has learning and shopping center. "VIDATHA" is goverment related orgnization.</p>
 			</div>
 			<div class="col-md-9 footer-right">
 				<div class="sign-grds">
@@ -37,7 +37,7 @@
 							</ul>
 						</div>
 						<div class="col-md-4 sign-gd-two">
-							<h4>Vijatha Center <span>Information</span></h4>
+							<h4>Vidatha Center <span>Information</span></h4>
 							<div class="w3-address">
 								<div class="w3-address-grid">
 									<div class="w3-address-left">
