@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-	return view('study.index');
-});
+Route::get('/', 'studyController@index');
 
 // admin
 Route::get('/admin', function () {

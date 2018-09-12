@@ -1,14 +1,4 @@
 <!-- top bar: login/register and contact info -->
-<div class="header" id="home">
-	<div class="container">
-		<ul>
-		    <li> <a href="/login"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Sign In </a></li>
-			<li> <a href="/register"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sign Up </a></li>
-			<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a></li>
-			<li><a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> My cart</a></li>
-		</ul>
-	</div>
-</div>
 <!-- //header -->
 <!-- logo and search bar -->
 <div class="header-bot">
@@ -34,6 +24,7 @@
 		</div>
 		<div class="clearfix"></div>
 	</div>
+	
 	</div>
 </div>
 <!-- //header-bot -->
@@ -64,16 +55,28 @@
 					<li class=" nav-item menu__item">
 						<a class="nav-link menu__link" href="/contact">Contact</a>
 					</li>
+					<li class=" nav-item menu__item">
+						<div class="wthreecartaits wthreecartaits2 cart cart box_1" id="testcart" title="Go to Shopping center"> 
+							<a href="/shop" class="w3view-cart"><i class="fa fa-cart-arrow-down" ></i></a>
+						</div>
+					</li>
+					<li class="active nav-item menu__item"> 
+							 <a class="nav-link menu__link" href="/register"><i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
+					</li>
+					<li class="nav-item menu__item">
+							<a class="nav-link menu__link" href="/login"><i class="fa fa-user" aria-hidden="true"></i> Sign Up </a>
+					</li>
+					<li class="nav-item menu__item">
+							<a class="nav-link menu__link" href="/profile"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a>
+					</li>
+					<li class="nav-item menu__item">
+							<a class="nav-link menu__link" href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> My cart</a>
+					</li>
 				  </ul>
 				</div>
 			  </div>
 			</nav>	
 		</div>
-		<div class="top_nav_right">
-			<div class="wthreecartaits wthreecartaits2 cart cart box_1"  title="Go to Shopping center"> 
-				<a href="/shop" class="w3view-cart"><i class="fa fa-cart-arrow-down" ></i></a>
-			</div>
-		</div>
-		<div class="clearfix"></div>
 	</div>
+		<div class="clearfix"></div>
 </div>
