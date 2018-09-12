@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    public function tutes() {
+    public function tutes () {
         return $this->hasMany(Tute::class);
+    }
+
+    public function posts () {
+        return $this->hasMany(Post::class);
     }
 
     public function category () {
