@@ -9,7 +9,7 @@
 
 <link rel="stylesheet" href="/css/font-awesome.css">
 <link rel="stylesheet" href="/css/study.css">
-
+@stack('styles')
 </head>
 <body>
 

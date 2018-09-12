@@ -45,7 +45,7 @@
 		<div class="container">
 			<h3 class="w3l_header w3_agileits_header1">Inquiry <span>Info</span></h3>
 			<div class="w3layouts_mail_grid">
-					<div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
+				<div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
 					<div class="agileits_mail_grid_right1 agile_mail_grid_right1">
 						<form action="/inquiry" method="post">
 						@csrf
