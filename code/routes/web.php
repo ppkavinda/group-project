@@ -53,7 +53,7 @@ Route::get('/posts/create', 'PostController@create');
 
 Route::post('/posts/create', 'PostController@store');
 
-Route::get('posts/{id}', 'PostController@show');
+Route::get('posts/{id}', 'PostController@index');
 
 // general
 Route::get('contact', function () {
@@ -69,15 +69,3 @@ Route::post('/register',['uses'=>'UserController@RegisterUser', 'as'=>'signup'])
 
 Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
  
-
-// post add
-Route::get('/posts',function(){
-	return view('study.posts.index');
-
-});
-
-
-
-Route::get('/posts','PostController@showpost');
-
-
