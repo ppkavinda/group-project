@@ -65,25 +65,6 @@
             </div>
           </div>
     
-     <!----error checking ---->
-
-       
-
-         @if(session()->has('message')) 
-        <div class ="alert alert-success">
-          {{session() -> get('message')}}
-        </div>
-        @elseif(count($errors)>0)
-       <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-      </div>
-      @endif
-       
-
           <!-- /.col -->
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block btn-flat">Join with us</button>
@@ -100,7 +81,6 @@
     <!-- /.form-box -->
   </div><!-- /.card -->
 </div>
-</div>
-</div>
+
      
 @endsection

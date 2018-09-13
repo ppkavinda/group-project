@@ -22100,4 +22100,40 @@ p.copy-right a:hover {
   margin-left: 3em;
   margin-bottom: 3em;
 }
-
+#logo{
+  max-width: 50%;
+  height:auto;
+  width:auto;
+  position: relative;
+  left: 25%;
+}
+#title{
+  position: relative;
+  left:10%;
+}
+#about_paragarph{
+  margin-left: 2cm;
+  margin-right: 2cm;
+  font-size: 18px;
+}
+.home_page_join{
+  color:red;
+}
+.btn_div{
+  position: relative;
+  left:40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#home_page_signup_border{
+  width:50%;
+  background-color:#192138;
+  position: relative;
+  left:25%;
+}
+.home_page_other{
+  color:var(--light);
+  position: relative;
+  margin-left: 5em;
+  margin-right: 5em;
+}
