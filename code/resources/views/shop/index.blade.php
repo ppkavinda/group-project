@@ -1,4 +1,4 @@
-@extends('shop.master')
+@extends('shop.partials.master')
 @section('content')
 
 <!-- Modal1 -->

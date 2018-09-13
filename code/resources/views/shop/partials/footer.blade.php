@@ -5,12 +5,11 @@
 				<h2>
 					<a href="/">
 						<img src="/dist/img/logo_without_vidatha.png" alt="logo">
-						<span>shopping</span>center 
+						<span>ATHWELA</span>
+						<p>by VIDATHA</p> 
 					</a>
 				</h2>
-				<p>Lorem ipsum quia dolor
-				sit amet, consectetur, adipisci velit, sed quia non 
-				numquam eius modi tempora.</p>
+				<p>"ATHWELA" has learning and shopping center. "VIDATHA" is goverment related orgnization.</p>
 			</div>
 			<div class="col-md-9 footer-right">
 				<div class="sign-grds">
@@ -18,27 +17,27 @@
 						<div class="col-md-4 sign-gd">
 							<h4>Shopping <span>Center</span> </h4>
 							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="mens.html">Men's Wear</a></li>
-								<li><a href="womens.html">Women's wear</a></li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="typography.html">Short Codes</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="/shop">Home</a></li>
+								<li><a href="/clothes">Clothes</a></li>
+								<li><a href="/slippers">Slippers</a></li>
+								<li><a href="/shoes">Shoes</a></li>
+								<li><a href="/about">About</a></li>
+								<li><a href="/contact">Contact</a></li>
 							</ul>
 						</div>
 						<div class="col-md-4 sign-gd">
-							<h4>Info <span>Center</span> </h4>
+							<h4>Learning <span>Center</span> </h4>
 							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li><a href="mens.html">Men's Wear</a></li>
-								<li><a href="womens.html">Women's wear</a></li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="typography.html">Short Codes</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="/">Home</a></li>
+								<li><a href="/signup">Sign Up</a></li>
+								<li><a href="/signin">Sign In</a></li>
+								<li><a href="/courses">Courses</a></li>
+								<li><a href="/about">About</a></li>
+								<li><a href="/contact">Contact</a></li>
 							</ul>
 						</div>
 						<div class="col-md-4 sign-gd-two">
-							<h4>Store <span>Information</span></h4>
+							<h4>Vidatha Center <span>Information</span></h4>
 							<div class="w3-address">
 								<div class="w3-address-grid">
 									<div class="w3-address-left">
@@ -46,7 +45,7 @@
 									</div>
 									<div class="w3-address-right">
 										<h6>Phone Number</h6>
-										<p>+1 234 567 8901</p>
+										<p>+94112561766</p>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
@@ -66,7 +65,7 @@
 									</div>
 									<div class="w3-address-right">
 										<h6>Location</h6>
-										<p>Broome St, NY 10002,California, USA. 
+										<p>Divisional Secretariat Office, Udawaththa Rd, Malabe.
 										
 										</p>
 									</div>
@@ -79,20 +78,6 @@
 				</div>
 			</div>
 		<div class="clearfix"></div>
-		</div>
-		<div class="agile_newsletter_footer">
-			<div class="row">
-				<div class="col-sm-6 newsleft">
-					<h3>SIGN UP FOR NEWSLETTER !</h3>
-				</div>
-				<div class="col-sm-6 newsright">
-					<form action="#" method="post">
-						<input type="email" placeholder="Enter your email..." name="email" required="">
-						<input type="submit" value="Submit">
-					</form>
-				</div>
-				<div class="clearfix"></div>
-			</div>
 		</div>
 		<p class="copy-right">&copy 2017 Athwela. All rights reserved</p>
 	</div>
