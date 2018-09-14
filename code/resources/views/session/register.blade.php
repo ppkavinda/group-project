@@ -1,63 +1,78 @@
 @extends('admin.master')
 
 @section('content')
+<div class="container">
+    <div class="row justify-content-center"> 
+        <!-- <div class="col-md-8"> -->
+            <div class="register-box">
+                <div class="card">
+                    <div class="card-body register-card-body">
+                        <div class="login-logo">
+                            <a href="/"><b><img src="/dist/img/logo.jpg" alt="logo" style="width: 50%; opacity: .6"></a>
+                        </div>
+                    <!-- /.login-logo -->
+                      <p class="login-box-msg" style="color:DodgerBlue;font-size:110%;"><b>Sign Up and Start Learning!</b></p>
+                        <form method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4  text-md-right">{{ __('Name') }}</label>
+                             <div class="col-md-6">
+                                <input id="name" type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }} " placeholder="Full Name" name="name" value="{{ old('name') }}" required autofocus>
 
-@if ($errors)
-{{ $errors}}
-@endif
-<div class="register-box">
-  <div class="card">
-    <div class="card-body register-card-body">
-    <div class="login-logo">
-      <link rel="stylesheet" href="css/styles.css">
-      <div id="overlay"></div> 
-      <a href="/"><b><img src="/dist/img/logo.jpg" alt="logo" style="width: 50%; opacity: .4"></a>
-    </div>
-      <p class="login-box-msg" style="color:DodgerBlue;font-size:110%;"><b>Sign Up and Start Learning!</b></p>
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-      <form method="post" action="{{route ('signup') }}">
-        <div class="form-group has-feedback">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text fa fa-user form-control-feedback"></span>
-            </div>
-          <input type="text" class="form-control" name="name" placeholder="Full name" required>
-          </div>
-        </div>
-        <div class="form-group has-feedback">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text fa fa-address-card-o form-control-feedback"></span>
-            </div>
-          <input type="text" class="form-control" placeholder="NIC Number" name="nic" pattern="[0-9]{9}[vV]{1}$" title="Include 9 digits and letter V  eg:123456789V" required>
-          </div>
-        </div>
 
-        <div class="form-group has-feedback">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text fa fa-envelope form-control-feedback"></span>
-            </div>
-              <input type="email" class="form-control" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$"  title ="" required>
-          </div>
-        </div>
+                        <div class="form-group row">
+                            <div class="input-group">
+                                <label for="nic" class="col-md-4 col-form-label text-md-right">{{ __('NIC') }}</label>
+                            <div class="col-md-6">
+                            <input id="nic" type ="text" class="form-control" placeholder="NIC Number" name="nic" pattern="[0-9]{9}[vV]{1}$" title="Include 9 digits and letter V  eg:123456789V" required>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="form-group has-feedback">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text fa fa-key form-control-feedback"></span>
-            </div>
-              <input type="password" class="form-control" placeholder="Password" name="pwd" id="password" required>
-          </div>
-        </div>
-        <div class="form-group has-feedback">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text fa fa-key form-control-feedback"></span>
-            </div>
-              <input type="password" class="form-control" placeholder="Confirm Password" name="cpwd" id="confirm_password" required>
-          </div>
-        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="E-Mail" name="email" value="{{ old('email') }}" required>
+
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>
+                            </div>
+                        </div>
+
         <div class="row">
           <div class="col-8">
             <div class="checkbox icheck">
@@ -66,49 +81,22 @@
               </label>
             </div>
           </div>
-     <!----error checking ---->
-
-        @if ($errors->any())
-        <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-         </div>
-        @endif
-        
-        @if(session()->has('message'))
-        <div class ="alert alert-success">
-          {{session() -> get('message')}}
-        </div>@endif
-
+    
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat" name="register">Register</button>
+          <div class="col-6">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Join with us</button>
           </div>
          
           {{csrf_field() }}
 
           <!-- /.col -->
         </div>
-      </form>
-
-      <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fa fa-facebook mr-2"></i>
-          Sign up using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fa fa-google-plus mr-2"></i>
-          Sign up using Google+
-        </a>
-      </div>
-
-      <a href="login" class="text-center">I already have a membership</a>
+                    </form>
+                    <br>
+                   <a href="login" class="text-center">I already have a membership</a>
+               </br>
+                </div>
+            </div>
     </div>
-    <!-- /.form-box -->
-  </div><!-- /.card -->
 </div>
 @endsection
