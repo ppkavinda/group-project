@@ -2,17 +2,17 @@
 
 @section('content')
 
-@if ($errors)
-{{ $errors}}
-@endif
-<div class="register-box">
-  <div class="card">
-    <div class="card-body register-card-body">
-    <div class="login-logo">
-      <a href="/"><b><img src="/dist/img/logo.jpg" alt="logo" style="width: 50%; opacity: .4"></a>
-    </div>
+<body>
+<!-- <div id="myNav" class="overlay" > -->
+  <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+      <!-- <div class="overlay-content"> -->
+  <div class="register-box">
+    <div class="card">
+      <div class="card-body register-card-body">
+      <div class="login-logo">
+        <a href="/"><b><img src="/dist/img/logo.jpg" alt="logo" style="width: 50%; opacity: .4"></a>
+      </div>
       <p class="login-box-msg" style="color:DodgerBlue;font-size:110%;"><b>Sign Up and Start Learning!</b></p>
-
       <form method="post" action="{{route ('signup') }}">
         <div class="form-group has-feedback">
           <div class="input-group">
@@ -64,19 +64,10 @@
               </label>
             </div>
           </div>
-     <!----error checking ---->
-
-       
-
-     
-        @if(session()->has('message'))
-        <div class ="alert alert-success">
-          {{session() -> get('message')}}
-        </div>@endif
-
+    
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Join with us</button>
           </div>
          
           {{csrf_field() }}
@@ -85,21 +76,11 @@
         </div>
       </form>
 
-      <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fa fa-facebook mr-2"></i>
-          Sign up using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fa fa-google-plus mr-2"></i>
-          Sign up using Google+
-        </a>
-      </div>
-
       <a href="login" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
 </div>
+
+     
 @endsection
