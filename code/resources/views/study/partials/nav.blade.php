@@ -1,4 +1,29 @@
 <!-- top bar: login/register and contact info -->
+<<<<<<< HEAD
+<div class="header" id="home">
+	<div class="container">
+		<ul>
+		    <li> <a href="/login"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Sign In </a></li>
+
+			<li> <a href="/register" style="cursor:pointer" onclick="openNav()">&#9776;><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sign Up </a></li>
+
+			<script>
+			function openNav() {
+ 			document.getElementById("myNav").style.width = "100%";
+			}
+
+			function closeNav() {
+  			document.getElementById("myNav").style.width = "0%";
+			}
+			</script>
+
+			<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a></li>
+			<li><a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> My cart</a></li>
+		</ul>
+	</div>
+</div>
+=======
+>>>>>>> b3a5c5fbb28041088bab468f7c1c4ee9f29bf6b1
 <!-- //header -->
 <!-- logo and search bar -->
 <div class="header-bot">
