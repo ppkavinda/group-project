@@ -5,8 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">
+                    <p class="login-box-msg" style="color:DodgerBlue;font-size:110%;"><b>Sign Up and Start Learning!</b></p>
+                </div>
 
+                <div class="login-logo">
+                    <a href="/"><b><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .4"></a>
+                </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -36,6 +41,20 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="nic" class="col-md-4 col-form-label text-md-right"> {{ __('National ID No:') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="text" name="nic" id="nic" class="form-control{{ $errors->has('email') ? ' is-invalid': ''}}" value="{{ old('nic') }}" pattern="[0-9]{9}[vV]{1}$" required>
+
+                                @if ($errors->has('nic'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('nic') }}</strong>
+                                    </span>
+                                @endif 
                             </div>
                         </div>
 
