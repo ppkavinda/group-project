@@ -15,7 +15,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text fa fa-user form-control-feedback"></span>
             </div>
-          <input type="text" class="form-control" name="name" placeholder="Full name" required>
+           <input type="text" class="form-control" name="name" placeholder="Full name" required>
           </div>
         </div>
         <div class="form-group has-feedback">
