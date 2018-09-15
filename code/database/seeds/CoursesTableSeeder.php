@@ -13,11 +13,13 @@ class CoursesTableSeeder extends Seeder
     {
         \App\Course::create([
             'category_id' => 1,
-            'title' => 'soap',
-            'subtitle' => 'How to Make Soap',
-            'cover_img' => '2.jpg',
-            'description' => 'Sed quis eleifend leo. Phasellus iaculis, metus facilisis gravida dapibus, ligula dolor placerat dolor, eget cursus neque risus quis tortor varius augue ut mauris condimentum dictum.
-            Sed quis eleifend leo. Phasellus iaculis, metus facilisis gravida dapibus, ligula dolor placerat dolor, eget cursus neque risus quis tortor varius augue ut mauris condimentum dictum.',
+            'title' => 'SOAP Indrustry',
+            'subtitle' => 'Making Soap ,Starting EntreprenerShip ',
+            'cover_img' => 'asoap.jpg',
+            'description' => 'Making soap for the first time may be intimidating, but is not difficult.
+             This quick and easy beginner soap recipe comes with fun ideas for personalizing it by adding exfoliants, essential oils, etc.
+
+            ',
         ]);
 
         \App\Course::create([

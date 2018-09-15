@@ -7,7 +7,7 @@
 <br><br>
 <!--change--as detect to html tags-->
 
-<div class="col-md-5 offset-md-3">
+<div class="col-md-6 offset-md-3">
 
     <div class="card border-dark mt-4 mb-4">
         <div class="card border-dark mt-4 mb-4" style="max-width: 58rem;">
