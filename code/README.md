@@ -16,8 +16,8 @@ These things should be installed on your system
 ### Installing
 
 ```
-$ git clone https://github.com/ppkavinda/group-project-testing-1.git
-$ cd group-project-testing-1
+$ git clone https://github.com/ppkavinda/group-project.git
+$ cd group-project
 $ composer install
 $ rename .env.example .env
 $ php artisan key:generate

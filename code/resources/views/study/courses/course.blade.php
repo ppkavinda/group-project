@@ -3,7 +3,7 @@
 
 {{-- @include('study.partials.banner') --}}
 
-<div class="container">
+<div class="container contact">
 	<h3 class="w3l_header w3_agileits_header">Learn <span>{{ $course->title }}</span></h3>
 		<div class="wthree_services_grids row">	
 			<div class="col-md-6 wthree_services_grid_left">

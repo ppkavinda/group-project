@@ -16,21 +16,24 @@ class UserController extends Controller
     public function RegisterUser(Request $request){
 
     	
-
+        
+        $validatedData = $request->validate([
+        'name' => 'required|min:3|max:50',
+       // 'password' => 'required|confirmed|min:6',
+        ]);
 
     	$table =new User();
 
-    	//name = $request->(name);
-    	//nic = $request->(nic);
-    	//email = $request->(email);
-    	//pwd = bcrypt($request->(pwd));
+    	$table->name = $request->input('name');
+    	$table->nic = $request->input('nic');
+    	$table->email = $request->input('email');
+    	$table->pwd = bcrypt($request->input('pwd'));
         //cpwd = bcrypt($request->(cpwd));
 
-       $user = User::create(request(['name','nic', 'email', 'pwd']));
-
-    	//$table->save();
+         //$user = User::create(request(['name','nic', 'email', 'pwd']));
+        $table->save();
     	return redirect()-> back()->with('message','Successfully registered');
-       //return redirect()->route('', ['id' => 1]);
+       
 
     }
 

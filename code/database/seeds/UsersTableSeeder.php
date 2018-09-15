@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             // 'fname' => 'admin',
             'name' => 'admin',
             'email' => 'admin@admin.com',
-            'pwd' => bcrypt('admin'),
+            'password' => bcrypt('admin'),
             'nic' => '123456789V',
             // 'tpNo' => '1234123443',
             // 'profilePic' => 'img',
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
         DB::table('customers')->insert([
             'id' => 1
         ]);
-
+      
         DB::table('users')->insert([
             'id' => 4,
             // 'fname' => 'admin',
@@ -42,6 +42,6 @@ class UsersTableSeeder extends Seeder
             'id' => 4
         ]);
 
-        
+
     }
 }

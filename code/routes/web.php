@@ -18,15 +18,6 @@ Route::get('/admin', function () {
     return view('admin.admin');
 });
 
-// sessions
-Route::get('/login', function () {
-	return  view('session.login');
-});
-
-Route::get('/register', function () {
-	return  view('session.register');
-});
-
 // shop
 Route::get('/profile', function () {
 	return  view('profile');
@@ -51,7 +42,7 @@ Route::get('/posts/create', 'PostController@create');
 
 Route::post('/posts/create', 'PostController@store');
 
-Route::get('posts/{id}', 'PostController@show');
+Route::get('posts/{post}', 'PostController@show');
 
 // general
 Route::get('contact', function () {
@@ -63,22 +54,17 @@ Route::get('about', function () {
 });
 Route::get('users',['uses' => 'UserController@index']);
 
-Route::post('/register',['uses'=>'UserController@RegisterUser', 'as'=>'signup']);
-
-Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
- 
-
-// post add
-Route::get('/posts',function(){
-	return view('study.posts.index');
-
-});
-
-
+Route::post('/inquiry','InquiryController@store');
 
 Route::get('/posts',function(){
 	return view('study.posts.index');
 
 });
 
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/k',function(){
+	return view('study.index1');
+});
