@@ -7,11 +7,23 @@
         <div class="register-box">
             <div class="row justify-content-center">
             <div class="card">
+<<<<<<< HEAD
                  <div class="card-body login-card-body">
                     <div class="login-logo">
                           <a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 50%; opacity: .4"></a>
                     </div>
             <!-- /.login-logo -->
+=======
+                <div class="card-header">
+                    <p class="login-box-msg" style="color:DodgerBlue;font-size:110%;"><b>Login to your Athwela Account!</b></p>
+                </div>
+
+                <div class="login-logo">
+                    <a href="/"><b><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .4"></a>
+                </div>
+                <div class="card-body">
+
+>>>>>>> 1d46ca424f5ebb810eb2f459bc766005eeaed731
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

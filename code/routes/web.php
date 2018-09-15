@@ -51,7 +51,7 @@ Route::get('/posts/create', 'PostController@create');
 
 Route::post('/posts/create', 'PostController@store');
 
-Route::get('posts/{id}', 'PostController@index');
+Route::get('posts/{post}', 'PostController@show');
 
 // general
 Route::get('contact', function () {
