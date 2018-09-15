@@ -21,7 +21,7 @@ Route::get('/admin', function () {
 // shop
 Route::get('/profile', function () {
 	return  view('profile.index');
-});
+})->middleware('auth');
 
 Route::get('/shop', function () {
 	return view('shop.index');
@@ -58,16 +58,8 @@ Route::post('/inquiry','InquiryController@store');
 
 Route::get('/posts',function(){
 	return view('study.posts.index');
-
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/k',function(){
-	return view('study.index1');
-});
-Route::get('/test', function () {
-	\App\Post::find(5)->first()->snippet;
-});

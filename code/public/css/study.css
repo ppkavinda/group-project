@@ -22114,3 +22114,15 @@ p.copy-right a:hover {
   background: #2fdab8 !important;
 }
 
+.card-img-top {
+  width: 50%;
+}
+
+.edit-pencil {
+  position: relative;
+  z-index: 2;
+  margin-top: -25px;
+  margin-right: 15px;
+  float: right;
+}
+
