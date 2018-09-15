@@ -22101,3 +22101,28 @@ p.copy-right a:hover {
   margin-bottom: 3em;
 }
 
+.profile-nav-link {
+  color: #010000;
+}
+
+.profile-nav-link:hover {
+  color: #177764;
+}
+
+.profile-nav-link.active {
+  color: #010000 !important;
+  background: #2fdab8 !important;
+}
+
+.card-img-top {
+  width: 50%;
+}
+
+.edit-pencil {
+  position: relative;
+  z-index: 2;
+  margin-top: -25px;
+  margin-right: 15px;
+  float: right;
+}
+
