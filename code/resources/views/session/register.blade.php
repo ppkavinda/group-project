@@ -14,15 +14,16 @@
       </div>
       <p class="login-box-msg" style="color:DodgerBlue;font-size:110%;"><b>Sign Up and Start Learning!</b></p>
       <form method="post" action="{{route ('signup') }}">
-        <div class="form-group has-feedback">
+         <div class="form-group has-feedback">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text fa fa-user form-control-feedback"></span>
             </div>
-          <input type="text" class="form-control" name="name" placeholder="Full name" required>
+              <input type="text" class="form-control" name="name" placeholder="Full name" required>
           </div>
-        </div>
-        <div class="form-group has-feedback">
+       </div>
+
+       <div class="form-group has-feedback">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text fa fa-address-card-o form-control-feedback"></span>
@@ -48,6 +49,7 @@
               <input type="password" class="form-control" placeholder="Password" name="pwd" id="password" required>
           </div>
         </div>
+
         <div class="form-group has-feedback">
           <div class="input-group">
             <div class="input-group-prepend">
@@ -56,6 +58,7 @@
               <input type="password" class="form-control" placeholder="Confirm Password" name="cpwd" id="confirm_password" required>
           </div>
         </div>
+
         <div class="row">
           <div class="col-8">
             <div class="checkbox icheck">
