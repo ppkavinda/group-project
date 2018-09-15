@@ -18,15 +18,6 @@ Route::get('/admin', function () {
     return view('admin.admin');
 });
 
-// sessions
-// Route::get('/login', function () {
-// 	return  view('session.login');
-// });
-
-// Route::get('/register', function () {
-	// return  view('session.register');
-// });
-
 // shop
 Route::get('/profile', function () {
 	return  view('profile');
@@ -63,17 +54,12 @@ Route::get('about', function () {
 });
 Route::get('users',['uses' => 'UserController@index']);
 
-// Route::post('/register',['uses'=>'UserController@RegisterUser', 'as'=>'signup']);
-
-// Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
-
 Route::post('/inquiry','InquiryController@store');
 
 Route::get('/posts',function(){
 	return view('study.posts.index');
 
 });
-
 
 Auth::routes();
 
