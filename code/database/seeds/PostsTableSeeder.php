@@ -48,11 +48,23 @@ class PostsTableSeeder extends Seeder
 .</li>
 <li>Add chilli powder to 10 pepper and flour and mix it with water and vinegar.</li>
 <li>After it is well-steamed, add the sugar pepper powder and salt to taste.</li>
+<li>We can sterilized  bottle and pack chili paste in to bottles.</li>
 </ol>',
             'user_id' => 1,
             'post_image' => '/dist/img/post/post3_1.jpg',
         ]);
-        
+        \App\Post::create([
+            'title' => '<b><strong>Introduction about Candles Manufacturing</strong> <b>',
+            'course_id' => 4,
+            'body' => '<h3><u>Introdutction</u></h3><br>
+            <p>Everyone uses us as candles as a light source. Vesak, Poson and Christmas, as well as weddings, birthdays and birthday parties.
+            <br><br>The candle is very easy to use and can be used as a cottage industry .It can start with a very low capital and the market risk is low .Also, you can use it again without the raw material wastage.
+            <br><br>Candles can be made in a variety of shapes and colors .They are also made to suit different festivities.
+            <br><br>The raw materials used in the production of candles are perfumes wax. This is a side effect of the production of petroleum, and there are two types of wines made up of both Malaysian and Indonesian. Malaysian wax is white and it is best suited to this industry.
+            </p>',
+            'user_id' => 1,
+            'post_image' => '/dist/img/post/post4_1.jpg',
+        ]);
 
          
     }
