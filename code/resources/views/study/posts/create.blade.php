@@ -6,45 +6,13 @@
 
 <div class="contact">
   <div class="container">
-	<h3 class="w3l_header w3_agileits_header">Add new <span>Video Tutorial</span></h3>
+	<h3 class="w3l_header w3_agileits_header">Add new <span>post</span></h3>
 			<div class="inner_w3l_agile_grids-gal">
-                {{-- <form method="POST" action="/tute/create" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <div class="form-group row">
-                        <label for="staticTitle" class="col-sm-2 col-form-label">Video Title</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="staticTitle" name="title" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="video" class="col-sm-2 col-form-label">Video</label>
-                      <div class="col-sm-10">
-                           <input type="file" class="form-control-file" name="video" id="video" accept="video/*" aria-describedby="fileHelpId" required>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="staticTitle" class="col-sm-2 col-form-label">Description</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" name="description" id="" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="staticTitle" class="col-sm-2 col-form-label">Tags</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="staticTitle" name="tags" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3 offset-sm-2">
-                            <input type="submit" class="form-control btn btn-primary " id="staticTitle" required>
-                        </div>
-                    </div>
-                </form> --}}
             </div>
             <div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
-					<div class="agileits_mail_grid_right1 agile_mail_grid_right1">
-                        @include('study.partials.errors')
-                        <form method="POST" action="/tute/create" enctype="multipart/form-data">
+					<div class="agile_mail_grid_right1">
+                        {{-- @include('study.partials.errors') --}}
+                        {{-- <form method="POST" action="/tute/create" enctype="multipart/form-data">
                             @csrf
 							<span>
 								<i>Title</i>
@@ -63,10 +31,47 @@
 								<textarea name="description" required></textarea>
 							</span>
 							<input type="submit" value="SUBMIT">
-						</form>
+                        </form> --}}
+                        <form action="/posts/create" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="postTitle" placeholder="Enter the Title">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="courseId" id="exampleFormControlSelect1">
+                                    <option>Please select the course --</option>
+                                    @foreach ($courses as $course)
+                                        <option value="{{$course->id }}">{{ $course->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="postContent" id="summernote"></textarea>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Save</button>
+                        </form>
 					</div>
 				</div>
 		</div>	
 	</div>
 
 @endsection
+
+@push('styles')
+    {{-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> --}}
+@endpush
+@push('styles')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+@endpush
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+@endpush
+@push('scripts')
+  <script>
+       $('#summernote').summernote({
+        placeholder: 'Type your post here...',
+        tabsize: 4,
+        height: 500
+      });
+  </script>
+@endpush
