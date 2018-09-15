@@ -25,23 +25,6 @@ class PostsTableSeeder extends Seeder
             'user_id' => 1,
             'post_image' => '4.jpg',
         ]);
-        \App\Post::create([
-            'title' => 'Ingredients',
-            'course_id' => 3,
-            'body' =>'<p>Chilli 100g<br>
-             400g tomatoes<br>
-            Pepper 2 tablespoons tables<br>
-            100g onions<br>
-            White toddy<br>
-            A piece of ginger<br>
-            Stock Water bottles 01<br>
-            Vinegar 1/2 bottles<br>
-            Sugar little<br>
-            4 tablespoons of margarine table<br>
-            Plum teaspoons 02
-             .<p>',
-            'user_id' => 1,
-            'post_image' => 'chillipaste.png',
-        ]); 
+       
     }
 }
