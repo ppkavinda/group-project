@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             // 'fname' => 'admin',
             'name' => 'admin',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('admin'),
+            'password' => bcrypt('admin123'),
             'nic' => '123456789V',
             // 'tpNo' => '1234123443',
             // 'profilePic' => 'img',

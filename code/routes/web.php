@@ -19,9 +19,8 @@ Route::get('/admin', function () {
 });
 
 // shop
-Route::get('/profile', function () {
-	return  view('profile.index');
-})->middleware('auth');
+Route::get('/profile', 'UserController@index')->middleware('auth');
+Route::get('/profile/{user}', 'UserController@show');
 
 Route::get('/shop', function () {
 	return view('shop.index');
@@ -38,11 +37,17 @@ Route::get('/courses', 'CourseController@index');
 
 Route::get('/courses/{course}', 'CourseController@show');
 
-Route::get('/posts/create', 'PostController@create')->middleware('auth');
+Route::get('/posts/create', 'PostController@create');
 
 Route::post('/posts/create', 'PostController@store');
 
 Route::get('posts/{post}', 'PostController@show');
+
+Route::get('/posts/{post}/edit', 'PostController@edit');
+
+Route::post('/posts/{post}/update', 'PostController@update');
+
+Route::post('/posts/{post}/delete', 'PostController@destroy');
 
 // general
 Route::get('contact', function () {
