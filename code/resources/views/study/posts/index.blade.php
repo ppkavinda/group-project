@@ -18,13 +18,10 @@
                 
                    
             <div class="card-body text-dark">
-              <p class="card-text"><b>{!! $post->body !!}
-             </b> </p>
-                 
-                <p class="card-text">
-                  <small class="text-muted">{{ $post->created_at->diffForHumans() }}
-                  </small>
-               </p>
+            <div class="card-text">{!! $post->body !!}</div>
+            <div class="card-text">
+                <small class="text-muted">{{ $post->created_at->diffForHumans() }}</small>
+            </div>
             </div>
             </div>
         </div>
