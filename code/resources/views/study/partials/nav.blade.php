@@ -42,16 +42,16 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 				  <ul class="navbar-nav menu__list mr-auto">
-						<li class="active nav-item menu__item menu__item--current">
+						<li class="nav-item menu__item {{ Request::is('/') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/">Home <span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item menu__item">
+						<li class="nav-item menu__item {{ Request::is('courses*') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/courses">Courses</a>
 						</li>
-						<li class="nav-item menu__item">
+						<li class="nav-item menu__item {{ Request::is('about') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/about">About</a>
 						</li>
-						<li class=" nav-item menu__item">
+						<li class=" nav-item menu__item {{ Request::is('contact') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/contact">Contact</a>
 						</li>
 					</ul>
@@ -62,34 +62,33 @@
 							</div>
 						</li>
 						@guest
-						<li class="active nav-item menu__item"> 
+						<li class="active nav-item menu__item {{ Request::is('register') ? 'menu__item--current' : '' }}"> 
 								<a class="nav-link menu__link" href="/register"><i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
 						</li>
-						<li class="nav-item menu__item">
+						<li class="nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}">
 								<a class="nav-link menu__link" href="/login"><i class="fa fa-user" aria-hidden="true"></i> Sign Up </a>
 						</li>
 						@else
-						<li class="nav-item menu__item">
-								<a class="nav-link menu__link" href="/profile"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a>
-						</li>
-						<li class="nav-item menu__item">
+						
+						<li class="nav-item menu__item {{ Request::is('/cart') ? 'menu__item--current' : '' }}">
 								<a class="nav-link menu__link" href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> My cart</a>
 						</li>
-						<li class="nav-item dropdown">
-							<a id="navbarDropdown" class="nav-link dropdown-toggle menu__link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+						<li class="nav-item menu__item dropdown {{ Request::is('profile*') ? 'menu__item--current' : '' }}">
+							<a id="navbarDropdown" class="nav-link menu__link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 									{{ Auth::user()->name }} <span class="fa fa-caret-down"></span>
 							</a>
 
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="{{ route('logout') }}"
-											onclick="event.preventDefault();
-																		document.getElementById('logout-form').submit();">
-											{{ __('Logout') }}
-									</a>
+								<a class="dropdown-item" href="/profile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>
+								<a class="dropdown-item" href="{{ route('logout') }}"
+									onclick="event.preventDefault();
+										document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+								</a>
 
-									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-											@csrf
-									</form>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form>
 							</div>
 						</li>
 						@endguest
