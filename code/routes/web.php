@@ -20,7 +20,7 @@ Route::get('/admin', function () {
 
 // shop
 Route::get('/profile', function () {
-	return  view('profile');
+	return  view('profile.index');
 });
 
 Route::get('/shop', function () {
@@ -67,4 +67,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/k',function(){
 	return view('study.index1');
+});
+Route::get('/test', function () {
+	\App\Post::find(5)->first()->snippet;
 });

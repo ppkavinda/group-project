@@ -17,3 +17,13 @@
     margin-left: 3em;
     margin-bottom: 3em;
 }
+.profile-nav-link {
+    color: #010000;
+    &:hover {
+        color: #177764;
+    }
+}
+.profile-nav-link.active {
+    color: #010000 !important;
+    background: #2fdab8 !important;
+}
