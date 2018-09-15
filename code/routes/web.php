@@ -38,7 +38,7 @@ Route::get('/courses', 'CourseController@index');
 
 Route::get('/courses/{course}', 'CourseController@show');
 
-Route::get('/posts/create', 'PostController@create');
+Route::get('/posts/create', 'PostController@create')->middleware('auth');
 
 Route::post('/posts/create', 'PostController@store');
 
