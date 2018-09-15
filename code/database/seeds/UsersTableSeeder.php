@@ -26,7 +26,22 @@ class UsersTableSeeder extends Seeder
         DB::table('customers')->insert([
             'id' => 1
         ]);
-
       
+        DB::table('users')->insert([
+            'id' => 4,
+            // 'fname' => 'admin',
+            'name' => 'sachintha',
+            'email' => 'sachin133hm@gmail.com',
+            'password' => bcrypt('123456'),
+            'nic' => '121456789V',
+            // 'tpNo' => '1234123443',
+            // 'profilePic' => 'img',
+            'role' => 1
+        ]);
+        DB::table('customers')->insert([
+            'id' => 4
+        ]);
+
+
     }
 }

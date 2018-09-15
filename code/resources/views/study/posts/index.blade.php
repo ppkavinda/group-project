@@ -1,10 +1,11 @@
 
 @extends('study.master')
 @section('content')
+
 <!--vertical bar-->
 
 <br><br>
-<!--change{{!! $post->body !!}}--as detect to html tags-->
+<!--change--as detect to html tags-->
 
 <div class="col-md-5 offset-md-3">
     <div class="card">
@@ -31,5 +32,7 @@
 <div>
     
 </div>
+
 <hr>
+</div>
 @endSection
