@@ -22100,6 +22100,22 @@ p.copy-right a:hover {
   margin-left: 3em;
   margin-bottom: 3em;
 }
+#logo{
+  max-width: 50%;
+  height:auto;
+  width:auto;
+  position: relative;
+  left: 25%;
+}
+#title{
+  position: relative;
+  left:10%;
+}
+#about_paragarph{
+  margin-left: 2cm;
+  margin-right: 2cm;
+  font-size: 16px;
+}
 
 .profile-nav-link {
   color: #010000;
@@ -22124,5 +22140,11 @@ p.copy-right a:hover {
   margin-top: -25px;
   margin-right: 15px;
   float: right;
+}
+
+#about_list{
+  margin-left: 5cm;
+  margin-right: 2cm;
+  font-size: 16px;
 }
 
