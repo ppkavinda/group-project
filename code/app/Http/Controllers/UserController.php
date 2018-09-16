@@ -15,7 +15,6 @@ class UserController extends Controller
 {
     public function RegisterUser(Request $request){
 
-<<<<<<< HEAD
 
     //input validation
 
@@ -24,14 +23,12 @@ class UserController extends Controller
     'pwd' => 'required|confirmed|min:6',
 ]);
 
-=======
     	
         
         $validatedData = $request->validate([
         'name' => 'required|min:3|max:50',
        // 'password' => 'required|confirmed|min:6',
         ]);
->>>>>>> 1d46ca424f5ebb810eb2f459bc766005eeaed731
 
     	$table =new User();
 
@@ -44,11 +41,7 @@ class UserController extends Controller
          //$user = User::create(request(['name','nic', 'email', 'pwd']));
         $table->save();
     	return redirect()-> back()->with('message','Successfully registered');
-<<<<<<< HEAD
-        
-=======
-       
->>>>>>> 1d46ca424f5ebb810eb2f459bc766005eeaed731
+
 
     }
 
