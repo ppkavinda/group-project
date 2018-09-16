@@ -63,6 +63,7 @@ class PostController extends Controller
         $post = new Post;
         $post->body = $detail;
         $post->post_image = '4.jpg';
+        $post->description = $request->description;
         $post->title = $request->postTitle;
         $post->user_id = auth()->user()->id;
         $post->course_id = $request->courseId;
@@ -103,9 +104,15 @@ class PostController extends Controller
         $post->body = $detail;
         $post->post_image = '4.jpg';
         $post->title = $request->postTitle;
+        $post->description = $request->description;
         $post->user_id = auth()->user()->id;
         $post->course_id = $request->courseId;
         $post->save();
         return view('study.posts.index',compact('post'));
+    }
+
+    public function destroy (Post $post) {
+        $post->delete();
+        return redirect()->back();
     }
 }

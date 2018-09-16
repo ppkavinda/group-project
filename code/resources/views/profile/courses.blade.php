@@ -9,7 +9,7 @@
                 <li class="list-group-item"><a href="posts/{{ $post->id }}/edit">{{ $post->title }}</a><br>
                     <small><a class="text-dark" href="posts/{{ $post->id }}"><i class="fa fa-eye"></i> View</a></small> |
                     <small><a class="text-dark" href="posts/{{ $post->id }}/edit"><i class="fa fa-edit"></i> Edit</a></small> |
-                    <small><a class="text-danger" href="posts/{{ $post->id }}/remote"><i class="fa fa-remove"></i> Delete</a></small>
+                    <small><a class="text-danger" href="posts/{{ $post->id }}/delete"><i class="fa fa-remove"></i> Delete</a></small>
                 </li>
             @endforeach
         </ul>
