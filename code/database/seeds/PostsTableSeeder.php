@@ -45,17 +45,19 @@ class PostsTableSeeder extends Seeder
             ',
             'user_id' => 1,
             'post_image' => '/dist/img/post/post1_1.jpg',
+            'description' => 'Learn all about soap manufacturing. It is easier than you think.',
         ]);
         \App\Post::create([
             'title' => 'creating shoe introduction',
             'course_id' => 2,
-            'body' => 'Sed quis eleifend leo. Phasellus iaculis, metus facilisis gravida dapibus, ligula dolor placerat dolor, eget cursus neque risus quis tortor varius augue ut mauris condimentum dictum.',
+            'body' => 'Mp>Sed quis eleifend leo. Phasellus iaculis, metus facilisis gravida dapibus, ligula dolor placerat dolor, eget cursus neque risus quis tortor varius augue ut mauris condimentum dictum.</p>',
             'user_id' => 1,
             'post_image' => '4.jpg',
+            'description' => 'This is post is about making shoes. Learn the basics of shoe making',
         ]);
       
         \App\Post::create([
-            'title' => '<b><strong>Chilli Sauce Manufacturing</strong> <b>',
+            'title' => 'Chilli Sauce Manufacturing',
             'course_id' => 3,
             'body' => '<h3><u>Ingredients</u></h3><br>
             <ul><li>Chilli 100g</li>
@@ -80,9 +82,10 @@ class PostsTableSeeder extends Seeder
 </ol>',
             'user_id' => 1,
             'post_image' => '/dist/img/post/post3_1.jpg',
+            'description' => 'Learn the basics of Chilli Sauce Manufacturing. It is simple',
         ]);
         \App\Post::create([
-            'title' => '<b><strong>Introduction about Candles Manufacturing</strong> <b>',
+            'title' => 'Introduction about Candles Manufacturing',
             'course_id' => 4,
             'body' => '<h3><u>Introduction</u></h3><br>
             <p align="justify">Everyone uses us as candles as a light source. Vesak, Poson and Christmas, as well as weddings and birthday parties.
@@ -95,10 +98,11 @@ class PostsTableSeeder extends Seeder
             </p>',
             'user_id' => 1,
             'post_image' => '/dist/img/post/post4_1.jpg',
+            'description' => 'The candle is very easy to use and can be used as a cottage industry. In this post you will learn all about candels manufacturing. '
         ]);
 
          \App\Post::create([
-            'title' => '<b><strong>The current market nature  for candles</strong> <b>',
+            'title' => 'The current market nature  for candles',
             'course_id' => 4,
             'body' => '
             <p align="justify">There is a great demand for candles during festive seasons such as Vesak, Poson and Christmas. At other times there is a normal market.
@@ -107,10 +111,11 @@ class PostsTableSeeder extends Seeder
             </p>',
             'user_id' => 1,
             'post_image' => '/dist/img/post/post4_2.jpg',
+            'description' => 'There is a great demand for candles during festive seasons such as Vesak, Poson and Christmas. Learn about candles here.',
         ]);
 
         \App\Post::create([
-            'title' => '<b><strong> Before the onset of candles</strong> <b>',
+            'title' => 'Before the onset of candles',
             'course_id' => 4,
             'body' => '
             <h3>The required ingredients</h3>
@@ -125,10 +130,10 @@ class PostsTableSeeder extends Seeder
             </p>',
             'user_id' => 1,
             'post_image' => '/dist/img/post/post4_3.jpg',
+            'description' => 'There is a great demand for candles during festive seasons such as Vesak, Poson and Christmas. learn about candles.'
         ]);
         \App\Post::create([
-            'title' => '<b><strong> Requried Equipment for manufacturing
-            </strong> <b>',
+            'title' => 'Requried Equipment for manufacturing',
             'course_id' => 4,
             'body' => '
             <h3>Equipment for manufacturing</h3>
@@ -159,10 +164,11 @@ class PostsTableSeeder extends Seeder
              ',
             'user_id' => 1,
             'post_image' => '/dist/img/post/post4_4.jpg',
+            'description' => 'A candle is an ignitable wick embedded in wax, or another flammable solid substance such as tallow, that provides light, and in some cases, a fragrance.'
         ]);
         
         \App\Post::create([
-            'title' => '<b><strong> Production method</strong> <b>',
+            'title' => 'Production method',
             'course_id' => 4,
             'body' => '
             <p align="justify">First of all, paraffin wax, Stearic acid should be anodized as needed .Steric Acid weight can be applied to a minimum of 3% and a maximum of 10% by weight.
@@ -182,6 +188,7 @@ class PostsTableSeeder extends Seeder
             ',
             'user_id' => 1,
             'post_image' => '/dist/img/post/post4_5.jpg',
+            'description' => 'A candle is an ignitable wick embedded in wax, or another flammable solid substance such as tallow, that provides light, and in some cases, a fragrance. You can easily start a candle shop.',
         ]);
     }
 }
