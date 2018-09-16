@@ -17,10 +17,6 @@
 				
 				<p>{{ $course->description }}</p>
 				
-				@if (! \App\User::find(1)->courses()->find($course->id))
-					To see the full course: <a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
-				@endif
-				
 			</div>
 			<div class="col-md-6 wthree_services_grid_right">
 				<div class="row">
@@ -42,13 +38,23 @@
 					</div>
 				</div>
 			</div>
-			<div class="container">
-				<div class="wthree_services_grids mb-2">
-					@foreach ($course->posts as $post)
-						@include('study.courses.postCard')
-					@endforeach
+			@if (\App\User::find(1)->courses()->find($course->id))
+				<div class="container">
+					<div class="wthree_services_grids mb-2">
+						@foreach ($course->posts as $post)
+							@include('study.courses.postCard')
+						@endforeach
+					</div>
 				</div>
-			</div>
+			@else
+				<div class="container">
+					<div class="wthree_services_grids mb-2">
+						<div class="wthree_services_grid_left">
+							To see the posts about {{ $course->title }}: <a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
+						</div>
+					</div>
+				</div>
+			@endif
 		</div>
 	</div>
 @endsection
