@@ -5,12 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+
+            <!-- /.login-logo -->
                 <div class="card-header">
-                    <p style="color:DodgerBlue;font-size:110%;" class="text-center"><b>{{ __('Sign Up and Start Learning!') }}</b></p>
+                    <p style="color:DodgerBlue;font-size:160%;" class="text-center"><b>{{ __('Sign In!') }}</b></p>
                 </div>
 
                 <div class="login-logo">
-                    <a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .4"></a>
+                    <a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .6"></a>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -20,7 +22,7 @@
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-mail" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -34,7 +36,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">

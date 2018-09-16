@@ -13,6 +13,8 @@ use DB;
 
 class UserController extends Controller
 {
+
+   
     public function index () {
         $user = auth()->user();
         return view('profile.index', compact('user'));
@@ -21,5 +23,6 @@ class UserController extends Controller
     public function show (User $user) {
         $courses = $user->courses;
         return view('profile.index', compact('user'));
+
     }
 }
