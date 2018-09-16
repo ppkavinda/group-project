@@ -11,8 +11,8 @@
 			<div class="carousel-item item active"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Clothes <span>Sale</span></h3>
-						<p>Special Offer</p>
+						<h3> Shopping<span> Sale</span></h3>
+						<p><b><span><font size="4px" color="#ffbf00">FOR    ENCOURAGE    ENTREPRENEURS</font></span></b></p>
 						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
@@ -20,8 +20,9 @@
 			<div class="carousel-item item2"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Jewellery <span>Collection</span></h3>
-						<p>New Arrivals On Sale</p>
+						<h3>VIDATHA Resource Centre <span>Kaduwela</span></h3>
+						
+				
 						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
@@ -29,26 +30,26 @@
 			<div class="carousel-item item3"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Traditional <span>Masks</span></h3>
-						<p>Sri Lanka Special</p>
-						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
+						<h3>Technical and Technical  <span>courses</span></h3>
+						<p><font size="5px" color="white">As an aid to self-employed entrepreneurs</font></p>
+						<a class="hvr-outline-out button2" href="/shop">Enroll Now  </a>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item item4"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>World Best <span>Spices</span></h3>
-						<p>Tasty And Healthly</p>
-						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
+						<h3>  Help for entrepreneurs </h3>
+						<p letter-spacing="1px"><b><font size="5px" color="white">If you want to start self-employment</font></b></p>
+						<a class="hvr-outline-out button2" href="/shop">Call Now </a>
 					</div>
 				</div>
 			</div>
 			<div class="carousel-item item5"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>The Biggest <span>Sale</span></h3>
-						<p>Choose your items now</p>
+						<h3>To strengthen the <span> economy</span></h3>
+						<p><b>Science Moves With Technology And Innovation</b></p>
 						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
