@@ -2,27 +2,28 @@
 
 @section('content')
 
-@if ($errors)
-{{ $errors}}
-@endif
-<div class="register-box">
-  <div class="card">
-    <div class="card-body register-card-body">
-    <div class="login-logo">
-      <a href="/"><b><img src="/dist/img/logo.jpg" alt="logo" style="width: 50%; opacity: .4"></a>
-    </div>
+<body>
+<!-- <div id="myNav" class="overlay" > -->
+  <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+      <!-- <div class="overlay-content"> -->
+  <div class="register-box">
+    <div class="card">
+      <div class="card-body register-card-body">
+      <div class="login-logo">
+        <a href="/"><b><img src="/dist/img/logo.jpg" alt="logo" style="width: 50%; opacity: .4"></a>
+      </div>
       <p class="login-box-msg" style="color:DodgerBlue;font-size:110%;"><b>Sign Up and Start Learning!</b></p>
-
       <form method="post" action="{{route ('signup') }}">
-        <div class="form-group has-feedback">
+         <div class="form-group has-feedback">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text fa fa-user form-control-feedback"></span>
             </div>
-          <input type="text" class="form-control" name="name" placeholder="Full name" required>
+              <input type="text" class="form-control" name="name" placeholder="Full name" required>
           </div>
-        </div>
-        <div class="form-group has-feedback">
+       </div>
+
+       <div class="form-group has-feedback">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text fa fa-address-card-o form-control-feedback"></span>
@@ -48,6 +49,7 @@
               <input type="password" class="form-control" placeholder="Password" name="pwd" id="password" required>
           </div>
         </div>
+
         <div class="form-group has-feedback">
           <div class="input-group">
             <div class="input-group-prepend">
@@ -56,6 +58,7 @@
               <input type="password" class="form-control" placeholder="Confirm Password" name="cpwd" id="confirm_password" required>
           </div>
         </div>
+
         <div class="row">
           <div class="col-8">
             <div class="checkbox icheck">
@@ -64,19 +67,10 @@
               </label>
             </div>
           </div>
-     <!----error checking ---->
-
-       
-
-     
-        @if(session()->has('message'))
-        <div class ="alert alert-success">
-          {{session() -> get('message')}}
-        </div>@endif
-
+    
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Join with us</button>
           </div>
          
           {{csrf_field() }}
@@ -85,21 +79,11 @@
         </div>
       </form>
 
-      <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fa fa-facebook mr-2"></i>
-          Sign up using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fa fa-google-plus mr-2"></i>
-          Sign up using Google+
-        </a>
-      </div>
-
       <a href="login" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
 </div>
+
+     
 @endsection

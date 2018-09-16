@@ -156,18 +156,6 @@
 		</div>
 	</div>
 	<!-- //blog -->
-<div class="rounded" id="home_page_signup_border">
-	<br/>
-	<h2 class="home_page_other">Are You Like <span class="home_page_join">Join</span> With Us?</h2>
-	<br/>
-	<div class="btn_div">
-		<form action="\register">
-			<button type="submit" class="btn btn-outline-danger" id="home_page_sign_up_Btn"><b>SIGN UP</b></button>
-		</form>
-	</div>
-	<br/><br/>
-</div>
-<br/>
 <!-- stats -->
 	<div class="stats" id="stats">
 	    <div class="container"> 

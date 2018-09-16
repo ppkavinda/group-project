@@ -1,11 +1,16 @@
 @extends('study.master')
 @section('content')
-
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 @include('study.partials.banner')
 
 <h1 id="title">About</h1>
 <img src="/dist/img/vidathaLogo.jpg" class="img-fluid" alt="Cinque Terre" id="logo"/>
 <h2 id="title">VIDATHA</h2>
+
 <p id ="about_paragarph">&emsp;&emsp;The National Vidatha Network (NVN) seeks to transfer scientific knowledge
     and research innovations of scientists to the Micro, Small and Medium Entrepreneurs (MSME) at grassroots level
     through an island-wide network of Vidatha Resource Centers (VRC). The Vidatha programme was initiated in
@@ -66,4 +71,5 @@
     <li id="about_list">Product rating</li>
 </ul>
 <br>
+
 @endsection
