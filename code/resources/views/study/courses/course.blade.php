@@ -4,11 +4,11 @@
 {{-- @include('study.partials.banner') --}}
 
 <div class="container contact">
-	<h3 class="w3l_header w3_agileits_header">Learn <span>{{ $course->title }}</span></h3>
+	<h3 class="w3l_header w3_agileits_header"> {{ explode(' ', $course->title)[0] }} <span>{{ substr($course->title, strpos($course->title, ' ')) }}</span></h3>
 		<div class="wthree_services_grids row">	
 			<div class="col-md-6 wthree_services_grid_left">
 						
-				<h3>MAKING <span>{{ strtoupper($course->title) }}</span></h3>
+				<h3>LEARN ABOUT <span>{{ strtoupper($course->title) }}</span></h3>
 				<h4>{{ $course->subtitle }}</h4>
 
 				@if (! \App\User::find(1)->courses()->find($course->id))
