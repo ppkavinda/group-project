@@ -2,6 +2,7 @@
 @extends('study.master')
 @section('content')
 
+
 <div class="col-md-6 offset-md-3">
 
     <div class="card border-dark mt-4 mb-4">
