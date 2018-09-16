@@ -22114,7 +22114,7 @@ p.copy-right a:hover {
 #about_paragarph{
   margin-left: 2cm;
   margin-right: 2cm;
-  font-size: 18px;
+  font-size: 16px;
 }
 .home_page_join{
   color:red;
@@ -22137,3 +22137,9 @@ p.copy-right a:hover {
   margin-left: 5em;
   margin-right: 5em;
 }
+#about_list{
+  margin-left: 5cm;
+  margin-right: 2cm;
+  font-size: 16px;
+}
+
