@@ -23,7 +23,7 @@
 						<h3>VIDATHA Resource Centre <span>Kaduwela</span></h3>
 						
 				
-						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
+						<a class="hvr-outline-out button2" href="/shop">Call Now </a>
 					</div>
 				</div>
 			</div>
@@ -48,8 +48,8 @@
 			<div class="carousel-item item5"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>To strengthen the <span> economy</span></h3>
-						<p><b>Science Moves With Technology And Innovation</b></p>
+						<h3>To strengthen the  economy</h3>
+						<p><strong>Science Moves With Technology And Innovation</strong></p>
 						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
