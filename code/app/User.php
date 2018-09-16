@@ -32,4 +32,9 @@ class User extends Authenticatable
     public function courses () {
         return $this->belongsToMany(Course::class, 'enroll', 'user_id', 'course_id')->withTimestamps();
     }
+
+    public function posts () {
+        return $this->hasMany(Post::class);
+    }
+
 }

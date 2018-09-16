@@ -9,16 +9,16 @@
             </div>
             <div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
 					<div class="agile_mail_grid_right1">
-                        <form action="/posts/create" method="POST">
+                        <form action="/posts/{{ $post->id }}/update" method="POST">
                             @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" name="postTitle" placeholder="Enter the Title">
+                                <input type="text" class="form-control" value="{{ $post->title }}" name="postTitle" placeholder="Enter the Title">
                             </div>
                             <div class="form-group">
                                 <select class="form-control" name="courseId" id="exampleFormControlSelect1">
                                     <option>Please select the course --</option>
                                     @foreach ($courses as $course)
-                                        <option value="{{$course->id }}">{{ $course->title }}</option>
+                                        <option {{ ($post->id == $course->id) ? 'selected' : '' }} value="{{$course->id }}">{{ $course->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -41,11 +41,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
 @endpush
 @push('scripts')
-  <script>
-       $('#summernote').summernote({
-        placeholder: 'Type your post here...',
-        tabsize: 4,
-        height: 500
-      });
-  </script>
+<script>
+    $(document).ready(function() {
+        //initialize summernote
+        $('#summernote').summernote({
+            placeholder: 'Type your post here...',
+            tabsize: 4,
+            height: 500
+        });
+
+        //assign the variable passed from controller to a JavaScript variable.
+        var content = {!! json_encode($post->body) !!};
+
+        //set the content to summernote using `code` attribute.
+        $('#summernote').summernote('code', content);
+    });
+</script>
 @endpush
+
