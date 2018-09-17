@@ -49,6 +49,7 @@
 					<div class="carousel-caption">
 						<h3>The Biggest <span>Sale</span></h3>
 						<p>Choose your items now</p>
+
 						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
