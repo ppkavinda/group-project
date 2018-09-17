@@ -22,15 +22,6 @@ class CoursesTableSeeder extends Seeder
             ',
         ]);
 
-        \App\Course::create([
-            'category_id' => 2,
-            'title' => 'shoes',
-            'subtitle' => 'How to Make Shoes',
-            'cover_img' => '3.jpg',
-            'description' => 'Sed quis eleifend leo. Phasellus iaculis, metus facilisis gravida dapibus, ligula dolor placerat dolor, eget cursus neque risus quis tortor varius augue ut mauris condimentum dictum.
-
-Sed quis eleifend leo. Phasellus iaculis, metus facilisis gravida dapibus, ligula dolor placerat dolor, eget cursus neque risus quis tortor varius augue ut mauris condimentum dictum.'
-        ]);
 
         \App\Course::create([
             'category_id' => 3,
