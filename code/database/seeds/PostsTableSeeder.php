@@ -43,14 +43,7 @@ When your mixture starts to thicken like mayonnaise, after a few minutes, you ar
             'post_image' => '/dist/img/post/post1_1.jpg',
             'description' => 'Learn all about soap manufacturing. It is easier than you think.',
         ]);
-        \App\Post::create([
-            'title' => 'creating shoe introduction',
-            'course_id' => 2,
-            'body' => 'Mp>Sed quis eleifend leo. Phasellus iaculis, metus facilisis gravida dapibus, ligula dolor placerat dolor, eget cursus neque risus quis tortor varius augue ut mauris condimentum dictum.</p>',
-            'user_id' => 1,
-            'post_image' => '4.jpg',
-            'description' => 'This is post is about making shoes. Learn the basics of shoe making',
-        ]);
+     
       
         \App\Post::create([
             'title' => 'Chilli Sauce Manufacturing',
