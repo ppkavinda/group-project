@@ -15781,13 +15781,13 @@ h3.wthree_text_info span {
   backface-visibility: hidden;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-  background: red;
+  background: #2fdab8;
 }
 
 .hvr-outline-out:before {
   content: '';
   position: absolute;
-  border: red solid 4px;
+  border: #2fdab8 solid 4px;
   top: 0;
   right: 0;
   bottom: 0;
@@ -19313,7 +19313,7 @@ p.w3ls_para {
   }
 
   .hvr-outline-out:before {
-    border: red solid 2px;
+    border: #2fdab8 solid 2px;
   }
 
   .hvr-outline-out:hover:before,
@@ -19669,7 +19669,7 @@ p.w3ls_para {
   }
 
   .hvr-outline-out:before {
-    border: red solid 4px;
+    border: #2fdab8 solid 4px;
   }
 
   .new-gd-middle {

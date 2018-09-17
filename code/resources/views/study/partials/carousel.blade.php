@@ -48,14 +48,8 @@
 			<div class="carousel-item item5"> 
 				<div class="container">
 					<div class="carousel-caption">
-<<<<<<< HEAD
-						<h3>The Biggest <span>Sale</span></h3>
-						<p>Choose your items now</p>
-
-=======
 						<h3>To strengthen the  economy</h3>
 						<p><strong>Science Moves With Technology And Innovation</strong></p>
->>>>>>> sachin
 						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
