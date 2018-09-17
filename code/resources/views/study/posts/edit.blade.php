@@ -23,6 +23,12 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                  <textarea class="form-control" name="description" rows="3" placeholder="Enter a short description ..."></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <textarea name="postContent" id="summernote"></textarea>
                             </div>
                             <button class="btn btn-primary" type="submit">Save</button>
