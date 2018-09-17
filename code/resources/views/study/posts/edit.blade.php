@@ -20,14 +20,14 @@
                                 <select class="form-control" name="courseId" id="exampleFormControlSelect1">
                                     <option>Please select the course --</option>
                                     @foreach ($courses as $course)
-                                        <option {{ ($post->id == $course->id) ? 'selected' : '' }} value="{{$course->id }}">{{ $course->title }}</option>
+                                        <option {{ ($post->course_id == $course->id) ? 'selected' : '' }} value="{{$course->id }}">{{ $course->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                  <textarea class="form-control" name="description" rows="3" placeholder="Enter a short description ..."></textarea>
+                                  <textarea class="form-control" name="description" rows="3" placeholder="Enter a short description ...">{{ $post->description }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
