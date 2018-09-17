@@ -8,7 +8,7 @@ function googleTranslateElementInit() {
 @include('study.partials.banner')
 
 <h1 id="title">About</h1>
-<img src="/dist/img/vidathaLogo.jpg" class="img-fluid" alt="Cinque Terre" id="logo"/>
+<center><img src="/dist/img/vidathaLogo.jpg"/></center>
 <h2 id="title">VIDATHA</h2>
 
 <p id ="about_paragarph">&emsp;&emsp;The National Vidatha Network (NVN) seeks to transfer scientific knowledge
