@@ -441,12 +441,12 @@ position:relative;
   backface-visibility: hidden;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-  background: red;
+  background: #2fdab8;
 }
 .hvr-outline-out:before {
   content: '';
   position: absolute;
-  border: red solid 4px;
+  border: #2fdab8 solid 4px;
   top: 0;
   right: 0;
   bottom: 0;
@@ -3251,7 +3251,7 @@ p.w3ls_para {
 		font-size: 14px;
 	}
 	.hvr-outline-out:before {
-		border: red solid 2px;
+		border: #2fdab8 solid 2px;
 	}
 	.hvr-outline-out:hover:before, .hvr-outline-out:focus:before, .hvr-outline-out:active:before {
 		top: -6px;
@@ -3518,7 +3518,7 @@ p.w3ls_para {
 		left: -8px;
 	}
 	.hvr-outline-out:before {
-		border: red solid 4px;
+		border: #2fdab8 solid 4px;
 	}
 	.new-gd-middle {
 		width: 100%;

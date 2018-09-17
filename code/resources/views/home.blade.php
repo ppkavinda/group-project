@@ -1,12 +1,25 @@
-@extends('admin.master')
+@extends('layouts.app')
+
 @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
 
-<h1>Home </h1>
-<h2><span class="fa fa-asterisk"></span> => <a href="/admin">/admin</a></h2>
-<h2><span class="fa fa-key"></span> => <a href="/login">/login</a></h2>
-<h2><span class="fa fa-key"></span>	 => <a href="/register">/register</a></h2>
-<h2><span class="fa fa-shopping-bag"></span> => <a href="/shop">/shop</a></h2>
-<h2><span class="fa fa-pencil"></span> => <a href="/study">/study</a></h2>
-<h2><span class="fa fa-pencil"></span> => <a href="/the">/study</a></h2>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
+                    You are logged in!
+
+                    {{ Auth::user()}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

@@ -59,6 +59,21 @@
 									</div>
 									<div class="clearfix"> </div>
 								</div>
+<<<<<<< HEAD
+=======
+								<!--<div class="w3-address-grid">
+									<div class="w3-address-left">
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+									</div>
+									<div class="w3-address-right">
+										<h6>Location</h6>
+										<p>Divisional Secretariat Office, Udawaththa Rd, Malabe.
+										
+										</p>
+									</div>
+									<div class="clearfix"> </div>
+								</div>-->
+>>>>>>> 0ca6f30b2a6beadfdc4c258ac68d894c96da25af
 							</div>
 						</div>
 						<div class="clearfix"></div>

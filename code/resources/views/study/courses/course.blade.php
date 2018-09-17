@@ -4,11 +4,11 @@
 {{-- @include('study.partials.banner') --}}
 
 <div class="container contact">
-	<h3 class="w3l_header w3_agileits_header">Learn <span>{{ $course->title }}</span></h3>
+	<h3 class="w3l_header w3_agileits_header"> {{ explode(' ', $course->title)[0] }} <span>{{ substr($course->title, strpos($course->title, ' ')) }}</span></h3>
 		<div class="wthree_services_grids row">	
 			<div class="col-md-6 wthree_services_grid_left">
 						
-				<h3>MAKING <span>{{ strtoupper($course->title) }}</span></h3>
+				<h3>LEARN ABOUT <span>{{ strtoupper($course->title) }}</span></h3>
 				<h4>{{ $course->subtitle }}</h4>
 
 				@if (! \App\User::find(1)->courses()->find($course->id))
@@ -16,10 +16,6 @@
 				@endif
 				
 				<p>{{ $course->description }}</p>
-				
-				@if (! \App\User::find(1)->courses()->find($course->id))
-					To see the full course: <a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
-				@endif
 				
 			</div>
 			<div class="col-md-6 wthree_services_grid_right">
@@ -42,13 +38,23 @@
 					</div>
 				</div>
 			</div>
-			<div class="container">
-				<div class="wthree_services_grids mb-2">
-					@foreach ($course->posts as $post)
-						@include('study.courses.postCard')
-					@endforeach
+			@if (\App\User::find(1)->courses()->find($course->id))
+				<div class="container">
+					<div class="wthree_services_grids mb-2">
+						@foreach ($course->posts as $post)
+							@include('study.courses.postCard')
+						@endforeach
+					</div>
 				</div>
-			</div>
+			@else
+				<div class="container">
+					<div class="wthree_services_grids mb-2">
+						<div class="wthree_services_grid_left">
+							To see the posts about {{ $course->title }}: <a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
+						</div>
+					</div>
+				</div>
+			@endif
 		</div>
 	</div>
 @endsection

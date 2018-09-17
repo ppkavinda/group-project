@@ -18,19 +18,9 @@ Route::get('/admin', function () {
     return view('admin.admin');
 });
 
-// sessions
-Route::get('/login', function () {
-	return  view('session.login');
-});
-
-Route::get('/register', function () {
-	return  view('session.register');
-});
-
 // shop
-Route::get('/profile', function () {
-	return  view('profile');
-});
+Route::get('/profile', 'UserController@index')->middleware('auth');
+Route::get('/profile/{user}', 'UserController@show');
 
 Route::get('/shop', function () {
 	return view('shop.index');
@@ -51,7 +41,13 @@ Route::get('/posts/create', 'PostController@create');
 
 Route::post('/posts/create', 'PostController@store');
 
-Route::get('posts/{id}', 'PostController@index');
+Route::get('posts/{post}', 'PostController@show');
+
+Route::get('/posts/{post}/edit', 'PostController@edit');
+
+Route::post('/posts/{post}/update', 'PostController@update');
+
+Route::get('/posts/{post}/delete', 'PostController@destroy');
 
 // general
 Route::get('contact', function () {
@@ -63,14 +59,12 @@ Route::get('about', function () {
 });
 Route::get('users',['uses' => 'UserController@index']);
 
-Route::post('/register',['uses'=>'UserController@RegisterUser', 'as'=>'signup']);
-
-Route::post('/login',['uses'=>'UserController@LoginUser', 'as'=>'signin']);
-
 Route::post('/inquiry','InquiryController@store');
 
 Route::get('/posts',function(){
 	return view('study.posts.index');
-
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
