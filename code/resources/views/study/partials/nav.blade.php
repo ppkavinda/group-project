@@ -62,11 +62,11 @@
 							</div>
 						</li>
 						@guest
-						<li class="active nav-item menu__item {{ Request::is('register') ? 'menu__item--current' : '' }}"> 
-								<a class="nav-link menu__link" href="/register"><i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
+						<li class="active nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}"> 
+								<a class="nav-link menu__link" href="/login"><i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
 						</li>
-						<li class="nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}">
-								<a class="nav-link menu__link" href="/login"><i class="fa fa-user" aria-hidden="true"></i> Sign Up </a>
+						<li class="nav-item menu__item {{ Request::is('register') ? 'menu__item--current' : '' }}">
+								<a class="nav-link menu__link" href="/register"><i class="fa fa-user" aria-hidden="true"></i> Sign Up </a>
 						</li>
 						@else
 						
