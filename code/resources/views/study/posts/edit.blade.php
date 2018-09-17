@@ -12,9 +12,11 @@
                         <form action="/posts/{{ $post->id }}/update" method="POST">
                             @csrf
                             <div class="form-group">
+                                <label for="postTitle">Title</label>
                                 <input type="text" class="form-control" value="{{ $post->title }}" name="postTitle" placeholder="Enter the Title">
                             </div>
                             <div class="form-group">
+                                <label class="label-control" for="courseId">Course:</label>
                                 <select class="form-control" name="courseId" id="exampleFormControlSelect1">
                                     <option>Please select the course --</option>
                                     @foreach ($courses as $course)

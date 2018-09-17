@@ -12,8 +12,8 @@
                         <form action="/posts/create" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" id="title" class="form-control" name="postTitle" placeholder="Enter the Title">
+                                <label for="postTitle">Title</label>
+                                <input type="text" id="postTitle" class="form-control" name="postTitle" placeholder="Enter the Title">
                             </div>
                             <div class="form-group">
                                 <label class="label-control" for="courseId">Course:</label>
