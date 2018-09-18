@@ -17,9 +17,8 @@ class CoursesTableSeeder extends Seeder
             'subtitle' => 'Making Soap ,Starting EntreprenerShip ',
             'cover_img' => 'asoap.jpg',
             'description' => 'Making soap for the first time may be intimidating, but is not difficult.
-             This quick and easy beginner soap recipe comes with fun ideas for personalizing it by adding exfoliants, essential oils, etc.
-
-            ',
+             This quick and easy beginner soap recipe comes with fun ideas for personalizing it by adding exfoliants, essential oils, etc.',
+             'id' => 1
         ]);
 
 
@@ -28,7 +27,8 @@ class CoursesTableSeeder extends Seeder
             'title' => 'Chilli Sauce ',
             'subtitle' => 'Chilli Sauce Manufacturing and distributing',
             'cover_img' => 'chillipaste.png',
-            'description' => 'Chilli paste is declious food.It can prepare Easier.Now We lok Step by Step How We Prepare it'
+            'description' => 'Chilli paste is declious food.It can prepare Easier.Now We lok Step by Step How We Prepare it',
+            'id' => 2
         ]);
 
         \App\Course::create([
@@ -38,6 +38,7 @@ class CoursesTableSeeder extends Seeder
             'cover_img' => 'candle.jpg',
             'description' => 'A candle is an ignitable wick embedded in wax, or another flammable solid substance such as tallow, that provides light, and in some cases, a fragrance.
             Now We will see   step by step about candles Manufacturing',
+            'id' => 3
             ]);
     }
 }
