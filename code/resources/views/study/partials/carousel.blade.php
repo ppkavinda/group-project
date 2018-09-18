@@ -31,7 +31,7 @@
 			<div class="carousel-item item3"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Technical and Technical  <span>courses</span></h3>
+						<h3>Technical and Technological <span>courses</span></h3>
 						<p><font size="5px" color="white">As an aid to self-employed entrepreneurs</font></p>
 						<a class="hvr-outline-out button2" href="/courses">Enroll Now  </a>
 					</div>
@@ -41,7 +41,7 @@
 				<div class="container">
 					<div class="carousel-caption">
 						<h3>  Help for entrepreneurs </h3>
-						<p letter-spacing="1px"><b><font size="5px" color="white">If you want to start self-employment</font></b></p>
+						<p letter-spacing="1px"><b><span><font size="5px" color="white">If you want to start self-employment</font></span></b></p>
 						<a class="hvr-outline-out button2" href="/contact">Call Now </a>
 					</div>
 				</div>
@@ -49,8 +49,8 @@
 			<div class="carousel-item item5"> 
 				<div class="container">
 					<div class="carousel-caption">
-						<h3><span>To strengthen the  economy</span></h3>
-						<p><strong><font size="5px" color="white">Science Moves With Technology And Innovation</font></strong></p>
+						<h3>To strengthen the  economy</h3>
+						<p><strong><font size="5px" color="white">Science Moves With Innovations</font></strong></p>
 						<a class="hvr-outline-out button2" href="/shop">Shop Now </a>
 					</div>
 				</div>
