@@ -28,7 +28,7 @@ class EnrollController extends Controller
      */
     public function create(Request $request) {
         // TODO: change to authenticated user
-        \App\User::find(1)->courses()->attach($request->id);
+        auth()->user()->courses()->syncWithoutDetaching([$request->id]);
 
         return redirect("/courses/$request->id");
     }

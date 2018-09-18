@@ -11,8 +11,12 @@
 				<h3>LEARN ABOUT <span>{{ strtoupper($course->title) }}</span></h3>
 				<h4>{{ $course->subtitle }}</h4>
 
-				@if (! \App\User::find(1)->courses()->find($course->id))
-				<a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
+				@if (! auth()->user() )
+						<a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
+				@else
+					@if (! auth()->user()->courses->find($course->id))
+						<a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
+					@endif
 				@endif
 				
 				<p>{{ $course->description }}</p>
@@ -38,15 +42,7 @@
 					</div>
 				</div>
 			</div>
-			@if (\App\User::find(1)->courses()->find($course->id))
-				<div class="container">
-					<div class="wthree_services_grids mb-2">
-						@foreach ($course->posts as $post)
-							@include('study.courses.postCard')
-						@endforeach
-					</div>
-				</div>
-			@else
+			@if (! auth()->check())
 				<div class="container">
 					<div class="wthree_services_grids mb-2">
 						<div class="wthree_services_grid_left">
@@ -54,6 +50,24 @@
 						</div>
 					</div>
 				</div>
+			@else
+				@if ( auth()->user()->courses->find($course->id))
+				<div class="container">
+					<div class="wthree_services_grids mb-2">
+						@foreach ($course->posts as $post)
+						@include('study.courses.postCard')
+						@endforeach
+					</div>
+				</div>
+				@else
+					<div class="container">
+						<div class="wthree_services_grids mb-2">
+							<div class="wthree_services_grid_left">
+								To see the posts about {{ $course->title }}: <a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
+							</div>
+						</div>
+					</div>
+				@endif
 			@endif
 		</div>
 	</div>

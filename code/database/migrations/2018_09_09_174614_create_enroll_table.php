@@ -18,6 +18,7 @@ class CreateEnrollTable extends Migration
             $table->integer('user_id');
             $table->integer('course_id');
             $table->timestamps();
+            $table->unique(['user_id', 'course_id']);
         });
     }
 
