@@ -27,11 +27,11 @@ class PostsTableSeeder extends Seeder
 <li>After the lye mixture has cooled a bit, bring it back inside and pour into your oil mix. Mix them together gently at first.</li>
 <li>Once your lye mix has been incorporated into your oils, you can start to blend them with a hand blender. Be careful not to spray the mixture all over!!</li>
  <li>I blended mine in the bottom of my sink, and distanced myself as much as the blender would allow, just in case!! You can do this step by hand, but it supposedly will take a very long time.</li>
-When your mixture starts to thicken like mayonnaise, after a few minutes, you are at the stage that is called "trace." That is what you want!!!</li>
+When your mixture starts to chicken like mayonnaise, after a few minutes, you are at the stage that is called "trace." That is what you want!!!</li>
 <li>Mix in your essential oils.</li>
 <li>Pour into soap molds. (I used a silicone pan and some plastic containers. It is a good idea to oil the plastic containers beforehand to prevent sticking.)</li>
-<li.Cover and set aside for at least 24 hours. It will probably get warm. If you cover it with a cloth to keep the warmth in, it supposedly contributes to the quality of the soap. </li>
-<liAfter 24 hours, uncover and see if you can unmold it. If it is too soft, wait a few more hours and unmold. You can put it in a cold place to help shrink it a little to help the process out. Do not wait too long or it will be too hard to easily cut into bars.</li>
+<li>Cover and set aside for at least 24 hours. It will probably get warm. If you cover it with a cloth to keep the warmth in, it supposedly contributes to the quality of the soap. </li>
+<li>After 24 hours, uncover and see if you can unmold it. If it is too soft, wait a few more hours and unmold. You can put it in a cold place to help shrink it a little to help the process out. Do not wait too long or it will be too hard to easily cut into bars.</li>
 <li>Cut into bars. I like the look of big, chunky square-ish bars. The nice thing about making your own, is that you can decide how you want to cut them.</li>
 <li>Let set for around a month, turning every day or two at first, and then every week later on. This is to let your soap dry out and harden.</li>
 </ol>',
