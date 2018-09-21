@@ -20,7 +20,8 @@ Route::get('/admin', function () {
 
 // shop
 Route::get('/profile', 'UserController@index')->middleware('auth');
-Route::get('/profile/{user}', 'UserController@show');
+Route::get('/profile/{user}', 'UserController@index');
+Route::post('/users/{user}/edit', 'UserController@edit');
 
 Route::get('/shop', function () {
 	return view('shop.index');
