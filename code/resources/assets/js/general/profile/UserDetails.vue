@@ -5,7 +5,7 @@
         <div class="col-md-6">
             <form method="POST" @submit.prevent="updateDetails">
                 <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                    <label for="staticEmail" class="col-sm-2 col-form-label text-right">Email</label>
                     <div class="col-sm-10">
                         <input type="text" name="email" class="form-control" id="staticEmail" v-model="user.email">
                         <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
