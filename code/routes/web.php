@@ -44,7 +44,13 @@ Route::delete('/posts/image', 'PostController@deleteImage');
 Route::post('/posts/publish', 'PostController@publish');
 Route::post('/posts/unpublish', 'PostController@unpublish');
 
+Route::get('/posts/get/{post}', 'PostController@getOne');
+
 Route::resource('posts', 'PostController');
+
+Route::get('time', function () {
+	return microtime();
+});
 
 // Route::get('/posts/create', 'PostController@create');
 

@@ -13,11 +13,33 @@
 
 <script>
 import VueFroala from 'vue-froala-wysiwyg';
+import axios from 'axios'
 
 export default {
     name: 'post-viewer',
-    props: ['post'],
+    props: ['postId'],
+    data: function () {
+        return {
+            post: {},
+        }
+    },
+    mounted: function () {
+        /**
+         * getting post details according to the postId
+         * and assign it to the post data
+         */
+        axios.get('/posts/get/' + this.postId)
+        .then(res => {
+            this.post = res.data
+        })
+        .catch (err => {
+            console.log(err)
+        })
+    },
     filters: {
+        /**
+         * capitalize the first letter of a sentence
+         */
         capitalize: function (value) {
             if (!value) return ''
             value = value.toString()
