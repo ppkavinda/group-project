@@ -14,12 +14,31 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+ /**
+  * using moment to format dates
+  */
+ Vue.use(require('vue-moment'))
+
+// Require Froala Editor js file.
+require('froala-editor/js/froala_editor.pkgd.min')
+
+// Require Froala Editor css files.
+require('froala-editor/css/froala_editor.pkgd.min.css')
+require('font-awesome/css/font-awesome.css')
+require('froala-editor/css/froala_style.min.css')
+
+// Import and use Vue Froala lib.
+import VueFroala from 'vue-froala-wysiwyg'
+Vue.use(VueFroala)
+
 Vue.component('content-panel', require('./partials/ContentPanel.vue'));
 Vue.component('footer-bar', require('./partials/FooterBar.vue'));
 Vue.component('register', require('./pages/Register.vue'))
 Vue.component('nav-bar', require('./partials/NavBar.vue'));
 Vue.component('side-bar', require('./partials/SideBar.vue'));
 Vue.component('user-details', require('./general/profile/UserDetails'));
+Vue.component('post-viewer', require('./study/viewer'))
+Vue.component('post-editor', require('./study/editor'))
 
 const app = new Vue({
     el: '#app'
