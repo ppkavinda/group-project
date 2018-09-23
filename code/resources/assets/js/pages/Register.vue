@@ -7,7 +7,7 @@
                   <input id="name" @blur="liveValidate('name')" type="text" class="form-control" name="name" v-model="user.name" placeholder="Name" required autofocus>
 
                     <span v-if="errors.name" :class="{'invalid-feedback d-block' : errors.name}">
-                        <strong>{{ errors.name }}</strong>
+                        <strong>{{ errors.name[0] }}</strong>
                     </span>
               </div>
           </div>
@@ -92,15 +92,17 @@ export default {
          * submitting the filled registration form
          */
         onSubmit: function () {
-            axios.post('register', this.user)
-                .then( res => {
-                    window.location.replace('/')
-                })
-                .catch( err => {
-                    this.errors = err.response.data.errors
-                    this.user.password = ''
-                    this.user.password_confirmation = ''
-                })
+            if (this.confirmPassword) {
+                axios.post('register', this.user)
+                    .then( res => {
+                        window.location.replace('/')
+                    })
+                    .catch( err => {
+                        this.errors = err.response.data.errors
+                        this.user.password = ''
+                        this.user.password_confirmation = ''
+                    })
+            }
         },
         /**
          * checking the password confirmation on the fly
@@ -116,6 +118,7 @@ export default {
                 this.password.class = 'valid-feedback d-block'
                 this.password.status = false
             }
+            return this.user.password == this.user.password && this.password != ''
         },
         /**
          * clear the error message when they start to type again

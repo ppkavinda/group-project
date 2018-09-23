@@ -38,17 +38,25 @@ Route::get('/courses', 'CourseController@index');
 
 Route::get('/courses/{course}', 'CourseController@show');
 
-Route::get('/posts/create', 'PostController@create');
+Route::post('/posts/image', 'PostController@uploadImage');
+Route::delete('/posts/image', 'PostController@deleteImage');
 
-Route::post('/posts/create', 'PostController@store');
+Route::post('/posts/publish', 'PostController@publish');
+Route::post('/posts/unpublish', 'PostController@unpublish');
 
-Route::get('posts/{post}', 'PostController@show');
+Route::resource('posts', 'PostController');
 
-Route::get('/posts/{post}/edit', 'PostController@edit');
+// Route::get('/posts/create', 'PostController@create');
 
-Route::post('/posts/{post}/update', 'PostController@update');
+// Route::post('/posts/create', 'PostController@store');
 
-Route::get('/posts/{post}/delete', 'PostController@destroy');
+// Route::get('posts/{post}', 'PostController@show');
+
+// Route::get('/posts/{post}/edit', 'PostController@edit');
+
+// Route::post('/posts/{post}/update', 'PostController@update');
+
+// Route::get('/posts/{post}/delete', 'PostController@destroy');
 
 // general
 Route::get('contact', function () {
