@@ -20,7 +20,7 @@ Route::get('/admin', function () {
 
 // shop
 Route::get('/profile', 'UserController@index')->middleware('auth');
-Route::get('/profile/{user}', 'UserController@index');
+Route::get('/profile/{user}', 'UserController@show');
 Route::post('/users/{user}/edit', 'UserController@edit');
 
 Route::get('/shop', function () {
@@ -43,20 +43,14 @@ Route::delete('/posts/image', 'PostController@deleteImage');
 
 Route::post('/posts/publish', 'PostController@publish');
 Route::post('/posts/unpublish', 'PostController@unpublish');
+Route::get('/posts/get/{post}', 'PostController@getOne');
 
 Route::resource('posts', 'PostController');
 
-// Route::get('/posts/create', 'PostController@create');
-
-// Route::post('/posts/create', 'PostController@store');
-
-// Route::get('posts/{post}', 'PostController@show');
-
-// Route::get('/posts/{post}/edit', 'PostController@edit');
-
-// Route::post('/posts/{post}/update', 'PostController@update');
-
-// Route::get('/posts/{post}/delete', 'PostController@destroy');
+Route::post('/comments/{id}', 'CommentController@store')->middleware('auth');
+Route::get('test', function () {
+	return view('study.posts.comment');
+});
 
 // general
 Route::get('contact', function () {
