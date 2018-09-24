@@ -70,7 +70,7 @@
     
           <!-- /.col -->
           <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Join with us</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Join with us!</button>
           </div>
          
           {{csrf_field() }}
