@@ -12,6 +12,9 @@ class Post extends Model
     public function auther () {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function comments () {
+        return $this->hasMany(Comment::class);
+    }
     public function snippet () {
         $postBody = new \domdocument();
         $postBody->loadHtml($this->body, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
