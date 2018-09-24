@@ -39,6 +39,7 @@ Vue.component('side-bar', require('./partials/SideBar.vue'));
 Vue.component('user-details', require('./general/profile/UserDetails'));
 Vue.component('post-viewer', require('./study/viewer'))
 Vue.component('post-editor', require('./study/editor'))
+Vue.component('post-forum', require('./study/PostForum'))
 
 const app = new Vue({
     el: '#app'

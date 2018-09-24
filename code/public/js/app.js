@@ -14229,6 +14229,7 @@ Vue.component('side-bar', __webpack_require__(98));
 Vue.component('user-details', __webpack_require__(101));
 Vue.component('post-viewer', __webpack_require__(104));
 Vue.component('post-editor', __webpack_require__(107));
+Vue.component('post-forum', __webpack_require__(120));
 
 var app = new Vue({
   el: '#app'
@@ -31082,6 +31083,583 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(122)
+/* template */
+var __vue_template__ = __webpack_require__(121)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/study/PostForum.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-060683b9", Component.options)
+  } else {
+    hotAPI.reload("data-v-060683b9", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 121 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "card bg-light p-3" }, [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.comment.body,
+                    expression: "comment.body"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  name: "body",
+                  rows: "3",
+                  placeholder: "Type your question here...",
+                  required: ""
+                },
+                domProps: { value: _vm.comment.body },
+                on: {
+                  keypress: function($event) {
+                    _vm.clearError("body")
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.comment, "body", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors.body
+                ? _c(
+                    "small",
+                    { staticClass: "form-text invalid-feedback d-block" },
+                    [_vm._v(_vm._s(_vm.errors.body[0]))]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn",
+                  class: _vm.commentButton.class,
+                  attrs: { type: "submit" },
+                  on: { click: _vm.addComment }
+                },
+                [_vm._v(_vm._s(_vm.commentButton.msg))]
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("h5", { staticClass: "my-3" }, [_vm._v("Comments")]),
+      _vm._v(" "),
+      _vm._l(_vm.comments, function(comment) {
+        return !comment.parent_id
+          ? _c("comment", {
+              key: comment.id,
+              attrs: {
+                reply: true,
+                initialChildren: _vm.getChildren(comment.id),
+                comment: comment
+              }
+            })
+          : _vm._e()
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-060683b9", module.exports)
+  }
+}
+
+/***/ }),
+/* 122 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Comment__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Comment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Comment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['postId'],
+    components: { comment: __WEBPACK_IMPORTED_MODULE_0__Comment___default.a },
+
+    data: function data() {
+        return {
+            comments: [], // all previous the comments
+            comment: { // new comment [at comment box]
+                body: '',
+                parend_id: 0
+            },
+            commentButton: {
+                class: 'btn-primary',
+                msg: 'Add Comment'
+            },
+            errors: {
+                body: []
+            }
+        };
+    },
+    methods: {
+        /**
+         * posting the comment
+         */
+        addComment: function addComment() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/comments/' + this.postId, this.comment).then(function (res) {
+                // successfully sent comment to the server
+                _this.comments.unshift(res.data[0]);
+                _this.comment.body = '';
+                _this.commentButton.class = 'btn-success';
+                _this.commentButton.msg = 'Done !';
+                setTimeout(function () {
+                    _this.commentButton.class = 'btn-primary', _this.commentButton.msg = 'Add Another Comment';
+                }, 2000);
+
+                console.log(res.data);
+            }).catch(function (err) {
+                _this.errors = err.response.data.errors;
+                console.log(err.response.data.errors);
+            });
+        },
+        /**
+         * returning the children comments of a particular comment
+         */
+        getChildren: function getChildren(parent_id) {
+            return this.comments.filter(function (child) {
+                return parent_id == child.parent_id;
+            });
+        },
+        /**
+         * clear the error when user starts to type
+         */
+        clearError: function clearError(field) {
+            this.errors[field] = [];
+        }
+    },
+    mounted: function mounted() {
+        var _this2 = this;
+
+        // getting comments which belongs to the post
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/comments/' + this.postId).then(function (res) {
+            console.log(res);
+            _this2.comments = res.data;
+        }).catch(function (err) {
+            console.log(err);
+        });
+    }
+
+});
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(124)
+/* template */
+var __vue_template__ = __webpack_require__(125)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/study/Comment.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e3e7aa92", Component.options)
+  } else {
+    hotAPI.reload("data-v-e3e7aa92", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 124 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'comment',
+    props: {
+        comment: Object,
+        initialChildren: {
+            required: false,
+            type: Array,
+            default: Array
+        },
+        reply: Boolean,
+        required: true
+    },
+
+    data: function data() {
+        return {
+            name: '',
+            newComment: {
+                body: '',
+                parent_id: this.comment.id
+            },
+            children: this.initialChildren,
+            commentButton: {
+                class: 'btn-primary',
+                msg: 'Add Comment'
+            },
+            replyButton: {
+                show: false,
+                msg: 'Reply'
+            },
+            errors: {
+                body: []
+            }
+        };
+    },
+    methods: {
+        /**
+         * add a reply
+         */
+        addComment: function addComment() {
+            var _this = this;
+
+            // if comment is longer than 4 chars [client validation]
+            if (this.comment.body.length > 4) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/comments/' + this.comment.post_id, this.newComment).then(function (res) {
+                    // comment sent to the server successfully
+                    _this.children.unshift(res.data[0]);
+                    console.log(res);
+                    _this.toggleReply();
+                }).catch(function (err) {
+                    console.log(err, err);
+                    // this.errors = err.response.data.errors
+                });
+            }
+        },
+        /**
+         * toggling the reply form
+         */
+        toggleReply: function toggleReply() {
+            this.replyButton.show = !this.replyButton.show;
+            this.replyButton.msg = this.replyButton.show ? 'Cancel' : 'Reply';
+        },
+        /**
+         * clearing the error message when user starts to type
+         */
+        clearError: function clearError(field) {
+            this.errors[field] = [];
+        }
+    },
+    mounted: function mounted() {
+        // testing purposes
+        console.log('children', this.comment.id, this.children);
+    }
+});
+
+/***/ }),
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card my-3 bg-light" }, [
+    _c(
+      "div",
+      { staticClass: "card-body" },
+      [
+        _c("img", {
+          staticClass: "float-left mr-3",
+          attrs: {
+            src: _vm.comment.user.profile_pic,
+            alt: "avatar",
+            width: "50px"
+          }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "card-title" }, [
+          _c(
+            "a",
+            {
+              staticClass: "font-weight-bold text-capitalize",
+              attrs: { href: "/profile/" + _vm.comment.user.id }
+            },
+            [_vm._v(_vm._s(_vm.comment.user.name))]
+          ),
+          _vm._v(" "),
+          _c("small", { staticClass: "font-weight-light" }, [
+            _vm._v(_vm._s(_vm._f("moment")(_vm.comment.created_at, "calendar")))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "card-text blockquote" }, [
+          _vm._v(_vm._s(_vm.comment.body))
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.children, function(child) {
+          return _c("comment", {
+            key: child.id,
+            attrs: { reply: false, comment: child }
+          })
+        }),
+        _vm._v(" "),
+        _vm.reply
+          ? _c(
+              "a",
+              {
+                staticClass: "link link-primary btn-link",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.toggleReply($event)
+                  }
+                }
+              },
+              [_c("small", [_vm._v(_vm._s(_vm.replyButton.msg))])]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.replyButton.show && _vm.reply
+          ? _c("div", { staticClass: "card bg-light p-3 m-3" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.newComment.body,
+                          expression: "newComment.body"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "body",
+                        rows: "3",
+                        placeholder: "Type your question here...",
+                        required: ""
+                      },
+                      domProps: { value: _vm.newComment.body },
+                      on: {
+                        keypress: function($event) {
+                          _vm.clearError("body")
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.newComment, "body", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors.body
+                      ? _c(
+                          "small",
+                          { staticClass: "form-text invalid-feedback d-block" },
+                          [_vm._v(_vm._s(_vm.errors.body[0]))]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn",
+                        class: _vm.commentButton.class,
+                        attrs: { type: "submit" },
+                        on: { click: _vm.addComment }
+                      },
+                      [_vm._v(_vm._s(_vm.commentButton.msg))]
+                    )
+                  ])
+                ]
+              )
+            ])
+          : _vm._e()
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e3e7aa92", module.exports)
+  }
+}
 
 /***/ })
 ],[17]);
