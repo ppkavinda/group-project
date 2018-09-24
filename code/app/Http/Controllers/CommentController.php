@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\comment;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class CommentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * saving a comment
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -39,15 +40,17 @@ class CommentController extends Controller
     public function store(Request $request, $post)
     {
         $request->validate([
-            'body' => 'required|min:4',
+            'body' => 'required|min:4|max:191',
         ]);
+
         $comment = Comment::create([
             'body' => $request->body,
             'user_id' => auth()->user()->id,
             'post_id' => $post,
-            'parent_id' => $request->parent_id
+            'parent_id' => $request->parent_id ?: null// optional
         ]);
-        return redirect()->back();
+        $comment = Comment::with(['user'])->where('id', '=', $comment->id)->get();
+        return response()->json($comment);
     }
 
     /**
@@ -56,9 +59,10 @@ class CommentController extends Controller
      * @param  \App\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(comment $comment)
+    public function show($post)
     {
-        //
+        $comments = Comment::with(['user'])->where('post_id','=', $post)->latest()->get();
+        return response()->json($comments);
     }
 
     /**

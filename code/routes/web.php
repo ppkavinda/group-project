@@ -47,6 +47,7 @@ Route::get('/posts/get/{post}', 'PostController@getOne');
 
 Route::resource('posts', 'PostController');
 
+Route::get('/comments/{post}', 'CommentController@show');
 Route::post('/comments/{id}', 'CommentController@store')->middleware('auth');
 Route::get('test', function () {
 	return view('study.posts.comment');
