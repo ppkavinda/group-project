@@ -51,3 +51,13 @@
     position: relative;
     left: 10%;
   }
+.container-wide {
+    width: 90%;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.card {
+    border: 1px solid rgba(0,0,0,.125);
+}

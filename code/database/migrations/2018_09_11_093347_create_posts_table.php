@@ -18,8 +18,8 @@ class CreatePostsTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->longtext('body');
-            $table->text('description');
-            $table->string('post_image');
+            $table->string('post_image')->nullable();
+            $table->boolean('published')->default(false);
             $table->string('course_id');
             $table->timestamps();
         });

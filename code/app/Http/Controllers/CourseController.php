@@ -14,4 +14,8 @@ class CourseController extends Controller
     public function show(\App\Course $course) {
 	    return view('study.courses.course', ['course' => $course]);
     }
+
+    public function all () {
+        return \App\Course::get();
+    }
 }

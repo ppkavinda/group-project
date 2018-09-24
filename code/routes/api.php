@@ -19,3 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('users/{user}', 'UserController@show');
+
+Route::post('/validate/register', 'auth\RegisterController@liveValidate');
+
+Route::get('/courses', 'CourseController@all');
+
+Route::get('/posts', 'PostController@getOne');
