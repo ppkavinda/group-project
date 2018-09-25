@@ -13,15 +13,19 @@ class PostController extends Controller
      * only authenticated users can be able to handle posts
      */
     public function __construct () {
-        // $this->middleware('auth')->except(['show', 'get']);
+        $this->middleware('auth')->except(['show']);
     }
+
+    /**
+     * NOT USED
+     */
     public function index () {
         $posts = \App\Post::all();
         return view('study.posts.index', ['posts' => $posts]);
     }
 
     /**
-     * display the text editor for make a post
+     * display the text editor for write a post
      */
     public function create () {
         $courses = \App\Course::get();
@@ -35,6 +39,9 @@ class PostController extends Controller
         return view('study.posts.index', compact('post'));
     }
   
+    /**
+     * example code for upload video. NOT USED
+     */
     public function insertVideo (Request $request) {
         $request->validate([
             'video' => 'required | max:20000 | mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
@@ -68,11 +75,17 @@ class PostController extends Controller
 
     }
 
+    /**
+     * return the edit post view
+     */
     public function edit (Post $post) {
         $courses = \App\Course::get();
         return view('study.posts.edit', compact('courses', 'post'));
     }
     
+    /**
+     * update a particular post
+     */
     public function update (Request $request, Post $post) {
         $post->title = $request->title;
         $post->body = $request->body;
@@ -81,12 +94,19 @@ class PostController extends Controller
         return $post;
     }
 
+    /**
+     * publish a particular post
+     */
     public function publish (Request $request) {
         $post = Post::find($request->post);
         $post->published = true;
         $post->save();
         return $post;
     }
+
+    /**
+     * unpublish a perticular post
+     */
     public function unpublish (Request $request) {
         $post = Post::find($request->post);
         $post->published = false;
@@ -94,6 +114,9 @@ class PostController extends Controller
         return $post;
     }
 
+    /**
+     * delete a particular post
+     */
     public function destroy (Post $post) {
         $post->delete();
         return redirect()->back();
@@ -112,6 +135,9 @@ class PostController extends Controller
         ]);
     }
 
+    /**
+     * delete the image from server when it deleted from the post
+     */
     public function deleteImage (Request $request) {
         $file = public_path() . $request->image;
         if (File::exists($file)) {
@@ -119,8 +145,10 @@ class PostController extends Controller
         }
     }
 
-    public function getOne (Request $request) {
-        $post = Post::find($request->post);
+    /**
+     * get a perticular post
+     */
+    public function getOne (Request $request, Post $post) {
         return response()->json($post);
     }
 }

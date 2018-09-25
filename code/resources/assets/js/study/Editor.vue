@@ -46,7 +46,7 @@
                 </ul>
                 <div class="form-group">
                     <button class="btn btn-block mb-2" :class="saveButton.class" @click="save">{{ saveButton.msg }}</button>
-                    <small v-if="post.id" class="text-muted">Last modified at {{ post.updated_at | duration('humanize') }} ago</small>
+                    <small v-if="post.id" class="text-muted">Last modified {{ post.updated_at | moment("calendar") }}</small>
                 </div>
             </div>
         </div>
@@ -72,11 +72,15 @@ export default {
     name: 'post-editor',
     data () {
         return {
+            // [for editor]
             config: {
                 events: {
+                    // send signal to delete the image from server
                     'froalaEditor.image.removed':  (e, editor, $img) => {
                         this.deleteImage($img.attr('src'))
                     },
+                    // when focus the editor
+                    // clear the errors message
                     'froalaEditor.focus': (e, editor, target) => {
                         this.clearError('body')
                     } 
@@ -88,22 +92,22 @@ export default {
                 // Set the image upload URL.
                 imageUploadURL: '/posts/image',
 
-                // Additional upload params.
+                // sending csrf-token with the upload image request
                 imageUploadParams: {_token: document.head.querySelector('meta[name="csrf-token"]').content},
 
                 // Set request type.
                 imageUploadMethod: 'POST',
 
-                // Set max image size to 5MB.
+                // Set max image size to 2MB.
                 imageMaxSize: 2 * 1024 * 1024,
 
                 // Allow to upload PNG and JPG.
                 imageAllowedTypes: ['jpeg', 'jpg', 'png']
             },
             post: {
-                title: 'asd fasdf a',
-                course_id: 2,
-                body: 'asdf asdfa sdfasdf sdfaf sdf dsf asdf sdfa sf sf',
+                title: '',
+                course_id: 0,
+                body: '',
                 id: 0,
                 published: false,
                 updated_at: '',
@@ -126,11 +130,14 @@ export default {
     },
     methods: {
         /**
-         * publish the post
+         * toggle publish a post
          */
         publish: async function () {
+            // if not published
             if (! this.post.published) {
+                // first save the post
                 await this.save()
+                // then set publish status
                 axios.post('/posts/publish', {post: this.post.id})
                     .then(res => {
                         this.post.published = true
@@ -144,6 +151,8 @@ export default {
                         console.log('published')
                     })
             } else {
+                // if already published
+                // then un-set publish the post
                 axios.post('/posts/unpublish', {post: this.post.id})
                     .then(res => {
                         this.post.published = false
@@ -183,11 +192,10 @@ export default {
                         })
                 } else {
                     // if the post is not saved
-                    // await because publish() should have this.post.id to be an non-0 val
+                    // await: because publish() should have this.post.id to be an non-0 val
                     var response = await axios.post('/posts', this.post)
                     console.log(response)
                     this.post.id = await response.data.id
-                    this.post.updated_at = response.data.updated_at
                     this.saveButton.class = 'btn-success'
                     this.saveButton.msg = 'saved !'
                     this.post.updated_at = response.data.updated_at
@@ -231,24 +239,31 @@ export default {
                 .catch( error => console.log(error))
         }
     },
-    /**
-     * get courses list
-     * to fill the courses option box
-     */
     mounted: function () {
-        // if (this.dataPost) {
-        //     this.post = this.dataPost
-        // }
+        /**
+         * get courses list
+         * to fill the courses option box
+         */
         axios.get('/api/courses')
-            .then( res => {
-                this.courses = res.data
-            })
-        axios.get('/api/posts', { params: {
-            post: this.postId
-        }})
+        .then( res => {
+            this.courses = res.data
+        })
+
+        /**
+         * [when updating an post]
+         * if postId prop is assigned (which means: updating an post)
+         * get post details according to the postId prop
+         */
+        if (this.postId) {
+            axios.get('/posts/get/' + this.postId)
             .then( res => {
                 this.post = res.data
             })
+        }
+        /**
+         * [when updating an post]
+         * if the existing post is published set publish button styles
+         */
         if (this.post.published) {
             this.publishButton.clss = 'btn-default'
             this.publishButton.msg = 'unpublish'

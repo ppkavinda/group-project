@@ -8,6 +8,7 @@
 			<div class="inner_w3l_agile_grids-gal">
             </div>
             <div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
+
 					<div class="agile_mail_grid_right1">
                         {{-- <form action="/posts/{{ $post->id }}/update" method="POST">
                             @csrf
@@ -37,8 +38,8 @@
                         </form> --}}
                         <post-editor post-id="{{ $post->id }}" />
 					</div>
-				</div>
-		</div>	
-	</div>
+			</div>
+    </div>
+</div>
 
 @endsection

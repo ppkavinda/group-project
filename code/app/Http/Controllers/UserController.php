@@ -15,7 +15,8 @@ class UserController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
    
-    public function index (User $user) {
+    public function index () {
+        $user = auth()->user();
         return view('profile.index', compact('user'));
     }
     
