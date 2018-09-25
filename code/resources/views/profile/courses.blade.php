@@ -1,4 +1,4 @@
-<h3 class="w3l_header mt-4 mb-5">your courses</h3>
+<!-- <h3 class="w3l_header mt-4 mb-5">your courses</h3>
 <div class="row">
     <div class="col-md-6">
         <h5 class="m-3">Your Posts
@@ -24,4 +24,4 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->

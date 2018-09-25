@@ -63,7 +63,7 @@
 						</li>
 						@guest
 						<li class="active nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}"> 
-							<a class="nav-link menu__link" data-toggle="modal" data-target="#myModal" >
+							<a class="nav-link menu__link" data-toggle="modal" data-target="#myModal">
 							<i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
 								<!-- <button class="btn btn-primary" >Login In</button> -->
 						</li>
@@ -105,16 +105,17 @@
               <div class="modal-dialog">
               <div class="modal-content">
               <div class="modal-header"> 
-                <p style="color:DodgerBlue;font-size:160%;" class="text-md-right" align="center"><b>{{ __('Sign In!') }}</b></p>
+
+                <p style="color:DodgerBlue;font-size:160%;" class="text-center" ><b>{{ __('Sign In!') }}</b></p>
                 <button type="button" class="close" data-dismiss="modal" >&times;</button>
 
                 </div>
-
                 <div class="modal-body">
                 <!-- /.login-logo -->
                 <div class="login-logo">
-                    <a href="/"><img src="/dist/img/logo.jpg" align="top" alt="logo" style="width: 30%; opacity: .6"></a>
+                    <a href="/"><img src="/dist/img/logo.jpg" class="rounded mx-auto d-block" style="width: 45%; opacity: .6"></a>
                 </div>
+                <br></br>
               
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -158,48 +159,54 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="modal-footer">
-                        <!-- <div class="form-group row mb-0"> -->
-                            <div class="col-md-8 offset-md-4">
+                        <div class="form-group row ">
+                            <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
+                                <br>or
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>
+                         </div>   
+                        <div class="modal-footer">
+                       
+                            <div class="col-md-9 offset-md-4">Don't have an account?
+                        		 <a class="sign-link" href="/register" data-purpose="sign-up">
+                         			Sign up
+                        		</a>
+                   			</div>
                         <!-- </div> -->
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer"> </div>
+                
             </div>
         </div>
     </div>
 
     <!-- register modal -->
+
      <div class="modal fade" id="myModal1" role="dialog">
               <div class="modal-dialog">
-              <div class="modal-content">
-              <div class="modal-header"> 
-                <p class="login-box-msg" style="color:DodgerBlue;font-size:160%;"><b>Sign Up and Start Learning!</b></p>
-                <button type="button" class="close" data-dismiss="modal" >&times;</button>
+              	<div class="modal-content">
+              		<div class="modal-header"> 
+                	<p class="login-box-msg" style="color:DodgerBlue;font-size:160%;"><b>Sign Up and Start Learning!</b></p>
+                	<button type="button" class="close" data-dismiss="modal" >&times;</button>
 
                 </div>
 
                 <div class="modal-body">
                 	<div class="login-logo">
-                    <a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .6"></a>
-                </div>
-                <register/>
-                </div>
-                </div>
+                    	<a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .6"></a>
+                	</div>
+                		<register/>
                 </div>
                 </div>
-
+              </div>
+     	</div>
 		</div>
 	</div>
-		<div class="clearfix"></div>
+ <div class="clearfix"></div>
 </div>
