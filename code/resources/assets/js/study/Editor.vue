@@ -18,6 +18,7 @@
             </div>
         </div>
         <div class="col-md-3 pl-4">
+
             <div class="card bg-light p-2">
                 <div class="card-header bg-light">
                     <strong>Publish</strong>

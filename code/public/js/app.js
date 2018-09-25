@@ -29768,6 +29768,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
 
 
 
@@ -31185,6 +31186,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -31397,8 +31399,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/comments/' + this.comment.post_id, this.newComment).then(function (res) {
                     // comment sent to the server successfully
                     _this.children.unshift(res.data[0]);
-                    console.log(res);
+                    _this.newComment.body = '';
                     _this.toggleReply();
+                    console.log(res);
                 }).catch(function (err) {
                     console.log(err, err);
                     // this.errors = err.response.data.errors
@@ -31653,7 +31656,11 @@ var render = function() {
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
-      _c("h5", { staticClass: "my-3" }, [_vm._v("Comments")]),
+      !_vm.comments.length
+        ? _c("h4", { staticClass: "m-3" }, [
+            _vm._v("No comments posted yet. Be the first one to add one.")
+          ])
+        : _c("h5", { staticClass: "my-3" }, [_vm._v("Comments")]),
       _vm._v(" "),
       _vm._l(_vm.comments, function(comment) {
         return !comment.parent_id
