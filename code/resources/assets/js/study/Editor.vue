@@ -18,6 +18,7 @@
             </div>
         </div>
         <div class="col-md-3 pl-4">
+
             <div class="card bg-light p-2">
                 <div class="card-header bg-light">
                     <strong>Publish</strong>
@@ -53,9 +54,23 @@
 
     </div>
     <hr>
+    <!-- collapsing preview panel -->
+    <div class="accordion" id="accordionExample">
+        <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Show a Preview 
+            </button>
+        </h5>
+        </div>
 
-    <h3>Preview</h3>
-    <post-viewer :post="post"/>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+            <post-viewer :initial-post="JSON.stringify(post)"/>
+        </div>
+        </div>
+    </div>
+    <!-- end preview -->
     </div>
 </template>
 
@@ -65,9 +80,10 @@ import axios from 'axios'
 
 export default {
     props: {
-        postId: {
+        initialPost: {
             required: false,
-        }
+            type: String,
+        },
     },
     name: 'post-editor',
     data () {
@@ -145,7 +161,7 @@ export default {
                         this.publishButton.msg = 'published !'
 
                         setTimeout(() => {
-                            this.publishButton.class = 'btn-link text-danger'
+                            this.publishButton.class = 'link text-danger'
                             this.publishButton.msg = 'unpublish'
                         }, 1000);
                         console.log('published')
@@ -251,21 +267,18 @@ export default {
 
         /**
          * [when updating an post]
-         * if postId prop is assigned (which means: updating an post)
-         * get post details according to the postId prop
+         * if initialPost prop is assigned (which means: updating an post)
+         * assign this.post to initialPost
          */
-        if (this.postId) {
-            axios.get('/posts/get/' + this.postId)
-            .then( res => {
-                this.post = res.data
-            })
+        if (this.initialPost) {
+            this.post = JSON.parse(this.initialPost)
         }
         /**
          * [when updating an post]
          * if the existing post is published set publish button styles
          */
         if (this.post.published) {
-            this.publishButton.clss = 'btn-default'
+            this.publishButton.class = 'link text-danger'
             this.publishButton.msg = 'unpublish'
         }
     },

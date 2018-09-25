@@ -78,8 +78,9 @@ export default {
                     .then(res => {
                         // comment sent to the server successfully
                         this.children.unshift(res.data[0])
-                        console.log(res)
+                        this.newComment.body = ''
                         this.toggleReply()
+                        console.log(res)
                     }).catch(err => {
                         console.log(err, err)
                         // this.errors = err.response.data.errors

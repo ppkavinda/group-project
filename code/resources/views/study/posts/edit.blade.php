@@ -9,7 +9,7 @@
             </div>
             <div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
                 <div class="agile_mail_grid_right1">
-                    <post-editor post-id="{{ $post->id }}" />
+                    <post-editor initial-post="{{ $post }}" />
                 </div>
             </div>
 		</div>	

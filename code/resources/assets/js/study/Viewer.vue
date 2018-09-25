@@ -17,24 +17,14 @@ import axios from 'axios'
 
 export default {
     name: 'post-viewer',
-    props: ['postId'],
-    data: function () {
-        return {
-            post: {},
-        }
-    },
-    mounted: function () {
+    props: {initialPost: String},
+    computed: {
         /**
-         * getting post details according to the postId
-         * and assign it to the post data
+         * convert initialPost [jsonString] to JSON object
          */
-        axios.get('/posts/get/' + this.postId)
-        .then(res => {
-            this.post = res.data
-        })
-        .catch (err => {
-            console.log(err)
-        })
+        post: function () {
+            return JSON.parse(this.initialPost)
+        },
     },
     filters: {
         /**
