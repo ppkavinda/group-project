@@ -25,6 +25,20 @@
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                 </div>
             </div>
+             <div class="form-group row">
+                <label for="inputContact" class="col-sm-2 col-form-label">Contact Number</label>
+                <div class="col-sm-10">
+                    <input type="Number" name="contact" class="form-control" id="inputContact"  placeholder="Enter your contact Number">
+                    <i aria-hidden="true" ></i>
+                </div>
+            </div>
+             <div class="form-group row">
+                <label for="inputAddress" class="col-sm-2 col-form-label">Delivery Address</label>
+                <div class="col-sm-10">
+                    <input type="text" name="address" class="form-control" id="inputAddress"  placeholder="Enter your Delivery Address">
+                    <i aria-hidden="true" ></i>
+                </div>
+            </div>
             <div class="form-group row">
                 <label for="inputDesc" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
