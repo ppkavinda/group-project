@@ -13,7 +13,8 @@ class PostController extends Controller
      * only authenticated users can be able to handle posts
      */
     public function __construct () {
-        $this->middleware('auth')->except(['show']);
+        $this->middleware('auth');
+        $this->middleware('facilitator')->except('show', 'getOne');
     }
 
     /**
@@ -26,6 +27,7 @@ class PostController extends Controller
 
     /**
      * display the text editor for write a post
+     * only facilitator can acces
      */
     public function create () {
         $courses = \App\Course::get();
@@ -34,6 +36,7 @@ class PostController extends Controller
 
     /**
      * display a perticular post
+     * auth user can access
      */
     public function show(Post $post) {
         return view('study.posts.index', compact('post'));
@@ -56,6 +59,7 @@ class PostController extends Controller
 
     /**
      * save a post
+     * only facilitator can access
      */
     public function store(Request $request) {
         $request->validate([
@@ -77,6 +81,7 @@ class PostController extends Controller
 
     /**
      * return the edit post view
+     * only facilitator can access
      */
     public function edit (Post $post) {
         $courses = \App\Course::get();
@@ -85,6 +90,7 @@ class PostController extends Controller
     
     /**
      * update a particular post
+     * only facilitator can access
      */
     public function update (Request $request, Post $post) {
         $post->title = $request->title;
@@ -96,6 +102,7 @@ class PostController extends Controller
 
     /**
      * publish a particular post
+     * only author[facilitator] can access
      */
     public function publish (Request $request) {
         $post = Post::find($request->post);
@@ -106,6 +113,7 @@ class PostController extends Controller
 
     /**
      * unpublish a perticular post
+     * only author[facilitator] can access
      */
     public function unpublish (Request $request) {
         $post = Post::find($request->post);
@@ -116,6 +124,7 @@ class PostController extends Controller
 
     /**
      * delete a particular post
+     * only author[facilitator] can access
      */
     public function destroy (Post $post) {
         $post->delete();
@@ -124,6 +133,7 @@ class PostController extends Controller
 
     /**
      * upload images which are used in posts
+     * only facilitator can access
      */
     public function uploadImage (Request $request) {
         $image_name = md5($request->image . time()) . '.' . $request->image->getClientOriginalExtension();
@@ -137,6 +147,7 @@ class PostController extends Controller
 
     /**
      * delete the image from server when it deleted from the post
+     * only facilitator can access
      */
     public function deleteImage (Request $request) {
         $file = public_path() . $request->image;
@@ -147,6 +158,7 @@ class PostController extends Controller
 
     /**
      * get a perticular post
+     * auth user can access
      */
     public function getOne (Request $request, Post $post) {
         return response()->json($post);

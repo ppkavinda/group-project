@@ -1,65 +1,72 @@
-/*!
- *   AdminLTE v3.0.0-alpha
- *   Author: Abdullah Almsaeed
- *	 Website: AdminLTE.io <http://adminlte.io>
- *   License: Open source - MIT <http://opensource.org/licenses/MIT>
- */
-// Bootstrap
-// ---------------------------------------------------
+// /*!
+//  *   AdminLTE v3.0.0-alpha
+//  *   Author: Abdullah Almsaeed
+//  *	 Website: AdminLTE.io <http://adminlte.io>
+//  *   License: Open source - MIT <http://opensource.org/licenses/MIT>
+//  */
+// // Bootstrap
+// // ---------------------------------------------------
+// // @import "~morris";
+
+// // VARIABLES AND MIXINS
+// // ---------------------------------------------------
+// @import "./admin/variables";
+// @import "./admin/mixins";
+// // Core
+// // ---------------------------------------------------
+// @import "./admin/layout";
+// // COMPONENTS
+// // ---------------------------------------------------
+// @import "./admin/main-header";
+// @import "./admin/brand";
+// @import "./admin/main-sidebar";
+// @import "./admin/sidebar-mini";
+// @import "./admin/control-sidebar";
+// @import "./admin/dropdown";
+// @import "./admin/forms";
+// @import "./admin/progress-bars";
+// @import "./admin/small-box";
+// @import "./admin/cards";
+// @import "./admin/info-box";
+// @import "./admin/timeline";
+// @import "./admin/buttons";
+// @import "./admin/callout";
+// @import "./admin/alerts";
+// @import "./admin/navs";
+// @import "./admin/products";
+// @import "./admin/table";
+// @import "./admin/labels";
+// @import "./admin/direct-chat";
+// @import "./admin/users-list";
+// @import "./admin/carousel";
+// @import "./admin/social-widgets";
+// // PAGES
+// // ---------------------------------------------------
+// @import "./admin/mailbox";
+// @import "./admin/lockscreen";
+// @import "./admin/login_and_register";
+// @import "./admin/404_500_errors";
+// @import "./admin/invoice";
+// @import "./admin/profile";
+// // Plugins
+// // ---------------------------------------------------
+// @import "./admin/fullcalendar";
+// @import "./admin/select2";
+// // Miscellaneous
+// // ---------------------------------------------------
+// @import "./admin/miscellaneous";
+// @import "./admin/print";
+// @import "./admin/text";
+// @import "./admin/elevation";
+
 @import "~bootstrap/scss/functions";
-@import "./admin/bootstrap-variables";
 @import "~bootstrap/scss/bootstrap";
-// @import "~morris";
+@import './admin/lte/AdminLTE-raw';
 
-// VARIABLES AND MIXINS
-// ---------------------------------------------------
-@import "./admin/variables";
-@import "./admin/mixins";
-// Core
-// ---------------------------------------------------
-@import "./admin/layout";
-// COMPONENTS
-// ---------------------------------------------------
-@import "./admin/main-header";
-@import "./admin/brand";
-@import "./admin/main-sidebar";
-@import "./admin/sidebar-mini";
-@import "./admin/control-sidebar";
-@import "./admin/dropdown";
-@import "./admin/forms";
-@import "./admin/progress-bars";
-@import "./admin/small-box";
-@import "./admin/cards";
-@import "./admin/info-box";
-@import "./admin/timeline";
-@import "./admin/buttons";
-@import "./admin/callout";
-@import "./admin/alerts";
-@import "./admin/navs";
-@import "./admin/products";
-@import "./admin/table";
-@import "./admin/labels";
-@import "./admin/direct-chat";
-@import "./admin/users-list";
-@import "./admin/carousel";
-@import "./admin/social-widgets";
-// PAGES
-// ---------------------------------------------------
-@import "./admin/mailbox";
-@import "./admin/lockscreen";
-@import "./admin/login_and_register";
-@import "./admin/404_500_errors";
-@import "./admin/invoice";
-@import "./admin/profile";
-// Plugins
-// ---------------------------------------------------
-@import "./admin/fullcalendar";
-@import "./admin/select2";
-// Miscellaneous
-// ---------------------------------------------------
-@import "./admin/miscellaneous";
-@import "./admin/print";
-@import "./admin/text";
-@import "./admin/elevation";
+// @import './admin/blue.scss';
+@import './admin/morris.scss';
+@import './admin/jquery-jvectormap-1.2.2.scss';
+@import './admin/datepicker3.scss';
+@import './admin/daterangepicker-bs3.scss';
 
-@import "custom"
+@import "custom";

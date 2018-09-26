@@ -1,6 +1,17 @@
-<!-- <h3 class="w3l_header mt-4 mb-5">your courses</h3>
+<h3 class="w3l_header mt-4 mb-5">your <span>courses</span></h3>
 <div class="row">
     <div class="col-md-6">
+        <div class="card">
+            <h5 class="m-3">Enrolled courses</h5>
+            <ul class="list-group list-group-flush">
+                @foreach($user->courses as $course)
+                    <a href="/courses/{{ $course->id }}"><li class="list-group-item"><i class="fa fa-check"></i> {{ $course->title }}</li></a>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        @if (auth()->user()->isFacilitator())
         <h5 class="m-3">Your Posts
             <a href="/posts/create" class="btn btn-primary ml-3">New Post</a>
         </h5>
@@ -13,15 +24,7 @@
                 </li>
             @endforeach
         </ul>
-    </div>
-    <div class="col-md-6">
-        <div class="card">
-            <h5 class="m-3">Enrolled courses</h5>
-            <ul class="list-group list-group-flush">
-                @foreach($user->courses as $course)
-                    <a href="/courses/{{ $course->id }}"><li class="list-group-item"><i class="fa fa-check"></i> {{ $course->title }}</li></a>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-</div> -->
+        @endif
+        <h5 class="m-3">In order to publish posts in this site, you have to register as a <a href="#">Facilitator</a></h5>
+</div>
+

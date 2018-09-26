@@ -13,62 +13,45 @@
 
 Route::get('/', 'studyController@index');
 
-// admin
-Route::get('/admin', function () {
-    return view('admin.admin');
-});
+// authenticating routes
+Auth::routes();
 
-// shop
+// admin
+Route::view('/admin', 'admin.index');
+
+// profile
 Route::get('/profile', 'UserController@index')->middleware('auth');
 Route::get('/profile/{user}', 'UserController@show');
 Route::post('/users/{user}/edit', 'UserController@edit');
 
-Route::get('/shop', function () {
-	return view('shop.index');
-});
+// shop
+Route::view('/shop', 'shop.index');
 
 // study
-Route::get('/study', function () {
-	return view('study.index');
-});
+Route::view('/study', 'study.index');
 
 Route::get('/enroll/{id}', 'EnrollController@create');
 
 Route::get('/courses', 'CourseController@index');
-
 Route::get('/courses/{course}', 'CourseController@show');
 
+Route::get('/posts/get/{post}', 'PostController@getOne');
 Route::post('/posts/image', 'PostController@uploadImage');
-Route::delete('/posts/image', 'PostController@deleteImage');
-
 Route::post('/posts/publish', 'PostController@publish');
 Route::post('/posts/unpublish', 'PostController@unpublish');
-Route::get('/posts/get/{post}', 'PostController@getOne');
-
+Route::delete('/posts/image', 'PostController@deleteImage');
 Route::resource('posts', 'PostController');
 
 Route::get('/comments/{post}', 'CommentController@show');
-Route::post('/comments/{id}', 'CommentController@store')->middleware('auth');
-Route::get('test', function () {
-	return view('study.posts.comment');
-});
+Route::post('/comments/{id}', 'CommentController@store');
 
 // general
-Route::get('contact', function () {
-	return view('contact');
-});
-
-Route::get('about', function () {
-	return view('about');
-});
-Route::get('users',['uses' => 'UserController@index']);
-
+Route::view('contact', 'contact');
+Route::view('about', 'about');
 Route::post('/inquiry','InquiryController@store');
 
-Route::get('/posts',function(){
-	return view('study.posts.index');
-});
+// Route::get('users',['uses' => 'UserController@index']);
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('test', function () {
+	dd(request()->user());
+})->middleware('admin');

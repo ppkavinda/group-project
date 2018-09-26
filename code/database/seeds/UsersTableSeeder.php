@@ -13,35 +13,48 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'id' => 1,
-            // 'fname' => 'admin',
             'name' => 'admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin123'),
             'nic' => '123456789V',
-            // 'tpNo' => '1234123443',
-            // 'profilePic' => 'img',
             'role' => 1
         ]);
 
-        DB::table('customers')->insert([
-            'id' => 1
+        DB::table('users')->insert([
+            'id' => 2,
+            'name' => 'facilitator',
+            'email' => 'fac@gmail.com',
+            'password' => bcrypt('fac123'),
+            'nic' => '121456789V',
+            'role' => 2
         ]);
-      
+        DB::table('facilitators')->insert([
+            'id' => 2
+        ]);
+
+        DB::table('users')->insert([
+            'id' => 3,
+            'name' => 'entrepreneur',
+            'email' => 'ent@gmail.com',
+            'password' => bcrypt('ent123'),
+            'nic' => '123412341v',
+            'role' => 3
+        ]);
+        DB::table('entrepreneurs')->insert([
+            'id' => 3,
+        ]);
+
         DB::table('users')->insert([
             'id' => 4,
-            // 'fname' => 'admin',
-            'name' => 'sachintha',
-            'email' => 'sachin133hm@gmail.com',
-            'password' => bcrypt('123456'),
-            'nic' => '121456789V',
-            // 'tpNo' => '1234123443',
-            // 'profilePic' => 'img',
-            'role' => 1
+            'name' => 'customer',
+            'email' => 'custom@gmail.com',
+            'password' => bcrypt('custom123'),
+            'nic' => '123412333v',
+            'role' => 4
         ]);
         DB::table('customers')->insert([
-            'id' => 4
+            'id' => 4,
         ]);
-
 
     }
 }

@@ -13,7 +13,8 @@
         </form>
     </div>
     <hr>
-    <h5 class="my-3">Comments</h5>
+    <h4 v-if="!comments.length" class="m-3">No comments posted yet. Be the first one to add one.</h4>
+    <h5 v-else class="my-3">Comments</h5>
     <comment v-for="comment in comments" v-if="!comment.parent_id" :reply="true" :initialChildren="getChildren(comment.id)" :key="comment.id" :comment="comment"></comment>
 </div>
 </template>
