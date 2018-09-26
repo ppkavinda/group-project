@@ -17,18 +17,15 @@ Route::get('/', 'studyController@index');
 Auth::routes();
 
 // admin
-Route::get('/admin', function () {
-    return view('admin.admin');
-});
+Route::view('/admin', 'admin.index');
 
+// profile
 Route::get('/profile', 'UserController@index')->middleware('auth');
 Route::get('/profile/{user}', 'UserController@show');
 Route::post('/users/{user}/edit', 'UserController@edit');
 
 // shop
-Route::get('/shop', function () {
-	return view('shop.index');
-});
+Route::view('/shop', 'shop.index');
 
 // study
 Route::view('/study', 'study.index');
