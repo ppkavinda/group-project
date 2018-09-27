@@ -2,7 +2,7 @@
 @extends('admin.master')
 @section('content')
 
-		{{-- <aside class="control-sidebar control-sidebar-dark"> --}}
+		{{-- <aside class="main-sidebar sidebar-dark-primary elevation-3"> --}}
 		{{-- </aside> --}}
 		<!DOCTYPE html>
 <html>
@@ -20,7 +20,8 @@
 <body>
 	<div>
 	@include('admin.partial.nav')
-	</div>
+    </div>
+ 
 	<div id="app">
 		@yield('content')
 	</div>
@@ -42,7 +43,7 @@
 								
 </script>
 <br><br><br><br>
-	@include('admin.partial.sidebar')	
+
 	@include('admin.partial.content')
 
 </body>

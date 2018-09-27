@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    //
+    public function addCategory(){
+        return view('admin.category.add_Category');
+    }
+
 }
