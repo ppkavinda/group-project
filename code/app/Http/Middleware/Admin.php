@@ -17,7 +17,7 @@ class Admin
     {
         if ($request->user()->role > 1) {
             // return redirect()->back();
-            abort(404, 'Unauthorized !');
+            abort(401, 'Unauthorized !');
         }
         return $next($request);
     }

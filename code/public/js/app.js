@@ -14227,8 +14227,8 @@ Vue.component('register', __webpack_require__(92));
 Vue.component('nav-bar', __webpack_require__(95));
 Vue.component('side-bar', __webpack_require__(98));
 Vue.component('user-details', __webpack_require__(101));
-Vue.component('post-viewer', __webpack_require__(104));
-Vue.component('post-editor', __webpack_require__(107));
+Vue.component('post-viewer', __webpack_require__(126));
+Vue.component('post-editor', __webpack_require__(129));
 Vue.component('post-forum', __webpack_require__(113));
 
 var app = new Vue({
@@ -29475,7 +29475,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h3", { staticClass: "w3l_header mt-4 mb-5" }, [
       _vm._v("Edit your "),
-      _c("span", [_vm._v("details")])
+      _c("span", [_vm._v("detail")])
     ])
   }
 ]
@@ -29489,564 +29489,11 @@ if (false) {
 }
 
 /***/ }),
-/* 104 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(105)
-/* template */
-var __vue_template__ = __webpack_require__(106)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/study/viewer.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b6dc936c", Component.options)
-  } else {
-    hotAPI.reload("data-v-b6dc936c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 105 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_froala_wysiwyg__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_froala_wysiwyg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_froala_wysiwyg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'post-viewer',
-    props: { initialPost: String },
-    computed: {
-        /**
-         * convert initialPost [jsonString] to JSON object
-         */
-        post: function post() {
-            return JSON.parse(this.initialPost);
-        }
-    },
-    filters: {
-        /**
-         * capitalize the first letter of a sentence
-         */
-        capitalize: function capitalize(value) {
-            if (!value) return '';
-            value = value.toString();
-            return value.charAt(0).toUpperCase() + value.slice(1);
-        }
-    }
-});
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card mt-3" }, [
-    _vm.post.title
-      ? _c("div", { staticClass: "card-header text-center" }, [
-          _c("h3", [_vm._v(_vm._s(_vm._f("capitalize")(_vm.post.title)))])
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _c(
-        "p",
-        { staticClass: "card-text" },
-        [
-          _c("froalaView", {
-            model: {
-              value: _vm.post.body,
-              callback: function($$v) {
-                _vm.$set(_vm.post, "body", $$v)
-              },
-              expression: "post.body"
-            }
-          })
-        ],
-        1
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-b6dc936c", module.exports)
-  }
-}
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(108)
-/* template */
-var __vue_template__ = __webpack_require__(112)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/study/editor.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-cf84ffb6", Component.options)
-  } else {
-    hotAPI.reload("data-v-cf84ffb6", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 108 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_froala_wysiwyg__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_froala_wysiwyg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_froala_wysiwyg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        initialPost: {
-            required: false,
-            type: String
-        }
-    },
-    name: 'post-editor',
-    data: function data() {
-        var _this = this;
-
-        return {
-            // [for editor]
-            config: {
-                events: {
-                    // send signal to delete the image from server
-                    'froalaEditor.image.removed': function froalaEditorImageRemoved(e, editor, $img) {
-                        _this.deleteImage($img.attr('src'));
-                    },
-                    // when focus the editor
-                    // clear the errors message
-                    'froalaEditor.focus': function froalaEditorFocus(e, editor, target) {
-                        _this.clearError('body');
-                    }
-                },
-                heightMin: 600,
-                // Set the image upload parameter.
-                imageUploadParam: 'image',
-
-                // Set the image upload URL.
-                imageUploadURL: '/posts/image',
-
-                // sending csrf-token with the upload image request
-                imageUploadParams: { _token: document.head.querySelector('meta[name="csrf-token"]').content },
-
-                // Set request type.
-                imageUploadMethod: 'POST',
-
-                // Set max image size to 2MB.
-                imageMaxSize: 2 * 1024 * 1024,
-
-                // Allow to upload PNG and JPG.
-                imageAllowedTypes: ['jpeg', 'jpg', 'png']
-            },
-            post: {
-                title: '',
-                course_id: 0,
-                body: '',
-                id: 0,
-                published: false,
-                updated_at: ''
-            },
-            errors: {
-                title: [],
-                course_id: [],
-                body: []
-            },
-            courses: [],
-            saveButton: {
-                class: 'btn-default',
-                msg: 'Save'
-            },
-            publishButton: {
-                class: 'btn-primary',
-                msg: 'Publish now'
-            }
-        };
-    },
-
-    methods: {
-        /**
-         * toggle publish a post
-         */
-        publish: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-                var _this2 = this;
-
-                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                if (this.post.published) {
-                                    _context.next = 6;
-                                    break;
-                                }
-
-                                _context.next = 3;
-                                return this.save();
-
-                            case 3:
-                                // then set publish status
-                                __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/posts/publish', { post: this.post.id }).then(function (res) {
-                                    _this2.post.published = true;
-                                    _this2.publishButton.class = 'btn-success';
-                                    _this2.publishButton.msg = 'published !';
-
-                                    setTimeout(function () {
-                                        _this2.publishButton.class = 'link text-danger';
-                                        _this2.publishButton.msg = 'unpublish';
-                                    }, 1000);
-                                    console.log('published');
-                                });
-                                _context.next = 7;
-                                break;
-
-                            case 6:
-                                // if already published
-                                // then un-set publish the post
-                                __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/posts/unpublish', { post: this.post.id }).then(function (res) {
-                                    _this2.post.published = false;
-                                    _this2.publishButton.class = 'btn-success';
-                                    _this2.publishButton.msg = 'unpublished !';
-
-                                    setTimeout(function () {
-                                        _this2.publishButton.class = 'btn-primary';
-                                        _this2.publishButton.msg = 'publish';
-                                    }, 1000);
-                                    console.log('unpublished');
-                                });
-
-                            case 7:
-                            case 'end':
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function publish() {
-                return _ref.apply(this, arguments);
-            }
-
-            return publish;
-        }(),
-        /**
-         * save the post
-         */
-        save: function () {
-            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
-                var _this3 = this;
-
-                var response;
-                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                if (!this.validate()) {
-                                    _context2.next = 16;
-                                    break;
-                                }
-
-                                if (!(this.post.id != 0)) {
-                                    _context2.next = 5;
-                                    break;
-                                }
-
-                                // update the post
-                                __WEBPACK_IMPORTED_MODULE_2_axios___default.a.put('/posts/' + this.post.id, this.post).then(function (res) {
-                                    console.log('updated');
-                                    _this3.saveButton.class = 'btn-success';
-                                    _this3.saveButton.msg = 'saved !';
-                                    _this3.post.updated_at = res.data.updated_at;
-                                    setTimeout(function () {
-                                        _this3.saveButton.class = 'btn-default';
-                                        _this3.saveButton.msg = 'save';
-                                    }, 1000);
-                                }).catch(function (err) {
-                                    console.log(err);
-                                });
-                                _context2.next = 16;
-                                break;
-
-                            case 5:
-                                _context2.next = 7;
-                                return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/posts', this.post);
-
-                            case 7:
-                                response = _context2.sent;
-
-                                console.log(response);
-                                _context2.next = 11;
-                                return response.data.id;
-
-                            case 11:
-                                this.post.id = _context2.sent;
-
-                                this.saveButton.class = 'btn-success';
-                                this.saveButton.msg = 'saved !';
-                                this.post.updated_at = response.data.updated_at;
-                                setTimeout(function () {
-                                    _this3.saveButton.class = 'btn-default';
-                                    _this3.saveButton.msg = 'save';
-                                }, 1000);
-
-                            case 16:
-                            case 'end':
-                                return _context2.stop();
-                        }
-                    }
-                }, _callee2, this);
-            }));
-
-            function save() {
-                return _ref2.apply(this, arguments);
-            }
-
-            return save;
-        }(),
-        /**
-         * validate the fields before submit it
-         */
-        validate: function validate() {
-            if (this.post.title == '') {
-                this.errors.title = ['Please enter a title.'];
-                return false;
-            }
-            if (this.post.course_id == 0 | this.post.course_id == '0') {
-                this.errors.course_id = ['Please select a course'];
-                return false;
-            }
-            if (this.post.body == '') {
-                this.errors.body = ['Post is too short.'];
-                return false;
-            }
-            return true;
-        },
-        /**
-         * clear the error once the user starts to type
-         */
-        clearError: function clearError(field) {
-            this.errors[field] = [];
-        },
-        /**
-         * delete image from server when it delete from the post
-         */
-        deleteImage: function deleteImage(img) {
-            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.delete('/posts/image', { data: { image: img } }).then(function (res) {
-                return console.log(img);
-            }).catch(function (error) {
-                return console.log(error);
-            });
-        }
-    },
-    mounted: function mounted() {
-        var _this4 = this;
-
-        /**
-         * get courses list
-         * to fill the courses option box
-         */
-        __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/api/courses').then(function (res) {
-            _this4.courses = res.data;
-        });
-
-        /**
-         * [when updating an post]
-         * if initialPost prop is assigned (which means: updating an post)
-         * assign this.post to initialPost
-         */
-        if (this.initialPost) {
-            this.post = JSON.parse(this.initialPost);
-        }
-        /**
-         * [when updating an post]
-         * if the existing post is published set publish button styles
-         */
-        if (this.post.published) {
-            this.publishButton.class = 'link text-danger';
-            this.publishButton.msg = 'unpublish';
-        }
-    }
-});
-
-/***/ }),
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
 /* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -30828,288 +30275,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 112 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-9 bg-light p-2" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.post.title,
-                expression: "post.title"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "postTitle",
-              name: "title",
-              placeholder: "Enter the Title"
-            },
-            domProps: { value: _vm.post.title },
-            on: {
-              keypress: function($event) {
-                _vm.clearError("title")
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.post, "title", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _vm.errors.title
-            ? _c(
-                "span",
-                { class: { "invalid-feedback d-block": _vm.errors.title } },
-                [_c("strong", [_vm._v(_vm._s(_vm.errors.title[0]))])]
-              )
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "form-group" },
-          [
-            _c("froala", {
-              attrs: { tag: "textarea", config: _vm.config },
-              model: {
-                value: _vm.post.body,
-                callback: function($$v) {
-                  _vm.$set(_vm.post, "body", $$v)
-                },
-                expression: "post.body"
-              }
-            }),
-            _vm._v(" "),
-            _vm.errors.body
-              ? _c(
-                  "span",
-                  { class: { "invalid-feedback d-block": _vm.errors.body } },
-                  [_c("strong", [_vm._v(_vm._s(_vm.errors.body[0]))])]
-                )
-              : _vm._e()
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3 pl-4" }, [
-        _c("div", { staticClass: "card bg-light p-2" }, [
-          _c("div", { staticClass: "card-header bg-light" }, [
-            _c("strong", [_vm._v("Publish")]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn ml-4",
-                class: _vm.publishButton.class,
-                on: { click: _vm.publish }
-              },
-              [_vm._v(_vm._s(_vm.publishButton.msg))]
-            )
-          ]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "list-group list-group-flush" }, [
-            _c("li", { staticClass: "list-group-item" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  { staticClass: "col-form-label", attrs: { for: "courseId" } },
-                  [_vm._v("Course:")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.post.course_id,
-                        expression: "post.course_id"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { name: "course_id" },
-                    on: {
-                      click: function($event) {
-                        _vm.clearError("course_id")
-                      },
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.post,
-                          "course_id",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "0" } }, [
-                      _vm._v("Please select the course --")
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(_vm.courses, function(course) {
-                      return _c(
-                        "option",
-                        { key: course.id, domProps: { value: course.id } },
-                        [_vm._v(_vm._s(course.title))]
-                      )
-                    })
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _vm.errors.course_id
-                  ? _c(
-                      "span",
-                      {
-                        class: {
-                          "invalid-feedback d-block": _vm.errors.course_id
-                        }
-                      },
-                      [_c("strong", [_vm._v(_vm._s(_vm.errors.course_id[0]))])]
-                    )
-                  : _vm._e()
-              ])
-            ]),
-            _vm._v(" "),
-            _vm.post.id
-              ? _c("li", { staticClass: "list-group-item" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _vm._v("\n                        See the saved post: "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn-link",
-                        attrs: {
-                          target: "blank",
-                          href: "/posts/" + _vm.post.id
-                        }
-                      },
-                      [_vm._v("In Here")]
-                    )
-                  ])
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-block mb-2",
-                class: _vm.saveButton.class,
-                on: { click: _vm.save }
-              },
-              [_vm._v(_vm._s(_vm.saveButton.msg))]
-            ),
-            _vm._v(" "),
-            _vm.post.id
-              ? _c("small", { staticClass: "text-muted" }, [
-                  _vm._v(
-                    "Last modified " +
-                      _vm._s(_vm._f("moment")(_vm.post.updated_at, "calendar"))
-                  )
-                ])
-              : _vm._e()
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("hr"),
-    _vm._v(" "),
-    _c("div", { staticClass: "accordion", attrs: { id: "accordionExample" } }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "collapse",
-          attrs: {
-            id: "collapseOne",
-            "aria-labelledby": "headingOne",
-            "data-parent": "#accordionExample"
-          }
-        },
-        [
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c("post-viewer", {
-                attrs: { "initial-post": JSON.stringify(_vm.post) }
-              })
-            ],
-            1
-          )
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header", attrs: { id: "headingOne" } },
-      [
-        _c("h5", { staticClass: "mb-0" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-link dropdown-toggle",
-              attrs: {
-                type: "button",
-                "data-toggle": "collapse",
-                "data-target": "#collapseOne",
-                "aria-expanded": "true",
-                "aria-controls": "collapseOne"
-              }
-            },
-            [_vm._v("\n        Show a Preview \n        ")]
-          )
-        ])
-      ]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-cf84ffb6", module.exports)
-  }
-}
-
-/***/ }),
+/* 112 */,
 /* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31192,7 +30358,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['postId'],
+    props: ['initialComments', 'postId'],
     components: { comment: __WEBPACK_IMPORTED_MODULE_0__Comment___default.a },
 
     data: function data() {
@@ -31250,15 +30416,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
-        var _this2 = this;
-
-        // getting comments which belongs to the post
-        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/comments/' + this.postId).then(function (res) {
-            console.log(res);
-            _this2.comments = res.data;
-        }).catch(function (err) {
-            console.log(err);
-        });
+        // initialize comments with initialComments prop
+        this.comments = JSON.parse(this.initialComments);
     }
 
 });
@@ -31398,10 +30557,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.comment.body.length > 4) {
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/comments/' + this.comment.post_id, this.newComment).then(function (res) {
                     // comment sent to the server successfully
-                    _this.children.unshift(res.data[0]);
+                    _this.children.unshift(res.data);
                     _this.newComment.body = '';
                     _this.toggleReply();
-                    console.log(res);
                 }).catch(function (err) {
                     console.log(err, err);
                     // this.errors = err.response.data.errors
@@ -31705,6 +30863,905 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 122 */,
+/* 123 */,
+/* 124 */,
+/* 125 */,
+/* 126 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(127)
+/* template */
+var __vue_template__ = __webpack_require__(128)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/study/PostViewer.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c1cb41ac", Component.options)
+  } else {
+    hotAPI.reload("data-v-c1cb41ac", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 127 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_froala_wysiwyg__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_froala_wysiwyg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_froala_wysiwyg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'post-viewer',
+    props: { initialPost: String },
+    data: function data() {
+        return {
+            user: {}
+        };
+    },
+    computed: {
+        /**
+         * convert initialPost [jsonString] to JSON object
+         */
+        post: function post() {
+            return JSON.parse(this.initialPost);
+        }
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        /**
+         * get the authenticated user
+         * to set the visibility of the edit button (only to author)
+         */
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/user').then(function (res) {
+            return _this.user = res.data;
+        }).catch(function (err) {
+            return console.log(err);
+        });
+    },
+    filters: {
+        /**
+         * capitalize the first letter of a sentence
+         */
+        capitalize: function capitalize(value) {
+            if (!value) return '';
+            value = value.toString();
+            return value.charAt(0).toUpperCase() + value.slice(1);
+        }
+    }
+});
+
+/***/ }),
+/* 128 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card mt-3" }, [
+    _vm.post.title
+      ? _c("div", { staticClass: "card-header text-center" }, [
+          _c("h3", [
+            _vm.user.id == _vm.post.user_id
+              ? _c(
+                  "a",
+                  {
+                    staticClass: "text-dark",
+                    attrs: { href: "/posts/" + _vm.post.id + "/edit" }
+                  },
+                  [
+                    _c("span", [
+                      _vm._v(_vm._s(_vm._f("capitalize")(_vm.post.title)))
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0)
+                  ]
+                )
+              : _c("span", [
+                  _vm._v(_vm._s(_vm._f("capitalize")(_vm.post.title)))
+                ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c(
+        "p",
+        { staticClass: "card-text" },
+        [
+          _c("froalaView", {
+            model: {
+              value: _vm.post.body,
+              callback: function($$v) {
+                _vm.$set(_vm.post, "body", $$v)
+              },
+              expression: "post.body"
+            }
+          })
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "small",
+      { staticClass: "pull-right p-1", staticStyle: { "font-size": ".6em" } },
+      [_c("i", { staticClass: "fa fa-pencil" }), _vm._v(" Edit")]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c1cb41ac", module.exports)
+  }
+}
+
+/***/ }),
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(130)
+/* template */
+var __vue_template__ = __webpack_require__(131)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/study/PostEditor.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-da73adf6", Component.options)
+  } else {
+    hotAPI.reload("data-v-da73adf6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 130 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_froala_wysiwyg__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_froala_wysiwyg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_froala_wysiwyg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        initialPost: {
+            required: false,
+            type: String
+        }
+    },
+    name: 'post-editor',
+    data: function data() {
+        var _this = this;
+
+        return {
+            // [for editor]
+            config: {
+                events: {
+                    // send signal to delete the image from server
+                    'froalaEditor.image.removed': function froalaEditorImageRemoved(e, editor, $img) {
+                        _this.deleteImage($img.attr('src'));
+                    },
+                    // when focus the editor
+                    // clear the errors message
+                    'froalaEditor.focus': function froalaEditorFocus(e, editor, target) {
+                        _this.clearError('body');
+                    }
+                },
+                heightMin: 600,
+                // Set the image upload parameter.
+                imageUploadParam: 'image',
+
+                // Set the image upload URL.
+                imageUploadURL: '/posts/image',
+
+                // sending csrf-token with the upload image request
+                imageUploadParams: { _token: document.head.querySelector('meta[name="csrf-token"]').content },
+
+                // Set request type.
+                imageUploadMethod: 'POST',
+
+                // Set max image size to 2MB.
+                imageMaxSize: 2 * 1024 * 1024,
+
+                // Allow to upload PNG and JPG.
+                imageAllowedTypes: ['jpeg', 'jpg', 'png']
+            },
+            post: {
+                title: '',
+                course_id: 0,
+                body: '',
+                id: 0,
+                published: false,
+                updated_at: ''
+            },
+            errors: {
+                title: [],
+                course_id: [],
+                body: []
+            },
+            courses: [],
+            saveButton: {
+                class: 'btn-default',
+                msg: 'Save'
+            },
+            publishButton: {
+                class: 'btn-primary',
+                msg: 'Publish now'
+            }
+        };
+    },
+
+    methods: {
+        /**
+         * toggle publish a post
+         */
+        publish: function () {
+            var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+                var _this2 = this;
+
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                if (this.post.published) {
+                                    _context.next = 6;
+                                    break;
+                                }
+
+                                _context.next = 3;
+                                return this.save();
+
+                            case 3:
+                                // then set publish status
+                                __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/posts/publish', { post: this.post.id }).then(function (res) {
+                                    _this2.post.published = true;
+                                    _this2.publishButton.class = 'btn-success';
+                                    _this2.publishButton.msg = 'published !';
+
+                                    setTimeout(function () {
+                                        _this2.publishButton.class = 'link text-danger';
+                                        _this2.publishButton.msg = 'unpublish';
+                                    }, 1000);
+                                    console.log('published');
+                                });
+                                _context.next = 7;
+                                break;
+
+                            case 6:
+                                // if already published
+                                // then un-set publish the post
+                                __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/posts/unpublish', { post: this.post.id }).then(function (res) {
+                                    _this2.post.published = false;
+                                    _this2.publishButton.class = 'btn-success';
+                                    _this2.publishButton.msg = 'unpublished !';
+
+                                    setTimeout(function () {
+                                        _this2.publishButton.class = 'btn-primary';
+                                        _this2.publishButton.msg = 'publish';
+                                    }, 1000);
+                                    console.log('unpublished');
+                                });
+
+                            case 7:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function publish() {
+                return _ref.apply(this, arguments);
+            }
+
+            return publish;
+        }(),
+        /**
+         * save the post
+         */
+        save: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+                var _this3 = this;
+
+                var response;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                if (!this.validate()) {
+                                    _context2.next = 16;
+                                    break;
+                                }
+
+                                if (!(this.post.id != 0)) {
+                                    _context2.next = 5;
+                                    break;
+                                }
+
+                                // update the post
+                                __WEBPACK_IMPORTED_MODULE_2_axios___default.a.put('/posts/' + this.post.id, this.post).then(function (res) {
+                                    console.log('updated');
+                                    _this3.saveButton.class = 'btn-success';
+                                    _this3.saveButton.msg = 'saved !';
+                                    _this3.post.updated_at = res.data.updated_at;
+                                    setTimeout(function () {
+                                        _this3.saveButton.class = 'btn-default';
+                                        _this3.saveButton.msg = 'save';
+                                    }, 1000);
+                                }).catch(function (err) {
+                                    console.log(err);
+                                });
+                                _context2.next = 16;
+                                break;
+
+                            case 5:
+                                _context2.next = 7;
+                                return __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/posts', this.post);
+
+                            case 7:
+                                response = _context2.sent;
+
+                                console.log(response);
+                                _context2.next = 11;
+                                return response.data.id;
+
+                            case 11:
+                                this.post.id = _context2.sent;
+
+                                this.saveButton.class = 'btn-success';
+                                this.saveButton.msg = 'saved !';
+                                this.post.updated_at = response.data.updated_at;
+                                setTimeout(function () {
+                                    _this3.saveButton.class = 'btn-default';
+                                    _this3.saveButton.msg = 'save';
+                                }, 1000);
+
+                            case 16:
+                            case 'end':
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, this);
+            }));
+
+            function save() {
+                return _ref2.apply(this, arguments);
+            }
+
+            return save;
+        }(),
+        /**
+         * validate the fields before submit it
+         */
+        validate: function validate() {
+            if (this.post.title == '') {
+                this.errors.title = ['Please enter a title.'];
+                return false;
+            }
+            if (this.post.course_id == 0 | this.post.course_id == '0') {
+                this.errors.course_id = ['Please select a course'];
+                return false;
+            }
+            if (this.post.body == '') {
+                this.errors.body = ['Post is too short.'];
+                return false;
+            }
+            return true;
+        },
+        /**
+         * clear the error once the user starts to type
+         */
+        clearError: function clearError(field) {
+            this.errors[field] = [];
+        },
+        /**
+         * delete image from server when it delete from the post
+         */
+        deleteImage: function deleteImage(img) {
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.delete('/posts/image', { data: { image: img } }).then(function (res) {
+                return console.log(img);
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+        var _this4 = this;
+
+        /**
+         * get courses list
+         * to fill the courses option box
+         */
+        __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/api/courses').then(function (res) {
+            _this4.courses = res.data;
+        });
+
+        /**
+         * [when updating an post]
+         * if initialPost prop is assigned (which means: updating an post)
+         * assign this.post to initialPost
+         */
+        if (this.initialPost) {
+            this.post = JSON.parse(this.initialPost);
+        }
+        /**
+         * [when updating an post]
+         * if the existing post is published set publish button styles
+         */
+        if (this.post.published) {
+            this.publishButton.class = 'link text-danger';
+            this.publishButton.msg = 'unpublish';
+        }
+    }
+});
+
+/***/ }),
+/* 131 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-9 bg-light p-2" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.post.title,
+                expression: "post.title"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "postTitle",
+              name: "title",
+              placeholder: "Enter the Title"
+            },
+            domProps: { value: _vm.post.title },
+            on: {
+              keypress: function($event) {
+                _vm.clearError("title")
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.post, "title", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors.title
+            ? _c(
+                "span",
+                { class: { "invalid-feedback d-block": _vm.errors.title } },
+                [_c("strong", [_vm._v(_vm._s(_vm.errors.title[0]))])]
+              )
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("froala", {
+              attrs: { tag: "textarea", config: _vm.config },
+              model: {
+                value: _vm.post.body,
+                callback: function($$v) {
+                  _vm.$set(_vm.post, "body", $$v)
+                },
+                expression: "post.body"
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.body
+              ? _c(
+                  "span",
+                  { class: { "invalid-feedback d-block": _vm.errors.body } },
+                  [_c("strong", [_vm._v(_vm._s(_vm.errors.body[0]))])]
+                )
+              : _vm._e()
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3 pl-4" }, [
+        _c("div", { staticClass: "card bg-light p-2" }, [
+          _c("div", { staticClass: "card-header bg-light" }, [
+            _c("strong", [_vm._v("Publish")]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn ml-4",
+                class: _vm.publishButton.class,
+                on: { click: _vm.publish }
+              },
+              [_vm._v(_vm._s(_vm.publishButton.msg))]
+            )
+          ]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "list-group list-group-flush" }, [
+            _c("li", { staticClass: "list-group-item" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  { staticClass: "col-form-label", attrs: { for: "courseId" } },
+                  [_vm._v("Course:")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.post.course_id,
+                        expression: "post.course_id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "course_id" },
+                    on: {
+                      click: function($event) {
+                        _vm.clearError("course_id")
+                      },
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.post,
+                          "course_id",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "0" } }, [
+                      _vm._v("Please select the course --")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.courses, function(course) {
+                      return _c(
+                        "option",
+                        { key: course.id, domProps: { value: course.id } },
+                        [_vm._v(_vm._s(course.title))]
+                      )
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _vm.errors.course_id
+                  ? _c(
+                      "span",
+                      {
+                        class: {
+                          "invalid-feedback d-block": _vm.errors.course_id
+                        }
+                      },
+                      [_c("strong", [_vm._v(_vm._s(_vm.errors.course_id[0]))])]
+                    )
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _vm.post.id
+              ? _c("li", { staticClass: "list-group-item" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._v("\n                        See the saved post: "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn-link",
+                        attrs: {
+                          target: "blank",
+                          href: "/posts/" + _vm.post.id
+                        }
+                      },
+                      [_vm._v("In Here")]
+                    )
+                  ])
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-block mb-2",
+                class: _vm.saveButton.class,
+                on: { click: _vm.save }
+              },
+              [_vm._v(_vm._s(_vm.saveButton.msg))]
+            ),
+            _vm._v(" "),
+            _vm.post.id
+              ? _c("small", { staticClass: "text-muted" }, [
+                  _vm._v(
+                    "Last modified " +
+                      _vm._s(_vm._f("moment")(_vm.post.updated_at, "calendar"))
+                  )
+                ])
+              : _vm._e()
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("div", { staticClass: "accordion", attrs: { id: "accordionExample" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "collapse",
+          attrs: {
+            id: "collapseOne",
+            "aria-labelledby": "headingOne",
+            "data-parent": "#accordionExample"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("post-viewer", {
+                attrs: { "initial-post": JSON.stringify(_vm.post) }
+              })
+            ],
+            1
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-header", attrs: { id: "headingOne" } },
+      [
+        _c("h5", { staticClass: "mb-0" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link dropdown-toggle",
+              attrs: {
+                type: "button",
+                "data-toggle": "collapse",
+                "data-target": "#collapseOne",
+                "aria-expanded": "true",
+                "aria-controls": "collapseOne"
+              }
+            },
+            [_vm._v("\n        Show a Preview \n        ")]
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-da73adf6", module.exports)
+  }
+}
 
 /***/ })
 ],[17]);

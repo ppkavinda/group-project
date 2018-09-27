@@ -77,10 +77,9 @@ export default {
                 axios.post('/comments/' + this.comment.post_id, this.newComment)
                     .then(res => {
                         // comment sent to the server successfully
-                        this.children.unshift(res.data[0])
+                        this.children.unshift(res.data)
                         this.newComment.body = ''
                         this.toggleReply()
-                        console.log(res)
                     }).catch(err => {
                         console.log(err, err)
                         // this.errors = err.response.data.errors

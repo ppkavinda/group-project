@@ -24,7 +24,7 @@ import comment from './Comment'
 import axios from 'axios'
 
 export default {
-    props: ['postId'],
+    props: ['initialComments', 'postId'],
     components: {comment},
 
     data: function () {
@@ -81,15 +81,8 @@ export default {
         }
     },
     mounted: function () {
-        // getting comments which belongs to the post
-        axios.get('/comments/' + this.postId)
-            .then(res => {
-                console.log(res)
-                this.comments = res.data
-            })
-            .catch(err => {
-                console.log(err)
-        })
+        // initialize comments with initialComments prop
+        this.comments = JSON.parse(this.initialComments)
     }
     
 }

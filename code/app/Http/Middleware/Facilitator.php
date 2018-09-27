@@ -16,7 +16,7 @@ class Facilitator
     public function handle($request, Closure $next)
     {
         if ($request->user()->role > 2) {
-            abort(404);
+            abort(401, 'Unauthorized !');
         }
         return $next($request);
     }
