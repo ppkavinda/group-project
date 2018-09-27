@@ -29475,7 +29475,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("h3", { staticClass: "w3l_header mt-4 mb-5" }, [
       _vm._v("Edit your "),
-      _c("span", [_vm._v("details")])
+      _c("span", [_vm._v("detail")])
     ])
   }
 ]
@@ -30358,7 +30358,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['postId'],
+    props: ['initialComments', 'postId'],
     components: { comment: __WEBPACK_IMPORTED_MODULE_0__Comment___default.a },
 
     data: function data() {
@@ -30416,15 +30416,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
-        var _this2 = this;
-
-        // getting comments which belongs to the post
-        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/comments/' + this.postId).then(function (res) {
-            console.log(res);
-            _this2.comments = res.data;
-        }).catch(function (err) {
-            console.log(err);
-        });
+        // initialize comments with initialComments prop
+        this.comments = JSON.parse(this.initialComments);
     }
 
 });
@@ -30564,10 +30557,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.comment.body.length > 4) {
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/comments/' + this.comment.post_id, this.newComment).then(function (res) {
                     // comment sent to the server successfully
-                    _this.children.unshift(res.data[0]);
+                    _this.children.unshift(res.data);
                     _this.newComment.body = '';
                     _this.toggleReply();
-                    console.log(res);
                 }).catch(function (err) {
                     console.log(err, err);
                     // this.errors = err.response.data.errors
