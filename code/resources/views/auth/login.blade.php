@@ -14,7 +14,7 @@
                 <div class="login-logo">
                     <a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .6"></a>
                 </div>
-                <div class="card-body">
+                <div class="card-body" > 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -68,7 +68,7 @@
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>
-                        </div>
+                        </div>  
                     </form>
                 </div>
             </div>
