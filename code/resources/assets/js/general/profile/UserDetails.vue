@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h3 class="w3l_header mt-4 mb-5">Edit your <span>details</span></h3>
+    <h3 class="w3l_header mt-4 mb-5">Edit your <span>detail</span></h3>
     <div class="row">
         <div class="col-md-6">
             <form method="POST" @submit.prevent="updateDetails">
