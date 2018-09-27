@@ -37,8 +37,8 @@ Vue.component('register', require('./pages/Register.vue'))
 Vue.component('nav-bar', require('./partials/NavBar.vue'));
 Vue.component('side-bar', require('./partials/SideBar.vue'));
 Vue.component('user-details', require('./general/profile/UserDetails'));
-Vue.component('post-viewer', require('./study/viewer'))
-Vue.component('post-editor', require('./study/editor'))
+Vue.component('post-viewer', require('./study/PostViewer'))
+Vue.component('post-editor', require('./study/PostEditor'))
 Vue.component('post-forum', require('./study/PostForum'))
 
 const app = new Vue({

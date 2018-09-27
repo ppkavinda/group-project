@@ -23,7 +23,7 @@ Route::view('/admin', 'admin.index');
 Route::get('/profile', 'UserController@index')->middleware('auth');
 Route::get('/profile/{user}', 'UserController@show');
 Route::post('/users/{user}/edit', 'UserController@edit');
-
+Route::get('/user', 'UserController@get');
 // shop
 Route::view('/shop', 'shop.index');
 

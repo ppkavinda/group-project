@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin123'),
             'nic' => '123456789V',
+            'api_token' => str_random(60),
             'role' => 1
         ]);
 
@@ -26,6 +27,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'fac@gmail.com',
             'password' => bcrypt('fac123'),
             'nic' => '121456789V',
+            'api_token' => str_random(60),
             'role' => 2
         ]);
         DB::table('facilitators')->insert([
@@ -38,6 +40,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'ent@gmail.com',
             'password' => bcrypt('ent123'),
             'nic' => '123412341v',
+            'api_token' => str_random(60),
             'role' => 3
         ]);
         DB::table('entrepreneurs')->insert([
@@ -50,6 +53,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'custom@gmail.com',
             'password' => bcrypt('custom123'),
             'nic' => '123412333v',
+            'api_token' => str_random(60),
             'role' => 4
         ]);
         DB::table('customers')->insert([
