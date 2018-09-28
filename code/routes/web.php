@@ -44,6 +44,7 @@ Route::resource('posts', 'PostController');
 
 Route::get('/comments/{post}', 'CommentController@show');
 Route::post('/comments/{id}', 'CommentController@store');
+Route::delete('/comments/{comment}', 'CommentController@destroy');
 
 // general
 Route::view('contact', 'contact');

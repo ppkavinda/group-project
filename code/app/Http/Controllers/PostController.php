@@ -68,13 +68,6 @@ class PostController extends Controller
             'body' => 'required|min:20',
         ]);
 
-        // $post = new Post;
-        // $post->body = $request->body;
-        // $post->title = $request->title;
-        // $post->user_id = auth()->id();
-        // $post->course_id = $request->course_id;
-        // $post->save();
-
         $post = Post::create([
             'body' => $request->body,
             'title' => $request->title,

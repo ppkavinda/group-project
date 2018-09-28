@@ -27,6 +27,7 @@ class PostsTest extends TestCase
             ->assertSee($this->post->title);
     }
 
+
     public function test_auth_user_can_see_comments_associated_with_a_post () 
     {
         $this->be(factory('App\User')->create());
@@ -37,23 +38,6 @@ class PostsTest extends TestCase
                 ->assertSee($comment->id);
     }
 
-    public function test_auth_user_can_reply_to_comments ()
-    {
-        $this->be(factory('App\User')->create());
-
-        $comment = factory('App\Comment')->make(['post_id' => $this->post->id]);
-
-        $this->post("/comments/{$this->post->id}", $comment->toArray())
-            ->assertStatus(201);
-    }
-
-    public function test_guest_user_cannot_reply_to_comments ()
-    {
-        $comment = factory('App\Comment')->make(['post_id' => $this->post->id]);
-
-        $this->post("/comments/{$this->post->id}", $comment->toArray())
-            ->assertRedirect('/login');
-    }
 
     public function test_authorized_user_cannot_create_a_post () 
     {
@@ -64,6 +48,7 @@ class PostsTest extends TestCase
         $this->post('/posts', $post->toArray())
             ->assertStatus(401);
     }
+
 
     public function test_authorized_user_can_create_a_post () 
     {

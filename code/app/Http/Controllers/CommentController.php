@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     public function __construct () {
-        $this->middleware('auth')->only('store', 'show');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -99,6 +99,16 @@ class CommentController extends Controller
      */
     public function destroy(comment $comment)
     {
-        //
+        if ($comment->user_id != auth()->id()) {
+            abort(403);
+        }
+
+        $comment->delete();
+
+        if (request()->wantsJson()) {
+            return response([], 204);
+        }
+
+        return back();
     }
 }

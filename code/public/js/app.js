@@ -14197,6 +14197,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__(19);
 
 window.Vue = __webpack_require__(16);
+window.Event = new Vue();
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30353,6 +30354,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -30363,10 +30374,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            comments: [], // all previous the comments
+            comments: [], // all comments
             comment: { // new comment [at comment box]
-                body: '',
-                parend_id: 0
+                body: ''
             },
             commentButton: {
                 class: 'btn-primary',
@@ -30377,26 +30387,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         };
     },
+
     methods: {
+        /**
+         * delete comment
+         */
+        deleteComment: function deleteComment(node) {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.delete('/comments/' + node.id).then(function (res) {
+                _this.comments.splice(_this.comments.indexOf(node), 1);
+            }).catch(function (err) {
+                console.log(err);
+            });
+        },
+
         /**
          * posting the comment
          */
         addComment: function addComment() {
-            var _this = this;
+            var _this2 = this;
 
             __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/comments/' + this.postId, this.comment).then(function (res) {
                 // successfully sent comment to the server
-                _this.comments.unshift(res.data[0]);
-                _this.comment.body = '';
-                _this.commentButton.class = 'btn-success';
-                _this.commentButton.msg = 'Done !';
+                _this2.comments.unshift(res.data);
+                _this2.comment.body = '';
+                _this2.commentButton.class = 'btn-success';
+                _this2.commentButton.msg = 'Done !';
                 setTimeout(function () {
-                    _this.commentButton.class = 'btn-primary', _this.commentButton.msg = 'Add Another Comment';
+                    _this2.commentButton.class = 'btn-primary', _this2.commentButton.msg = 'Add Another Comment';
                 }, 2000);
 
                 console.log(res.data);
             }).catch(function (err) {
-                _this.errors = err.response.data.errors;
+                _this2.errors = err.response.data.errors;
                 console.log(err.response.data.errors);
             });
         },
@@ -30509,6 +30533,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -30527,7 +30554,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            name: '',
             newComment: {
                 body: '',
                 parent_id: this.comment.id
@@ -30548,20 +30574,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         /**
+         * delete a comment
+         */
+        deleteComment: function deleteComment(node) {
+            this.$emit('deleted', node);
+        },
+        deleteSubComment: function deleteSubComment(node) {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/comments/' + node.id).then(function (res) {
+                _this.children.splice(_this.children.indexOf(node), 1);
+            }).catch(function (err) {
+                console.log(err);
+            });
+        },
+
+        /**
          * add a reply
          */
         addComment: function addComment() {
-            var _this = this;
+            var _this2 = this;
 
             // if comment is longer than 4 chars [client validation]
             if (this.comment.body.length > 4) {
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/comments/' + this.comment.post_id, this.newComment).then(function (res) {
                     // comment sent to the server successfully
-                    _this.children.unshift(res.data);
-                    _this.newComment.body = '';
-                    _this.toggleReply();
+                    _this2.children.push(res.data);
+                    _this2.newComment.body = '';
+                    _this2.toggleReply();
                 }).catch(function (err) {
                     console.log(err, err);
+                    _this2.errors = err.response.data.errors;
+
                     // this.errors = err.response.data.errors
                 });
             }
@@ -30578,6 +30622,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
          */
         clearError: function clearError(field) {
             this.errors[field] = [];
+        }
+    },
+    computed: {
+        /**
+         * determine weather the user authorized or not to delete comment
+         */
+        authorized: function authorized() {
+            return this.comment.user_id == window.App.user.id;
         }
     },
     mounted: function mounted() {
@@ -30599,6 +30651,22 @@ var render = function() {
       "div",
       { staticClass: "card-body" },
       [
+        _vm.authorized
+          ? _c(
+              "button",
+              {
+                staticClass: "close",
+                attrs: { type: "button", "aria-label": "Close" },
+                on: {
+                  click: function($event) {
+                    _vm.deleteComment(_vm.comment)
+                  }
+                }
+              },
+              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+            )
+          : _vm._e(),
+        _vm._v(" "),
         _c("img", {
           staticClass: "float-left mr-3",
           attrs: {
@@ -30627,10 +30695,11 @@ var render = function() {
           _vm._v(_vm._s(_vm.comment.body))
         ]),
         _vm._v(" "),
-        _vm._l(_vm.children, function(child) {
+        _vm._l(_vm.children, function(child, i) {
           return _c("comment", {
-            key: child.id,
-            attrs: { reply: false, comment: child }
+            key: i,
+            attrs: { reply: false, comment: child },
+            on: { deleted: _vm.deleteSubComment }
           })
         }),
         _vm._v(" "),
@@ -30828,7 +30897,8 @@ var render = function() {
                 reply: true,
                 initialChildren: _vm.getChildren(comment.id),
                 comment: comment
-              }
+              },
+              on: { deleted: _vm.deleteComment }
             })
           : _vm._e()
       })

@@ -20,7 +20,7 @@ class CoursesTest extends TestCase
         $this->course = factory('App\Course')->create();
     }
 
-    public function test_user_can_view () 
+    public function test_user_can_view_all_courses () 
     {
         $this->get('/courses')
             ->assertSee($this->course->title);

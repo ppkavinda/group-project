@@ -15,7 +15,17 @@
     <hr>
     <h4 v-if="!comments.length" class="m-3">No comments posted yet. Be the first one to add one.</h4>
     <h5 v-else class="my-3">Comments</h5>
-    <comment v-for="comment in comments" v-if="!comment.parent_id" :reply="true" :initialChildren="getChildren(comment.id)" :key="comment.id" :comment="comment"></comment>
+
+    <comment
+        @deleted="deleteComment"
+        v-for="comment in comments" 
+        v-if="!comment.parent_id"
+        :reply="true" 
+        :initialChildren="getChildren(comment.id)" 
+        :key="comment.id" 
+        :comment="comment">
+    </comment>
+
 </div>
 </template>
 
@@ -27,12 +37,11 @@ export default {
     props: ['initialComments', 'postId'],
     components: {comment},
 
-    data: function () {
+    data () {
         return {
-            comments: [], // all previous the comments
+            comments: [], // all comments
             comment: { // new comment [at comment box]
                 body: '',
-                parend_id: 0,
             },
             commentButton: {
                 class: 'btn-primary',
@@ -45,13 +54,25 @@ export default {
     },
     methods: {
         /**
+         * delete comment
+         */
+        deleteComment (node) {
+            axios.delete(`/comments/${node.id}`)
+                .then(res => {
+                    this.comments.splice(this.comments.indexOf(node),1);
+                })
+                .catch(err => {
+                    console.log(err)
+            })
+        },
+        /**
          * posting the comment
          */
         addComment: function () {
             axios.post('/comments/' + this.postId, this.comment)
                 .then(res => {
                     // successfully sent comment to the server
-                    this.comments.unshift(res.data[0])
+                    this.comments.unshift(res.data)
                     this.comment.body = ''
                     this.commentButton.class = 'btn-success'
                     this.commentButton.msg = 'Done !'
