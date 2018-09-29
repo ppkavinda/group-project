@@ -20,7 +20,7 @@ class CoursesTest extends TestCase
         $this->course = factory('App\Course')->create();
     }
 
-    public function test_user_can_view () 
+    public function test_user_can_view_all_courses () 
     {
         $this->get('/courses')
             ->assertSee($this->course->title);
@@ -31,6 +31,16 @@ class CoursesTest extends TestCase
         $this->get($this->course->path())
             ->assertSee($this->course->description);
     }
+
+    public function test_user_can_enroll_to_a_course ()
+    {
+        $this->be(factory('App\User')->create());
+
+        $this->get("/enroll/{$this->course->id}");
+
+        $this->assertDatabaseHas('enroll', ['user_id' => auth()->id(), 'course_id' => $this->course->id]);
+    }
+
 
     public function test_guest_user_cannot_see_posts_which_belongs_a_course () 
     {

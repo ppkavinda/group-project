@@ -3,10 +3,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 { 
-    protected $fillable = ['title' , 'body', 'user_id', 'course_id'];
+    protected $fillable = ['title' ,'body', 'user_id', 'course_id', 'cover_img'];
 
     public function path () {
         return '/posts/' . $this->id;
+    }
+
+    public function getCoverImgAttribute ($cover) {
+        return '/storage/' . $cover ?: '/storage/img/posts/covers/default.jpg';
     }
 
     public function videos () {
@@ -35,4 +39,5 @@ class Post extends Model
             return $firstP;
         }
     }
+
 }

@@ -1,6 +1,9 @@
 <template>
 <div class="card my-3 bg-light">
-  <div class="card-body">
+<div class="card-body">
+    <button @click="deleteComment(comment)" v-if="authorized" type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button> 
     <img class="float-left mr-3" :src="comment.user.profile_pic" alt="avatar" width="50px">
     <span class="card-title">
         <a class="font-weight-bold text-capitalize" :href="'/profile/' +  comment.user.id">{{ comment.user.name }}</a>
@@ -8,7 +11,7 @@
     </span>
     <p class="card-text blockquote">{{ comment.body }}</p>
 
-    <comment v-for="child in children" :key="child.id" :reply="false" :comment="child"></comment>
+    <comment @deleted="deleteSubComment" v-for="(child, i) in children" :key="i" :reply="false" :comment="child"></comment>
 
     <a v-if="reply" href="#" @click.prevent="toggleReply" class="link link-primary btn-link"><small>{{ replyButton.msg }}</small></a>
     <!-- add comment form -->
@@ -48,7 +51,6 @@ export default {
 
     data: function () {
         return {
-            name: '',
             newComment: {
                 body: '',
                 parent_id: this.comment.id,
@@ -69,6 +71,21 @@ export default {
     },
     methods: {
         /**
+         * delete a comment
+         */
+        deleteComment (node) {
+            this.$emit('deleted', node)
+        },
+        deleteSubComment (node) {
+            axios.delete(`/comments/${node.id}`)
+                .then( res => {
+                    this.children.splice(this.children.indexOf(node),1);
+                })
+                .catch(err => {
+                    console.log(err)
+            })
+        },
+        /**
          * add a reply
          */
         addComment: function () {
@@ -77,11 +94,13 @@ export default {
                 axios.post('/comments/' + this.comment.post_id, this.newComment)
                     .then(res => {
                         // comment sent to the server successfully
-                        this.children.unshift(res.data)
+                        this.children.push(res.data)
                         this.newComment.body = ''
                         this.toggleReply()
                     }).catch(err => {
                         console.log(err, err)
+                        this.errors = err.response.data.errors
+
                         // this.errors = err.response.data.errors
                 })
             }
@@ -100,7 +119,16 @@ export default {
             this.errors[field] = []
         }
     },
-    mounted: function () {
+    computed: {
+        /**
+         * determine weather the user authorized or not to delete comment
+         */
+        authorized () {
+            return this.comment.user_id == window.App.user.id;
+        },
+
+    },
+    mounted () {
         // testing purposes
         console.log('children', this.comment.id, this.children)
     }
