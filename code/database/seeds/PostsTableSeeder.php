@@ -36,7 +36,6 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
 <li>Let set for around a month, turning every day or two at first, and then every week later on. This is to let your soap dry out and harden.</li>
 </ol>',
             'user_id' => 1,
-            'post_image' => '/dist/img/post/post1_1.jpg',
         ]);
      
       
@@ -64,7 +63,6 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
 <li>We can sterilized  bottle and pack chili paste in to bottles.</li>
 </ol>',
             'user_id' => 1,
-            'post_image' => '/dist/img/post/post3_1.jpg',
         ]);
         \App\Post::create([
             'title' => 'Introduction about Candles Manufacturing',
@@ -79,7 +77,6 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
             
             </p>',
             'user_id' => 1,
-            'post_image' => '/dist/img/post/post4_1.jpg',
         ]);
          \App\Post::create([
             'title' => 'The current market nature  for candles',
@@ -90,7 +87,6 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
             </p>
             ',
             'user_id' => 1,
-            'post_image' => '/dist/img/post/post4_2.jpg',
         ]);
         \App\Post::create([
             'title' => 'Before the onset of candles',
@@ -108,7 +104,6 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
             </p>
             ',
             'user_id' => 1,
-            'post_image' => '/dist/img/post/post4_3.jpg',
         ]);
         \App\Post::create([
             'title' => 'Requried Equipment for manufacturing',
@@ -141,7 +136,6 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
             
              ',
             'user_id' => 1,
-            'post_image' => '/dist/img/post/post4_4.jpg',
         ]);
         
         \App\Post::create([
@@ -163,7 +157,6 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
             
             ',
             'user_id' => 1,
-            'post_image' => '/dist/img/post/post4_5.jpg',
         ]);
 
         \App\Post::create([
@@ -171,7 +164,7 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
             'body' => '<div class="page-title" id="ph-title" style="margin: 0px 0px 10px; outline: none; padding: 6px 10px; min-height: 50px; border-bottom: 1px solid rgb(221, 221, 221); color: rgb(68, 68, 68); font-family: Arial, Helvetica, sans-serif; font-size: 14px;"><h1 style="outline: none; padding: 0px; color: rgb(68, 68, 68); font-size: 30px;">Chilli Sauce Recipes</h1><div class="page-body" style="margin: 0px; outline: none; padding: 0px; text-align: justify; line-height: 22px; color: rgb(68, 68, 68); font-family: Arial, Helvetica, sans-serif; font-size: 14px;"><p style="margin-top: 10px; margin-bottom: 10px; outline: none; padding: 0px;">The process of making your own sauce will teach you a lot about the sauces you can buy, not least the work that goes into them, but also about the impact that the various ingredients have on the final flavor. All that said, just have fun!</p><p style="text-align: center; margin-top: 10px; margin-bottom: 10px; outline: none; padding: 0px;"><img data-filename="chillipaste.png" style="width: 320px;" src="/dist/img/posts/15371068850.png"><br></p><p style="margin-top: 10px; margin-bottom: 10px; outline: none; padding: 0px;">If you\'re a regular user of&nbsp;<a href="https://www.chilliworld.com/hot-chilli-sauce" style="margin: 0px; outline: none; padding: 0px; text-decoration-line: underline; color: inherit; cursor: pointer;">hot chilli sauce</a>&nbsp;or like to experiment you\'ll know that the taste of sauces varies greatly, based not least on where in the world the originate. We\'ve put together a starting list of sauce recipes from which you can select your favourite style of sauce or, if you\'re up for it, work your way through the lot!</p><p style="margin-top: 10px; margin-bottom: 10px; outline: none; padding: 0px;"><b style="margin: 0px; outline: none; padding: 0px;"><a name="Handling_Hot_Peppers" style="margin: 0px; outline: none; padding: 0px; text-decoration-line: underline; cursor: pointer;">Attention:</a></b>&nbsp;Take precautions when handling hot peppers. Many peppers will have a burning effect on sensitive skin or sensitive areas of the body, particularly the eyes. When handling hot peppers it is best to wear latex kitchen gloves. If you don\'t have these rub some olive oil into your hands. Whatever you do, DO NOT touch your eyes or face while handling hot peppers. When you are finished, discard gloves if you are using them and wash your hands with soap and water.</p><table width="100%" border="0" cellspacing="4" cellpadding="0" style="margin: 0px; outline: none; padding: 0px; width: 876px;"><tbody style="margin: 0px; outline: none; padding: 0px;"><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;">&nbsp;</td></tr><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;"><table width="100%" border="0" cellspacing="4" cellpadding="0" style="margin: 0px; outline: none; padding: 0px; width: 876px;"><tbody style="margin: 0px; outline: none; padding: 0px;"><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;"><a href="https://www.chilliworld.com/factfile/chilli-sauce-recipes/african-hot-sauce" style="margin: 0px; outline: none; padding: 0px; text-decoration-line: underline; color: inherit; cursor: pointer;">African Hot Sauce</a></td></tr><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;"><a href="https://www.chilliworld.com/factfile/chilli-sauce-recipes/bajan-seasoning-hot-sauce" style="margin: 0px; outline: none; padding: 0px; text-decoration-line: underline; color: inherit; cursor: pointer;">Bajan Seasoning Hot Sauce</a></td></tr><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;"><a href="https://www.chilliworld.com/factfile/chilli-sauce-recipes/belizean-habanero-sauce" style="margin: 0px; outline: none; padding: 0px; text-decoration-line: underline; color: inherit; cursor: pointer;">Belizean Style Habanero Sauce</a></td></tr><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;"><a href="https://www.chilliworld.com/factfile/chilli-sauce-recipes/harissa-hot-sauce" style="margin: 0px; outline: none; padding: 0px; text-decoration-line: underline; color: inherit; cursor: pointer;">Harissa Style Hot Sauce</a></td></tr><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;"><a href="https://www.chilliworld.com/factfile/chilli-sauce-recipes/mexican-style-fruity-sauce" style="margin: 0px; outline: none; padding: 0px; text-decoration-line: underline; color: inherit; cursor: pointer;">Mexican Style Fruity Sauce</a></td></tr><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;"><a href="https://www.chilliworld.com/factfile/chilli-sauce-recipes/piri-piri-sauce" style="margin: 0px; outline: none; padding: 0px; text-decoration-line: underline; color: inherit; cursor: pointer;">Piri-Piri Sauce</a></td></tr><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;"><a href="https://www.chilliworld.com/factfile/chilli-sauce-recipes/thai-sweet-chilli-sauce" style="margin: 0px; outline: none; padding: 0px; text-decoration-line: underline; color: inherit; cursor: pointer;">Thai Sweet Chilli Sauce</a></td></tr><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;">&nbsp;</td></tr><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;">and why not try</td></tr><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;"><a href="https://www.chilliworld.com/factfile/chilli-sauce-recipes/mama-jacqs-sweet-and-spicy-hot-wings" style="margin: 0px; outline: none; padding: 0px; text-decoration-line: underline; color: inherit; cursor: pointer;">Mama Jacq\'s Sweet and Spicy Hot Wings</a></td></tr></tbody></table></td></tr><tr style="margin: 0px; outline: none; padding: 0px;"><td style="margin: 0px; outline: none; padding: 0px;">&nbsp;</td></tr></tbody></table><center><iframe width="560" height="315" src="https://www.youtube.com/embed/zb2IVK2A_QI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center><p style="margin-top: 10px; margin-bottom: 10px; outline: none; padding: 0px;">Feel free to email us with your stories and experiences of creating your own sauces and any additional information you think might be useful to fellow sauce brewers. The all important chillies, add a few ingredients and a shake of magic and Hey Presto! This is the best way to learn about sauces and what makes them happen. One thing\'s for sure, you\'ll appreciate all the work that goes into some of the great tasting commercial brands.</p></div></div>',
             'course_id' => 2,
             'user_id' => 1,
-            'post_image' => '/dist/img/post/post4_5.jpg',
+            'cover_img' => '/dist/img/post/post4_5.jpg',
         ]);
     }
 }

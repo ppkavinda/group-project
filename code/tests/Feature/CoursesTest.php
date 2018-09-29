@@ -32,6 +32,16 @@ class CoursesTest extends TestCase
             ->assertSee($this->course->description);
     }
 
+    public function test_user_can_enroll_to_a_course ()
+    {
+        $this->be(factory('App\User')->create());
+
+        $this->get("/enroll/{$this->course->id}");
+
+        $this->assertDatabaseHas('enroll', ['user_id' => auth()->id(), 'course_id' => $this->course->id]);
+    }
+
+
     public function test_guest_user_cannot_see_posts_which_belongs_a_course () 
     {
         $post = factory('App\Post')->create(['course_id' => $this->course->id]);

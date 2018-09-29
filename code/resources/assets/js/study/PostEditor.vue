@@ -19,11 +19,13 @@
         </div>
         <div class="col-md-3 pl-4">
 
-            <div class="card bg-light p-2">
+            <!-- publish -->
+            <div class="card bg-light p-2 mb-3">
                 <div class="card-header bg-light">
                     <strong>Publish</strong>
                     <button @click="publish" class="btn ml-4" :class="publishButton.class">{{ publishButton.msg }}</button>
                 </div>
+
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <div class="form-group">
@@ -50,6 +52,22 @@
                     <small v-if="post.id" class="text-muted">Last modified {{ post.updated_at | moment("calendar") }}</small>
                 </div>
             </div>
+            <!-- featured image -->
+            <div class="card bg-light p-2">
+                <div class="card-header bg-light">
+                    <strong>Cover Image</strong>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="form-group text-center">
+                            <img :src="post.cover_img" :alt="post.title" class="img-fluid">
+                            <form action="POST">
+                                <image-upload @loaded="onCoverLoaded"></image-upload>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
 
     </div>
@@ -58,8 +76,9 @@
     <div class="accordion" id="accordionExample">
         <div class="card-header" id="headingOne">
         <h5 class="mb-0">
-            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Show a Preview 
+            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" 
+                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Show a Preview 
             </button>
         </h5>
         </div>
@@ -76,7 +95,7 @@
 
 <script>
 import VueFroala from 'vue-froala-wysiwyg';
-import axios from 'axios'
+import ImageUpload from './ImageUpload.vue';
 
 export default {
     props: {
@@ -85,6 +104,7 @@ export default {
             type: String,
         },
     },
+    components: {ImageUpload},
     name: 'post-editor',
     data () {
         return {
@@ -125,6 +145,7 @@ export default {
                 course_id: 0,
                 body: '',
                 id: 0,
+                cover_img: '',
                 published: false,
                 updated_at: '',
             },
@@ -145,6 +166,23 @@ export default {
         }
     },
     methods: {
+        /**
+         * handling the upload cover image
+         */
+        onCoverLoaded (cover) {
+            this.post.cover_img = cover.src
+            this.persistCover(cover.file)
+        },
+        /**
+         * saving the loaded cover image
+         */
+        persistCover (cover) {
+            let data = new FormData();
+            data.append('cover', cover)
+            axios.post(`/posts/${this.post.id}/cover`, data)
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+        },
         /**
          * toggle publish a post
          */

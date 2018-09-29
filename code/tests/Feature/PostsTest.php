@@ -9,33 +9,41 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class PostsTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * test posts.
-     *
-     */
+
     public function setUp () {
         Parent::setUp();
 
         $this->post = factory('App\Post')->create();
     }
 
-    public function test_auth_user_can_view_a_post()
+    public function test_enrolled_user_can_view_a_post()
     {
         $this->be(factory('App\User')->create());
+        $this->get("/enroll/{$this->post->course->id}");
 
         $this->get($this->post->path())
             ->assertSee($this->post->title);
     }
 
-
-    public function test_auth_user_can_see_comments_associated_with_a_post () 
+    
+    public function test_unenrolled_users_cannot_view_a_post ()
     {
         $this->be(factory('App\User')->create());
+
+        $this->get($this->post->path())
+            ->assertDontSee($this->post->title);
+    }
+
+
+    public function test_enrolled_user_can_see_comments_associated_with_a_post () 
+    {
+        $this->be(factory('App\User')->create());
+        $this->get("/enroll/{$this->post->course->id}");
 
         $comment = factory('App\Comment')->create(['post_id' => $this->post->id]);
 
         $this->get($this->post->path())
-                ->assertSee($comment->id);
+            ->assertSee($comment->body);
     }
 
 

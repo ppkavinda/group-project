@@ -37,9 +37,10 @@ Route::get('/courses/{course}', 'CourseController@show');
 
 Route::get('/posts/get/{post}', 'PostController@getOne');
 Route::post('/posts/image', 'PostController@uploadImage');
+Route::delete('/posts/image', 'PostController@deleteImage');
+Route::post('/posts/{post}/cover', 'PostController@cover');
 Route::post('/posts/publish', 'PostController@publish');
 Route::post('/posts/unpublish', 'PostController@unpublish');
-Route::delete('/posts/image', 'PostController@deleteImage');
 Route::resource('posts', 'PostController');
 
 Route::get('/comments/{post}', 'CommentController@show');
