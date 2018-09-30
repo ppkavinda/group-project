@@ -14,6 +14,7 @@
         @if (auth()->user()->isFacilitator())
         <h5 class="m-3">Your Posts
             <a href="/posts/create" class="btn btn-primary ml-3">New Post</a>
+            <a href="/videos/upload" class="btn btn-primary ml-3">Upload Video</a>
         </h5>
         <ul class="list-group m-2">
             @foreach ($user->posts as $post)
