@@ -10,11 +10,7 @@ class Post extends Model
     }
 
     public function getCoverImgAttribute ($cover) {
-        return '/storage/' . $cover ?: '/storage/img/posts/covers/default.jpg';
-    }
-
-    public function videos () {
-        return $this->hasMany(Videos::class);
+        return '/storage/' . ($cover ?: 'img/posts/covers/default.jpg');
     }
 
     public function course () {

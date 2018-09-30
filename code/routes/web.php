@@ -43,6 +43,9 @@ Route::post('/posts/publish', 'PostController@publish');
 Route::post('/posts/unpublish', 'PostController@unpublish');
 Route::resource('posts', 'PostController');
 
+Route::get('/videos/upload', 'VideoController@create');
+Route::post('/videos/upload', 'VideoController@store');
+
 Route::get('/comments/{post}', 'CommentController@show');
 Route::post('/comments/{id}', 'CommentController@store');
 Route::delete('/comments/{comment}', 'CommentController@destroy');
