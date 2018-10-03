@@ -1,0 +1,20 @@
+<?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class ProductsTest extends TestCase
+{
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function test_authorized_user_can_add_products_to_the_store ()
+    {
+        $this->assertTrue(false);
+    }
+}

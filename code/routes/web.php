@@ -28,7 +28,7 @@ Route::get('/user', 'UserController@get');
 Route::view('/shop', 'shop.index');
 Route::view('/mens', 'shop.mens');
 Route::view('/woman', 'shop.woman');
-Route::view('/single', 'shop.single');
+Route::get('/products/{product}', 'ProductController@show');
 
 // study
 Route::view('/study', 'study.index');

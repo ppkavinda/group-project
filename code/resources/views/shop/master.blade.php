@@ -16,7 +16,7 @@
 {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
 <!-- Ionicons -->
 {{-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
-
+<link rel="stylesheet" href="/css/flexslider.css">
 <link rel="stylesheet" href="/css/shop.css">
 <!-- //for bootstrap working -->
 {{-- <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet"> --}}
@@ -36,6 +36,7 @@
 <script src="/js/manifest.js"></script>
 <script src="/js/vendor.js"></script>
 <script src="/js/app.js"></script>
+<script src="/js/jquery.flexslider.js"></script>
 
 <!-- js -->
 {{-- <script src="js/modernizr.custom.js"></script> --}}
