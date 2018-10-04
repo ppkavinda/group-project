@@ -70,7 +70,7 @@
 						<li class="nav-item menu__item {{ Request::is('register') ? 'menu__item--current' : '' }}">
 								<a class="nav-link menu__link"  data-toggle="modal" data-target="#myModal1">
 								<i class="fa fa-user" aria-hidden="true"></i> Sign Up </a>
-						</li>
+				+		</li>
 						@else
 						
 						<li class="nav-item menu__item {{ Request::is('/cart') ? 'menu__item--current' : '' }}">
@@ -96,7 +96,7 @@
 						</li>
 						@endguest
 						</ul>
-				</div>
+				<+/div>
 			  </div>
 			</nav>	
 <!-- login modal -->
@@ -119,25 +119,24 @@
               
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
+                        
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="E-mail" required autofocus>
+                           <span class="input-group-text fa fa-envelope form-control-feedback ">
+                           </span>
+                           	   <div class="col-md-6 offset-md-4">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email"  name="email" value="{{ old('email') }}" placeholder="E-mail" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                              </div>  
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
+                            <span class="input-group-text fa fa-key form-control-feedback "></span>
+                              <div class="col-md-6 offset-md-4">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
 
                                 @if ($errors->has('password'))
