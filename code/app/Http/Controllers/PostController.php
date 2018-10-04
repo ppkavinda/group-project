@@ -36,9 +36,17 @@ class PostController extends Controller
 
     /**
      * display a perticular post
-     * auth user can access
+     * enrolled user can access
      */
     public function show(Post $post) {
+        if (
+            !request()->user()->courses()
+                ->where('course_id', '=', $post->course->id)
+                ->count()
+            ) {
+                return redirect("/courses/{$post->course->id}");
+            }
+
         return view('study.posts.index', compact('post'));
     }
   
@@ -68,15 +76,14 @@ class PostController extends Controller
             'body' => 'required|min:20',
         ]);
 
-        $post = new Post;
-        $post->body = $request->body;
-        $post->title = $request->title;
-        $post->user_id = auth()->id();
-        $post->course_id = $request->course_id;
-        $post->save();
+        $post = Post::create([
+            'body' => $request->body,
+            'title' => $request->title,
+            'user_id' => auth()->id(),
+            'course_id' => $request->course_id,
+        ]);
 
         return $post;
-
     }
 
     /**
@@ -129,6 +136,19 @@ class PostController extends Controller
     public function destroy (Post $post) {
         $post->delete();
         return redirect()->back();
+    }
+
+    /**
+     * upload a cover image to post
+     */
+    public function cover (Post $post) {
+        request()->validate([
+            'cover' => 'image'
+        ]);
+
+        $post->update([
+            'cover_img' => request()->file('cover')->store('img/posts/covers', 'public')
+        ]);
     }
 
     /**

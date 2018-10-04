@@ -27,7 +27,6 @@ class EnrollController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request) {
-        // TODO: change to authenticated user
         auth()->user()->courses()->syncWithoutDetaching([$request->id]);
 
         return redirect("/courses/$request->id");

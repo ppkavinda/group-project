@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     public function __construct () {
-        $this->middleware('auth')->only('store', 'show');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -49,14 +49,14 @@ class CommentController extends Controller
             'body' => $request->body,
             'user_id' => auth()->user()->id,
             'post_id' => $post,
-            'parent_id' => $request->parent_id ?: null// optional
+            'parent_id' => $request->parent_id ?: null // optional
         ]);
 
-        $comment = Comment::with(['user'])->where('id', '=', $comment->id)->get();
-        return response()->json($comment);
+        return $comment->load('user');
     }
 
     /**
+     * NOT USED
      * Display the specified resource.
      *
      * @param  \App\comment  $comment
@@ -99,6 +99,16 @@ class CommentController extends Controller
      */
     public function destroy(comment $comment)
     {
-        //
+        if ($comment->user_id != auth()->id()) {
+            abort(403);
+        }
+
+        $comment->delete();
+
+        if (request()->wantsJson()) {
+            return response([], 204);
+        }
+
+        return back();
     }
 }

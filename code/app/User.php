@@ -43,12 +43,12 @@ class User extends Authenticatable
 
     // helpers
     public function isAdmin () {
-        return $this->role < 1;
+        return $this->role <= 1;
     }
     public function isFacilitator () {
-        return $this->role < 2;
+        return $this->role <= 2;
     }
     public function isEntrepreneur () {
-        return $this->role < 3;
+        return $this->role <= 3;
     }
 }
