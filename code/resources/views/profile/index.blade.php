@@ -12,10 +12,9 @@
   </div>
   <div class="col-10">
     <div class="tab-content" id="v-pills-tabContent">
-      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-        @include('profile.details')
-        <!-- {{-- @include('profile.details') --}} -->
-        <!-- <user-details user-id="{{ auth()->user()->id }}"/> -->
+      <div class="tab-pane fade" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+        {{-- @include('profile.details') --}}
+        <user-details user-id="{{ auth()->user()->id }}"/>
       </div>
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
         @include('profile.courses')
@@ -26,7 +25,7 @@
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
         @include('profile.cart')
       </div>
-      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+      <div class="tab-pane show active fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
         @include('profile.settings')
       </div>
     </div>

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     public function __construct () {
-        // $this->middleware('auth')->on('store');
+        $this->middleware('auth')->only('store', 'show');
     }
     /**
      * Display a listing of the resource.
@@ -41,6 +41,8 @@ class CommentController extends Controller
     {
         $request->validate([
             'body' => 'required|min:4|max:191',
+            'post_id' => 'exists:posts,id',
+            'parent_id' => 'exists:comments,id',
         ]);
 
         $comment = Comment::create([
@@ -49,6 +51,7 @@ class CommentController extends Controller
             'post_id' => $post,
             'parent_id' => $request->parent_id ?: null// optional
         ]);
+
         $comment = Comment::with(['user'])->where('id', '=', $comment->id)->get();
         return response()->json($comment);
     }

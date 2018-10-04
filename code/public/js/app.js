@@ -418,13 +418,13 @@ module.exports = {
 
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(27);
 
 /***/ }),
+/* 3 */,
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13898,7 +13898,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
 
 /***/ }),
 /* 10 */
@@ -14175,9 +14175,9 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(18);
-__webpack_require__(113);
-__webpack_require__(114);
-module.exports = __webpack_require__(115);
+__webpack_require__(119);
+__webpack_require__(120);
+module.exports = __webpack_require__(121);
 
 
 /***/ }),
@@ -14229,7 +14229,7 @@ Vue.component('side-bar', __webpack_require__(98));
 Vue.component('user-details', __webpack_require__(101));
 Vue.component('post-viewer', __webpack_require__(104));
 Vue.component('post-editor', __webpack_require__(107));
-Vue.component('post-forum', __webpack_require__(120));
+Vue.component('post-forum', __webpack_require__(113));
 
 var app = new Vue({
   el: '#app'
@@ -14266,7 +14266,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(3);
+window.axios = __webpack_require__(2);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -24546,7 +24546,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
 /* 48 */
@@ -27030,7 +27030,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -29148,7 +29148,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -29543,7 +29543,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_froala_wysiwyg__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_froala_wysiwyg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_froala_wysiwyg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
@@ -29564,24 +29564,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'post-viewer',
-    props: ['postId'],
-    data: function data() {
-        return {
-            post: {}
-        };
-    },
-    mounted: function mounted() {
-        var _this = this;
-
+    props: { initialPost: String },
+    computed: {
         /**
-         * getting post details according to the postId
-         * and assign it to the post data
+         * convert initialPost [jsonString] to JSON object
          */
-        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/posts/get/' + this.postId).then(function (res) {
-            _this.post = res.data;
-        }).catch(function (err) {
-            console.log(err);
-        });
+        post: function post() {
+            return JSON.parse(this.initialPost);
+        }
     },
     filters: {
         /**
@@ -29697,12 +29687,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_froala_wysiwyg__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_froala_wysiwyg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_froala_wysiwyg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -29770,8 +29775,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        postId: {
-            required: false
+        initialPost: {
+            required: false,
+            type: String
         }
     },
     name: 'post-editor',
@@ -29864,7 +29870,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                     _this2.publishButton.msg = 'published !';
 
                                     setTimeout(function () {
-                                        _this2.publishButton.class = 'btn-link text-danger';
+                                        _this2.publishButton.class = 'link text-danger';
                                         _this2.publishButton.msg = 'unpublish';
                                     }, 1000);
                                     console.log('published');
@@ -30023,20 +30029,18 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
         /**
          * [when updating an post]
-         * if postId prop is assigned (which means: updating an post)
-         * get post details according to the postId prop
+         * if initialPost prop is assigned (which means: updating an post)
+         * assign this.post to initialPost
          */
-        if (this.postId) {
-            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/posts/get/' + this.postId).then(function (res) {
-                _this4.post = res.data;
-            });
+        if (this.initialPost) {
+            this.post = JSON.parse(this.initialPost);
         }
         /**
          * [when updating an post]
          * if the existing post is published set publish button styles
          */
         if (this.post.published) {
-            this.publishButton.clss = 'btn-default';
+            this.publishButton.class = 'link text-danger';
             this.publishButton.msg = 'unpublish';
         }
     }
@@ -30831,232 +30835,271 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-9 bg-light p-2" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.post.title,
-                  expression: "post.title"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "postTitle",
-                name: "title",
-                placeholder: "Enter the Title"
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-9 bg-light p-2" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.post.title,
+                expression: "post.title"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "postTitle",
+              name: "title",
+              placeholder: "Enter the Title"
+            },
+            domProps: { value: _vm.post.title },
+            on: {
+              keypress: function($event) {
+                _vm.clearError("title")
               },
-              domProps: { value: _vm.post.title },
-              on: {
-                keypress: function($event) {
-                  _vm.clearError("title")
-                },
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.post, "title", $event.target.value)
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
                 }
+                _vm.$set(_vm.post, "title", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors.title
+            ? _c(
+                "span",
+                { class: { "invalid-feedback d-block": _vm.errors.title } },
+                [_c("strong", [_vm._v(_vm._s(_vm.errors.title[0]))])]
+              )
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("froala", {
+              attrs: { tag: "textarea", config: _vm.config },
+              model: {
+                value: _vm.post.body,
+                callback: function($$v) {
+                  _vm.$set(_vm.post, "body", $$v)
+                },
+                expression: "post.body"
               }
             }),
             _vm._v(" "),
-            _vm.errors.title
+            _vm.errors.body
               ? _c(
                   "span",
-                  { class: { "invalid-feedback d-block": _vm.errors.title } },
-                  [_c("strong", [_vm._v(_vm._s(_vm.errors.title[0]))])]
+                  { class: { "invalid-feedback d-block": _vm.errors.body } },
+                  [_c("strong", [_vm._v(_vm._s(_vm.errors.body[0]))])]
                 )
+              : _vm._e()
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3 pl-4" }, [
+        _c("div", { staticClass: "card bg-light p-2" }, [
+          _c("div", { staticClass: "card-header bg-light" }, [
+            _c("strong", [_vm._v("Publish")]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn ml-4",
+                class: _vm.publishButton.class,
+                on: { click: _vm.publish }
+              },
+              [_vm._v(_vm._s(_vm.publishButton.msg))]
+            )
+          ]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "list-group list-group-flush" }, [
+            _c("li", { staticClass: "list-group-item" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  { staticClass: "col-form-label", attrs: { for: "courseId" } },
+                  [_vm._v("Course:")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.post.course_id,
+                        expression: "post.course_id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "course_id" },
+                    on: {
+                      click: function($event) {
+                        _vm.clearError("course_id")
+                      },
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.post,
+                          "course_id",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "0" } }, [
+                      _vm._v("Please select the course --")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.courses, function(course) {
+                      return _c(
+                        "option",
+                        { key: course.id, domProps: { value: course.id } },
+                        [_vm._v(_vm._s(course.title))]
+                      )
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _vm.errors.course_id
+                  ? _c(
+                      "span",
+                      {
+                        class: {
+                          "invalid-feedback d-block": _vm.errors.course_id
+                        }
+                      },
+                      [_c("strong", [_vm._v(_vm._s(_vm.errors.course_id[0]))])]
+                    )
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _vm.post.id
+              ? _c("li", { staticClass: "list-group-item" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _vm._v("\n                        See the saved post: "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn-link",
+                        attrs: {
+                          target: "blank",
+                          href: "/posts/" + _vm.post.id
+                        }
+                      },
+                      [_vm._v("In Here")]
+                    )
+                  ])
+                ])
               : _vm._e()
           ]),
           _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-block mb-2",
+                class: _vm.saveButton.class,
+                on: { click: _vm.save }
+              },
+              [_vm._v(_vm._s(_vm.saveButton.msg))]
+            ),
+            _vm._v(" "),
+            _vm.post.id
+              ? _c("small", { staticClass: "text-muted" }, [
+                  _vm._v(
+                    "Last modified " +
+                      _vm._s(_vm._f("moment")(_vm.post.updated_at, "calendar"))
+                  )
+                ])
+              : _vm._e()
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("div", { staticClass: "accordion", attrs: { id: "accordionExample" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "collapse",
+          attrs: {
+            id: "collapseOne",
+            "aria-labelledby": "headingOne",
+            "data-parent": "#accordionExample"
+          }
+        },
+        [
           _c(
             "div",
-            { staticClass: "form-group" },
+            { staticClass: "card-body" },
             [
-              _c("froala", {
-                attrs: { tag: "textarea", config: _vm.config },
-                model: {
-                  value: _vm.post.body,
-                  callback: function($$v) {
-                    _vm.$set(_vm.post, "body", $$v)
-                  },
-                  expression: "post.body"
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.body
-                ? _c(
-                    "span",
-                    { class: { "invalid-feedback d-block": _vm.errors.body } },
-                    [_c("strong", [_vm._v(_vm._s(_vm.errors.body[0]))])]
-                  )
-                : _vm._e()
+              _c("post-viewer", {
+                attrs: { "initial-post": JSON.stringify(_vm.post) }
+              })
             ],
             1
           )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3 pl-4" }, [
-          _c("div", { staticClass: "card bg-light p-2" }, [
-            _c("div", { staticClass: "card-header bg-light" }, [
-              _c("strong", [_vm._v("Publish")]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn ml-4",
-                  class: _vm.publishButton.class,
-                  on: { click: _vm.publish }
-                },
-                [_vm._v(_vm._s(_vm.publishButton.msg))]
-              )
-            ]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "list-group list-group-flush" }, [
-              _c("li", { staticClass: "list-group-item" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-form-label",
-                      attrs: { for: "courseId" }
-                    },
-                    [_vm._v("Course:")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.post.course_id,
-                          expression: "post.course_id"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { name: "course_id" },
-                      on: {
-                        click: function($event) {
-                          _vm.clearError("course_id")
-                        },
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.post,
-                            "course_id",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "0" } }, [
-                        _vm._v("Please select the course --")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.courses, function(course) {
-                        return _c(
-                          "option",
-                          { key: course.id, domProps: { value: course.id } },
-                          [_vm._v(_vm._s(course.title))]
-                        )
-                      })
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _vm.errors.course_id
-                    ? _c(
-                        "span",
-                        {
-                          class: {
-                            "invalid-feedback d-block": _vm.errors.course_id
-                          }
-                        },
-                        [
-                          _c("strong", [
-                            _vm._v(_vm._s(_vm.errors.course_id[0]))
-                          ])
-                        ]
-                      )
-                    : _vm._e()
-                ])
-              ]),
-              _vm._v(" "),
-              _vm.post.id
-                ? _c("li", { staticClass: "list-group-item" }, [
-                    _c("div", { staticClass: "form-group" }, [
-                      _vm._v("\n                        See the saved post: "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn-link",
-                          attrs: {
-                            target: "blank",
-                            href: "/posts/" + _vm.post.id
-                          }
-                        },
-                        [_vm._v("In Here")]
-                      )
-                    ])
-                  ])
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-block mb-2",
-                  class: _vm.saveButton.class,
-                  on: { click: _vm.save }
-                },
-                [_vm._v(_vm._s(_vm.saveButton.msg))]
-              ),
-              _vm._v(" "),
-              _vm.post.id
-                ? _c("small", { staticClass: "text-muted" }, [
-                    _vm._v(
-                      "Last modified " +
-                        _vm._s(
-                          _vm._f("moment")(_vm.post.updated_at, "calendar")
-                        )
-                    )
-                  ])
-                : _vm._e()
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("h3", [_vm._v("Preview")]),
-      _vm._v(" "),
-      _c("post-viewer", { attrs: { post: _vm.post } })
-    ],
-    1
-  )
+        ]
+      )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-header", attrs: { id: "headingOne" } },
+      [
+        _c("h5", { staticClass: "mb-0" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-link dropdown-toggle",
+              attrs: {
+                type: "button",
+                "data-toggle": "collapse",
+                "data-target": "#collapseOne",
+                "aria-expanded": "true",
+                "aria-controls": "collapseOne"
+              }
+            },
+            [_vm._v("\n        Show a Preview \n        ")]
+          )
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -31068,36 +31111,14 @@ if (false) {
 
 /***/ }),
 /* 113 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 115 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 116 */,
-/* 117 */,
-/* 118 */,
-/* 119 */,
-/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(122)
+var __vue_script__ = __webpack_require__(114)
 /* template */
-var __vue_template__ = __webpack_require__(121)
+var __vue_template__ = __webpack_require__(118)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -31136,123 +31157,16 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 121 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "card bg-light p-3" }, [
-        _c(
-          "form",
-          {
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "form-group" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.comment.body,
-                    expression: "comment.body"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  name: "body",
-                  rows: "3",
-                  placeholder: "Type your question here...",
-                  required: ""
-                },
-                domProps: { value: _vm.comment.body },
-                on: {
-                  keypress: function($event) {
-                    _vm.clearError("body")
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.comment, "body", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors.body
-                ? _c(
-                    "small",
-                    { staticClass: "form-text invalid-feedback d-block" },
-                    [_vm._v(_vm._s(_vm.errors.body[0]))]
-                  )
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn",
-                  class: _vm.commentButton.class,
-                  attrs: { type: "submit" },
-                  on: { click: _vm.addComment }
-                },
-                [_vm._v(_vm._s(_vm.commentButton.msg))]
-              )
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("h5", { staticClass: "my-3" }, [_vm._v("Comments")]),
-      _vm._v(" "),
-      _vm._l(_vm.comments, function(comment) {
-        return !comment.parent_id
-          ? _c("comment", {
-              key: comment.id,
-              attrs: {
-                reply: true,
-                initialChildren: _vm.getChildren(comment.id),
-                comment: comment
-              }
-            })
-          : _vm._e()
-      })
-    ],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-060683b9", module.exports)
-  }
-}
-
-/***/ }),
-/* 122 */
+/* 114 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Comment__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Comment__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Comment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Comment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
 //
 //
 //
@@ -31350,15 +31264,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 123 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(124)
+var __vue_script__ = __webpack_require__(116)
 /* template */
-var __vue_template__ = __webpack_require__(125)
+var __vue_template__ = __webpack_require__(117)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -31397,12 +31311,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 124 */
+/* 116 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -31485,8 +31399,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/comments/' + this.comment.post_id, this.newComment).then(function (res) {
                     // comment sent to the server successfully
                     _this.children.unshift(res.data[0]);
-                    console.log(res);
+                    _this.newComment.body = '';
                     _this.toggleReply();
+                    console.log(res);
                 }).catch(function (err) {
                     console.log(err, err);
                     // this.errors = err.response.data.errors
@@ -31514,7 +31429,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 125 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -31660,6 +31575,136 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-e3e7aa92", module.exports)
   }
 }
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "card bg-light p-3" }, [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.comment.body,
+                    expression: "comment.body"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  name: "body",
+                  rows: "3",
+                  placeholder: "Type your question here...",
+                  required: ""
+                },
+                domProps: { value: _vm.comment.body },
+                on: {
+                  keypress: function($event) {
+                    _vm.clearError("body")
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.comment, "body", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors.body
+                ? _c(
+                    "small",
+                    { staticClass: "form-text invalid-feedback d-block" },
+                    [_vm._v(_vm._s(_vm.errors.body[0]))]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn",
+                  class: _vm.commentButton.class,
+                  attrs: { type: "submit" },
+                  on: { click: _vm.addComment }
+                },
+                [_vm._v(_vm._s(_vm.commentButton.msg))]
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      !_vm.comments.length
+        ? _c("h4", { staticClass: "m-3" }, [
+            _vm._v("No comments posted yet. Be the first one to add one.")
+          ])
+        : _c("h5", { staticClass: "my-3" }, [_vm._v("Comments")]),
+      _vm._v(" "),
+      _vm._l(_vm.comments, function(comment) {
+        return !comment.parent_id
+          ? _c("comment", {
+              key: comment.id,
+              attrs: {
+                reply: true,
+                initialChildren: _vm.getChildren(comment.id),
+                comment: comment
+              }
+            })
+          : _vm._e()
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-060683b9", module.exports)
+  }
+}
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 121 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 ],[17]);

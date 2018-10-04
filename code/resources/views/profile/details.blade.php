@@ -1,4 +1,3 @@
-
 <h3 class="w3l_header mt-4 mb-5">Edit your details</h3>
 <div class="row">
     <div class="col-md-6">

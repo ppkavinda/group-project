@@ -40,4 +40,15 @@ class User extends Authenticatable
     public function comments () {
         return $this->hasMany(Comment::class);
     }
+
+    // helpers
+    public function isAdmin () {
+        return $this->role < 1;
+    }
+    public function isFacilitator () {
+        return $this->role < 2;
+    }
+    public function isEntrepreneur () {
+        return $this->role < 3;
+    }
 }
