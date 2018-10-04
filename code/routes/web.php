@@ -17,18 +17,15 @@ Route::get('/', 'studyController@index');
 Auth::routes();
 
 // admin
-Route::get('/admin', function () {
-    return view('admin.admin');
-});
+Route::view('/admin', 'admin.index');
 
+// profile
 Route::get('/profile', 'UserController@index')->middleware('auth');
 Route::get('/profile/{user}', 'UserController@show');
 Route::post('/users/{user}/edit', 'UserController@edit');
-
+Route::get('/user', 'UserController@get');
 // shop
-Route::get('/shop', function () {
-	return view('shop.index');
-});
+Route::view('/shop', 'shop.index');
 
 // study
 Route::view('/study', 'study.index');
@@ -40,13 +37,18 @@ Route::get('/courses/{course}', 'CourseController@show');
 
 Route::get('/posts/get/{post}', 'PostController@getOne');
 Route::post('/posts/image', 'PostController@uploadImage');
+Route::delete('/posts/image', 'PostController@deleteImage');
+Route::post('/posts/{post}/cover', 'PostController@cover');
 Route::post('/posts/publish', 'PostController@publish');
 Route::post('/posts/unpublish', 'PostController@unpublish');
-Route::delete('/posts/image', 'PostController@deleteImage');
 Route::resource('posts', 'PostController');
+
+Route::get('/videos/upload', 'VideoController@create');
+Route::post('/videos/upload', 'VideoController@store');
 
 Route::get('/comments/{post}', 'CommentController@show');
 Route::post('/comments/{id}', 'CommentController@store');
+Route::delete('/comments/{comment}', 'CommentController@destroy');
 
 // general
 Route::view('contact', 'contact');

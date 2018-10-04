@@ -7,31 +7,8 @@
   <title>Athwela | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Font Awesome -->
-  {{-- <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css"> --}}
+   
   <link rel="stylesheet" href="css/font-awesome.css">
-  <!-- Google Font: Source Sans Pro -->
-  {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
-  <!-- Ionicons -->
-  {{-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
-  <!-- Theme style -- >
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- iCheck -->
-
-  <link rel="stylesheet" href="css/blue.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="css/morris.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="css/jquery-jvectormap-1.2.2.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="css/datepicker3.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="css/daterangepicker-bs3.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="css/bootstrap3-wysihtml5.css">
-
-  {{-- my styles --}}
   <link rel="stylesheet" href="css/app.css">
 </head>
 
@@ -66,8 +43,6 @@
 <script src="js/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="js/bootstrap-datepicker.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="js/bootstrap3-wysihtml5.all.js"></script>
 <!-- Slimscroll -->
 <script src="js/jquery.slimscroll.js"></script>
 <!-- FastClick -->
@@ -75,8 +50,8 @@
 <!-- AdminLTE App -->
 <script src="js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="js/dashboard.js"></script>
+{{-- <script src="js/dashboard.js"></script> --}}
 <!-- AdminLTE for demo purposes -->
-<script src="js/demo.js"></script>
+{{-- <script src="js/demo.js"></script> --}}
 </body>
 </html>
