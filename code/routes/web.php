@@ -26,6 +26,9 @@ Route::post('/users/{user}/edit', 'UserController@edit');
 Route::get('/user', 'UserController@get');
 // shop
 Route::view('/shop', 'shop.index');
+Route::view('/mens', 'shop.mens');
+Route::view('/woman', 'shop.woman');
+Route::get('/products/{product}', 'ProductController@show');
 
 // study
 Route::view('/study', 'study.index');
