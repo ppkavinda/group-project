@@ -1,6 +1,6 @@
 <div class="page-head_agile_info_w3l">
     <div class="container">
-        <h3>{{ explode(' ', $path)[0] }} <span> {{ explode(' ', $path)[1] }}  </span></h3>
+        <h3>{{ explode(' ', $path)[0] }} <span> {{ explode(' ', $path)[1] ?: '' }}  </span></h3>
         <div class="services-breadcrumb">
             <div class="agile_inner_breadcrumb">
                 <ul class="w3_short">
