@@ -2,7 +2,7 @@
   <div class="card-body">
       <form method="POST" @submit.prevent="onSubmit" @keydown="clearError($event.target.name)">
           <div class="form-group row">
-              <label for="name" class="col-md-4  text-md-right">Name</label>
+              <label for="name" class="col-md-4  text-md-right">Namewrite </label>
                 <div class="col-md-6">
                   <input id="name" @blur="liveValidate('name')" type="text" class="form-control" name="name" v-model="user.name" placeholder="Name" required autofocus>
 
@@ -13,7 +13,7 @@
           </div>
 
           <div class="form-group row">
-              <label for="email" class="col-md-4 col-form-label text-md-right">Email Address</label>
+              <label for="email" class="col-md-4 col-form-label text-md-right">Email Address </label>
 
               <div class="col-md-6">
                   <input id="email" @blur="liveValidate('email')" type="email" class="form-control" name="email" v-model="user.email" placeholder="E-mail" required>

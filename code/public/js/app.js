@@ -26962,10 +26962,10 @@ var staticRenderFns = [
           _vm._v("Athwela.io")
         ])
       ]),
-      _vm._v("\n    All rights reserved.\n    "),
+      _vm._v("\r\n    All rights reserved.\r\n    "),
       _c("div", { staticClass: "float-right d-none d-sm-inline-block" }, [
         _c("b", [_vm._v("Version")]),
-        _vm._v(" 1.0.0\n    ")
+        _vm._v(" 1.0.0\r\n    ")
       ])
     ])
   }
@@ -27219,7 +27219,7 @@ var render = function() {
           _c(
             "label",
             { staticClass: "col-md-4  text-md-right", attrs: { for: "name" } },
-            [_vm._v("Name")]
+            [_vm._v("Namewrite ")]
           ),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-6" }, [
@@ -27272,7 +27272,7 @@ var render = function() {
               staticClass: "col-md-4 col-form-label text-md-right",
               attrs: { for: "email" }
             },
-            [_vm._v("Email Address")]
+            [_vm._v("Email Address ")]
           ),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-6" }, [
@@ -29289,7 +29289,7 @@ var render = function() {
                   staticClass: "col-sm-2 col-form-label text-right",
                   attrs: { for: "staticEmail" }
                 },
-                [_vm._v("Email")]
+                [_vm._v("Email ")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-10" }, [
@@ -29329,7 +29329,7 @@ var render = function() {
                   staticClass: "col-sm-2 col-form-label text-right",
                   attrs: { for: "inputName" }
                 },
-                [_vm._v("Name")]
+                [_vm._v("Name hgl;")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-10" }, [
@@ -29374,7 +29374,7 @@ var render = function() {
                   staticClass: "col-sm-2 col-form-label text-right",
                   attrs: { for: "inputNic" }
                 },
-                [_vm._v("NIC")]
+                [_vm._v("NI")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-10" }, [

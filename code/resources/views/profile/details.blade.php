@@ -1,11 +1,10 @@
-
 <h3 class="w3l_header mt-4 mb-5">Edit your details</h3>
 <div class="row">
     <div class="col-md-6">
         <form action="/users/{{ auth()->user()->id }}/edit" method="POST">
             @csrf
             <div class="form-group row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email </label>
                 <div class="col-sm-10">
                     <input type="text" name="email" class="form-control" id="staticEmail" value="{{ auth()->user()->email }}" placeholder="Change your email">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>

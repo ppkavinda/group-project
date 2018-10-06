@@ -115,7 +115,7 @@
                 <div class="login-logo">
                     <a href="/"><img src="/dist/img/logo.jpg" class="rounded mx-auto d-block" style="width: 45%; opacity: .6"></a>
                 </div>
-                <br></br>
+                <br>
               
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
