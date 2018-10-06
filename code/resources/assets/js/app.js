@@ -42,6 +42,7 @@ Vue.component('post-viewer', require('./study/PostViewer'))
 Vue.component('post-editor', require('./study/PostEditor'))
 Vue.component('post-forum', require('./study/PostForum'))
 Vue.component('video-upload', require('./study/VideoUpload'))
+Vue.component('product-slider', require('./shop/product/ProductSlider'))
 
 const app = new Vue({
     el: '#app'

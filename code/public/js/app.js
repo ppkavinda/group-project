@@ -14232,6 +14232,7 @@ Vue.component('post-viewer', __webpack_require__(104));
 Vue.component('post-editor', __webpack_require__(107));
 Vue.component('post-forum', __webpack_require__(120));
 Vue.component('video-upload', __webpack_require__(126));
+Vue.component('product-slider', __webpack_require__(137));
 
 var app = new Vue({
   el: '#app'
@@ -32829,6 +32830,203 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(143)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(138)
+/* template */
+var __vue_template__ = __webpack_require__(142)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-14c4016e"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/shop/product/ProductSlider.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14c4016e", Component.options)
+  } else {
+    hotAPI.reload("data-v-14c4016e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 138 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['initialImgs'],
+    data: function data() {
+        return {
+            selected: '',
+            imgs: []
+        };
+    },
+
+    methods: {
+        onSelected: function onSelected(img) {
+            this.selected = img;
+        },
+        getSelected: function getSelected() {
+            return this.selected;
+        }
+    },
+    created: function created() {
+        this.imgs = JSON.parse(this.initialImgs);
+        this.selected = this.imgs[0];
+        console.log(this.initialImgs[0]);
+    }
+});
+
+/***/ }),
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "carouselExampleSlidesOnly", "data-ride": "carousel" } },
+    [
+      _c("div", {}, [
+        _c("div", { staticClass: "slid-display pb-2" }, [
+          _c("img", {
+            staticClass: "d-block w-100",
+            attrs: { src: _vm.selected, alt: "First slide" }
+          })
+        ]),
+        _vm._v(" "),
+        _vm.imgs
+          ? _c(
+              "div",
+              { staticClass: "slide-row text-center" },
+              _vm._l(_vm.imgs, function(img, index) {
+                return _c("img", {
+                  key: index,
+                  staticClass: " slide-row-img",
+                  attrs: { src: img, alt: "First slide" },
+                  on: {
+                    mouseover: function($event) {
+                      _vm.onSelected(img)
+                    }
+                  }
+                })
+              })
+            )
+          : _vm._e()
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-14c4016e", module.exports)
+  }
+}
+
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(144);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(115)("715bcce4", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-14c4016e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProductSlider.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-14c4016e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ProductSlider.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 144 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(5)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.slide-row-img[data-v-14c4016e] {\n  max-width: 33.3%;\n  border: 4px solid white;\n}\n.slide-row-img[data-v-14c4016e]:hover {\n    border: 2px solid white;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 ],[17]);

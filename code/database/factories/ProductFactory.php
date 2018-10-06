@@ -13,6 +13,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
         },
         'img1' => $faker->imageUrl($width = 640, $height = 480),
         'img2' => $faker->imageUrl($width = 640, $height = 480),
+        'img3' => $faker->imageUrl($width = 640, $height = 480),
         'category_id' => function () {
             return factory('App\Category')->create();
         },
