@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use \App\Product;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -15,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        view()->composer('shop.partials.latestProducts', function ($view) {
+            $view->with('latest', Product::latest()->limit(4)->get());
+        });
     }
 
     /**
