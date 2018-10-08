@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\cart;
+// use App\cart;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -44,11 +44,12 @@ class CartController extends Controller
             'quantity' => "max:$product->amount",
         ]);
 
-        auth()->user()->cart()->attach($product->id, [
-            'quantity' => $request->quantity
-        ]);
+        // auth()->user()->cart()->attach($product->id, [
+        //     'quantity' => $request->quantity
+        // ]);
+        $cartItem = \Cart::add($product->id, $product->name, $request->quantity, $product->price);
 
-        return response(auth()->user()->cart()->get()->last(), 201);
+        return $cartItem;
     }
 
     /**
@@ -80,9 +81,9 @@ class CartController extends Controller
      * @param  \App\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, cart $cart)
+    public function update(Request $request, $rowId)
     {
-        //
+        return \Cart::update($rowId, $request->quantity);
     }
 
     /**
@@ -91,8 +92,8 @@ class CartController extends Controller
      * @param  \App\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cart $product)
+    public function destroy($rowId)
     {
-        dd($product);
+        return \Cart::remove($rowId);
     }
 }

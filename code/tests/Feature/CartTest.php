@@ -18,7 +18,7 @@ class CartTest extends TestCase
     {
         $product = factory('App\Product')->create();
 
-        $this->post("/cart/$product->id/add", ['quantity' => 2])
+        $this->post("/cart/$product->id", ['quantity' => 2])
             ->assertStatus(302);
     }
 
@@ -29,8 +29,8 @@ class CartTest extends TestCase
 
         $this->be(factory('App\User')->create());
 
-        $this->post("/cart/$product->id/add", ['quantity' => 2])
-            ->assertStatus(201);
+        $this->post("/cart/$product->id", ['quantity' => 2])
+            ->assertStatus(200);
     }
 
     public function test_authenticate_user_can_remove_item_from_cart ()
@@ -40,7 +40,9 @@ class CartTest extends TestCase
 
         $this->be(factory('App\User')->create());
 
-        $this->delete("/cart/$product->id/delete")
-            ->assertStatus(201);
+        $cartItem = $this->post("/cart/$product->id", ['quantity' => 2]);
+
+        $a = $this->delete("/cart/" . $cartItem->json()['rowId'])
+            ->assertStatus(200);
     }
 }

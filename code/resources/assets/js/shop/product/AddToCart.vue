@@ -43,9 +43,16 @@ export default {
             if (!this.product.quantity) {
                 this.errors.quantity = ['Invalid quantity']
             }
-            axios.post(`/cart/${this.product.id}/add`, this.product)
+            axios.post(`/cart/${this.product.id}`, this.product)
                 .then(res => {
+                    // console.log(res)
                     window.Event.$emit('added-to-cart', res.data)
+                })
+                .catch(err => {
+                    // TODO replace to open the login model
+                   console.log(err.response) 
+                //    if (err.response.status == 401)
+                    // window.location.replace('/login')
                 })
         }
     },
