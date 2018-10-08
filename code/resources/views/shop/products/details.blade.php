@@ -5,8 +5,4 @@
 </p>
 
 <add-to-cart initial-product="{{ $product }}"></add-to-cart>
-@guest
-    Hi
-@else
-<cart-model initial-items="{{ json_encode(auth()->user()->cart()->get()) }}"></cart-model>
-@endguest
+<cart-model initial-items="{{ json_encode(Cart::content()) }}"></cart-model>

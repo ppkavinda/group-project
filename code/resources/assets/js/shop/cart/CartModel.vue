@@ -2,13 +2,13 @@
 <div id="PPMiniCart" v-click-outside="closeModel" v-if="show">
     <form method="post" class="card-body" action="#" >    
         <button type="button" class="close p-2" @click="closeModel">×</button>    
-        <ul v-if="items.length" class="list-group list-group-flush bg-light">
+        <ul v-if="Object.keys(items).length" class="list-group list-group-flush bg-light">
             <li v-for="(item, index) in items" :key="index" class="minicart-item row">            
                 <div class="col-md-6">                
                     <a class="minicart-name" :href="'/products/' + item.id" v-text="item.name"></a>
                 </div>
                 <div class="minicart-details-quantity col-md-2">
-                    <input type="number" class="form-control" v-model="item.pivot.quantity" min="0" name="quantity">
+                    <input type="number" class="form-control" @input="updateItem(item)" v-model="item.qty" min="1" name="quantity">
                 </div>
                 <div class="minicart-details-price col-md-2">
                     <span class="minicart-price" v-text="item.price"></span>
@@ -26,7 +26,7 @@
             </ul>
         </div>                
         <div class="row">                    
-            <div class="col-md-5 minicart-subtotal"><strong>Subtotal: LKR {{ total }}</strong></div>       
+            <div class="col-md-5 minicart-subtotal"><strong>Subtotal: LKR {{ total | currency }}</strong></div>       
             <div class="col-md-3 offset-md-4">
                 <a class="btn btn-primary mr-auto">Go to Cart</a>
             </div>
@@ -41,34 +41,53 @@ export default {
     data() {
         return {
             show: true,
-            items: [],
+            items: {},
         };
     },
     computed: {
         total () {
             let total = 0
-            this.items.forEach( item => total+= item.price * item.pivot.quantity)
+            for (let key in this.items) {
+                total += this.items[key].price * this.items[key].qty
+            }
             return total.toFixed(2)
         },
     },
     methods: {
+        updateItem (item) {
+            axios.put(`/cart/${item.rowId}`, {quantity: item.qty})
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        },
         removeItem (item) {
-            axios.delete('/cart')
-            this.items.splice(item.index, 1)
+            axios.delete(`/cart/${item.rowId}`)
+                .then(res => {
+                    Vue.delete(this.items, item.rowId)
+                })
+                .catch(err => {
+                    console.log(err)
+            })
         },
         closeModel (e) {
             this.show = false
         }
     },
     created() {
-        window.Event.$on("added-to-cart", res => {
+        window.Event.$on("added-to-cart", cartItem => {
             this.show = true;
-            let item = res
-            item.pivot = {}
-            item.pivot.quantity = 2
-            this.items.push(item);
+            Vue.set(this.items, cartItem.rowId, cartItem)
         });
         this.items = JSON.parse(this.initialItems)
     },
+    filters: {
+        currency (value) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    },
 };
+////////////////// TODO update quantity
 </script>

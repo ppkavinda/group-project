@@ -18,7 +18,7 @@ class CartTest extends TestCase
     {
         $product = factory('App\Product')->create();
 
-        $this->post("/cart/$product->id/add", ['quantity' => 2])
+        $this->post("/cart/$product->id", ['quantity' => 2])
             ->assertStatus(302);
     }
 
@@ -29,7 +29,7 @@ class CartTest extends TestCase
 
         $this->be(factory('App\User')->create());
 
-        $this->post("/cart/$product->id/add", ['quantity' => 2])
+        $this->post("/cart/$product->id", ['quantity' => 2])
             ->assertStatus(200);
     }
 
@@ -40,10 +40,9 @@ class CartTest extends TestCase
 
         $this->be(factory('App\User')->create());
 
-        $cartItem = $this->json('POST', "/cart/$product->id/add", ['quantity' => 2]);
+        $cartItem = $this->post("/cart/$product->id", ['quantity' => 2]);
 
-        dd($cartItem->id);
-        $this->delete("/cart/$cartItem->id/delete")
-            ->assertStatus(201);
+        $a = $this->delete("/cart/" . $cartItem->json()['rowId'])
+            ->assertStatus(200);
     }
 }
