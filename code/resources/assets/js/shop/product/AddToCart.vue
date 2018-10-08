@@ -45,7 +45,14 @@ export default {
             }
             axios.post(`/cart/${this.product.id}/add`, this.product)
                 .then(res => {
-                    window.Event.$emit('added-to-cart', res.data)
+                    console.log(res)
+                    // window.Event.$emit('added-to-cart', res.data)
+                })
+                .catch(err => {
+                    // TODO replace to open the login model
+                   console.log(err.response) 
+                //    if (err.response.status == 401)
+                    // window.location.replace('/login')
                 })
         }
     },

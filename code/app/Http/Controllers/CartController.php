@@ -48,7 +48,8 @@ class CartController extends Controller
             'quantity' => $request->quantity
         ]);
 
-        return response(auth()->user()->cart()->get()->last(), 201);
+        if ($request->expectsJson()) return response()->json(auth()->user()->cart()->get());
+        else return response('', 200);
     }
 
     /**

@@ -53,6 +53,7 @@ export default {
     },
     methods: {
         removeItem (item) {
+            axios.delete('/cart')
             this.items.splice(item.index, 1)
         },
         closeModel (e) {

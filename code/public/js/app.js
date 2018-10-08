@@ -33146,7 +33146,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.errors.quantity = ['Invalid quantity'];
             }
             axios.post('/cart/' + this.product.id + '/add', this.product).then(function (res) {
-                window.Event.$emit('added-to-cart', res.data);
+                console.log(res);
+                // window.Event.$emit('added-to-cart', res.data)
+            }).catch(function (err) {
+                // TODO replace to open the login model
+                console.log(err.response);
+                //    if (err.response.status == 401)
+                // window.location.replace('/login')
             });
         }
     },
