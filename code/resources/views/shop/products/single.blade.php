@@ -7,7 +7,9 @@
 	<div class="container">
         <div class="row">
             <div class="col-md-4 single-right-left ">
-                @include('shop.products.slider')
+                {{-- @include('shop.products.slider') --}}
+            <product-slider initial-imgs='{{ json_encode([$product->img1, $product->img2, $product->img3]) }}'></product-slider>
+
             </div>
             <div class="col-md-8 single-right-left simpleCart_shelfItem">
               @include('shop.products.details')
