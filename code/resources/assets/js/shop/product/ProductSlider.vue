@@ -16,27 +16,26 @@
 
 <script>
 export default {
-    props: ['initialImgs'],
-    data () {
+    props: ["initialImgs"],
+    data() {
         return {
-            selected: '',
-            imgs: [],
-        }
+            selected: "",
+            imgs: []
+        };
     },
     methods: {
-        onSelected (img) {
-            this.selected = img
+        onSelected(img) {
+            this.selected = img;
         },
-        getSelected () {
-            return this.selected
+        getSelected() {
+            return this.selected;
         }
     },
-    created () {
-        this.imgs = JSON.parse(this.initialImgs)
-        this.selected = this.imgs[0]
-        console.log(this.initialImgs[0])
+    created() {
+        this.imgs = JSON.parse(this.initialImgs);
+        this.selected = this.imgs[0];
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>

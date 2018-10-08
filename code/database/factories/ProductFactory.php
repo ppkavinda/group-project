@@ -6,7 +6,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence,
         'price' => $faker->randomFloat(2, 0, 4000),
-        'quantity' => $faker->randomDigit(),
+        'amount' => $faker->randomDigit(),
         'description' => $faker->paragraph(6, true),
         'user_id' => function () {
             return factory('App\User')->create()->id;
@@ -15,7 +15,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'img2' => $faker->imageUrl($width = 640, $height = 480),
         'img3' => $faker->imageUrl($width = 640, $height = 480),
         'category_id' => function () {
-            return factory('App\Category')->create();
+            return factory('App\Category')->create()->id;
         },
         'ratings' => $faker->randomFloat(1, 0, 5),
     ];

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\product;
+use App\cart;
+use App\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CartController extends Controller
 {
+    public function __construct () {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $cart = auth()->user()->cart()->get();
+        return view('shop.cart.index', compact('cart'));
     }
 
     /**
@@ -33,29 +38,37 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
-        dd('don');
+        $request->validate([
+            'quantity' => "max:$product->amount",
+        ]);
+
+        auth()->user()->cart()->attach($product->id, [
+            'quantity' => $request->quantity
+        ]);
+
+        return response(auth()->user()->cart()->get()->last(), 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\product  $product
+     * @param  \App\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show(product $product)
+    public function show(cart $cart)
     {
-        return view('shop.products.single', compact('product'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\product  $product
+     * @param  \App\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function edit(product $product)
+    public function edit(cart $cart)
     {
         //
     }
@@ -64,10 +77,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\product  $product
+     * @param  \App\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, product $product)
+    public function update(Request $request, cart $cart)
     {
         //
     }
@@ -75,11 +88,11 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\product  $product
+     * @param  \App\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product $product)
+    public function destroy(cart $product)
     {
-        //
+        dd($product);
     }
 }
