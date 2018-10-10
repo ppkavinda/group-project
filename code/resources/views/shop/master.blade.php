@@ -23,14 +23,11 @@
 {{-- <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'> --}}
 </head>
 <body>
-	<!-- header -->
-	@include('study.partials.nav')
-	<!-- //banner-top -->
 	<div id="app">
+		@include('study.partials.nav')
 		@yield('content')
+		@include('shop.partials.footer')
 	</div>
-	<!-- footer -->
-	@include('shop.partials.footer')
 	<!-- //footer -->
 
 <script src="/js/manifest.js"></script>

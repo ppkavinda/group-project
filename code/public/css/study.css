@@ -22238,3 +22238,12 @@ p.copy-right a:hover {
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+.col-center {
+  float: none;
+  margin: 0 auto;
+}
+
+.top_nav_left {
+  display: grid;
+}
+
