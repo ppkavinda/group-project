@@ -11,4 +11,8 @@ class Product extends Model
     public function category () {
         return $this->belongsTo(Category::class);
     }
+
+    public function cart () {
+        return $this->belongsToMany(User::class, 'carts', 'product_id', 'user_id')->withPivot('quantity')->withTimestamps();
+    }
 }

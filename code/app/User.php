@@ -41,6 +41,10 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function cart () {
+        return $this->belongsToMany(Product::class, 'carts', 'user_id', 'product_id')->withPivot('quantity')->withTimestamps();
+    }
+
     // helpers
     public function isAdmin () {
         return $this->role <= 1;

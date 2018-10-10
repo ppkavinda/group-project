@@ -15,6 +15,22 @@ window.Event = new Vue();
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.directive('click-outside', {
+    bind: function (el, binding, vnode) {
+        el.clickOutsideEvent = function (event) {
+            // here I check that click was outside the el and his childrens
+            if (!(el == event.target || el.contains(event.target))) {
+                // and if it did, call method provided in attribute value
+                vnode.context[binding.expression](event);
+            }
+        };
+        document.body.addEventListener('click', el.clickOutsideEvent)
+    },
+    unbind: function (el) {
+        document.body.removeEventListener('click', el.clickOutsideEvent)
+    },
+});
+
  /**
   * using moment to format dates
   */
@@ -42,6 +58,10 @@ Vue.component('post-viewer', require('./study/PostViewer'))
 Vue.component('post-editor', require('./study/PostEditor'))
 Vue.component('post-forum', require('./study/PostForum'))
 Vue.component('video-upload', require('./study/VideoUpload'))
+Vue.component('product-slider', require('./shop/product/ProductSlider'))
+Vue.component('add-to-cart', require('./shop/product/AddToCart'))
+Vue.component('cart-model', require('./shop/cart/CartModel'))
+Vue.component('cart-badge', require('./shop/cart/CartBadge'))
 
 const app = new Vue({
     el: '#app'

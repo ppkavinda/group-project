@@ -28,7 +28,12 @@ Route::get('/user', 'UserController@get');
 Route::view('/shop', 'shop.index');
 Route::view('/mens', 'shop.mens');
 Route::view('/woman', 'shop.woman');
+Route::post('/products', 'ProductController@store');
 Route::get('/products/{product}', 'ProductController@show');
+Route::get('/cart', 'CartController@index');
+Route::post('/cart/{product}', 'CartController@store');
+Route::put('/cart/{cartId}', 'CartController@update');
+Route::delete('/cart/{cartId}', 'CartController@destroy');
 
 // study
 Route::view('/study', 'study.index');
