@@ -33168,9 +33168,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 window.Event.$emit('added-to-cart', res.data);
             }).catch(function (err) {
                 // TODO replace to open the login model
-                console.log(err.response);
-                //    if (err.response.status == 401)
-                // window.location.replace('/login')
+                if (err.response.status == 401) {
+                    // console.log(err.response) 
+                    window.location.replace('/login');
+                }
             });
         }
     },
@@ -33421,6 +33422,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         updateItem: function updateItem(item) {
+            if (item.qty < 1) return;
+
             axios.put("/cart/" + item.rowId, { quantity: item.qty }).then(function (res) {
                 console.log(res);
             }).catch(function (err) {
@@ -33440,14 +33443,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.show = false;
         }
     },
-    created: function created() {
+    beforeMount: function beforeMount() {
         var _this2 = this;
 
         window.Event.$on("added-to-cart", function (cartItem) {
             _this2.show = true;
             Vue.set(_this2.items, cartItem.rowId, cartItem);
         });
-        this.items = JSON.parse(this.initialItems);
+        if (this.initialItems.length > 2) this.items = JSON.parse(this.initialItems);
     },
 
     filters: {

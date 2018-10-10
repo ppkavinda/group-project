@@ -12,7 +12,7 @@
                 </div>
                 <div class="minicart-details-price col-md-2">
                     <span class="minicart-price" v-text="item.price"></span>
-                </div>       
+                </div>
                 <div class="minicart-details-remove col-md-1">          
                     <button type="button" class="minicart-remove" @click="removeItem(item)" data-minicart-idx="0">x</button>            
                 </div>            
@@ -24,7 +24,7 @@
                     <div class="col-md-12 text-center">You cart is empty!</div>
                 </li>
             </ul>
-        </div>                
+        </div>
         <div class="row">                    
             <div class="col-md-5 minicart-subtotal"><strong>Subtotal: LKR {{ total | currency }}</strong></div>       
             <div class="col-md-3 offset-md-4">
@@ -55,6 +55,8 @@ export default {
     },
     methods: {
         updateItem (item) {
+            if (item.qty < 1) return
+
             axios.put(`/cart/${item.rowId}`, {quantity: item.qty})
                 .then(res => {
                     console.log(res)
@@ -76,16 +78,17 @@ export default {
             this.show = false
         }
     },
-    created() {
+    beforeMount () {
         window.Event.$on("added-to-cart", cartItem => {
             this.show = true;
             Vue.set(this.items, cartItem.rowId, cartItem)
         });
-        this.items = JSON.parse(this.initialItems)
+        if (this.initialItems.length > 2) this.items = JSON.parse(this.initialItems)
+        
     },
     filters: {
         currency (value) {
-            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return  value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
     },
 };

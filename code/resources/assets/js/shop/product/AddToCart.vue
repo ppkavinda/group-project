@@ -50,9 +50,10 @@ export default {
                 })
                 .catch(err => {
                     // TODO replace to open the login model
-                   console.log(err.response) 
-                //    if (err.response.status == 401)
-                    // window.location.replace('/login')
+                    if (err.response.status == 401) {
+                    // console.log(err.response) 
+                        window.location.replace('/login')
+                    }
                 })
         }
     },
