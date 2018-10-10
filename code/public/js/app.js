@@ -14479,6 +14479,7 @@ Vue.component('video-upload', __webpack_require__(126));
 Vue.component('product-slider', __webpack_require__(130));
 Vue.component('add-to-cart', __webpack_require__(135));
 Vue.component('cart-model', __webpack_require__(140));
+Vue.component('cart-badge', __webpack_require__(150));
 
 var app = new Vue({
     el: '#app'
@@ -33424,7 +33425,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateItem: function updateItem(item) {
             if (item.qty < 1) return;
 
-            axios.put("/cart/" + item.rowId, { quantity: item.qty }).then(function (res) {
+            axios.put('/cart/' + item.rowId, { quantity: item.qty }).then(function (res) {
+                window.Event.$emit('updated-cart', res.data.cart.count);
                 console.log(res);
             }).catch(function (err) {
                 console.log(err);
@@ -33433,7 +33435,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeItem: function removeItem(item) {
             var _this = this;
 
-            axios.delete("/cart/" + item.rowId).then(function (res) {
+            window.Event.$emit('removed-from-cart', { qty: item.qty });
+
+            axios.delete('/cart/' + item.rowId).then(function (res) {
                 Vue.delete(_this.items, item.rowId);
             }).catch(function (err) {
                 console.log(err);
@@ -33450,6 +33454,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this2.show = true;
             Vue.set(_this2.items, cartItem.rowId, cartItem);
         });
+
+        // only if cart has any items in it, insert them to items
         if (this.initialItems.length > 2) this.items = JSON.parse(this.initialItems);
     },
 
@@ -33459,7 +33465,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     }
 });
-////////////////// TODO update quantity
 
 /***/ }),
 /* 142 */
@@ -33510,7 +33515,7 @@ var render = function() {
                         "li",
                         { key: index, staticClass: "minicart-item row" },
                         [
-                          _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "col-md-6 my-auto" }, [
                             _c("a", {
                               staticClass: "minicart-name",
                               attrs: { href: "/products/" + item.id },
@@ -33521,7 +33526,8 @@ var render = function() {
                           _c(
                             "div",
                             {
-                              staticClass: "minicart-details-quantity col-md-2"
+                              staticClass:
+                                "minicart-details-quantity col-md-2 my-auto"
                             },
                             [
                               _c("input", {
@@ -33541,17 +33547,15 @@ var render = function() {
                                 },
                                 domProps: { value: item.qty },
                                 on: {
-                                  input: [
-                                    function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(item, "qty", $event.target.value)
-                                    },
-                                    function($event) {
-                                      _vm.updateItem(item)
+                                  blur: function($event) {
+                                    _vm.updateItem(item)
+                                  },
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
                                     }
-                                  ]
+                                    _vm.$set(item, "qty", $event.target.value)
+                                  }
                                 }
                               })
                             ]
@@ -33559,18 +33563,26 @@ var render = function() {
                           _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "minicart-details-price col-md-2" },
+                            {
+                              staticClass:
+                                "minicart-details-price col-md-2 my-auto"
+                            },
                             [
-                              _c("span", {
-                                staticClass: "minicart-price",
-                                domProps: { textContent: _vm._s(item.price) }
-                              })
+                              _c("span", { staticClass: "minicart-price" }, [
+                                _vm._v(
+                                  "LKR " +
+                                    _vm._s(_vm._f("currency")(item.price))
+                                )
+                              ])
                             ]
                           ),
                           _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "minicart-details-remove col-md-1" },
+                            {
+                              staticClass:
+                                "minicart-details-remove col-md-1 my-auto"
+                            },
                             [
                               _c(
                                 "button",
@@ -33631,9 +33643,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-3 offset-md-4" }, [
-      _c("a", { staticClass: "btn btn-primary mr-auto" }, [
-        _vm._v("Go to Cart")
-      ])
+      _c(
+        "a",
+        { staticClass: "btn btn-primary mr-auto", attrs: { href: "/cart" } },
+        [_vm._v("Go to Cart")]
+      )
     ])
   }
 ]
@@ -33663,6 +33677,116 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(151)
+/* template */
+var __vue_template__ = __webpack_require__(152)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/shop/cart/CartBadge.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-517de6ea", Component.options)
+  } else {
+    hotAPI.reload("data-v-517de6ea", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 151 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: { initialCount: {
+            default: 0,
+            required: false
+        } },
+    data: function data() {
+        return {
+            count: 0
+        };
+    },
+    beforeMount: function beforeMount() {
+        var _this = this;
+
+        window.Event.$on('added-to-cart', function () {
+            _this.count++;
+        });
+        window.Event.$on('removed-from-cart', function (item) {
+            _this.count -= item.qty;
+        });
+        window.Event.$on('updated-cart', function (count) {
+            _this.count = count;
+        });
+        this.count = this.initialCount;
+    }
+});
+
+/***/ }),
+/* 152 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", { staticClass: "badge badge-light" }, [
+    _vm._v(_vm._s(_vm.count))
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-517de6ea", module.exports)
+  }
+}
 
 /***/ })
 ],[18]);

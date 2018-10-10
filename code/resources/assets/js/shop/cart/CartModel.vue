@@ -1,19 +1,19 @@
 <template>
 <div id="PPMiniCart" v-click-outside="closeModel" v-if="show">
-    <form method="post" class="card-body" action="#" >    
-        <button type="button" class="close p-2" @click="closeModel">×</button>    
+    <form method="post" class="card-body" action="#" > 
+        <button type="button" class="close p-2" @click="closeModel">×</button> 
         <ul v-if="Object.keys(items).length" class="list-group list-group-flush bg-light">
-            <li v-for="(item, index) in items" :key="index" class="minicart-item row">            
-                <div class="col-md-6">                
+            <li v-for="(item, index) in items" :key="index" class="minicart-item row"> 
+                <div class="col-md-6 my-auto"> 
                     <a class="minicart-name" :href="'/products/' + item.id" v-text="item.name"></a>
                 </div>
-                <div class="minicart-details-quantity col-md-2">
-                    <input type="number" class="form-control" @input="updateItem(item)" v-model="item.qty" min="1" name="quantity">
+                <div class="minicart-details-quantity col-md-2 my-auto">
+                    <input type="number" class="form-control" @blur="updateItem(item)" v-model="item.qty" min="1" name="quantity">
                 </div>
-                <div class="minicart-details-price col-md-2">
-                    <span class="minicart-price" v-text="item.price"></span>
+                <div class="minicart-details-price col-md-2 my-auto">
+                    <span class="minicart-price">LKR {{ item.price | currency }}</span>
                 </div>
-                <div class="minicart-details-remove col-md-1">          
+                <div class="minicart-details-remove col-md-1 my-auto">
                     <button type="button" class="minicart-remove" @click="removeItem(item)" data-minicart-idx="0">x</button>            
                 </div>            
             </li>
@@ -28,7 +28,7 @@
         <div class="row">                    
             <div class="col-md-5 minicart-subtotal"><strong>Subtotal: LKR {{ total | currency }}</strong></div>       
             <div class="col-md-3 offset-md-4">
-                <a class="btn btn-primary mr-auto">Go to Cart</a>
+                <a href="/cart" class="btn btn-primary mr-auto">Go to Cart</a>
             </div>
         </div>                                                                        
     </form>
@@ -59,6 +59,7 @@ export default {
 
             axios.put(`/cart/${item.rowId}`, {quantity: item.qty})
                 .then(res => {
+                    window.Event.$emit('updated-cart', res.data.cart.count)
                     console.log(res)
                 })
                 .catch(err => {
@@ -66,6 +67,8 @@ export default {
                 })
         },
         removeItem (item) {
+            window.Event.$emit('removed-from-cart', {qty: item.qty})
+
             axios.delete(`/cart/${item.rowId}`)
                 .then(res => {
                     Vue.delete(this.items, item.rowId)
@@ -83,8 +86,9 @@ export default {
             this.show = true;
             Vue.set(this.items, cartItem.rowId, cartItem)
         });
+
+        // only if cart has any items in it, insert them to items
         if (this.initialItems.length > 2) this.items = JSON.parse(this.initialItems)
-        
     },
     filters: {
         currency (value) {
@@ -92,5 +96,4 @@ export default {
         }
     },
 };
-////////////////// TODO update quantity
 </script>

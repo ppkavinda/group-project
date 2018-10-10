@@ -61,6 +61,7 @@ Vue.component('video-upload', require('./study/VideoUpload'))
 Vue.component('product-slider', require('./shop/product/ProductSlider'))
 Vue.component('add-to-cart', require('./shop/product/AddToCart'))
 Vue.component('cart-model', require('./shop/cart/CartModel'))
+Vue.component('cart-badge', require('./shop/cart/CartBadge'))
 
 const app = new Vue({
     el: '#app'

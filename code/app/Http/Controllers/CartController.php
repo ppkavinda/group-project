@@ -83,7 +83,8 @@ class CartController extends Controller
      */
     public function update(Request $request, $rowId)
     {
-        return \Cart::update($rowId, $request->quantity);
+        $updated = \Cart::update($rowId, $request->quantity);
+        return ['cart' => ['count' => \Cart::count(), 'updated' => $updated]];
     }
 
     /**

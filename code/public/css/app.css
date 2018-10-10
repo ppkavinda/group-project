@@ -16623,3 +16623,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   margin: 0 auto;
 }
 
+.top_nav_left {
+  display: grid;
+}
+
