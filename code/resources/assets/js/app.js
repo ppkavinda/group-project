@@ -64,5 +64,9 @@ Vue.component('cart-model', require('./shop/cart/CartModel'))
 Vue.component('cart-badge', require('./shop/cart/CartBadge'))
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    components: {
+        'register': require('./pages/Register.vue'),
+    }
 });

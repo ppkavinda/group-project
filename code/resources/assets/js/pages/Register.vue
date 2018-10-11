@@ -1,28 +1,39 @@
 <template>
-  <div class="card-body">
-      <form method="POST" @submit.prevent="onSubmit" @keydown="clearError($event.target.name)">
-          <div class="form-group row">
-              <label for="name" class="col-md-4  text-md-right">Namewrite </label>
-                <div class="col-md-6">
-                  <input id="name" @blur="liveValidate('name')" type="text" class="form-control" name="name" v-model="user.name" placeholder="Name" required autofocus>
+<div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+              	<div class="modal-content">
+              		<div class="modal-header"> 
+                	<p class="login-box-msg" style="color:DodgerBlue;font-size:160%;"><b>Sign Up and Start Learning!</b></p>
+                	<button type="button" class="close" data-dismiss="modal" >&times;</button>
+                </div>
 
-                    <span v-if="errors.name" :class="{'invalid-feedback d-block' : errors.name}">
-                        <strong>{{ errors.name[0] }}</strong>
-                    </span>
-              </div>
-          </div>
+                <div class="modal-body">
+                	<div class="login-logo">
+                    	<a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .6"></a>
+                	</div>
+                 <form method="POST" @submit.prevent="onSubmit" @keydown="clearError($event.target.name)">
+              
+                 <div class="form-group row">
+                    <label for="name" class="col-md-4  text-md-right">Namewrite </label>
+                     <div class="col-md-6">
+                         <input id="name" @blur="liveValidate('name')" type="text" class="form-control" name="name" v-model="user.name" placeholder="Name" required autofocus>
 
-          <div class="form-group row">
-              <label for="email" class="col-md-4 col-form-label text-md-right">Email Address </label>
+                        <span v-if="errors.name" :class="{'invalid-feedback d-block' : errors.name}">
+                             <strong>{{ errors.name[0] }}</strong>
+                        </span>
+                     </div>
+                 </div>
 
-              <div class="col-md-6">
-                  <input id="email" @blur="liveValidate('email')" type="email" class="form-control" name="email" v-model="user.email" placeholder="E-mail" required>
+                 <div class="form-group row">
+                     <label for="email" class="col-md-4 col-form-label text-md-right">Email Address </label>
+                         <div class="col-md-6">
+                            <input id="email" @blur="liveValidate('email')" type="email" class="form-control" name="email" v-model="user.email" placeholder="E-mail" required>
 
-                    <span v-if="errors.email" :class="{'invalid-feedback d-block' : errors.email}">
-                        <strong>{{ errors.email[0] }}</strong>
-                    </span>
-              </div>
-          </div>
+                                <span v-if="errors.email" :class="{'invalid-feedback d-block' : errors.email}">
+                                    <strong>{{ errors.email[0] }}</strong>
+                                </span>
+                         </div>
+                 </div>
 
           <div class="form-group row">
               <label for="nic" class="col-md-4 col-form-label text-md-right">National ID No:</label>
@@ -63,7 +74,11 @@
               </div>
           </div>
       </form>
-  </div>  
+    </div>  
+   </div>
+</div>
+</div>
+    
 </template>
 
 <script>
