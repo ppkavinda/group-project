@@ -68,5 +68,10 @@ Route::get('/posts',function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//sachintha
+
 
 Route::match(['get','post'],'/admin/add-category','CategoryController@addCategory');
+Route::match(['get','post'],'/admin/edit-category/{id}','CategoryController@editCategory');
+Route::get('/admin/view-category','CategoryController@viewCategories');
+
