@@ -1,8 +1,8 @@
 <template>
 <div class="modal fade" id="myModal1" role="dialog">
-            <div class="modal-dialog">
-              	<div class="modal-content">
-              		<div class="modal-header"> 
+        <div class="modal-dialog">
+            <div class="modal-content">
+              	<div class="modal-header"> 
                 	<p class="login-box-msg" style="color:DodgerBlue;font-size:160%;"><b>Sign Up and Start Learning!</b></p>
                 	<button type="button" class="close" data-dismiss="modal" >&times;</button>
                 </div>
@@ -31,7 +31,7 @@
 
                                 <span v-if="errors.email" :class="{'invalid-feedback d-block' : errors.email}">
                                     <strong>{{ errors.email[0] }}</strong>
-                                </span>
+                                 </span>
                          </div>
                  </div>
 

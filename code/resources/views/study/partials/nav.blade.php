@@ -60,9 +60,9 @@
 						<li class="active nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}"> 
 							<a class="nav-link menu__link" data-toggle="modal" data-target="#myModal">
 							<i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
-								<!-- <button class="btn btn-primary" >Login In</button> -->
 						</li>
-						<li class="nav-item menu__item {{ Request::is('register') ? 'menu__item--current' : '' }}">
+
+						<li class="active nav-item menu__item {{ Request::is('register') ? 'menu__item--current' : '' }}">
 								<a class="nav-link menu__link"  data-toggle="modal" data-target="#myModal1">
 								<i class="fa fa-user" aria-hidden="true"></i> Sign Up </a>
 						</li>
@@ -100,15 +100,17 @@
 		</div>
 	</div>
 </div>
-	<!-- login modal -->
 
-	@extends('auth.login')
-	@section('content')
+<!-- login modal -->
+
+@extends('auth.login')
+@section('content')
         
+<!-- register modal -->
 
-    <!-- register modal -->
-	<register></register>
-	@yield('content')
-               
+@extends('layouts.vue')
 
-		
+@section('content')
+    <register></register>
+@endsection
+

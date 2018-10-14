@@ -14529,11 +14529,7 @@ Vue.component('cart-model', __webpack_require__(140));
 Vue.component('cart-badge', __webpack_require__(143));
 
 var app = new Vue({
-    el: '#app',
-
-    components: {
-        'register': __webpack_require__(18)
-    }
+    el: '#app'
 });
 
 /***/ }),
