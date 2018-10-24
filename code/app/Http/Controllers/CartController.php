@@ -18,7 +18,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cart = auth()->user()->cart()->get();
+        $cart = \Cart::content();
         return view('shop.cart.index', compact('cart'));
     }
 
@@ -44,10 +44,10 @@ class CartController extends Controller
             'quantity' => "max:$product->amount",
         ]);
 
-        // auth()->user()->cart()->attach($product->id, [
-        //     'quantity' => $request->quantity
-        // ]);
-        $cartItem = \Cart::add($product->id, $product->name, $request->quantity, $product->price);
+        $cartItem = \Cart::add(
+            $product->id, $product->name, $request->quantity, $product->price, 
+            ['img1' => $product->img1, 'img2' => $product->img2, 'img3' => $product->img3]
+        );
 
         return $cartItem;
     }
