@@ -95,6 +95,12 @@ class CartController extends Controller
      */
     public function destroy($rowId)
     {
-        return \Cart::remove($rowId);
+        $deleted  = \Cart::remove($rowId);
+        
+        if (request()->wantsJson()) {
+            return response([], 204);
+        }
+
+        return back();
     }
 }

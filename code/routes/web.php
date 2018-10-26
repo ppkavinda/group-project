@@ -34,6 +34,8 @@ Route::get('/cart', 'CartController@index');
 Route::post('/cart/{product}', 'CartController@store');
 Route::put('/cart/{cartId}', 'CartController@update');
 Route::delete('/cart/{cartId}', 'CartController@destroy');
+Route::get('/checkout', 'CheckoutController@index');
+Route::post('/checkout/details', 'CheckoutController@storeDetails');
 
 // study
 Route::view('/study', 'study.index');
