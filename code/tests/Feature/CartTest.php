@@ -43,6 +43,6 @@ class CartTest extends TestCase
         $cartItem = $this->post("/cart/$product->id", ['quantity' => 2]);
 
         $a = $this->delete("/cart/" . $cartItem->json()['rowId'])
-            ->assertStatus(200);
+            ->assertStatus(302);
     }
 }

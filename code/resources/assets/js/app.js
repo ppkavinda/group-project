@@ -61,7 +61,10 @@ Vue.component('video-upload', require('./study/VideoUpload'))
 Vue.component('product-slider', require('./shop/product/ProductSlider'))
 Vue.component('add-to-cart', require('./shop/product/AddToCart'))
 Vue.component('cart-model', require('./shop/cart/CartModel'))
-Vue.component('cart-badge', require('./shop/cart/CartBadge'))
+Vue.component('cart-button', require('./shop/cart/CartButton'))
+Vue.component('checkout-cart', require('./shop/cart/checkout/CheckoutCart'))
+
+Vue.config.productionTip = false
 
 const app = new Vue({
     el: '#app'
