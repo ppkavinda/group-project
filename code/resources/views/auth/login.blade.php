@@ -67,9 +67,7 @@
                         <div class="modal-footer">
                        
                             <div class="col-md-9 offset-md-4">Don't have an account?
-                        		 <a class="sign-link" href="/pages/Register.vue" data-purpose="sign-up">
-                         			Sign up
-                        		</a>
+                            <a data-toggle="myModal1" href="#myModal1">Sign Up</a>
                    			</div>
                         </div>
                         </form>

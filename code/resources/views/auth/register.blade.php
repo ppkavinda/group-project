@@ -13,7 +13,8 @@
                     <div class="login-logo">
                         <a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .6"></a>
                     </div>
-                    <register/>
+                  <register></register>
+                  @yield('content')
 
                 </div>
         </div>
