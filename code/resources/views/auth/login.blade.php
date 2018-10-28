@@ -1,13 +1,13 @@
 <div class="modal fade" id="myModal" role="dialog">
-              <div class="modal-dialog">
-              <div class="modal-content">
-              <div class="modal-header"> 
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"> 
 
-                <p style="color:DodgerBlue;font-size:160%;" class="text-center" ><b>{{ __('Sign In!') }}</b></p>
+            <p style="color:DodgerBlue;font-size:160%;" class="text-center" ><b>{{ __('Sign In!') }}</b></p>
                 <button type="button" class="close" data-dismiss="modal" >&times;</button>
 
-                </div>
-                <div class="modal-body">
+            </div>
+            <div class="modal-body">
                 <!-- /.login-logo -->
                 <div class="login-logo">
                     <a href="/"><img src="/dist/img/logo.jpg" class="rounded mx-auto d-block" style="width: 45%; opacity: .6"></a>
@@ -53,6 +53,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group row ">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -63,15 +64,16 @@
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>
-                         </div>   
+                         </div> 
+
                         <div class="modal-footer">
                        
                             <div class="col-md-9 offset-md-4">Don't have an account?
                             <a data-toggle="myModal1" href="#myModal1">Sign Up</a>
                    			</div>
                         </div>
-                        </form>
-                    </div>
-                </div>
+                    </form>
             </div>
         </div>
+    </div>
+</div>

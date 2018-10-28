@@ -56,13 +56,11 @@
 								<a href="/shop" class="w3view-cart"><i class="fa fa-cart-arrow-down" ></i></a>
 							</div>
 						</li>
-						<li class="nav-item menu__item {{ Request::is('/cart') ? 'menu__item--current' : '' }}">
-							<cart-button initial-cart-count="{{ Cart::count() }}"></cart-button>
-						</li>
+						
 						@guest
 						<li class="active nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}"> 
 							<a class="nav-link menu__link" data-toggle="modal" data-target="#myModal">
-							<i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
+							<i class="fa fa-user" aria-hidden="true"></i> Sign In </a> 
 						</li>
 
 						<li class="active nav-item menu__item {{ Request::is('register') ? 'menu__item--current' : '' }}">
