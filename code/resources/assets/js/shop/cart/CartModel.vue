@@ -14,7 +14,8 @@
                     <span class="minicart-price">LKR {{ item.price | currency }}</span>
                 </div>
                 <div class="minicart-details-remove col-md-1 my-auto">
-                    <button type="button" class="minicart-remove" @click="removeItem(item)" data-minicart-idx="0">x</button>            
+                    <button type="button" class="minicart-remove" @click="removeItem(item)" 
+                        :disabled="url=='/checkout'" data-minicart-idx="0">x</button>            
                 </div>            
             </li>
         </ul>    
@@ -26,9 +27,9 @@
             </ul>
         </div>
         <div class="row">                    
-            <div class="col-md-5 minicart-subtotal"><strong>Subtotal: LKR {{ total | currency }}</strong></div>       
+            <div class="col-md-5 minicart-subtotal"><strong>Subtotal: LKR {{ total | currency }}</strong></div>    
             <div class="col-md-3 offset-md-4">
-                <a href="/cart" class="btn btn-primary mr-auto">Go to Cart</a>
+                <a href="/checkout" class="btn btn-primary mr-auto" :class="{'disabled': disableCheckout}">Go to Checkout</a>
             </div>
         </div>                                                                        
     </form>
@@ -40,8 +41,9 @@ export default {
     props: ['initialItems'],
     data() {
         return {
-            show: true,
+            show: false,
             items: {},
+            disableCheckout: true,
         };
     },
     computed: {
@@ -52,6 +54,9 @@ export default {
             }
             return total.toFixed(2)
         },
+        url () {
+            return window.location.pathname
+        }
     },
     methods: {
         updateItem (item) {
@@ -72,6 +77,8 @@ export default {
             axios.delete(`/cart/${item.rowId}`)
                 .then(res => {
                     Vue.delete(this.items, item.rowId)
+                    // console.log(Object.keys(this.items))
+                    this.disableCheckout = this.items == null || Object.keys(this.items)
                 })
                 .catch(err => {
                     console.log(err)
@@ -83,12 +90,24 @@ export default {
     },
     beforeMount () {
         window.Event.$on("added-to-cart", cartItem => {
-            this.show = true;
+            this.show = true
+            this.disableCheckout = false
             Vue.set(this.items, cartItem.rowId, cartItem)
-        });
-
+        })
         // only if cart has any items in it, insert them to items
-        if (this.initialItems.length > 2) this.items = JSON.parse(this.initialItems)
+        if (this.initialItems.length > 2) {
+            this.items = JSON.parse(this.initialItems)
+            this.disableCheckout = false
+        }
+        console.log('beforemount')
+    },
+    created () {
+        console.log(this.url)
+        window.Event.$on('open-cart', () => {
+            console.log('open-cart')
+            this.show = true
+        })
+        console.log('open')
     },
     filters: {
         currency (value) {

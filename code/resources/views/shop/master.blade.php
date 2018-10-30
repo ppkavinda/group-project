@@ -27,6 +27,8 @@
 		@include('study.partials.nav')
 		@yield('content')
 		@include('shop.partials.footer')
+		
+		<cart-model initial-items="{{ json_encode(Cart::content()) }}"></cart-model>
 	</div>
 	<!-- //footer -->
 
@@ -111,6 +113,7 @@ $(document).ready(function () {
 								
 			});
 	</script>
+	@stack('scripts')
 <!-- //here ends scrolling icon -->
 
 

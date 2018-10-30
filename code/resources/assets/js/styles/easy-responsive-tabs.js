@@ -7,7 +7,7 @@
                 type: 'default', //default, vertical, accordion;
                 width: 'auto',
                 fit: true,
-                closed: false,
+                closed: true,
                 activate: function(){}
             }
             //Variables
