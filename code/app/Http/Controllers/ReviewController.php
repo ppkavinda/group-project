@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Review;
 use App\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ReviewController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -33,29 +37,47 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        dd('don');
+    public function store(Request $request, Product $product) {
+        // dd($request->ratings);
+
+        $request->validate([
+            'body' => 'required|min:4',
+            // 'user_id' => 'exists:users,id|required',
+            // 'product_id' => 'exists:products,id|required',
+            'ratings' => 'required|in:1,2,3,4,5|numeric',
+        ]);
+
+        \App\Review::create([
+            'body' => $request->body,
+            'user_id' => auth()->id(),
+            'product_id' => $product->id,
+            'ratings' => $request->ratings,
+        ]);
+
+        $product->ratings = ($product->ratings + $request->ratings) / 2;
+        $product->save();
+
+        return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\product  $product
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(product $product)
+    public function show(Review $review)
     {
-        return view('shop.products.single', compact('product'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\product  $product
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function edit(product $product)
+    public function edit(Review $review)
     {
         //
     }
@@ -64,10 +86,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\product  $product
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, product $product)
+    public function update(Request $request, Review $review)
     {
         //
     }
@@ -75,10 +97,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\product  $product
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product $product)
+    public function destroy(Review $review)
     {
         //
     }

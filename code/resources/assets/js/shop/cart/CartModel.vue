@@ -14,7 +14,8 @@
                     <span class="minicart-price">LKR {{ item.price | currency }}</span>
                 </div>
                 <div class="minicart-details-remove col-md-1 my-auto">
-                    <button type="button" class="minicart-remove" @click="removeItem(item)" :disabled="url=='/checkout'" data-minicart-idx="0">x</button>            
+                    <button type="button" class="minicart-remove" @click="removeItem(item)" 
+                        :disabled="url=='/checkout'" data-minicart-idx="0">x</button>            
                 </div>            
             </li>
         </ul>    
@@ -26,9 +27,9 @@
             </ul>
         </div>
         <div class="row">                    
-            <div class="col-md-5 minicart-subtotal"><strong>Subtotal: LKR {{ total | currency }}</strong></div>       
+            <div class="col-md-5 minicart-subtotal"><strong>Subtotal: LKR {{ total | currency }}</strong></div>    
             <div class="col-md-3 offset-md-4">
-                <a href="/cart" class="btn btn-primary mr-auto" :class="{'disabled': disableCheckout}">Go to Cart</a>
+                <a href="/checkout" class="btn btn-primary mr-auto" :class="{'disabled': disableCheckout}">Go to Checkout</a>
             </div>
         </div>                                                                        
     </form>
@@ -40,7 +41,7 @@ export default {
     props: ['initialItems'],
     data() {
         return {
-            show: true,
+            show: false,
             items: {},
             disableCheckout: true,
         };

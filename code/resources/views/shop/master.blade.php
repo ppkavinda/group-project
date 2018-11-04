@@ -113,6 +113,7 @@ $(document).ready(function () {
 								
 			});
 	</script>
+	@stack('scripts')
 <!-- //here ends scrolling icon -->
 
 

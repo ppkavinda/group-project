@@ -21,7 +21,7 @@ Route::view('/admin', 'admin.index');
 
 // profile
 Route::get('/profile', 'UserController@index')->middleware('auth');
-Route::get('/profile/{user}', 'UserController@show');
+Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
 Route::post('/users/{user}/edit', 'UserController@edit');
 Route::get('/user', 'UserController@get');
 // shop
@@ -30,6 +30,9 @@ Route::view('/mens', 'shop.mens');
 Route::view('/woman', 'shop.woman');
 Route::post('/products', 'ProductController@store');
 Route::get('/products/{product}', 'ProductController@show');
+
+Route::post('/reviews/{product}/create', 'ReviewController@store')->name('reviews.store');
+
 Route::get('/cart', 'CartController@index');
 Route::post('/cart/{product}', 'CartController@store');
 Route::put('/cart/{cartId}', 'CartController@update');
