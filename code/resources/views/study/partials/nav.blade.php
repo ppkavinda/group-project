@@ -105,7 +105,6 @@
         
 <!-- register modal -->
 
-@extends('layouts.vue')
 
 @section('content')
     <register></register>
