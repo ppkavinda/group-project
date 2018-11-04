@@ -2,22 +2,22 @@
 <div>
     <div class="rating1">
         <span class="starRating">
-            <input id="rating5" type="radio" name="rating" value="5">
-            <label for="rating5">5</label>
-            <input id="rating4" type="radio" name="rating" value="4">
-            <label for="rating4">4</label>
-            <input id="rating3" type="radio" name="rating" value="3" checked="">
-            <label for="rating3">3</label>
-            <input id="rating2" type="radio" name="rating" value="2">
-            <label for="rating2">2</label>
-            <input id="rating1" type="radio" name="rating" value="1">
-            <label for="rating1">1</label>
+            <input disabled id="rate5" type="radio" value="5" :checked="getRating==5">
+            <label for="rate5">5</label>
+            <input disabled id="rate4" type="radio" value="4" :checked="getRating==4">
+            <label for="rate4">4</label>
+            <input disabled id="rate3" type="radio" value="3" :checked="getRating==3">
+            <label for="rate3">3</label>
+            <input disabled id="rate2" type="radio" value="2" :checked="getRating==2">
+            <label for="rate2">2</label>
+            <input disabled id="rate1" type="radio" value="1" :checked="getRating==1">
+            <label for="rate1">1</label>
         </span>
     </div>
     <div class="color-quality">
         <div class="color-quality-right">
-            <label for="quantiry"><h5>Quality :</h5></label>
-            <input type="number" v-model="product.quantity" class="p-1">
+            <label for="quantity"><h5>Quality :</h5></label>
+            <input id="quantity" type="number" v-model="product.quantity" class="p-1">
         </div>
     </div>
     <div class="occasion-cart" style="position:relative; top:3rem;width:40%;">
@@ -55,6 +55,11 @@ export default {
                         window.location.replace('/login')
                     }
                 })
+        },
+    },
+    computed: {
+        getRating () {
+            return Math.round(this.product.ratings)
         }
     },
     created () {
