@@ -1,5 +1,5 @@
 <template>
-    <span class="badge badge-light">{{ count }}</span>
+    <span v-if="count>0" class="badge badge-light">{{ count }}</span>
 </template>
 
 <script>

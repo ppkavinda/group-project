@@ -26,8 +26,11 @@ Route::post('/users/{user}/edit', 'UserController@edit');
 Route::get('/user', 'UserController@get');
 // shop
 Route::view('/shop', 'shop.index');
-Route::view('/mens', 'shop.mens');
-Route::view('/woman', 'shop.woman');
+
+Route::view('/categories/men', 'shop.mens')->name('categories.men');
+Route::view('/categories/woman', 'shop.woman')->name('categories.women');
+Route::get('/categories/jewellery', function () {dd('jewellery'); })->name('categories.jewellery');
+
 Route::post('/products', 'ProductController@store');
 Route::get('/products/{product}', 'ProductController@show');
 
