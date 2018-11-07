@@ -39,3 +39,4 @@ goto `localhost:8000`
 * [Laravel](https://laravel.com/) - The web framework used
 * [VueJs](https://vuejs.org/) - Front-end framework used
 <!-- * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds -->
+
