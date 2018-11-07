@@ -9,7 +9,7 @@ class MyDumpHandler(tornado.web.RequestHandler):
     def post(self):
         # pprint.pprint(self.request)
         # pprint.pprint(self.request.body)
-        call(['git pull'])
+        call(['git status'])
 
 if __name__ == "__main__":
     tornado.web.Application([(r"/.*", MyDumpHandler),]).listen(1995)
