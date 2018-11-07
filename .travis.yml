@@ -10,4 +10,4 @@ before_script:
   - composer install --no-interaction
 
 script:
-  - cd code && vendor/bin/phpunit
+  - vendor/bin/phpunit
