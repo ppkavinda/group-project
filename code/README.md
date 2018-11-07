@@ -1,6 +1,6 @@
 # athwela
 
-**Athwela** is a web based learning center and an online market
+**Athwela** is a web based learning center and an online market.
 
 ## Getting Started
 
