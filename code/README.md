@@ -1,4 +1,4 @@
-# athwela
+# athwela [![Build Status](https://travis-ci.com/ppkavinda/group-project.svg?branch=master)](https://travis-ci.com/ppkavinda/group-project)
 
 **Athwela** is a web based learning center and an online market.
 
