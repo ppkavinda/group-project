@@ -4,9 +4,10 @@ php:
   - 7.2
 
 before_script:
-  - cp .env.travis .env
+  - cp ./code/.env.travis ./code/.env
+  - cd code
   - composer self-update
   - composer install --no-interaction
 
 script:
-  - vendor/bin/phpunit
+  - cd code && vendor/bin/phpunit
