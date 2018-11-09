@@ -27,5 +27,17 @@
         </ul>
         @endif
         <h5 class="m-3">In order to publish posts in this site, you have to register as a <a href="#">Facilitator</a></h5>
-</div>
+
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <h5 class="m-3">Enrolled courses</h5>
+            <ul class="list-group list-group-flush">
+                @foreach($user->courses as $course)
+                    <a href="/courses/{{ $course->id }}"><li class="list-group-item"><i class="fa fa-check"></i> {{ $course->title }}</li></a>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+</div> 
 
