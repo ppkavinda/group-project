@@ -26,7 +26,7 @@
 	<div class="container">
 		<div class="top_nav_left">
 			<nav class="navbar navbar-expand-lg navbar-default navbar-dark py-0 pb-0">
-			  <div class="container-fluid">
+			  <div class="container-fluid"> 
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 				  <button type="button" class="navbar-toggler mt-2" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" 
@@ -39,6 +39,36 @@
 				  <ul class="navbar-nav menu__list mr-auto">
 						<li class="nav-item menu__item {{ Request::is('/') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/">Home <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item dropdown menu__item">
+							<a href="#" class="nav-link dropdown-toggle menu__link" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								Categories
+								<span class="fa fa-caret-down"></span>
+							</a>
+							<ul class="dropdown-menu multi-column columns-3" area-labelledby="navbarDropdown">
+								<div class="agile_inner_drop_nav_info row">
+									<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
+										<a><img src="/dist/img/top2.jpg" alt="categories"/></a>
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										<ul class="multi-column-dropdown">
+											<li><a href="{{ route('categories.men') }}">Clothing</a></li>
+											<li><a href="{{ route('categories.women') }}">Wallets</a></li>
+										</ul>
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										<ul class="multi-column-dropdown">
+											<li><a href="{{ route('categories.jewellery') }}">Jewellery</a></li>
+											{{-- <li><a href="categories/">Sunglasses</a></li> --}}
+											{{-- <li><a href="categories/">Perfumes</a></li> --}}
+											{{-- <li><a href="categories/">Beauty</a></li> --}}
+											{{-- <li><a href="categories/">Shirts</a></li> --}}
+											{{-- <li><a href="categories/">Sunglasses</a></li> --}}
+											{{-- <li><a href="categories/">Swimwear</a></li> --}}
+										</ul>
+									</div>
+								</div>
+							</ul>
 						</li>
 						<li class="nav-item menu__item {{ Request::is('courses*') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/courses">Courses</a>
