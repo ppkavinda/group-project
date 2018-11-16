@@ -29401,8 +29401,23 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__study_ImageUpload__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__study_ImageUpload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__study_ImageUpload__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -29453,12 +29468,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['userId'],
+    components: { imageUpload: __WEBPACK_IMPORTED_MODULE_0__study_ImageUpload___default.a },
     data: function data() {
         return {
             user: {
                 name: '',
                 email: '',
-                nic: ''
+                nic: '',
+                address1: '',
+                address2: '',
+                description: '',
+                profile_pic: ''
             },
             submitButton: {
                 text: 'Save',
@@ -29469,17 +29489,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api/users/' + this.userId).then(function (res) {
+        axios.get('api/users/' + this.userId).then(function (res) {
             _this.user = res.data;
         }).catch(function (err) {
             console.log(err);
         });
     },
     methods: {
+        onImageLoad: function onImageLoad(file) {
+            this.user.profile_pic = file.src;
+        },
         updateDetails: function updateDetails() {
             var _this2 = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('users/' + this.userId + '/edit', this.user).then(function (res) {
+            axios.post('users/' + this.userId + '/edit', this.user).then(function (res) {
                 _this2.user = res.data;
                 _this2.onSuccess();
             }).catch(function (err) {
@@ -29663,6 +29686,92 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-sm-2 col-form-label text-right",
+                  attrs: { for: "inputAddress1" }
+                },
+                [_vm._v("Address")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-10" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.address1,
+                      expression: "user.address1"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "address1",
+                    id: "inputAddress",
+                    placeholder: "Address Line 1"
+                  },
+                  domProps: { value: _vm.user.address1 },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "address1", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("i", {
+                  staticClass: "fa fa-pencil edit-pencil",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c("label", {
+                staticClass: "col-sm-2 col-form-label text-right",
+                attrs: { for: "inputAddress1" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-10" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.address2,
+                      expression: "user.address2"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "address2",
+                    id: "inputAddress2",
+                    placeholder: "Address Line 2"
+                  },
+                  domProps: { value: _vm.user.address2 },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "address2", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("i", {
+                  staticClass: "fa fa-pencil edit-pencil",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
             _c("input", {
               directives: [
                 {
@@ -29692,14 +29801,20 @@ var render = function() {
       _c("div", { staticClass: "col-md-6" }, [
         _c(
           "div",
-          { staticClass: "card mx-auto", staticStyle: { width: "25rem" } },
+          { staticClass: "mx-auto", staticStyle: { width: "25rem" } },
           [
-            _c("center", [
-              _c("img", {
-                staticClass: "card-img-top rounded-circle d-block",
-                attrs: { src: "/dist/img/avatar5.png", alt: "Card image cap" }
-              })
-            ]),
+            _c(
+              "center",
+              [
+                _c("img", {
+                  staticClass: "card-img-top rounded-circle d-block",
+                  attrs: { src: _vm.user.profile_pic, alt: "Card image cap" }
+                }),
+                _vm._v(" "),
+                _c("image-upload", { on: { loaded: _vm.onImageLoad } })
+              ],
+              1
+            ),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _c("h5", { staticClass: "card-title" }, [_vm._v("Description")]),
@@ -30001,6 +30116,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+//
 //
 //
 //
@@ -31263,7 +31379,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.inputfile[data-v-64fbd914] {\r\n\twidth: 0.1px;\r\n\theight: 0.1px;\r\n\topacity: 0;\r\n\toverflow: hidden;\r\n\tposition: absolute;\r\n\tz-index: -1;\n}\r\n", ""]);
+exports.push([module.i, "\n.inputfile[data-v-64fbd914] {\n\twidth: 0.1px;\n\theight: 0.1px;\n\topacity: 0;\n\toverflow: hidden;\n\tposition: absolute;\n\tz-index: -1;\n}\n", ""]);
 
 // exports
 
@@ -31317,6 +31433,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
+        /**
+         * reads the image file & emit 'loaded' event when loaded it
+         * catch it in other component
+         * emits -> src, file
+         * src: blog url for preview purposes
+         * file: actuall file for upload
+         * 
+         */
         onChange: function onChange(e) {
             var _this = this;
 
@@ -32657,7 +32781,7 @@ var render = function() {
               staticClass: "col-md-10 offset-md-2 form-text text-muted",
               attrs: { id: "passwordHelpBlock" }
             },
-            [_vm._v("\r\n            Max file size : 100M\r\n        ")]
+            [_vm._v("\n            Max file size : 100M\n        ")]
           ),
           _vm._v(" "),
           _vm.errors.video

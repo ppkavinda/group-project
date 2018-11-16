@@ -18,10 +18,10 @@
                     </div>
                 </form>
             </div>
-            @endif
+        @endif
     </div>
     <div class="col-md-6">
-        @if (auth()->user()->isFacilitator())
+        {{-- @if (auth()->user()->isFacilitator())
             <h5 class="m-3">Your Posts
                 <a href="/posts/create" class="btn btn-primary ml-3">New Post</a>
             </h5>
@@ -36,7 +36,7 @@
             </ul>
         @else
             <h5 class="m-3">In order to publish posts in this site, you have to register as a <a href="#">Facilitator</a></h5>
-        @endif
+        @endif --}}
     </div>
 
 </div>
