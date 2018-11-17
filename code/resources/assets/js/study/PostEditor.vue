@@ -3,7 +3,8 @@
     <div class="row">
         <div class="col-md-9 bg-light p-2">
             <div class="form-group">
-                <input @keypress="clearError('title')" v-model="post.title" type="text" id="postTitle" class="form-control" name="title" placeholder="Enter the Title">
+                <input @keypress="clearError('title')" v-model="post.title" type="text" id="postTitle" 
+                    class="form-control" name="title" placeholder="Enter the Title">
 
                 <span v-if="errors.title" :class="{'invalid-feedback d-block' : errors.title}">
                     <strong>{{ errors.title[0] }}</strong>

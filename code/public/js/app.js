@@ -419,15 +419,6 @@ module.exports = {
 
 /***/ }),
 /* 2 */
-<<<<<<< HEAD
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(29);
-
-/***/ }),
-/* 3 */
-=======
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 /***/ (function(module, exports) {
 
 /*
@@ -14411,54 +14402,10 @@ module.exports = Cancel;
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(94)
-/* template */
-var __vue_template__ = __webpack_require__(95)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/pages/Register.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f409c60", Component.options)
-  } else {
-    hotAPI.reload("data-v-0f409c60", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-=======
 __webpack_require__(19);
 __webpack_require__(163);
 __webpack_require__(164);
 module.exports = __webpack_require__(165);
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 
 
 /***/ }),
@@ -14542,14 +14489,10 @@ Vue.component('video-upload', __webpack_require__(126));
 Vue.component('product-slider', __webpack_require__(130));
 Vue.component('add-to-cart', __webpack_require__(135));
 Vue.component('cart-model', __webpack_require__(140));
-<<<<<<< HEAD
-Vue.component('cart-badge', __webpack_require__(143));
-=======
 Vue.component('cart-button', __webpack_require__(143));
 Vue.component('checkout-cart', __webpack_require__(149));
 
 Vue.config.productionTip = false;
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 
 var app = new Vue({
     el: '#app'
@@ -19282,13 +19225,8 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 
 var utils = __webpack_require__(1);
 var bind = __webpack_require__(11);
-<<<<<<< HEAD
-var Axios = __webpack_require__(31);
-var defaults = __webpack_require__(6);
-=======
 var Axios = __webpack_require__(30);
 var defaults = __webpack_require__(7);
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 
 /**
  * Create an instance of Axios
@@ -19910,15 +19848,9 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(1);
 var transformData = __webpack_require__(42);
 var isCancel = __webpack_require__(15);
-<<<<<<< HEAD
-var defaults = __webpack_require__(6);
-var isAbsoluteURL = __webpack_require__(43);
-var combineURLs = __webpack_require__(44);
-=======
 var defaults = __webpack_require__(7);
 var isAbsoluteURL = __webpack_require__(42);
 var combineURLs = __webpack_require__(43);
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -25069,13 +25001,8 @@ if(false) {
 /* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-var escape = __webpack_require__(56);
-exports = module.exports = __webpack_require__(3)(false);
-=======
 var escape = __webpack_require__(55);
 exports = module.exports = __webpack_require__(2)(false);
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 // imports
 
 
@@ -33800,8 +33727,6 @@ if (false) {
 
 /***/ }),
 /* 143 */
-<<<<<<< HEAD
-=======
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -33876,21 +33801,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 145 */
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-<<<<<<< HEAD
-var __vue_script__ = __webpack_require__(144)
-/* template */
-var __vue_template__ = __webpack_require__(145)
-=======
 var __vue_script__ = __webpack_require__(146)
 /* template */
 var __vue_template__ = __webpack_require__(147)
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -33929,11 +33847,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-<<<<<<< HEAD
-/* 144 */
-=======
 /* 146 */
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33970,11 +33884,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-<<<<<<< HEAD
-/* 145 */
-=======
 /* 147 */
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -33998,9 +33908,6 @@ if (false) {
 }
 
 /***/ }),
-<<<<<<< HEAD
-/* 146 */
-=======
 /* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35107,27 +35014,18 @@ if (false) {
 
 /***/ }),
 /* 163 */
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-<<<<<<< HEAD
-/* 147 */
-=======
 /* 164 */
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-<<<<<<< HEAD
-/* 148 */
-=======
 /* 165 */
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -8,6 +8,14 @@
 <script>
 export default {
     methods: {
+        /**
+         * reads the image file & emit 'loaded' event when loaded it
+         * catch it in other component
+         * emits -> src, file
+         * src: blog url for preview purposes
+         * file: actuall file for upload
+         * 
+         */
         onChange (e) {
             if (! e.target.files.length) return
 

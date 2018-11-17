@@ -25,13 +25,28 @@
                         <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="inputAddress1" class="col-sm-2 col-form-label text-right">Address</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="address1" class="form-control" id="inputAddress" placeholder="Address Line 1" v-model="user.address1">
+                        <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputAddress1" class="col-sm-2 col-form-label text-right"></label>
+                    <div class="col-sm-10">
+                        <input type="text" name="address2" class="form-control" id="inputAddress2" placeholder="Address Line 2" v-model="user.address2">
+                        <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
+                    </div>
+                </div>
                 <input type="submit" class="btn offset-md-2" :class="submitButton.class" v-model="submitButton.text">
             </form>
         </div>
         <div class="col-md-6">
-            <div class="card mx-auto" style="width: 25rem;">
+            <div class="mx-auto" style="width: 25rem;">
                 <center>
-                    <img class="card-img-top rounded-circle d-block" src="/dist/img/avatar5.png" alt="Card image cap">
+                    <img class="card-img-top rounded-circle d-block" :src="user.profile_pic" alt="Card image cap">
+                    <image-upload @loaded="onImageLoad"></image-upload>
                 </center>
                 <div class="card-body">
                     <h5 class="card-title">Description</h5>
@@ -44,16 +59,21 @@
 </template>
 
 <script>
-import axios from 'axios'
+import imageUpload from '../../study/ImageUpload';
 
 export default {
     props: ['userId'],
+    components: {imageUpload},
     data : function () {
         return {
             user: {
                 name: '',
                 email: '',
                 nic: '',
+                address1: '',
+                address2: '',
+                description: '',
+                profile_pic: '',
             },
             submitButton: {
                 text: 'Save',
@@ -71,6 +91,9 @@ export default {
             })
     },
     methods: {
+        onImageLoad (file) {
+            this.user.profile_pic = file.src
+        },
         updateDetails () {
             axios.post('users/' + this.userId + '/edit', this.user)
                 .then(res => {

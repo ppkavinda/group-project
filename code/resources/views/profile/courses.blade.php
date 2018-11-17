@@ -27,6 +27,7 @@
         </ul>
         @endif
         <h5 class="m-3">In order to publish posts in this site, you have to register as a <a href="#">Facilitator</a></h5>
+<<<<<<< HEAD
 
     </div>
     <div class="col-md-6">
@@ -40,4 +41,8 @@
         </div>
     </div>
 </div> 
+=======
+    </div>
+</div>
+>>>>>>> fb8a9d10258c0c062da34c8d9b9b2dec5c7b8d41
 
