@@ -19,10 +19,12 @@
             <a @click.prevent="onNext" class="btn btn-primary" href="#">Next</a>
         </li>
     </ul>
+
 </div>
 </template>
 
 <script>
+
 export default {
     props: ['initialActive'],
     methods: {
@@ -30,7 +32,25 @@ export default {
             console.log('previous')
             this.$emit('gotoShipping')
         },
+        payment (data, actions) {
+            return actions.payment.create({
+                transactions: [{
+                    amount: {
+                        total: '0.01',
+                        currency: 'USD'
+                    }
+                }]
+            });
+        },
+        onAuthorize (data, actions) {
+            return actions.payment.execute().then(function() {
+                // Show a confirmation message to the buyer
+                // window.alert('Thank you for your purchase!');1000
+                console.log("purchared");
+            });
+        }
+    },
+    mounted () {
     }
-    
 }
 </script>
