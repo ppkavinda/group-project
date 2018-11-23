@@ -6,16 +6,38 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
-    public function __construct () {
+    public function __construct()
+    {
         $this->middleware('auth');
         // dd(\Cart::count());
     }
-    public function index() {
-        if (\Cart::count() < 1) return redirect('/products/1');
-        return view('shop.cart.checkout');
-    }
+    public function index()
+    {
+        if (\Cart::count() < 1) {
+            return redirect('/products/1');
+        }
 
-    public function storeDetails(Request $request) {
+        $successful = false;
+
+        if (request()->order_id) {
+            $successful = true;
+        }
+        return view('shop.cart.checkout', compact('successful'));
+    }
+    public function success(Request $request)
+    {
+        dd('success', $request);
+    }
+    public function cancel(Request $request)
+    {
+        dd('cancel', $request);
+    }
+    public function notify(Request $request)
+    {
+        dd('notify', $request);
+    }
+    public function storeDetails(Request $request)
+    {
         $request->validate([
             'address1' => 'required|min:10',
             'city' => 'required|string',
@@ -33,5 +55,4 @@ class CheckoutController extends Controller
         // dd(auth()->user());
         return $request;
     }
-    
 }

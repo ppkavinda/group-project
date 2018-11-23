@@ -19,10 +19,12 @@
             <a @click.prevent="onNext" class="btn btn-primary" href="#">Next</a>
         </li>
     </ul>
+
 </div>
 </template>
 
 <script>
+
 export default {
     props: ['initialActive'],
     methods: {
@@ -30,7 +32,8 @@ export default {
             console.log('previous')
             this.$emit('gotoShipping')
         },
+    },
+    mounted () {
     }
-    
 }
 </script>
