@@ -27,9 +27,13 @@
                 </div>
 
                 <div class="form-container tab-content clearfix p-30">
-                    <checkout-details :initial-active="activeDetails" :initial-details="user" @gotoShipping="goShipping"></checkout-details>
-                    <checkout-shipping :initial-active="activeShipping" :subtotal="subTotal" @gotoDetails="goDetails" @gotoPayment="goPayment"></checkout-shipping>
-                    <checkout-payment :initial-active="activePayment" @gotoShipping="goShipping"></checkout-payment>
+                    <checkout-details :initial-active="activeDetails" 
+                        :initial-details="user" @gotoShipping="goShipping"></checkout-details>
+                    <checkout-shipping :initial-active="activeShipping"
+                        :subtotal="subTotal" :user="user" :cart="JSON.parse(this.initialCart)"
+                        @gotoDetails="goDetails" @gotoPayment="goPayment" ></checkout-shipping>
+                    <checkout-payment :initial-active="activePayment" 
+                        @gotoShipping="goShipping"></checkout-payment>
                 </div>
             </form>
         </div>
@@ -44,7 +48,7 @@ import CheckoutPayment from './CheckoutPayment'
 
 export default {
     components: {CheckoutDetails, CheckoutPayment, CheckoutShipping},
-    props: ['initialUserDetails', 'initialCart'],
+    props: ['initialUserDetails', 'initialCart', 'successfull'],
     data () {
         return {
             user: {},
@@ -52,7 +56,8 @@ export default {
             activeShipping: false,
             activePayment: false,
             progressFill: 'progress-fill-0',
-            cart: {}
+            // cart: {},
+            order_id: 3
         }
     },
     methods: {
@@ -90,10 +95,8 @@ export default {
     created () {
         this.user = this.initialUserDetails
         this.cart = JSON.parse(this.initialCart)
-        for(let key in this.cart) {
-            console.log(this.cart[key])
-        };
-    }
+        if (this.successfull) this.goPayment()
+    },
 }
 </script>
 

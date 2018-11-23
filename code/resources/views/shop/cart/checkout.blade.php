@@ -2,7 +2,7 @@
 @section('content')
 <div class="container p-3">
     <checkout-cart initial-user-details="{{ auth()->user() }}"
-        initial-cart="{{ Cart::content() }}"></checkout-cart>
+        initial-cart="{{ Cart::content() }}" successfull="{{ $successful }}"></checkout-cart>
 </div>
 @endsection
 

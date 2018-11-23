@@ -2,32 +2,42 @@
 <div class="tab-pane" :class="{'active': initialActive}">
     <br><br>
     <div class="">
-        <div class="text-center">
-            <span for="Country" class="py-1">Pay with</span>
-        </div>
-        <div class="text-center">
-            <div id="paypal-button"></div>
-        </div>
-        <!-- <input type="text" name="Country" id="Country" class="form-control"> -->
+        <form method="POST" action="https://sandbox.payhere.lk/pay/checkout">   
+            <div class="text-center">Pay Here</div>
+            <input class="form-control" type="text" name="amount" :value="subtotal">  
+            <input class="form-control" type="hidden" name="merchant_id" :value="1211891">    <!-- Replace your Merchant ID -->
+            <input class="form-control" type="hidden" name="return_url" value="http://athwela.tk/checkout/success">
+            <input class="form-control" type="hidden" name="cancel_url" value="http://athwela.tk/checkout/cancel">
+            <input class="form-control" type="hidden" name="notify_url" value="http://athwela.tk/checkout/notify">  
+            <input class="form-control" type="hidden" name="order_id" :value="234423">
+            <input class="form-control" type="hidden" name="items" :value="items">
+            <input class="form-control" type="hidden" name="currency" value="LKR">
+            <input class="form-control" type="hidden" name="first_name" :value="user.first_name">
+            <input class="form-control" type="hidden" name="last_name" :value="user.last_name">
+            <input class="form-control" type="hidden" name="email" :value="user.email">
+            <input class="form-control" type="hidden" name="phone" :value="user.telephone">
+            <input class="form-control" type="hidden" name="address" :value="address">
+            <input class="form-control" type="hidden" name="city" :value="user.city">
+            <input class="form-control" type="hidden" name="country" value="Sri Lanka">
+            <button type="submit" style="background: rgba(0, 0, 0, 0); border:none">
+                <a href="https://www.payhere.lk" target="_blank"><img src="https://www.payhere.lk/downloads/images/pay_with_payhere.png" alt="Pay with PayHere" width="200"/></a>
+            </button>
+        </form>
     </div>
     <ul class="pagination wizard pagination-pager d-block">
         <li class="next page-item pull-left">
             <a @click.prevent="onPrevious" class="btn btn-primary" href="#">Previous</a>
         </li>
-        <!-- <li class="next page-item pull-right">
-            <a @click.prevent="onNext" class="btn btn-primary" href="#">Next</a>
-        </li> -->
     </ul>
 </div>
 </template>
 
 <script>
 export default {
-    props: ['initialActive', 'initialSubtotal'],
+    props: ['initialActive', 'subtotal', 'user', 'cart'],
     data () {
         return {
             active: this.initialActive,
-            subtotal: 0,
         }
     },
     methods: {
@@ -42,54 +52,14 @@ export default {
             console.log('payment successful')
             this.onNext()
         },
-        payment (data, actions) {
-            return actions.payment.create({
-                transactions: [{
-                    amount: {
-                        total: this.subtotal,
-                        currency: 'USD'
-                    }
-                }]
-            });
+    },
+    computed: {
+        address () {
+            return this.user.address1 + ' ' + this.user.address2
         },
-        onAuthorize (data, actions) {
-            return actions.payment.execute().then(function() {
-                // payment successfull
-                this.onPaymentSuccess()
-            }.bind(this));
-        },
-        convertToUsd (amount) {
-            return amount
+        items () {
+            return Object.keys.length + ' item' + (Object.keys.length > 1 ? 's' : '')
         }
-    },
-    created () {
-        this.subtotal = this.initialSubtotal
-    },
-    mounted() {
-        paypal.Button.render({
-            // Configure environment
-            env: 'sandbox',
-            client: {
-                sandbox: 'AVxjiDsHZLd6O6utf6kxHYYIYsrq6x0dRpq2XrPq0Df81UMPwTUNwbyc9Y6rXxiWr8FQfvnhfk1a8XXP',
-                production: 'demo_production_client_id'
-            },
-            // Customize button (optional)
-            locale: 'en_US',
-            style: {
-                size: 'large',
-                color: 'gold',
-                shape: 'pill',
-            },
-
-            // Enable Pay Now checkout flow (optional)
-            commit: true,
-
-            // Set up a payment
-            payment: this.payment,
-            // Execute the payment
-            onAuthorize: this.onAuthorize,
-        }, '#paypal-button');
-
     }
     
 }
