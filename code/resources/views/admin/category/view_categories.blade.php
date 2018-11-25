@@ -118,7 +118,7 @@
                     <td>{{$category->title}}</td>
                     <td>{{$category->created_at}}    </td>
                     <td> {{$category->updated_at}}   </td>
-                    <td class="center"><span><a href="{{url('admin/edit-category/'.$category->id)}}" class="current">Edit</span></a>Delete</th>
+                    <td class="center"><span><a href="{{ url('admin/edit-category/'.$category->id)}}" class="current">Edit</span></a>Delete</th>
                       </tr> 
                 
                  @endforeach

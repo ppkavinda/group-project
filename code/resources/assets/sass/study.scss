@@ -1,7 +1,7 @@
 // Bootstrap
 // ---------------------------------------------------
 @import "~bootstrap/scss/functions";
-@import "./admin/bootstrap-variables";
+@import "./admin/lte/bootstrap-variables";
 @import "~bootstrap/scss/bootstrap";
 
 @import "./study/styles";
@@ -12,3 +12,4 @@
 @import "./shop/cart";
 @import "./shop/footer";
 @import "./study/custom";
+@import './custom';

@@ -69,7 +69,35 @@ class RegisterController extends Controller
             'nic' => $data['nic'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-
+            'api_token' => str_random(60),
         ]);
+    }
+    
+    /**
+     * LiveValidation
+     * validating forms on the fly
+     */
+    protected function liveValidate () {
+        // dd(request()->all());
+        if (request()->name) {
+            request()->validate([
+                'name' => 'required|string|max:255',
+            ]);
+        }
+        if (request()->nic) {
+            request()->validate([
+                'nic' =>'required|string|max:10|unique:users|regex:/[0-9]{9}[vV]$/',
+            ]);
+        }
+        if (request()->email) {
+            request()->validate([
+                'email' => 'required|string|email|max:100|unique:users',
+            ]);
+        }
+        if (request()->password) {
+            request()->validate([
+                'password' => 'required|string|min:6|confirmed',
+            ]);
+        }
     }
 }

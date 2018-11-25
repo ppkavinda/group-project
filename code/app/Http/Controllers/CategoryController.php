@@ -20,7 +20,7 @@ class CategoryController extends Controller
 
     public function editCategory(Request $request,$id= null){
         if($request->isMethod('post')){
-            $data=$request->all();
+            $data = $request->all();
             Category::where(['id'=>$id])->update(['title'=>$data['category_name']
             ]);
             return redirect('/admin/view-category')->with('flash_message_sucess','Category edited Sucessfully!');

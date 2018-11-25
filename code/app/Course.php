@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
+    public function path () {
+        return '/courses/' . $this->id;
+    }
     public function tutes () {
         return $this->hasMany(Tute::class);
     }
@@ -19,6 +22,6 @@ class Course extends Model
     }
     
     public function users () {
-        return $this->belongsToMany(User::class, 'enroll', 'user_id', 'course_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'enroll', 'course_id', 'user_id')->withTimestamps();
     }
 }

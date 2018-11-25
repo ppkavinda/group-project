@@ -79,7 +79,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>General Form</h1>
+            <h1>Categories</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -104,7 +104,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" method="post" action="{{url('/admin/edit-category'.$categoryDetails->id) }}" name="add_category" id="add_category" novalidate="novalidate">{{ csrf_field() }}
+              <form class="form-horizontal" method="post" action="{{url('/admin/edit-category/'.$categoryDetails->id) }}" name="add_category" id="add_category" novalidate="novalidate">{{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
                     <label for="categoryName">Category Name</label>

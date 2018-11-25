@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('nic')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->text('description')->nullable();
+            $table->string('profile_pic')->default('/storage//img//avaters//avatar5.png');
+            $table->string('api_token', 60)->unique();
             $table->rememberToken();
             $table->integer('role')->default(4);
             $table->timestamps();
