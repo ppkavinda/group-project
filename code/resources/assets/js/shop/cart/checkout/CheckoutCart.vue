@@ -28,11 +28,13 @@
 
                 <div class="form-container tab-content clearfix p-30">
                     <checkout-details :initial-active="activeDetails" 
-                        :initial-details="user" @gotoShipping="goShipping"></checkout-details>
+                        :initial-details="initialUserDetails" @gotoShipping="goShipping"></checkout-details>
                     <checkout-shipping :initial-active="activeShipping"
-                        :subtotal="subTotal" :user="user" :cart="JSON.parse(this.initialCart)"
+                        :user="user"
                         @gotoDetails="goDetails" @gotoPayment="goPayment" ></checkout-shipping>
-                    <checkout-payment :initial-active="activePayment" 
+                    <checkout-payment :initial-active="activePayment"
+                        :user="user" :subtotal="subTotal" :delivery="deliveryDetails"
+                        :cart="JSON.parse(this.initialCart)"
                         @gotoShipping="goShipping"></checkout-payment>
                 </div>
             </form>
@@ -56,6 +58,7 @@ export default {
             activeShipping: false,
             activePayment: false,
             progressFill: 'progress-fill-0',
+            deliveryDetails: {},
             // cart: {},
             order_id: 3
         }
@@ -75,8 +78,9 @@ export default {
             this.activePayment = false
             this.progressFill = 'progress-fill-0'
         },
-        goPayment () {
+        goPayment (delivery) {
             console.log('goPayment')
+            this.deliveryDetails = delivery
             this.activeDetails = false
             this.activeShipping = false
             this.activePayment = true
@@ -93,7 +97,7 @@ export default {
         },
     },
     created () {
-        this.user = this.initialUserDetails
+        this.user = JSON.parse(this.initialUserDetails)
         this.cart = JSON.parse(this.initialCart)
         if (this.successfull) this.goPayment()
     },

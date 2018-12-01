@@ -2,15 +2,15 @@
 <div class="tab-pane" :class="{'active': initialActive}">
     <br><br>
     <div class="form-group">
-        <label for="Address1" class="col-form-label">Address Line 1</label>
+        <label for="Address1" class="col-form-label">Your Address</label>
         <input type="text" name="address1" id="Address1" class="form-control" 
-            v-model="details.address1" required>
+            v-model="details.address1" placeholder="Address line 1" required>
         <small v-if="errors.address1 && errors.address1.length" 
             class="form-text text-danger" v-text="errors.address1[0]"></small>
     </div>
     <div class="form-group">
-        <label for="Address2" class="col-form-label">Address Line 2 (optional)</label>
-        <input type="text" name="address" id="Address2" class="form-control" v-model="details.address2">
+        <label for="Address2" class="col-form-label">Your Address (optional)</label>
+        <input type="text" name="address" id="Address2" class="form-control" placeholder="Address line 2" v-model="details.address2">
     </div>
     <div class="row">
         <div class="col-sm-8 pl-0">
