@@ -37,7 +37,11 @@ app.post('/checkout/notify', (req, res) => {
             console.log('inserted', result)
         }
     })
-    connection.query(sql2, [req.body.payment_id, req.body.order_id])
+    connection.query(sql2, [req.body.payment_id, req.body.order_id], function (err, result) {
+        if (!err) {
+            console.log('inserted', result)
+        }
+    })
 
     res.sendStatus(200)
 })
