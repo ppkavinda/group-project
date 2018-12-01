@@ -141,6 +141,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'delivery.address1' =>  'delivery address',
+        'delivery.city' => 'delivery city',
+        'delivery.telephone' => 'delivery telephone number',
+        'delivery.postal_code' => 'postal code',
+    ],
 
 ];

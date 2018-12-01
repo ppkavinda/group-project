@@ -34174,6 +34174,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -34189,6 +34191,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             activeShipping: false,
             activePayment: false,
             progressFill: 'progress-fill-0',
+            deliveryDetails: {},
             // cart: {},
             order_id: 3
         };
@@ -34209,8 +34212,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.activePayment = false;
             this.progressFill = 'progress-fill-0';
         },
-        goPayment: function goPayment() {
+        goPayment: function goPayment(delivery) {
             console.log('goPayment');
+            this.deliveryDetails = delivery;
             this.activeDetails = false;
             this.activeShipping = false;
             this.activePayment = true;
@@ -34227,7 +34231,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     created: function created() {
-        this.user = this.initialUserDetails;
+        this.user = JSON.parse(this.initialUserDetails);
         this.cart = JSON.parse(this.initialCart);
         if (this.successfull) this.goPayment();
     }
@@ -34395,7 +34399,7 @@ var render = function() {
         _c(
           "label",
           { staticClass: "col-form-label", attrs: { for: "Address1" } },
-          [_vm._v("Address Line 1")]
+          [_vm._v("Your Address")]
         ),
         _vm._v(" "),
         _c("input", {
@@ -34412,6 +34416,7 @@ var render = function() {
             type: "text",
             name: "address1",
             id: "Address1",
+            placeholder: "Address line 1",
             required: ""
           },
           domProps: { value: _vm.details.address1 },
@@ -34437,7 +34442,7 @@ var render = function() {
         _c(
           "label",
           { staticClass: "col-form-label", attrs: { for: "Address2" } },
-          [_vm._v("Address Line 2 (optional)")]
+          [_vm._v("Your Address (optional)")]
         ),
         _vm._v(" "),
         _c("input", {
@@ -34450,7 +34455,12 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { type: "text", name: "address", id: "Address2" },
+          attrs: {
+            type: "text",
+            name: "address",
+            id: "Address2",
+            placeholder: "Address line 2"
+          },
           domProps: { value: _vm.details.address2 },
           on: {
             input: function($event) {
@@ -34752,22 +34762,90 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['initialActive', 'subtotal', 'user', 'cart'],
+    props: ['initialActive', 'subtotal', 'user'],
     data: function data() {
         return {
-            active: this.initialActive
+            active: this.initialActive,
+            newAddress: false,
+            order: {},
+            delivery: {
+                address1: '',
+                address2: '',
+                city: '',
+                postal_code: '',
+                telephone: ''
+            },
+            errors: {
+                address1: [],
+                address2: []
+            }
         };
     },
 
     methods: {
+        createOrder: function createOrder(e) {
+            var _this = this;
+
+            var data = {
+                user: this.user,
+                differentDelivery: this.newAddress
+            };
+
+            if (this.newAddress) {
+                data.delivery = this.delivery;
+            }
+
+            axios.post('/orders/store', data).then(function (res) {
+                console.log(res.data);
+                _this.errors = {};
+                _this.onNext();
+            }).catch(function (err) {
+                console.log(err.response.data.errors);
+                _this.errors = err.response.data.errors;
+            });
+        },
         onPrevious: function onPrevious() {
             console.log('previous');
             this.$emit('gotoDetails');
         },
         onNext: function onNext() {
-            this.$emit('gotoPayment');
+            this.$emit('gotoPayment', this.delivery);
         },
         onPaymentSuccess: function onPaymentSuccess() {
             console.log('payment successful');
@@ -34801,117 +34879,312 @@ var render = function() {
       _c("br"),
       _vm._v(" "),
       _c("div", {}, [
-        _c(
-          "form",
-          {
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            {
+              staticClass: "form-check-label",
+              attrs: { for: "defaultCheck1" }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.newAddress,
+                    expression: "newAddress"
+                  }
+                ],
+                staticClass: "form-check-input",
+                attrs: { type: "radio", id: "defaultCheck1" },
+                domProps: {
+                  value: false,
+                  checked: _vm._q(_vm.newAddress, false)
+                },
+                on: {
+                  change: function($event) {
+                    _vm.newAddress = false
+                  }
+                }
+              }),
+              _vm._v(
+                "\n                    Use my address as the shipping address\n            "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "form-check-label",
+              attrs: { for: "defaultCheck2" }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.newAddress,
+                    expression: "newAddress"
+                  }
+                ],
+                staticClass: "form-check-input",
+                attrs: { type: "radio", id: "defaultCheck2" },
+                domProps: {
+                  value: true,
+                  checked: _vm._q(_vm.newAddress, true)
+                },
+                on: {
+                  change: function($event) {
+                    _vm.newAddress = true
+                  }
+                }
+              }),
+              _vm._v(
+                "\n                Add different delivery details\n            "
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "col-form-label", attrs: { for: "dAddress1" } },
+            [_vm._v("Delivery Address")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.delivery.address1,
+                expression: "delivery.address1"
+              }
+            ],
+            staticClass: "form-control",
             attrs: {
-              method: "POST",
-              action: "https://sandbox.payhere.lk/pay/checkout"
+              type: "text",
+              name: "address1",
+              id: "dAddress1",
+              placeholder: "Delivery Address line 1",
+              disabled: !_vm.newAddress,
+              required: ""
+            },
+            domProps: { value: _vm.delivery.address1 },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.delivery, "address1", $event.target.value)
+              }
             }
-          },
-          [
-            _c("div", { staticClass: "text-center" }, [_vm._v("Pay Here")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "text", name: "amount" },
-              domProps: { value: _vm.subtotal }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "hidden", name: "merchant_id" },
-              domProps: { value: 1211891 }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "hidden",
-                name: "return_url",
-                value: "http://athwela.tk/checkout/success"
+          }),
+          _vm._v(" "),
+          _vm.errors["delivery.address1"] &&
+          _vm.errors["delivery.address1"].length
+            ? _c("small", {
+                staticClass: "form-text text-danger",
+                domProps: {
+                  textContent: _vm._s(_vm.errors["delivery.address1"][0])
+                }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.delivery.address2,
+                expression: "delivery.address2"
               }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "hidden",
-                name: "cancel_url",
-                value: "http://athwela.tk/checkout/cancel"
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              name: "address2",
+              id: "dAddress2",
+              placeholder: "Delivery Address line 2",
+              disabled: !_vm.newAddress
+            },
+            domProps: { value: _vm.delivery.address2 },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.delivery, "address2", $event.target.value)
               }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "hidden",
-                name: "notify_url",
-                value: "http://athwela.tk/checkout/notify"
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors["delivery.address2"] &&
+          _vm.errors["delivery.address2"].length
+            ? _c("small", {
+                staticClass: "form-text text-danger",
+                domProps: {
+                  textContent: _vm._s(_vm.errors["delivery.address2"][0])
+                }
+              })
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-8 pl-0" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                { staticClass: "col-form-label", attrs: { for: "dCity" } },
+                [_vm._v("City")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.delivery.city,
+                    expression: "delivery.city"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "City",
+                  id: "dCity",
+                  placeholder: "Delivery city",
+                  disabled: !_vm.newAddress,
+                  required: ""
+                },
+                domProps: { value: _vm.delivery.city },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.delivery, "city", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors["delivery.city"] && _vm.errors["delivery.city"].length
+                ? _c("small", {
+                    staticClass: "form-text text-danger",
+                    domProps: {
+                      textContent: _vm._s(_vm.errors["delivery.city"][0])
+                    }
+                  })
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-4 pr-0" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-form-label",
+                  attrs: { for: "dpostal_code" }
+                },
+                [_vm._v("Postal Code / Zip Code")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.delivery.postal_code,
+                    expression: "delivery.postal_code"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "postal_code",
+                  id: "dpostal_code",
+                  placeholder: "Delivery Postal Code",
+                  disabled: !_vm.newAddress,
+                  required: ""
+                },
+                domProps: { value: _vm.delivery.postal_code },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.delivery, "postal_code", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors["delivery.postal_code"] &&
+              _vm.errors["delivery.postal_code"].length
+                ? _c("small", {
+                    staticClass: "form-text text-danger",
+                    domProps: {
+                      textContent: _vm._s(_vm.errors["delivery.postal_code"][0])
+                    }
+                  })
+                : _vm._e()
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "col-form-label", attrs: { for: "dtelephone" } },
+            [_vm._v("Telephone")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.delivery.telephone,
+                expression: "delivery.telephone"
               }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "hidden", name: "order_id" },
-              domProps: { value: 234423 }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "hidden", name: "items" },
-              domProps: { value: _vm.items }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "hidden", name: "currency", value: "LKR" }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "hidden", name: "first_name" },
-              domProps: { value: _vm.user.first_name }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "hidden", name: "last_name" },
-              domProps: { value: _vm.user.last_name }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "hidden", name: "email" },
-              domProps: { value: _vm.user.email }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "hidden", name: "phone" },
-              domProps: { value: _vm.user.telephone }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "hidden", name: "address" },
-              domProps: { value: _vm.address }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "hidden", name: "city" },
-              domProps: { value: _vm.user.city }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "hidden", name: "country", value: "Sri Lanka" }
-            }),
-            _vm._v(" "),
-            _vm._m(0)
-          ]
-        )
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              name: "telephone",
+              id: "dtelephone",
+              placeholder: "Delivery Telephone No",
+              disabled: !_vm.newAddress
+            },
+            domProps: { value: _vm.delivery.telephone },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.delivery, "telephone", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.errors["delivery.telephone"] &&
+          _vm.errors["delivery.telephone"].length
+            ? _c("small", {
+                staticClass: "form-text text-danger",
+                domProps: {
+                  textContent: _vm._s(_vm.errors["delivery.telephone"][0])
+                }
+              })
+            : _vm._e()
+        ])
       ]),
       _vm._v(" "),
       _c("ul", { staticClass: "pagination wizard pagination-pager d-block" }, [
@@ -34930,41 +35203,29 @@ var render = function() {
             },
             [_vm._v("Previous")]
           )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "next page-item pull-right" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.createOrder($event)
+                }
+              }
+            },
+            [_vm._v("Next")]
+          )
         ])
       ])
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticStyle: { background: "rgba(0, 0, 0, 0)", border: "none" },
-        attrs: { type: "submit" }
-      },
-      [
-        _c(
-          "a",
-          { attrs: { href: "https://www.payhere.lk", target: "_blank" } },
-          [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://www.payhere.lk/downloads/images/pay_with_payhere.png",
-                alt: "Pay with PayHere",
-                width: "200"
-              }
-            })
-          ]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -35052,14 +35313,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['initialActive'],
+    props: ['initialActive', 'subtotal', 'user', 'delivery', 'cart'],
+    data: function data() {
+        return {
+            active: this.initialActive,
+            newAddress: false,
+            order: {}
+        };
+    },
+
     methods: {
         onPrevious: function onPrevious() {
             console.log('previous');
             this.$emit('gotoShipping');
+        }
+    },
+    computed: {
+        items: function items() {
+            var _this = this;
+
+            var str = '';
+            Object.keys(this.cart).forEach(function (key) {
+                str += _this.cart[key].name + ', ';
+            });
+            return str;
+        },
+        address: function address() {
+            return this.user.address1 + ' ' + this.user.address2;
         }
     },
     mounted: function mounted() {}
@@ -35083,6 +35390,117 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          ref: "form",
+          attrs: {
+            method: "POST",
+            action: "https://sandbox.payhere.lk/pay/checkout"
+          }
+        },
+        [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control-plaintext plain-text",
+            attrs: { readonly: "", type: "hidden", name: "amount" },
+            domProps: { value: _vm.subtotal }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "hidden", name: "merchant_id" },
+            domProps: { value: 1211891 }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              type: "hidden",
+              name: "return_url",
+              value: "http://athwela.tk/checkout"
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              type: "hidden",
+              name: "cancel_url",
+              value: "http://athwela.tk/checkout/cancel"
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              type: "hidden",
+              name: "notify_url",
+              value: "http://athwela.tk/checkout/notify"
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "hidden", name: "order_id" },
+            domProps: { value: 234423 }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "hidden", name: "items" },
+            domProps: { value: _vm.items }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "hidden", name: "currency", value: "LKR" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "hidden", name: "first_name" },
+            domProps: { value: _vm.user.first_name }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "hidden", name: "last_name" },
+            domProps: { value: _vm.user.last_name }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "hidden", name: "email" },
+            domProps: { value: _vm.user.email }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "hidden", name: "phone" },
+            domProps: { value: _vm.user.telephone }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "hidden", name: "address" },
+            domProps: { value: _vm.address }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "hidden", name: "city" },
+            domProps: { value: _vm.user.city }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control",
+            attrs: { type: "hidden", name: "country", value: "Sri Lanka" }
+          })
+        ]
+      ),
       _vm._v(" "),
       _c("ul", { staticClass: "pagination wizard pagination-pager d-block" }, [
         _c("li", { staticClass: "next page-item pull-left" }, [
@@ -35161,6 +35579,36 @@ var staticRenderFns = [
       _c("p", { staticClass: "form-text text-muted" }, [
         _vm._v("Between 5 and 10")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        {
+          staticStyle: { background: "rgba(0, 0, 0, 0)", border: "none" },
+          attrs: { type: "submit" }
+        },
+        [
+          _c(
+            "a",
+            { attrs: { href: "https://www.payhere.lk", target: "_blank" } },
+            [
+              _c("img", {
+                attrs: {
+                  src:
+                    "https://www.payhere.lk/downloads/images/pay_with_payhere.png",
+                  alt: "Pay with PayHere",
+                  width: "200"
+                }
+              })
+            ]
+          )
+        ]
+      )
     ])
   }
 ]
@@ -35263,7 +35711,7 @@ var render = function() {
                 _c("checkout-details", {
                   attrs: {
                     "initial-active": _vm.activeDetails,
-                    "initial-details": _vm.user
+                    "initial-details": _vm.initialUserDetails
                   },
                   on: { gotoShipping: _vm.goShipping }
                 }),
@@ -35271,15 +35719,19 @@ var render = function() {
                 _c("checkout-shipping", {
                   attrs: {
                     "initial-active": _vm.activeShipping,
-                    subtotal: _vm.subTotal,
-                    user: _vm.user,
-                    cart: JSON.parse(this.initialCart)
+                    user: _vm.user
                   },
                   on: { gotoDetails: _vm.goDetails, gotoPayment: _vm.goPayment }
                 }),
                 _vm._v(" "),
                 _c("checkout-payment", {
-                  attrs: { "initial-active": _vm.activePayment },
+                  attrs: {
+                    "initial-active": _vm.activePayment,
+                    user: _vm.user,
+                    subtotal: _vm.subTotal,
+                    delivery: _vm.deliveryDetails,
+                    cart: JSON.parse(this.initialCart)
+                  },
                   on: { gotoShipping: _vm.goShipping }
                 })
               ],
