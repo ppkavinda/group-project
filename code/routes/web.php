@@ -82,10 +82,5 @@ Route::post('/inquiry', 'InquiryController@store');
 // Route::get('users',['uses' => 'UserController@index']);
 
 Route::get('test', function () {
-    $p = [];
-
-    foreach (\Cart::content() as $key => $value) {
-        array_push($p, $value->id);
-    }
-    dd($p);
+    return Redis::get('name');
 });

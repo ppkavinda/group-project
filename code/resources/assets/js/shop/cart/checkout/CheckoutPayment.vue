@@ -21,9 +21,9 @@
         </div>
         <input class="form-control-plaintext plain-text" readonly type="hidden" name="amount" :value="subtotal">  
         <input class="form-control" type="hidden" name="merchant_id" :value="1211891">    <!-- Replace your Merchant ID -->
-        <input class="form-control" type="hidden" name="return_url" value="http://athwela.tk/checkout">
+        <input class="form-control" type="hidden" name="return_url" value="http://athwela.tk/checkout/success">
         <input class="form-control" type="hidden" name="cancel_url" value="http://athwela.tk/checkout/cancel">
-        <input class="form-control" type="hidden" name="notify_url" value="http://athwela.tk/checkout/notify">  
+        <input class="form-control" type="hidden" name="notify_url" value="http://athwela.tk:3000/checkout/notify">  
         <input class="form-control" type="hidden" name="order_id" :value="234423">
         <input class="form-control" type="hidden" name="items" :value="items">
         <input class="form-control" type="hidden" name="currency" value="LKR">

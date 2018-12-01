@@ -35420,7 +35420,7 @@ var render = function() {
             attrs: {
               type: "hidden",
               name: "return_url",
-              value: "http://athwela.tk/checkout"
+              value: "http://athwela.tk/checkout/success"
             }
           }),
           _vm._v(" "),
@@ -35438,7 +35438,7 @@ var render = function() {
             attrs: {
               type: "hidden",
               name: "notify_url",
-              value: "http://athwela.tk/checkout/notify"
+              value: "http://athwela.tk:3000/checkout/notify"
             }
           }),
           _vm._v(" "),
