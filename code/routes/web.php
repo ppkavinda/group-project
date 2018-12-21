@@ -29,7 +29,9 @@ Route::view('/shop', 'shop.index');
 
 Route::view('/categories/men', 'shop.mens')->name('categories.men');
 Route::view('/categories/woman', 'shop.woman')->name('categories.women');
-Route::get('/categories/jewellery', function () {dd('jewellery'); })->name('categories.jewellery');
+Route::get('/categories/jewellery', function () {
+    dd('jewellery');
+})->name('categories.jewellery');
 
 Route::post('/products', 'ProductController@store');
 Route::get('/products/{product}', 'ProductController@show');
@@ -40,8 +42,14 @@ Route::get('/cart', 'CartController@index');
 Route::post('/cart/{product}', 'CartController@store');
 Route::put('/cart/{cartId}', 'CartController@update');
 Route::delete('/cart/{cartId}', 'CartController@destroy');
+
 Route::get('/checkout', 'CheckoutController@index');
 Route::post('/checkout/details', 'CheckoutController@storeDetails');
+Route::get('/checkout/success', 'CheckoutController@success');
+Route::get('/checkout/cancel', 'CheckoutController@cancel');
+Route::post('/checkout/notify', 'CheckoutController@notify');
+
+Route::post('/orders/store', 'OrderController@store');
 
 // study
 Route::view('/study', 'study.index');
@@ -69,10 +77,15 @@ Route::delete('/comments/{comment}', 'CommentController@destroy');
 // general
 Route::view('contact', 'contact');
 Route::view('about', 'about');
-Route::post('/inquiry','InquiryController@store');
+Route::post('/inquiry', 'InquiryController@store');
 
 // Route::get('users',['uses' => 'UserController@index']);
 
 Route::get('test', function () {
-	dd(request()->user());
-})->middleware('admin');
+    $p = [];
+
+    foreach (\Cart::content() as $key => $value) {
+        array_push($p, $value->id);
+    }
+    dd($p);
+});

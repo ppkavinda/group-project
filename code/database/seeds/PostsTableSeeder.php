@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Database\Seeder;
+
 class PostsTableSeeder extends Seeder
 {
     /**
@@ -12,6 +13,7 @@ class PostsTableSeeder extends Seeder
         \App\Post::create([
             'title' => 'MAKING AN EASY, BASIC BEGINNER  SOAP INSDRUSTRY',
             'course_id' => 1,
+            'published' => 1,
             'body' => '<h3>Ingredients<h3>
             <ul><li>500 g extra virgin olive oil</li>
             <li>100 g coconut oil (Regular coconut oil that melts around 76ºF)</li>
@@ -78,7 +80,7 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
             </p>',
             'user_id' => 1,
         ]);
-         \App\Post::create([
+        \App\Post::create([
             'title' => 'The current market nature  for candles',
             'course_id' => 3,
             'body' => '
@@ -168,4 +170,3 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
         ]);
     }
 }
-

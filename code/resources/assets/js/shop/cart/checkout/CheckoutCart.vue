@@ -27,9 +27,15 @@
                 </div>
 
                 <div class="form-container tab-content clearfix p-30">
-                    <checkout-details :initial-active="activeDetails" :initial-details="user" @gotoShipping="goShipping"></checkout-details>
-                    <checkout-shipping :initial-active="activeShipping" @gotoDetails="goDetails" @gotoPayment="goPayment"></checkout-shipping>
-                    <checkout-payment :initial-active="activePayment" @gotoShipping="goShipping"></checkout-payment>
+                    <checkout-details :initial-active="activeDetails" 
+                        :initial-details="initialUserDetails" @gotoShipping="goShipping"></checkout-details>
+                    <checkout-shipping :initial-active="activeShipping"
+                        :user="user"
+                        @gotoDetails="goDetails" @gotoPayment="goPayment" ></checkout-shipping>
+                    <checkout-payment :initial-active="activePayment"
+                        :user="user" :subtotal="subTotal" :delivery="deliveryDetails"
+                        :cart="JSON.parse(this.initialCart)"
+                        @gotoShipping="goShipping"></checkout-payment>
                 </div>
             </form>
         </div>
@@ -44,7 +50,7 @@ import CheckoutPayment from './CheckoutPayment'
 
 export default {
     components: {CheckoutDetails, CheckoutPayment, CheckoutShipping},
-    props: ['initialUserDetails'],
+    props: ['initialUserDetails', 'initialCart', 'successfull'],
     data () {
         return {
             user: {},
@@ -52,6 +58,9 @@ export default {
             activeShipping: false,
             activePayment: false,
             progressFill: 'progress-fill-0',
+            deliveryDetails: {},
+            // cart: {},
+            order_id: 3
         }
     },
     methods: {
@@ -69,18 +78,29 @@ export default {
             this.activePayment = false
             this.progressFill = 'progress-fill-0'
         },
-        goPayment () {
+        goPayment (delivery) {
             console.log('goPayment')
+            this.deliveryDetails = delivery
             this.activeDetails = false
             this.activeShipping = false
             this.activePayment = true
             this.progressFill = 'progress-fill-100'
         }
     },
+    computed: {
+        subTotal () {
+            let total = 0
+            for (let key in this.cart) {
+                total += this.cart[key].price * this.cart[key].qty
+            }
+            return total.toFixed(2)
+        },
+    },
     created () {
-        this.user = this.initialUserDetails
-        // console.log(this.user)
-    }
+        this.user = JSON.parse(this.initialUserDetails)
+        this.cart = JSON.parse(this.initialCart)
+        if (this.successfull) this.goPayment()
+    },
 }
 </script>
 

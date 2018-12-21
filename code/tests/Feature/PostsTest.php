@@ -10,12 +10,13 @@ class PostsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function setUp () {
+    public function setUp()
+    {
         Parent::setUp();
 
         $this->post = factory('App\Post')->create();
     }
-
+    
     public function test_enrolled_user_can_view_a_post()
     {
         $this->be(factory('App\User')->create());
@@ -26,7 +27,7 @@ class PostsTest extends TestCase
     }
 
     
-    public function test_unenrolled_users_cannot_view_a_post ()
+    public function test_unenrolled_users_cannot_view_a_post()
     {
         $this->be(factory('App\User')->create());
 
@@ -35,7 +36,7 @@ class PostsTest extends TestCase
     }
 
 
-    public function test_enrolled_user_can_see_comments_associated_with_a_post () 
+    public function test_enrolled_user_can_see_comments_associated_with_a_post()
     {
         $this->be(factory('App\User')->create());
         $this->get("/enroll/{$this->post->course->id}");
@@ -47,7 +48,7 @@ class PostsTest extends TestCase
     }
 
 
-    public function test_authorized_user_cannot_create_a_post () 
+    public function test_authorized_user_cannot_create_a_post()
     {
         $this->be(factory('App\User')->create());
 
@@ -58,7 +59,7 @@ class PostsTest extends TestCase
     }
 
 
-    public function test_authorized_user_can_create_a_post () 
+    public function test_authorized_user_can_create_a_post()
     {
         $this->be(factory('App\User')->create(['role' => 2]));
 
