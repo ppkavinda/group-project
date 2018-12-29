@@ -27419,6 +27419,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -27516,15 +27517,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "modal fade", attrs: { id: "myModal1", role: "dialog" } },
-    [
-      _c("div", { staticClass: "modal-dialog" }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-body" }, [
+  return _c("div", { staticClass: "bg-img" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "card" }, [
+            _vm._m(0),
+            _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
             _c(
@@ -27542,6 +27541,11 @@ var render = function() {
                 }
               },
               [
+                _vm._v(
+                  "\r\n                 " +
+                    _vm._s(_vm.csrf_field()) +
+                    "\r\n                 "
+                ),
                 _c("div", { staticClass: "form-group row" }, [
                   _c(
                     "label",
@@ -27549,7 +27553,7 @@ var render = function() {
                       staticClass: "col-md-4  text-md-right",
                       attrs: { for: "name" }
                     },
-                    [_vm._v("Namewrite ")]
+                    [_vm._v("Name ")]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-6" }, [
@@ -27812,31 +27816,22 @@ var render = function() {
           ])
         ])
       ])
-    ]
-  )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
+    return _c("div", { staticClass: "card-header" }, [
       _c(
         "p",
         {
           staticClass: "login-box-msg",
-          staticStyle: { color: "DodgerBlue", "font-size": "160%" }
+          staticStyle: { color: "DodgerBlue", "font-size": "200%" }
         },
         [_c("b", [_vm._v("Sign Up and Start Learning!")])]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("×")]
       )
     ])
   },
