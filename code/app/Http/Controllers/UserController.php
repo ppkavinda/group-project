@@ -17,12 +17,26 @@ class UserController extends Controller
    
     public function index () {
         $user = auth()->user();
-        return view('profile.index', compact('user'));
+        $idNo= auth()->user()->nic;
+        $postsCount = \App\Advertisement::where('id',$idNo)->count();
+        return view('profile.index', ['user'=>$user,'postsCount'=>$postsCount]);
     }
     
     public function show (User $user) {
         $courses = $user->courses;
         return view('profile.index', compact('user'));
-
+    }
+//advertisements
+    public function choosePage(){
+        $idNo= auth()->user()->nic;
+        $postsCount = \App\Advertisement::where('id',$idNo)->count();
+        if($postsCount==0){
+            echo '<script language="javascript">';
+            echo 'alert("You do not have advertisements yet!!")';
+            echo '</script>';
+        }
+        else{
+            return view('profile.viewAdds');
+        }
     }
 }

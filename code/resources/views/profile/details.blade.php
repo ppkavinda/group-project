@@ -25,6 +25,12 @@
             </div>
             <input type="submit" class="btn offset-md-2 btn-primary" value="Save">
         </form>
+        <br>
+        <div class="col-md-5">
+        <div class="viewAdd">
+            <center><a href="YourAdvertisements"><font color=white>Your Advertisements &nbsp &nbsp</font></a><i class="fa fa-angle-right"></i></center>
+        </div>
+        </div>
     </div>
     <div class="col-md-6">
         {{-- <center> --}}

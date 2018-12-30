@@ -6,6 +6,7 @@
       <a class="nav-link active profile-nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa fa-user" aria-hidden="true"></i> My details</a>
       <a class="nav-link profile-nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fa fa-book"></i> My Courses</a>
       <a class="nav-link profile-nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
+      <a class="nav-link profile-nav-link" id="v-pills-publichAdd-tab" data-toggle="pill" href="#v-pills-publishAdd" role="tab" aria-controls="v-pills-publishAdd" aria-selected="false"><i class="fa fa-book"></i>Publish Your Add</a>
       <a class="nav-link profile-nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-gear"></i> Settings</a>
     </div>
   </div>
@@ -19,6 +20,9 @@
       </div>
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
         @include('profile.cart')
+      </div>
+      <div class="tab-pane fade" id="v-pills-publishAdd" role="tabpanel" aria-labelledby="v-pills-publishAdd-tab">
+        @include('profile.addpost')
       </div>
       <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
         @include('profile.settings')

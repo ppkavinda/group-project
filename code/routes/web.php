@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdvertisementController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +23,8 @@ Route::get('/admin', function () {
 // shop
 Route::get('/profile', 'UserController@index')->middleware('auth');
 Route::get('/profile/{user}', 'UserController@show');
+//new
+//Route::get('/profile','AdvertisementController@index');
 
 Route::get('/shop', function () {
 	return view('shop.index');
@@ -68,3 +72,25 @@ Route::get('/posts',function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//selling post
+Route::get('soap', function(){
+	return view('add.soap');
+});
+
+Route::get('clothes',function(){
+	return view('add.clothes');
+});
+
+Route::get('spices', function(){
+	return view('add.spices');
+});
+
+Route::get('mask', function(){
+	return view('add.mask');
+});
+
+Route::post('/postAdd','AdvertisementController@store');
+
+Route::get('YourAdvertisements','AdvertisementController@index');
+Route::get('YourAdvetisements','UserController@choosePage');
