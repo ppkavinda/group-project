@@ -91,12 +91,12 @@
 						</li>
 						@guest
 						<li class="active nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}"> 
-							<a class="nav-link menu__link" data-toggle="modal" data-target="#myModal">
+							<a class="nav-link menu__link" href="/login">
 							<i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
 						</li>
 
 						<li class="active nav-item menu__item {{ Request::is('register') ? 'menu__item--current' : '' }}">
-								<a class="nav-link menu__link"  data-toggle="modal" data-target="#myModal1">
+								<a class="nav-link menu__link"  href="/register">
 								<i class="fa fa-user" aria-hidden="true"></i> Sign Up </a>
 						</li>
 						@else
@@ -128,15 +128,5 @@
 	</div>
 </div>
 
-<!-- login modal -->
 
-@extends('auth.login')
-@section('content')
-        
-<!-- register modal -->
-
-
-@section('content')
-    <register></register>
-@endsection
 
