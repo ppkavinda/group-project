@@ -4,8 +4,8 @@ const bodyParser = require('body-parser')
 const mysql = require('mysql')
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'athwelauser',
-    password: 'Tw200bike',
+    user: 'prasad',
+    password: 'hondaz',
     database: 'athwela'
 })
 const app = express()
@@ -35,7 +35,7 @@ app.post('/checkout/notify', (req, res) => {
     })
     connection.query(sql2, [req.body.payment_id, req.body.order_id], function (err, result) {
         if (err) {
-            console.log('err1', err)
+            console.log('err2', err)
         }
     })
 

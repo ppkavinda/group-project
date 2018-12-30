@@ -83,7 +83,7 @@ export default {
     },
     created () {
         this.details = JSON.parse(this.initialDetails)
-        // console.log(this.details)
+        console.log(this.details)
     }
 }
 </script>

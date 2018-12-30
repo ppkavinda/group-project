@@ -2,17 +2,22 @@
 <div :class="{'active': initialActive}" class="tab-pane">
     <br><br>
     <div class="form-group">
-        <label for="URL" class="col-form-label">URL</label>
-        <input type="text" name="URL" id="URL" class="form-control">
-        <p class="form-text text-muted">Starts with http://</p>
+        <label for="URL" class="col-form-label"><strong> Delivery Address:</strong></label>
+        <input type="text" name="address" id="address" class="form-control-plaintext" v-model="address" readonly>
     </div>
     <div class="form-group">
-        <label for="rangelength" class="col-form-label">Range restriction</label>
-        <input type="text" name="rangelength" id="rangelength" class="form-control">
-        <p class="form-text text-muted">Between 5 and 10</p>
+        <ul>
+        <label for="URL" class="col-form-label"><strong> Orderd Products:</strong></label>
+            <li v-for="(prod, index) in products" :key="index">{{ `${prod.name} x ${prod.qty} = ${prod.price}`}}</li>
+        </ul>
+    </div>
+    <div class="form-group row">
+        <label for="URL" class="col-form-label col-sm-2"><strong>Subtotal:</strong></label>
+        <input type="text" name="subtotal" id="subtotal" class="form-control-plaintext col-sm-7" :value="'LKR ' + subtotal" readonly>
     </div>
     <form ref="form" method="POST" action="https://sandbox.payhere.lk/pay/checkout">
             <div class="form-group">
+                if above details are correct you can pay from here
             <button type="submit" style="background: rgba(0, 0, 0, 0); border:none">
                 <a href="https://www.payhere.lk" target="_blank">
                     <img src="https://www.payhere.lk/downloads/images/pay_with_payhere.png" alt="Pay with PayHere" width="200"/>
@@ -24,7 +29,7 @@
         <input class="form-control" type="hidden" name="return_url" value="http://athwela.tk/checkout/success">
         <input class="form-control" type="hidden" name="cancel_url" value="http://athwela.tk/checkout/cancel">
         <input class="form-control" type="hidden" name="notify_url" value="http://athwela.tk:3000/checkout/notify">  
-        <input class="form-control" type="hidden" name="order_id" :value="234423">
+        <input class="form-control" type="hidden" name="order_id" :value="delivery.orderId">
         <input class="form-control" type="hidden" name="items" :value="items">
         <input class="form-control" type="hidden" name="currency" value="LKR">
         <input class="form-control" type="hidden" name="first_name" :value="user.first_name">
@@ -39,9 +44,9 @@
         <li class="next page-item pull-left">
             <a @click.prevent="onPrevious" class="btn btn-primary" href="#">Previous</a>
         </li>
-        <li class="next page-item pull-right">
-            <a @click.prevent="onNext" class="btn btn-primary" href="#">Next</a>
-        </li>
+        <!-- <li class="next page-item pull-right"> -->
+            <!-- <a @click.prevent="onNext" class="btn btn-primary" href="#">Next</a> -->
+        <!-- </li> -->
     </ul>
 
 </div>
@@ -72,8 +77,20 @@ export default {
             });
             return str
         },
+        products () {
+            let prod = [];
+            Object.keys(this.cart).forEach(key => {
+                prod.push(this.cart[key])
+            });
+            return prod;
+        },
+        // subtotal () {
+        //     let total = 0;
+        //     this.products.forEach(prod => total += prod.price * prod.qty)
+        //     return total;
+        // },
         address () {
-            return this.user.address1 + ' ' +  this.user.address2
+            return this.user.name + ', ' + this.user.address1 + ', ' +  this.user.address2 + ' .'
         }
     },
     mounted () {

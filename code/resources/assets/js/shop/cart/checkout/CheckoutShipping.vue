@@ -102,7 +102,7 @@ export default {
                 .then( res => {
                     console.log(res.data)
                     this.errors = {}
-                    this.onNext()
+                    this.onNext(res.data)
                 })
                 .catch (err => {
                     console.log(err.response.data.errors)
@@ -113,8 +113,8 @@ export default {
             console.log('previous')
             this.$emit('gotoDetails')
         },
-        onNext () {
-            this.$emit('gotoPayment', this.delivery)
+        onNext (orderId) {
+            this.$emit('gotoPayment', {delivery:this.delivery, orderId})
         },
         onPaymentSuccess () {
             console.log('payment successful')

@@ -34376,7 +34376,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.details = JSON.parse(this.initialDetails);
-        // console.log(this.details)
+        console.log(this.details);
     }
 });
 
@@ -34834,7 +34834,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/orders/store', data).then(function (res) {
                 console.log(res.data);
                 _this.errors = {};
-                _this.onNext();
+                _this.onNext(res.data);
             }).catch(function (err) {
                 console.log(err.response.data.errors);
                 _this.errors = err.response.data.errors;
@@ -34844,8 +34844,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log('previous');
             this.$emit('gotoDetails');
         },
-        onNext: function onNext() {
-            this.$emit('gotoPayment', this.delivery);
+        onNext: function onNext(orderId) {
+            this.$emit('gotoPayment', { delivery: this.delivery, orderId: orderId });
         },
         onPaymentSuccess: function onPaymentSuccess() {
             console.log('payment successful');
@@ -35337,6 +35337,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -35365,8 +35370,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             return str;
         },
+        products: function products() {
+            var _this2 = this;
+
+            var prod = [];
+            Object.keys(this.cart).forEach(function (key) {
+                prod.push(_this2.cart[key]);
+            });
+            return prod;
+        },
+
+        // subtotal () {
+        //     let total = 0;
+        //     this.products.forEach(prod => total += prod.price * prod.qty)
+        //     return total;
+        // },
         address: function address() {
-            return this.user.address1 + ' ' + this.user.address2;
+            return this.user.name + ', ' + this.user.address1 + ', ' + this.user.address2 + ' .';
         }
     },
     mounted: function mounted() {}
@@ -35387,9 +35407,64 @@ var render = function() {
       _c("br"),
       _c("br"),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "form-group" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.address,
+              expression: "address"
+            }
+          ],
+          staticClass: "form-control-plaintext",
+          attrs: { type: "text", name: "address", id: "address", readonly: "" },
+          domProps: { value: _vm.address },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.address = $event.target.value
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "ul",
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._l(_vm.products, function(prod, index) {
+              return _c("li", { key: index }, [
+                _vm._v(
+                  _vm._s(prod.name + " x " + prod.qty + " = " + prod.price)
+                )
+              ])
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group row" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control-plaintext col-sm-7",
+          attrs: {
+            type: "text",
+            name: "subtotal",
+            id: "subtotal",
+            readonly: ""
+          },
+          domProps: { value: "LKR " + _vm.subtotal }
+        })
+      ]),
       _vm._v(" "),
       _c(
         "form",
@@ -35401,7 +35476,7 @@ var render = function() {
           }
         },
         [
-          _vm._m(2),
+          _vm._m(3),
           _vm._v(" "),
           _c("input", {
             staticClass: "form-control-plaintext plain-text",
@@ -35445,7 +35520,7 @@ var render = function() {
           _c("input", {
             staticClass: "form-control",
             attrs: { type: "hidden", name: "order_id" },
-            domProps: { value: 234423 }
+            domProps: { value: _vm.delivery.orderId }
           }),
           _vm._v(" "),
           _c("input", {
@@ -35518,23 +35593,6 @@ var render = function() {
             },
             [_vm._v("Previous")]
           )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "next page-item pull-right" }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.onNext($event)
-                }
-              }
-            },
-            [_vm._v("Next")]
-          )
         ])
       ])
     ]
@@ -35545,47 +35603,40 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { staticClass: "col-form-label", attrs: { for: "URL" } }, [
-        _vm._v("URL")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", name: "URL", id: "URL" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "form-text text-muted" }, [
-        _vm._v("Starts with http://")
-      ])
-    ])
+    return _c(
+      "label",
+      { staticClass: "col-form-label", attrs: { for: "URL" } },
+      [_c("strong", [_vm._v(" Delivery Address:")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "col-form-label", attrs: { for: "URL" } },
+      [_c("strong", [_vm._v(" Orderd Products:")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "col-form-label col-sm-2", attrs: { for: "URL" } },
+      [_c("strong", [_vm._v("Subtotal:")])]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "label",
-        { staticClass: "col-form-label", attrs: { for: "rangelength" } },
-        [_vm._v("Range restriction")]
+      _vm._v(
+        "\n                if above details are correct you can pay from here\n            "
       ),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", name: "rangelength", id: "rangelength" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "form-text text-muted" }, [
-        _vm._v("Between 5 and 10")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
       _c(
         "button",
         {
