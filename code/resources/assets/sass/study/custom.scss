@@ -48,6 +48,7 @@
   left: 5%;
   right: 5%;
   }
+<<<<<<< HEAD
   
   #about_list {
   position: relative;
@@ -82,3 +83,19 @@
     margin-left: 1cm;
     margin-right: 1cm;
   }
+=======
+  #about_list{
+    position: relative;
+    left: 10%;
+  }
+.container-wide {
+    width: 90%;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.card {
+    border: 1px solid rgba(0,0,0,.125);
+}
+>>>>>>> baa124b18e64a15eb79219cdd2dc319b8e87fb76

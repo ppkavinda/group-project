@@ -12,6 +12,11 @@ class CourseController extends Controller
     }
 
     public function show(\App\Course $course) {
+        // dd($course);
 	    return view('study.courses.course', ['course' => $course]);
+    }
+
+    public function all () {
+        return \App\Course::get();
     }
 }

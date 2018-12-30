@@ -1,8 +1,6 @@
 @extends('study.master')
 @section('content')
 
-{{-- @include('study.partials.banner') --}}
-
 <div class="container contact">
 	<h3 class="w3l_header w3_agileits_header"> {{ explode(' ', $course->title)[0] }} <span>{{ substr($course->title, strpos($course->title, ' ')) }}</span></h3>
 		<div class="wthree_services_grids row">	
@@ -29,9 +27,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-8 agileits_w3layouts_service_grid">
-						{{-- <div class="agile_service_grd" style="color: white;"> --}}
-							<img src="/dist/img/{{ $course->cover_img }}" class="img-fluid" alt="{{ $course->title }}">
-						{{-- </div> --}}
+						<img src="/dist/img/{{ $course->cover_img }}" class="img-fluid" alt="{{ $course->title }}">
 					</div>
 				</div>
 			</div>
@@ -55,7 +51,9 @@
 				<div class="container">
 					<div class="wthree_services_grids mb-2">
 						@foreach ($course->posts as $post)
-						@include('study.courses.postCard')
+							@if ($post->published)
+								@include('study.courses.postCard')
+							@endif
 						@endforeach
 					</div>
 				</div>
