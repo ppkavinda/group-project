@@ -29590,6 +29590,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -29850,7 +29851,13 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", name: "email", id: "staticEmail" },
+                  attrs: {
+                    type: "text",
+                    name: "email",
+                    id: "staticEmail",
+                    placeholder: "Change your email",
+                    required: ""
+                  },
                   domProps: { value: _vm.user.email },
                   on: {
                     input: function($event) {
@@ -29876,7 +29883,7 @@ var render = function() {
                   staticClass: "col-sm-2 col-form-label text-right",
                   attrs: { for: "inputName" }
                 },
-                [_vm._v("Name hgl;")]
+                [_vm._v("Name ")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-10" }, [
@@ -29921,7 +29928,7 @@ var render = function() {
                   staticClass: "col-sm-2 col-form-label text-right",
                   attrs: { for: "inputNic" }
                 },
-                [_vm._v("NI")]
+                [_vm._v("NIC")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-10" }, [

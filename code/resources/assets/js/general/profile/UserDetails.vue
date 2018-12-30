@@ -7,19 +7,20 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label text-right">Email </label>
                     <div class="col-sm-10">
-                        <input type="text" name="email" class="form-control" id="staticEmail" v-model="user.email">
+                        <input type="text" name="email" class="form-control" id="staticEmail" v-model="user.email"  
+                          placeholder="Change your email" required>
                         <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputName" class="col-sm-2 col-form-label text-right">Name hgl;</label>
+                    <label for="inputName" class="col-sm-2 col-form-label text-right">Name </label>
                     <div class="col-sm-10">
                         <input type="text" name="name" class="form-control" id="inputName" placeholder="Name" v-model="user.name">
                         <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputNic" class="col-sm-2 col-form-label text-right">NI</label>
+                    <label for="inputNic" class="col-sm-2 col-form-label text-right">NIC</label>
                     <div class="col-sm-10">
                         <input type="text" name="nic" class="form-control" id="inputNic" placeholder="Nic" v-model="user.nic">
                         <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
