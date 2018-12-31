@@ -14,9 +14,9 @@
                 <i class="fa fa-book"></i> My Courses
         </a>
         <a class="nav-link profile-nav-link" id="v-pills-messages-tab" 
-            data-toggle="pill" href="#v-pills-cart" role="tab" 
-            aria-controls="v-pills-cart" aria-selected="false">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+            data-toggle="pill" href="#v-pills-orders" role="tab" 
+            aria-controls="v-pills-orders" aria-selected="false">
+                <i class="fa fa-list" aria-hidden="true"></i> My Orders
             </a>
         <a class="nav-link profile-nav-link" id="v-pills-settings-tab" 
             data-toggle="pill" href="#v-pills-settings" role="tab" 
@@ -34,8 +34,8 @@
         <div class="tab-pane fade" id="v-pills-courses" role="tabpanel" aria-labelledby="v-pills-courses-tab">
             @include('profile.courses')
         </div>
-        <div class="tab-pane fade" id="v-pills-cart" role="tabpanel" aria-labelledby="v-pills-cart-tab">
-            @include('profile.cart')
+        <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
+            @include('profile.orders')
         </div>
         <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
             @include('profile.settings')

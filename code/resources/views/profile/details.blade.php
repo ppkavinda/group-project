@@ -4,6 +4,8 @@
     <div class="col-md-6">
         <form action="/users/{{ auth()->user()->id }}/edit" method="POST">
             @csrf
+            <fieldset class="fieldset">
+            <h3 class="fieldset-title">Personal Info</h3>
             <!-- email address -->
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
@@ -31,6 +33,9 @@
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                 </div>
             </div>
+            </fieldset>
+            <fieldset class="fieldset">
+             <h3 class="fieldset-title">Contact Info</h3>
             <!-- Contact Number -->
             <div class="form-group row">
                 <label for="inputContact" class="col-sm-2 col-form-label">Contact Number</label>
@@ -94,6 +99,7 @@
                     <input type="file" name="profile_pic">
     </div>
             <input type="submit" class="btn offset-md-2 btn-primary" value="Save">
+    </fieldset>
         </form>
     
 </div>

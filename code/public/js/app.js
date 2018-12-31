@@ -11106,234 +11106,6 @@ return jQuery;
 
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-  MIT License http://www.opensource.org/licenses/mit-license.php
-  Author Tobias Koppers @sokra
-  Modified by Evan You @yyx990803
-*/
-
-var hasDocument = typeof document !== 'undefined'
-
-if (typeof DEBUG !== 'undefined' && DEBUG) {
-  if (!hasDocument) {
-    throw new Error(
-    'vue-style-loader cannot be used in a non-browser environment. ' +
-    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
-  ) }
-}
-
-var listToStyles = __webpack_require__(107)
-
-/*
-type StyleObject = {
-  id: number;
-  parts: Array<StyleObjectPart>
-}
-
-type StyleObjectPart = {
-  css: string;
-  media: string;
-  sourceMap: ?string
-}
-*/
-
-var stylesInDom = {/*
-  [id: number]: {
-    id: number,
-    refs: number,
-    parts: Array<(obj?: StyleObjectPart) => void>
-  }
-*/}
-
-var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
-var singletonElement = null
-var singletonCounter = 0
-var isProduction = false
-var noop = function () {}
-var options = null
-var ssrIdKey = 'data-vue-ssr-id'
-
-// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-// tags it will allow on a page
-var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
-
-module.exports = function (parentId, list, _isProduction, _options) {
-  isProduction = _isProduction
-
-  options = _options || {}
-
-  var styles = listToStyles(parentId, list)
-  addStylesToDom(styles)
-
-  return function update (newList) {
-    var mayRemove = []
-    for (var i = 0; i < styles.length; i++) {
-      var item = styles[i]
-      var domStyle = stylesInDom[item.id]
-      domStyle.refs--
-      mayRemove.push(domStyle)
-    }
-    if (newList) {
-      styles = listToStyles(parentId, newList)
-      addStylesToDom(styles)
-    } else {
-      styles = []
-    }
-    for (var i = 0; i < mayRemove.length; i++) {
-      var domStyle = mayRemove[i]
-      if (domStyle.refs === 0) {
-        for (var j = 0; j < domStyle.parts.length; j++) {
-          domStyle.parts[j]()
-        }
-        delete stylesInDom[domStyle.id]
-      }
-    }
-  }
-}
-
-function addStylesToDom (styles /* Array<StyleObject> */) {
-  for (var i = 0; i < styles.length; i++) {
-    var item = styles[i]
-    var domStyle = stylesInDom[item.id]
-    if (domStyle) {
-      domStyle.refs++
-      for (var j = 0; j < domStyle.parts.length; j++) {
-        domStyle.parts[j](item.parts[j])
-      }
-      for (; j < item.parts.length; j++) {
-        domStyle.parts.push(addStyle(item.parts[j]))
-      }
-      if (domStyle.parts.length > item.parts.length) {
-        domStyle.parts.length = item.parts.length
-      }
-    } else {
-      var parts = []
-      for (var j = 0; j < item.parts.length; j++) {
-        parts.push(addStyle(item.parts[j]))
-      }
-      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
-    }
-  }
-}
-
-function createStyleElement () {
-  var styleElement = document.createElement('style')
-  styleElement.type = 'text/css'
-  head.appendChild(styleElement)
-  return styleElement
-}
-
-function addStyle (obj /* StyleObjectPart */) {
-  var update, remove
-  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
-
-  if (styleElement) {
-    if (isProduction) {
-      // has SSR styles and in production mode.
-      // simply do nothing.
-      return noop
-    } else {
-      // has SSR styles but in dev mode.
-      // for some reason Chrome can't handle source map in server-rendered
-      // style tags - source maps in <style> only works if the style tag is
-      // created and inserted dynamically. So we remove the server rendered
-      // styles and inject new ones.
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  if (isOldIE) {
-    // use singleton mode for IE9.
-    var styleIndex = singletonCounter++
-    styleElement = singletonElement || (singletonElement = createStyleElement())
-    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
-    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
-  } else {
-    // use multi-style-tag mode in all other cases
-    styleElement = createStyleElement()
-    update = applyToTag.bind(null, styleElement)
-    remove = function () {
-      styleElement.parentNode.removeChild(styleElement)
-    }
-  }
-
-  update(obj)
-
-  return function updateStyle (newObj /* StyleObjectPart */) {
-    if (newObj) {
-      if (newObj.css === obj.css &&
-          newObj.media === obj.media &&
-          newObj.sourceMap === obj.sourceMap) {
-        return
-      }
-      update(obj = newObj)
-    } else {
-      remove()
-    }
-  }
-}
-
-var replaceText = (function () {
-  var textStore = []
-
-  return function (index, replacement) {
-    textStore[index] = replacement
-    return textStore.filter(Boolean).join('\n')
-  }
-})()
-
-function applyToSingletonTag (styleElement, index, remove, obj) {
-  var css = remove ? '' : obj.css
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = replaceText(index, css)
-  } else {
-    var cssNode = document.createTextNode(css)
-    var childNodes = styleElement.childNodes
-    if (childNodes[index]) styleElement.removeChild(childNodes[index])
-    if (childNodes.length) {
-      styleElement.insertBefore(cssNode, childNodes[index])
-    } else {
-      styleElement.appendChild(cssNode)
-    }
-  }
-}
-
-function applyToTag (styleElement, obj) {
-  var css = obj.css
-  var media = obj.media
-  var sourceMap = obj.sourceMap
-
-  if (media) {
-    styleElement.setAttribute('media', media)
-  }
-  if (options.ssrId) {
-    styleElement.setAttribute(ssrIdKey, obj.id)
-  }
-
-  if (sourceMap) {
-    // https://developer.chrome.com/devtools/docs/javascript-debugging
-    // this makes source maps inside style tags work properly in Chrome
-    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
-    // http://stackoverflow.com/a/26603875
-    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
-  }
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = css
-  } else {
-    while (styleElement.firstChild) {
-      styleElement.removeChild(styleElement.firstChild)
-    }
-    styleElement.appendChild(document.createTextNode(css))
-  }
-}
-
-
-/***/ }),
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14682,9 +14454,9 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(20);
-__webpack_require__(163);
-__webpack_require__(164);
-module.exports = __webpack_require__(165);
+__webpack_require__(165);
+__webpack_require__(166);
+module.exports = __webpack_require__(167);
 
 
 /***/ }),
@@ -14781,7 +14553,7 @@ window.Popper = __webpack_require__(10).default;
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(5);
+  window.$ = window.jQuery = __webpack_require__(6);
   window.Bootstrap = __webpack_require__(22);
   __webpack_require__(23);
   __webpack_require__(24);
@@ -29819,6 +29591,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -29831,13 +29645,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: '',
                 email: '',
                 nic: '',
+                contact: '',
                 address1: '',
                 address2: '',
+                city: '',
+                postal_code: '',
                 description: '',
                 profile_pic: ''
             },
             submitButton: {
-                text: 'Save',
+                text: 'Update Profile',
                 class: 'btn-primary'
             }
         };
@@ -29898,7 +29715,7 @@ var content = __webpack_require__(106);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("2fbd7bea", content, false, {});
+var update = __webpack_require__(5)("2fbd7bea", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -30058,6 +29875,8 @@ var render = function() {
             }
           },
           [
+            _c("h3", [_vm._v("Personal Info")]),
+            _vm._v(" "),
             _c("div", { staticClass: "form-group row" }, [
               _c(
                 "label",
@@ -30129,7 +29948,7 @@ var render = function() {
                     type: "text",
                     name: "name",
                     id: "inputName",
-                    placeholder: "Name"
+                    placeholder: "Change your name"
                   },
                   domProps: { value: _vm.user.name },
                   on: {
@@ -30174,7 +29993,7 @@ var render = function() {
                     type: "text",
                     name: "nic",
                     id: "inputNic",
-                    placeholder: "Nic"
+                    placeholder: "Change your NIC "
                   },
                   domProps: { value: _vm.user.nic },
                   on: {
@@ -30199,9 +30018,97 @@ var render = function() {
                 "label",
                 {
                   staticClass: "col-sm-2 col-form-label text-right",
+                  attrs: { for: "inputDesc" }
+                },
+                [_vm._v("Description")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-10" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.description,
+                      expression: "user.description"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    name: "description",
+                    id: "inputDesc",
+                    placeholder: "Say something about you..."
+                  },
+                  domProps: { value: _vm.user.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "description", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("i", {
+                  staticClass: "fa fa-pencil edit-pencil",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("h3", [_vm._v("Contact Details")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-sm-2 col-form-label text-right",
+                  attrs: { for: "inputContact" }
+                },
+                [_vm._v("Contact Number")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-10" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.contact,
+                      expression: "user.contact"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "contact",
+                    id: "inputContact",
+                    placeholder: "Enter your contact Number"
+                  },
+                  domProps: { value: _vm.user.contact },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "contact", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("i", { attrs: { "aria-hidden": "true" } })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-sm-2 col-form-label text-right",
                   attrs: { for: "inputAddress1" }
                 },
-                [_vm._v("Address")]
+                [_vm._v("Address Line 1")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-10" }, [
@@ -30240,10 +30147,14 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group row" }, [
-              _c("label", {
-                staticClass: "col-sm-2 col-form-label text-right",
-                attrs: { for: "inputAddress1" }
-              }),
+              _c(
+                "label",
+                {
+                  staticClass: "col-sm-2 col-form-label text-right",
+                  attrs: { for: "inputAddress1" }
+                },
+                [_vm._v("Address Line 2")]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "col-sm-10" }, [
                 _c("input", {
@@ -30280,36 +30191,105 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.submitButton.text,
-                  expression: "submitButton.text"
-                }
-              ],
-              staticClass: "btn offset-md-2",
-              class: _vm.submitButton.class,
-              attrs: { type: "submit" },
-              domProps: { value: _vm.submitButton.text },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                  staticClass: "col-sm-2 col-form-label text-right",
+                  attrs: { for: "inputCity" }
+                },
+                [_vm._v("City")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-10" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.city,
+                      expression: "user.city"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "city",
+                    id: "inputCity",
+                    placeholder: "City"
+                  },
+                  domProps: { value: _vm.user.city },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "city", $event.target.value)
+                    }
                   }
-                  _vm.$set(_vm.submitButton, "text", $event.target.value)
-                }
-              }
-            })
+                }),
+                _vm._v(" "),
+                _c("i", {
+                  staticClass: "fa fa-pencil edit-pencil",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-sm-2 col-form-label text-right",
+                  attrs: { for: "inputPostal_code" }
+                },
+                [_vm._v("Postal Code")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-10" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.postal_code,
+                      expression: "user.postal_code"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    name: "postalcode",
+                    id: "inputPostal_code",
+                    placeholder: "Postal Code"
+                  },
+                  domProps: { value: _vm.user.postal_code },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "postal_code", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("i", {
+                  staticClass: "fa fa-pencil edit-pencil",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ])
+            ])
           ]
         )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6" }, [
+        _c("h3", [_vm._v("Upload your picture")]),
+        _vm._v(" "),
         _c(
           "div",
-          { staticClass: "mx-auto", staticStyle: { width: "25rem" } },
+          { staticClass: "mx-auto", staticStyle: { width: "35rem" } },
           [
             _c(
               "center",
@@ -30322,25 +30302,34 @@ var render = function() {
                 _c("image-upload", { on: { loaded: _vm.onImageLoad } })
               ],
               1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("h5", { staticClass: "card-title" }, [_vm._v("Description")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  _vm._s(
-                    _vm.user.description
-                      ? _vm.user.description
-                      : "Say something about you..."
-                  )
-                )
-              ])
-            ])
+            )
           ],
           1
         )
-      ])
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.submitButton.text,
+            expression: "submitButton.text"
+          }
+        ],
+        staticClass: "btn offset-md-2",
+        class: _vm.submitButton.class,
+        attrs: { type: "submit" },
+        domProps: { value: _vm.submitButton.text },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.submitButton, "text", $event.target.value)
+          }
+        }
+      })
     ])
   ])
 }
@@ -33332,7 +33321,7 @@ var content = __webpack_require__(132);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("715bcce4", content, false, {});
+var update = __webpack_require__(5)("715bcce4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -33521,7 +33510,7 @@ var content = __webpack_require__(137);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("225a3b27", content, false, {});
+var update = __webpack_require__(5)("225a3b27", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -34401,7 +34390,7 @@ var content = __webpack_require__(151);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("27be9986", content, false, {});
+var update = __webpack_require__(5)("27be9986", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
