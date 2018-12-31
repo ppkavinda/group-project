@@ -55,11 +55,10 @@
 <script>
 
 export default {
-    props: ['initialActive', 'subtotal', 'user', 'delivery', 'cart'],
+    props: ['initialActive', 'subtotal', 'user', 'delivery', 'cart', 'newAddress'],
     data () {
         return {
             active: this.initialActive,
-            newAddress: false,
             order: {},
         }
     },
@@ -90,6 +89,8 @@ export default {
         //     return total;
         // },
         address () {
+            if (this.newAddress) 
+                return this.user.name + ', ' + this.delivery.address1 + ', ' + this.delivery.address2 + ' .'
             return this.user.name + ', ' + this.user.address1 + ', ' +  this.user.address2 + ' .'
         }
     },

@@ -68,7 +68,7 @@
 
 <script>
 export default {
-    props: ['initialActive', 'subtotal', 'user'],
+    props: ['initialActive', 'subtotal', 'user', 'savedOrder'],
     data () {
         return {
             active: this.initialActive,
@@ -80,6 +80,7 @@ export default {
                 city: '',
                 postal_code: '',
                 telephone: '',
+                orderId: 0,
             },
             errors: {
                 address1: [],
@@ -97,24 +98,38 @@ export default {
             if (this.newAddress) {
                 data.delivery = this.delivery
             }
-            
-            axios.post('/orders/store', data)
-                .then( res => {
-                    console.log(res.data)
-                    this.errors = {}
-                    this.onNext(res.data)
-                })
-                .catch (err => {
-                    console.log(err.response.data.errors)
-                    this.errors = err.response.data.errors
-                })
+            // if order is laready saved update it otherwise save it
+            if (!this.savedOrder) {
+                axios.post('/orders/store', data)
+                    .then( res => {
+                        // console.log(res.data)
+                        this.delivery.orderId = res.data
+                        this.errors = {}
+                        this.onNext(res.data)
+                    })
+                    .catch (err => {
+                        console.log(err.response.data.errors)
+                        this.errors = err.response.data.errors
+                    })
+            } else {
+                axios.put(`/orders/${this.delivery.orderId}/edit`, data)
+                    .then( res => {
+                        // console.log(res.data)
+                        this.errors = {}
+                        this.onNext(res.data)
+                    })
+                    .catch(err => {
+                        console.log(err.response.data.errors)
+                        this.errors = err.res.data.errors
+                    })
+            }
         },
         onPrevious () {
             console.log('previous')
             this.$emit('gotoDetails')
         },
         onNext (orderId) {
-            this.$emit('gotoPayment', {delivery:this.delivery, orderId})
+            this.$emit('gotoPayment', this.delivery)
         },
         onPaymentSuccess () {
             console.log('payment successful')

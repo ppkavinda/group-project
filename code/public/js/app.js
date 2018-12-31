@@ -33290,9 +33290,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onClick: function onClick() {
             if (!this.product.quantity) {
                 this.errors.quantity = ['Invalid quantity'];
+                return;
             }
             axios.post('/cart/' + this.product.id, this.product).then(function (res) {
-                // console.log(res)
                 window.Event.$emit('added-to-cart', res.data);
             }).catch(function (err) {
                 // TODO replace to open the login model
@@ -33555,8 +33555,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateItem: function updateItem(item) {
             if (item.qty < 1) return;
 
-            axios.put('/cart/' + item.rowId, { quantity: item.qty }).then(function (res) {
-                window.Event.$emit('updated-cart', res.data.cart.count);
+            axios.put('/cart/' + item.rowId, { rowId: item.rowId, quantity: item.qty }).then(function (res) {
+                window.Event.$emit('updated-cart', { rowId: item.rowId, qty: res.data.cart.updated.qty });
                 console.log(res);
             }).catch(function (err) {
                 console.log(err);
@@ -33565,12 +33565,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeItem: function removeItem(item) {
             var _this = this;
 
-            window.Event.$emit('removed-from-cart', { qty: item.qty });
+            window.Event.$emit('removed-from-cart', { rowId: item.rowId, qty: item.qty });
 
             axios.delete('/cart/' + item.rowId).then(function (res) {
                 Vue.delete(_this.items, item.rowId);
-                // console.log(Object.keys(this.items))
-                _this.disableCheckout = _this.items == null || Object.keys(_this.items);
+                _this.disableCheckout = _this.items == null || !Object.keys(_this.items);
+
+                // TODO: redirect to better place
+                if (!Object.keys(_this.items).length && _this.url == '/checkout') window.location.replace('/');
             }).catch(function (err) {
                 console.log(err);
             });
@@ -33736,7 +33738,6 @@ var render = function() {
                                   staticClass: "minicart-remove",
                                   attrs: {
                                     type: "button",
-                                    disabled: _vm.url == "/checkout",
                                     "data-minicart-idx": "0"
                                   },
                                   on: {
@@ -33872,10 +33873,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['initialCartCount'],
     components: { CartBadge: __WEBPACK_IMPORTED_MODULE_0__CartBadge___default.a },
+    data: function data() {
+        return {
+            disabled: false
+        };
+    },
+
     methods: {
         toggleCart: function toggleCart() {
-            window.Event.$emit('open-cart');
+            if (!this.disabled) window.Event.$emit('open-cart');
         }
+    },
+    created: function created() {
+        var _this = this;
+
+        this.$on('disable-cart', function () {
+            return _this.disabled = true;
+        });
     }
 });
 
@@ -33938,26 +33952,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: { initialCount: {
+    props: {
+        initialCount: {
             default: 0,
             required: false
-        } },
+        }
+    },
     data: function data() {
         return {
+            items: [],
             count: 0
         };
     },
     beforeMount: function beforeMount() {
         var _this = this;
 
-        window.Event.$on('added-to-cart', function () {
-            _this.count++;
+        window.Event.$on('added-to-cart', function (item) {
+            console.log(item);
+            _this.items.push(item);
+            // this.count++
         });
         window.Event.$on('removed-from-cart', function (item) {
             _this.count -= item.qty;
         });
         window.Event.$on('updated-cart', function (count) {
-            _this.count = count;
+            _this.count = count.qty;
         });
         this.count = this.initialCount;
     }
@@ -34176,6 +34195,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -34187,23 +34207,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             user: {},
+            cart: this.initialCart,
             activeDetails: true,
             activeShipping: false,
             activePayment: false,
             progressFill: 'progress-fill-0',
             deliveryDetails: {},
-            // cart: {},
+            savedOrder: false,
             order_id: 3
         };
     },
 
     methods: {
-        goShipping: function goShipping() {
-            console.log('goShipping');
+        goShipping: function goShipping(user) {
             this.activeDetails = false;
             this.activeShipping = true;
             this.activePayment = false;
             this.progressFill = 'progress-fill-50';
+            if (user) this.user = user;
         },
         goDetails: function goDetails() {
             console.log('goDetails');
@@ -34218,6 +34239,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.activeDetails = false;
             this.activeShipping = false;
             this.activePayment = true;
+            this.savedOrder = true;
             this.progressFill = 'progress-fill-100';
         }
     },
@@ -34231,9 +34253,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     created: function created() {
+        var _this = this;
+
+        // if (this.successfull) this.goPayment()
         this.user = JSON.parse(this.initialUserDetails);
         this.cart = JSON.parse(this.initialCart);
-        if (this.successfull) this.goPayment();
+
+        window.Event.$on("added-to-cart", function (cartItem) {
+            Vue.set(_this.cart, cartItem.rowId, cartItem);
+        });
+
+        window.Event.$on('removed-from-cart', function (item) {
+            console.log('removed from cart', item.rowId);
+            Vue.delete(_this.cart, item.rowId);
+        });
+
+        window.Event.$on('updated-cart', function (item) {
+            console.log('updated', item);
+            // Vue.set(this.cart, item.rowId.qty, item.quantity)
+
+            _this.cart[item.rowId].qty = item.qty;
+        });
     }
 });
 
@@ -34366,8 +34406,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post('/checkout/details', this.details).then(function (res) {
                 console.log(res.data);
+
+                _this.user = res.data;
                 _this.errors = {};
-                _this.$emit('gotoShipping');
+
+                _this.$emit('gotoShipping', res.data);
             }).catch(function (err) {
                 console.log(err.response.data.errors);
                 _this.errors = err.response.data.errors;
@@ -34798,7 +34841,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['initialActive', 'subtotal', 'user'],
+    props: ['initialActive', 'subtotal', 'user', 'savedOrder'],
     data: function data() {
         return {
             active: this.initialActive,
@@ -34809,7 +34852,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 address2: '',
                 city: '',
                 postal_code: '',
-                telephone: ''
+                telephone: '',
+                orderId: 0
             },
             errors: {
                 address1: [],
@@ -34830,22 +34874,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.newAddress) {
                 data.delivery = this.delivery;
             }
-
-            axios.post('/orders/store', data).then(function (res) {
-                console.log(res.data);
-                _this.errors = {};
-                _this.onNext(res.data);
-            }).catch(function (err) {
-                console.log(err.response.data.errors);
-                _this.errors = err.response.data.errors;
-            });
+            // if order is laready saved update it otherwise save it
+            if (!this.savedOrder) {
+                axios.post('/orders/store', data).then(function (res) {
+                    // console.log(res.data)
+                    _this.delivery.orderId = res.data;
+                    _this.errors = {};
+                    _this.onNext(res.data);
+                }).catch(function (err) {
+                    console.log(err.response.data.errors);
+                    _this.errors = err.response.data.errors;
+                });
+            } else {
+                axios.put('/orders/' + this.delivery.orderId + '/edit', data).then(function (res) {
+                    // console.log(res.data)
+                    _this.errors = {};
+                    _this.onNext(res.data);
+                }).catch(function (err) {
+                    console.log(err.response.data.errors);
+                    _this.errors = err.res.data.errors;
+                });
+            }
         },
         onPrevious: function onPrevious() {
             console.log('previous');
             this.$emit('gotoDetails');
         },
         onNext: function onNext(orderId) {
-            this.$emit('gotoPayment', { delivery: this.delivery, orderId: orderId });
+            this.$emit('gotoPayment', this.delivery);
         },
         onPaymentSuccess: function onPaymentSuccess() {
             console.log('payment successful');
@@ -35345,11 +35401,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['initialActive', 'subtotal', 'user', 'delivery', 'cart'],
+    props: ['initialActive', 'subtotal', 'user', 'delivery', 'cart', 'newAddress'],
     data: function data() {
         return {
             active: this.initialActive,
-            newAddress: false,
             order: {}
         };
     },
@@ -35386,6 +35441,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //     return total;
         // },
         address: function address() {
+            if (this.newAddress) return this.user.name + ', ' + this.delivery.address1 + ', ' + this.delivery.address2 + ' .';
             return this.user.name + ', ' + this.user.address1 + ', ' + this.user.address2 + ' .';
         }
     },
@@ -35770,7 +35826,8 @@ var render = function() {
                 _c("checkout-shipping", {
                   attrs: {
                     "initial-active": _vm.activeShipping,
-                    user: _vm.user
+                    user: _vm.user,
+                    savedOrder: _vm.savedOrder
                   },
                   on: { gotoDetails: _vm.goDetails, gotoPayment: _vm.goPayment }
                 }),
@@ -35781,7 +35838,8 @@ var render = function() {
                     user: _vm.user,
                     subtotal: _vm.subTotal,
                     delivery: _vm.deliveryDetails,
-                    cart: JSON.parse(this.initialCart)
+                    newAddress: _vm.deliveryDetails.address1 != "",
+                    cart: _vm.cart
                   },
                   on: { gotoShipping: _vm.goShipping }
                 })

@@ -50,6 +50,7 @@ Route::get('/checkout/cancel', 'CheckoutController@cancel');
 Route::post('/checkout/notify', 'CheckoutController@notify');
 
 Route::post('/orders/store', 'OrderController@store');
+Route::put('/orders/{order}/edit', 'OrderController@update');
 
 // study
 Route::view('/study', 'study.index');
