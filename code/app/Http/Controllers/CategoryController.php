@@ -12,14 +12,18 @@ class CategoryController extends Controller
     public function addCategory(Request $request){
         
         if($request->isMethod('post')){
-            
+
+            $request->validate([
+                'category_name' => 'required|min:5',
+            ]);
            
-            $data= $request->all();
-        //  echo "<pre>";print_r($data); die;
-        $category =new Category;
-        $category->category_title =$data['category_name'];
-        $category->save();
-        return redirect('/admin/view-category')->with('flash_message_success','Category added Sucessfully!');
+            $data = $request->all();
+            //  echo "<pre>";print_r($data); die;
+            $category =new Category;
+            $category->title =$data['category_name'];
+            $category->save();
+
+            return redirect('/admin/view-category')->with('flash_message_success','Category added Sucessfully!');
         }
        
         return view('admin.category.add_categories');
