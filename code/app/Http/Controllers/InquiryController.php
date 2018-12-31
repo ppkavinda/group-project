@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Inquiry;
 class InquiryController extends Controller
 {
     public function store(Request $request){
@@ -14,5 +14,20 @@ class InquiryController extends Controller
             'message' => $request['message']
         ]);
         return redirect()->back();
+    }
+
+
+    public function viewInquire(){
+        $inquiries=\App\Inquiry::get();
+        return view('admin.inquiries.view_inquiries')->with(compact('inquiries'));
+
+    }
+
+    public function deleteInquire($id= null){
+        if(!empty($id)){
+            Inquiry::where(['id'=>$id])->delete();
+            return redirect()->back()->with('flash_message_success','Inquiry deleted Sucessfully!');
+        }
+
     }
 }

@@ -42,4 +42,14 @@ class UserController extends Controller
     {
         return auth()->user();
     }
+
+    public function user_Details_all(){
+      $user=User::get();
+      $usercount=\App\User::count();
+      $i=1;
+      for($i=1;$i<$usercount+!1;$i++){
+          $i=$i++;
+      }
+      
+    }
 }

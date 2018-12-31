@@ -1,10 +1,16 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
+    <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+    <div>
+    <img src="/dist/img/logo.jpg"  alt="logo"  class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Athwela</span>
     </a>
+   
+     
+
+   </div>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -29,21 +35,134 @@
                   <p>Dashboard v1</p>
                 </a>
               </li>
+              
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="/admin/view-users" class="nav-link">
+              <i class="nav-icon fa fa-edit"></i>
+              <p>
+               Users
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="/admin/view-inquiry" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Dashboard v2</p>
+                  <p>Entrepreneur</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="/admin/view-inquiry" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Dashboard v3</p>
+                  <p>Customer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/view-inquiry" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Facilitator</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          <a href="index3.html" class="brand-link">
+    <img src="/dist/img/logo.jpg"  alt="logo"  class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light"> Learining Centre</span>
+    </a>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-edit"></i>
+              <p>
+                Categories
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/add-category" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Add Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/view-category" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Edit Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/forms/editors.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Delete Category</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-edit"></i>
+              <p>
+                Courses
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/add-course" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Add  Courses</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/view-course" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Edit Courses</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/view-course" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Delete Courses</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-edit"></i>
+              <p>
+                Inquiry
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              <li class="nav-item">
+                <a href="/admin/view-inquiry" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>View Inquiry</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/view-inquiry" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Delete Inquiry</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+          <a href="index3.html" class="brand-link">
+    <img src="/dist/img/logo.jpg"  alt="logo"  class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light"> Shopping Centre</span>
+    </a>
+         <!-- <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fa fa-th"></i>
               <p>
@@ -115,36 +234,8 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-edit"></i>
-              <p>
-                Forms
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>General Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          </li> -->
+         
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-table"></i>
@@ -155,9 +246,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="/admin/view-category" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Simple Tables</p>
+                  <p>View Category</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -290,25 +381,7 @@
               <p>Documentation</p>
             </a>
           </li>
-          <li class="nav-header">LABELS</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-circle-o text-danger"></i>
-              <p class="text">Important</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-circle-o text-warning"></i>
-              <p>Warning</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-circle-o text-info"></i>
-              <p>Informational</p>
-            </a>
-          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
