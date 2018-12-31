@@ -33323,25 +33323,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    // methods: {
-    //     onClick () {
-    //         if (!this.product.quantity) {
-    //             this.errors.quantity = ['Invalid quantity']
-    //             return
-    //         }
-    //         axios.post(`/cart/${this.product.id}`, this.product)
-    //             .then(res => {
-    //                 window.Event.$emit('added-to-cart', res.data)
-    //             })
-    //             .catch(err => {
-    //                 // TODO replace to open the login model
-    //                 if (err.response.status == 401) {
-    //                 // console.log(err.response) 
-    //                     window.location.replace('/login')
-    //                 }
-    //             })
-    //     },
-    // },
+    methods: {
+        errorQuantity: function errorQuantity() {
+            this.product.quantity = 1;
+            console.log('error');
+        }
+        //     onClick () {
+        //         if (!this.product.quantity) {
+        //             this.errors.quantity = ['Invalid quantity']
+        //             return
+        //         }
+        //         axios.post(`/cart/${this.product.id}`, this.product)
+        //             .then(res => {
+        //                 window.Event.$emit('added-to-cart', res.data)
+        //             })
+        //             .catch(err => {
+        //                 // TODO replace to open the login model
+        //                 if (err.response.status == 401) {
+        //                 // console.log(err.response) 
+        //                     window.location.replace('/login')
+        //                 }
+        //             })
+        //     },
+
+    },
     computed: {
         getRating: function getRating() {
             return Math.round(this.product.ratings);
@@ -33349,7 +33354,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.product = JSON.parse(this.initialProduct);
-        this.product.quantity = 1;
+        Vue.set(this.product, 'quantity', 1);
     }
 });
 
@@ -33415,7 +33420,7 @@ var render = function() {
             }
           ],
           staticClass: "p-1",
-          attrs: { id: "quantity", type: "number" },
+          attrs: { id: "quantity", type: "number", min: "1" },
           domProps: { value: _vm.product.quantity },
           on: {
             input: function($event) {
@@ -33442,7 +33447,12 @@ var render = function() {
             staticClass:
               "snipcart-details top_brand_home_details item_add single-item p-3 minicart-showing"
           },
-          [_c("add-to-cart-button", { attrs: { product: _vm.product } })],
+          [
+            _c("add-to-cart-button", {
+              attrs: { product: _vm.product },
+              on: { quantityError: _vm.errorQuantity }
+            })
+          ],
           1
         )
       ]
@@ -36045,7 +36055,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -36065,15 +36075,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['product'],
     data: function data() {
         return {
-            // product: {
-            // quantity: 1,
-            // },
+            errors: {
+                quantity: 1
+            }
         };
     },
 
     methods: {
         onClick: function onClick() {
-            if (!this.product.quantity) {
+            if (this.product.quantity <= 0) {
+                this.$emit('quantityError');
                 this.errors.quantity = ['Invalid quantity'];
                 return;
             }

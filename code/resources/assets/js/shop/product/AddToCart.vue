@@ -17,12 +17,12 @@
     <div class="color-quality">
         <div class="color-quality-right">
             <label for="quantity"><h5>Quality :</h5></label>
-            <input id="quantity" type="number" v-model="product.quantity" class="p-1">
+            <input id="quantity" type="number" min="1" v-model="product.quantity" class="p-1">
         </div>
     </div>
     <div class="occasion-cart" style="position:relative; top:3rem;width:40%;">
         <div class="snipcart-details top_brand_home_details item_add single-item p-3 minicart-showing">
-            <add-to-cart-button :product="product"></add-to-cart-button>
+            <add-to-cart-button @quantityError="errorQuantity" :product="product"></add-to-cart-button>
         </div>
     </div>
 </div>
@@ -41,7 +41,11 @@ export default {
             },
         }
     },
-    // methods: {
+    methods: {
+        errorQuantity () {
+            this.product.quantity = 1
+            console.log('error')
+        }
     //     onClick () {
     //         if (!this.product.quantity) {
     //             this.errors.quantity = ['Invalid quantity']
@@ -59,7 +63,7 @@ export default {
     //                 }
     //             })
     //     },
-    // },
+    },
     computed: {
         getRating () {
             return Math.round(this.product.ratings)
@@ -67,7 +71,7 @@ export default {
     },
     created () {
         this.product = JSON.parse(this.initialProduct)
-        this.product.quantity = 1
+        Vue.set(this.product, 'quantity', 1)
     }
 }
 </script>

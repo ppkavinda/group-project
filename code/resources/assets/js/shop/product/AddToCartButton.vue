@@ -7,14 +7,15 @@ export default {
     props: ['product'],
     data () {
         return {
-            // product: {
-                // quantity: 1,
-            // },
+            errors: {
+                quantity: 1,
+            },
         }
     },
     methods: {
         onClick () {
-            if (!this.product.quantity) {
+            if (this.product.quantity <= 0) {
+                this.$emit('quantityError')
                 this.errors.quantity = ['Invalid quantity']
                 return
             }
