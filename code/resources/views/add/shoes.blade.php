@@ -12,7 +12,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <label class="radio-inline">
-                                            <input type="radio" name="kind" value="3" checked>&nbsp Soap
+                                            <input type="radio" name="kind" value="5" checked>&nbsp Shoes and Slippers
                                         </label>
                                     </div>
                                 </div>
@@ -37,10 +37,10 @@
                                         <div class="form-group">
                                             <label for="category" id="labels">&nbsp Category &nbsp</label>
                                             <select class="form-control" id="select" name="category">
-                                            <option>Baby</option>
-                                            <option>Cleaning</option>
-                                            <option>Kitchen</option>
-                                            <option>Personal</option>
+                                            <option>Children(Male)</option>
+                                            <option>Chlidren(Female)</option>
+                                            <option>Men</option>
+                                            <option>Women</option>
                                             </select>
                                         </div>
                                     </div>
@@ -48,16 +48,16 @@
                                         <div class="form-group">
                                             <label for="type" id="labels">&nbsp Type &nbsp</label>
                                             <select class="form-control" id="select" name="type">
-                                            <option>Bar Soap</option>
-                                            <option>Powder</option>
-                                            <option>Other</option>
+                                            <option>Shoes</option>
+                                            <option>Slippers</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="weight" id="labels">&nbsp Weight of piece &nbsp</label>
-                                            <input multiple class="form-control" id="select" name="sizes" required>
+                                            <label for="sizes" id="labels">&nbsp Sizes range &nbsp</label>
+                                            <br>
+                                            <input type ="text" id="select" name="sizes" required>    
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="details" id="labels">&nbsp Details &nbsp</label>
-                                            <textarea class="form-control" id="select" name="details" rows="4" required></textarea>
+                                            <textarea class="form-control" id="select" rows="4" name="details" required></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -79,8 +79,8 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="price" id="labels">&nbsp Price(one piece Rs.) &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="price">
+                                            <label for="price" id="labels">&nbsp Price(pair of shoes or slippers Rs.) &nbsp</label>
+                                            <input multi class="form-control" type="number" id="select" name="price" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -91,7 +91,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-12 text-center">
+                                    <div class="col-md-12 text-center">
                                         <button class="btn btn-primary" type="submit">Post ad</button>
                                     </div>
                                 </div>
@@ -102,5 +102,8 @@
             </div>
         </div>
     </div>
+    <?php
+    // echo $posts;
+    ?>
 </div>
 @endsection

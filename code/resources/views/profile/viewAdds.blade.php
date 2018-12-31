@@ -6,18 +6,19 @@
         <br>
         <div class="row">
             <div class="col-md-6">
-                <form action="/users/edit" method="POST">
+                <form action="/YourAdvertisements/{{$posts[$x]['id']}}/update" method="POST">
+                @csrf
                     <fieldset disabled>
                         <div class="form-group row">
                             <label for="kind" class="col-sm-3 col-form-label">&nbsp Name</label>
                             <div class="col-sm-9">
-                                <input type="text" id="kind" value={{$posts[$x]['kind']}}>
+                                <input type="text" id="kind" value={{$posts[$x]['name']}}>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="category" class="col-sm-3 col-form-label">&nbsp Category</label>
                             <div class="col-sm-9">
-                                <input type="text" id="category" value={{$posts[$x]['category']}}>
+                                <input type="text" id="category" value={{$posts[$x]['kind']}}>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -32,30 +33,44 @@
                                 <input type="text" id="size" value={{$posts[$x]['sizes']}}>
                             </div>
                         </div>
-
                     </fieldset>
+                        <div class="form-group row">
+                            <label for="amount" class="col-sm-3 col-form-label">&nbsp Amount</label>
+                            <div class="col-sm-9">
+                                <input  class="form-control" name="amount" type="text" id="size" value={{$posts[$x]['amount']}}>
+                                <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
+                            </div>
+                        </div>
                     <div class="form-group row">
                         <label for="addDetails" class="col-sm-3 col-form-label">&nbsp Details</label>
                         <div class="col-sm-9">
-                            <textarea name="addDetails" id="details" cols="47"rows="2">{{$posts[$x]['details']}}</textarea>
+                            <textarea name="addDetails" id="details" cols="44"rows="2">{{$posts[$x]['description']}}</textarea>
                             <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-3 col-form-label">&nbsp Price(Rs.)</label>
+                        <label for="price" class="col-sm-3 col-form-label">&nbsp Price(Rs.)</label>
                         <div class="col-sm-9">
                         <input multi class="form-control" type="number" name="price" value={{$posts[$x]['price']}} required>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="discount" class="col-sm-3 col-form-label">&nbsp Discount(Rs.)</label>
+                        <div class="col-sm-9">
+                        <input multi class="form-control" type="number" name="discount" value={{$posts[$x]['discount']}} required>
+                        </div>
+                    </div>
                     <input type="submit" class="btn offset-md-3 btn-primary" value="Save">
-                </form>
+                    <a class="btn btn-danger" href="/YourAdvertisements/{{$posts[$x]['id']}}/delete" onclick="return confirm('Delete this advertisement!!')">Delete</a>
+                </form> 
             </div>
             <div class="col-md-6">
-                {{-- <center> --}}
-                <div class="card mx-auto" style="width: 25rem;">
-                    <center>
-                        <img src=@$posts[0]['image']>
-                    </center>
+                <div id=postsImage>
+                    <div class="card mx-auto">
+                        <center>
+                        <img class="img-fluid" src="/storage/{{$posts[$x]['img1']}}"  height="200px" width="auto" alt="Computer Hope">
+                        </center>
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,5 +78,4 @@
     </div>
     <br><br>
 @endfor
-{{}}
 @endsection

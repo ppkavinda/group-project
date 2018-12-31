@@ -7,16 +7,31 @@
                 <div class="w3layouts_mail_grid">
                     <div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
                         <div class="agileits_mail_grid_right1 agile_mail_grid_right1">
-                            <form action="/postAdd" method="post">
+                            <form action="/postAdd" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <label class="radio-inline">
-                                            <input type="radio" name="kind" value="clothes" checked>&nbsp Clothes
+                                            <input type="radio" name="kind" value="1" checked>&nbsp Clothes
                                         </label>
                                     </div>
                                 </div>
                                 <hr>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="name" id="labels">&nbsp Name of the product &nbsp</label>
+                                            <br>
+                                            <input type ="text" id="select" name="name" required>    
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="amount" id="labels">&nbsp Amount &nbsp</label>
+                                            <input multi class="form-control" type="number" id="select" name="amount" required>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
@@ -54,7 +69,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="discription" id="labels">&nbsp Details &nbsp</label>
+                                            <label for="details" id="labels">&nbsp Details &nbsp</label>
                                             <textarea class="form-control" id="select" rows="4" name="details" required></textarea>
                                         </div>
                                     </div>
@@ -71,6 +86,12 @@
                                         <div class="form-group">
                                             <label for="price" id="labels">&nbsp Price(one cloth Rs.) &nbsp</label>
                                             <input multi class="form-control" type="number" id="select" name="price" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="discount" id="labels">&nbsp Discount(one cloth Rs.) &nbsp</label>
+                                            <input multi class="form-control" type="number" id="select" name="discount" required>
                                         </div>
                                     </div>
                                 </div>

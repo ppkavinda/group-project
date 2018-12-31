@@ -19,29 +19,14 @@ class UserController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $idNo= auth()->user()->nic;
-        $postsCount = \App\Advertisement::where('id',$idNo)->count();
-        return view('profile.index', ['user'=>$user,'postsCount'=>$postsCount]);
+        return view('profile.index', ['user'=>$user]);
     }
     
-<<<<<<< HEAD
     public function show (User $user) {
         $courses = $user->courses;
         return view('profile.index', compact('user'));
     }
-//advertisements
-    public function choosePage(){
-        $idNo= auth()->user()->nic;
-        $postsCount = \App\Advertisement::where('id',$idNo)->count();
-        if($postsCount==0){
-            echo '<script language="javascript">';
-            echo 'alert("You do not have advertisements yet!!")';
-            echo '</script>';
-        }
-        else{
-            return view('profile.viewAdds');
-        }
-=======
+
     public function edit(Request $request, User $user)
     {
         $user->name = $request->name;
@@ -53,14 +38,9 @@ class UserController extends Controller
         return $user;
     }
     
-    public function show(User $user)
-    {
-        return $user;
-    }
 
     public function get()
     {
         return auth()->user();
->>>>>>> baa124b18e64a15eb79219cdd2dc319b8e87fb76
     }
 }

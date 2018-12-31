@@ -17978,10 +17978,27 @@ h2.resp-accordion:first-child {
 }
 
 .advertisementBorder {
-  border: 2px solid #a5a5a7;
+  border: 2px solid #b5b8b8;
   background: #ecebeb;
   margin-left: 1cm;
   margin-right: 1cm;
+}
+
+#about_list {
+  position: relative;
+  left: 10%;
+}
+
+.container-wide {
+  width: 90%;
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .col-center {

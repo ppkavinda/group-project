@@ -9,6 +9,11 @@
                 <i class="fa fa-angle-right"></i>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center" style="font-size:20px">
+                <a href="/shoes"><i class="fas fa-boot"></i>
+                Shoes and Slippers</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center" style="font-size:20px">
                 <a href="/soap"><i class="fa fa-bath"></i>
                 Soap</a>
                 <i class="fa fa-angle-right"></i>

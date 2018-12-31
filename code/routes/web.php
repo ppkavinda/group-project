@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,7 +114,16 @@ Route::get('mask', function(){
 	return view('add.mask');
 });
 
-Route::post('/postAdd','AdvertisementController@store');
+Route::get('shoes', function(){
+    return view('add.shoes');
+});
 
-Route::get('YourAdvertisements','AdvertisementController@index');
-Route::get('YourAdvetisements','UserController@choosePage');
+Route::post('/postAdd','ProductController@store');
+
+Route::get('YourAdvertisements','ProductController@index');
+Route::get('YourAdvertisements/{productId}/delete','ProductController@destroy');
+Route::post('/YourAdvertisements/{productId}/update','ProductController@update');
+
+//view advertisement for buyers
+Route::get('/categories/{kind}/{type}','ProductController@viewKindAdvertisements');
+Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
