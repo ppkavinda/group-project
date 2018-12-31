@@ -22,15 +22,18 @@
     </div>
     <div class="occasion-cart" style="position:relative; top:3rem;width:40%;">
         <div class="snipcart-details top_brand_home_details item_add single-item p-3 minicart-showing">
-            <a @click="onClick" class="hvr-outline-out button2">Add to cart</a>
+            <add-to-cart-button :product="product"></add-to-cart-button>
         </div>
     </div>
 </div>
 </template>
 
 <script>
+// import AddToCartButton from './AddToCartButton'
+  
 export default {
     props: ['initialProduct',],
+    // components: {AddToCartButton},
     data () {
         return {
             product: {
@@ -38,25 +41,25 @@ export default {
             },
         }
     },
-    methods: {
-        onClick () {
-            if (!this.product.quantity) {
-                this.errors.quantity = ['Invalid quantity']
-                return
-            }
-            axios.post(`/cart/${this.product.id}`, this.product)
-                .then(res => {
-                    window.Event.$emit('added-to-cart', res.data)
-                })
-                .catch(err => {
-                    // TODO replace to open the login model
-                    if (err.response.status == 401) {
-                    // console.log(err.response) 
-                        window.location.replace('/login')
-                    }
-                })
-        },
-    },
+    // methods: {
+    //     onClick () {
+    //         if (!this.product.quantity) {
+    //             this.errors.quantity = ['Invalid quantity']
+    //             return
+    //         }
+    //         axios.post(`/cart/${this.product.id}`, this.product)
+    //             .then(res => {
+    //                 window.Event.$emit('added-to-cart', res.data)
+    //             })
+    //             .catch(err => {
+    //                 // TODO replace to open the login model
+    //                 if (err.response.status == 401) {
+    //                 // console.log(err.response) 
+    //                     window.location.replace('/login')
+    //                 }
+    //             })
+    //     },
+    // },
     computed: {
         getRating () {
             return Math.round(this.product.ratings)
