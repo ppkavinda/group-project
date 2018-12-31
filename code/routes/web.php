@@ -82,5 +82,5 @@ Route::post('/inquiry', 'InquiryController@store');
 // Route::get('users',['uses' => 'UserController@index']);
 
 Route::get('test', function () {
-    return '<a href="/" onclick="return confirm()">asasdfaf</a>';
+    dd(\Cart::content());
 });

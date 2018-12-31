@@ -25,7 +25,6 @@ class OrderController extends Controller
         // 2 - placed, payed, shipped
         // 3 - placed, payed, shipped, delivered
         $order = '';
-        // return \Cart::content();
         DB::transaction(function () use ($request, &$order) {
             $order = Order::create([
                 'user_id' => auth()->id(),
@@ -40,7 +39,6 @@ class OrderController extends Controller
             
             foreach (\Cart::content() as $key => $product) {
                 $order->products()->attach($product->id, ['price' => $product->price, 'amount' => $product->qty]);
-                DB::table('products')->decrement('amount', $product->qty);
             }
         });
         return response($order->id);
