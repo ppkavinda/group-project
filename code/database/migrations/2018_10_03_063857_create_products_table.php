@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -26,6 +35,9 @@ class CreateProductsTable extends Migration
             $table->double('discount')->nullable();
             $table->integer('category_id');
             $table->double('ratings')->default(0);
+            $table->string('kind');
+            $table->string('type');
+            $table->string('sizes');
             $table->timestamps();
         });
     }

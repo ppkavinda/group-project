@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,3 +92,38 @@ Route::get('test', function () {
     }
     dd($p);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//selling post
+Route::get('soap', function(){
+	return view('add.soap');
+});
+
+Route::get('clothes',function(){
+	return view('add.clothes');
+});
+
+Route::get('spices', function(){
+	return view('add.spices');
+});
+
+Route::get('mask', function(){
+	return view('add.mask');
+});
+
+Route::get('shoes', function(){
+    return view('add.shoes');
+});
+
+Route::post('/postAdd','ProductController@store');
+
+Route::get('YourAdvertisements','ProductController@index');
+Route::get('YourAdvertisements/{productId}/delete','ProductController@destroy');
+Route::post('/YourAdvertisements/{productId}/update','ProductController@update');
+
+//view advertisement for buyers
+Route::get('/categories/{kind}/{type}','ProductController@viewKindAdvertisements');
+Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
