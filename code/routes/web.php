@@ -53,6 +53,7 @@ Route::get('/checkout/cancel', 'CheckoutController@cancel');
 Route::post('/checkout/notify', 'CheckoutController@notify');
 
 Route::post('/orders/store', 'OrderController@store');
+Route::put('/orders/{order}/edit', 'OrderController@update');
 
 // study
 Route::view('/study', 'study.index');
@@ -85,12 +86,7 @@ Route::post('/inquiry', 'InquiryController@store');
 // Route::get('users',['uses' => 'UserController@index']);
 
 Route::get('test', function () {
-    $p = [];
-
-    foreach (\Cart::content() as $key => $value) {
-        array_push($p, $value->id);
-    }
-    dd($p);
+    dd(\Cart::content());
 });
 
 Auth::routes();
