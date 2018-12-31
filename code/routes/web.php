@@ -81,15 +81,8 @@ Route::post('/inquiry', 'InquiryController@store');
 
 // Route::get('users',['uses' => 'UserController@index']);
 
-Route::get('test', function () {
-    $p = [];
-
-    foreach (\Cart::content() as $key => $value) {
-        array_push($p, $value->id);
-    }
-    dd($p);
-});
-
+Route::get('/home', 'HomeController@index')->name('home');
+//sachintha
 
 
 Route::match(['get','post'],'/admin/add-category','CategoryController@addCategory');
@@ -108,4 +101,5 @@ Route::get('/admin/delete-inquiry/{id}','InquiryController@deleteInquire');
 
 Route::get('/admin/view-users','UserController@user_Details_all');
 
+Route::get('/admin/view-category','CategoryController@viewCategories');
 

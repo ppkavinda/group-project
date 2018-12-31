@@ -41,7 +41,6 @@
 </head>
 <body>
 	<div>
-
 	</div>
 
 	<div id="app">

@@ -1,4 +1,6 @@
-  <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+
+<br><br><br><br>
+<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -13,7 +15,7 @@
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
+    <form class="form-inline ml-2">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">

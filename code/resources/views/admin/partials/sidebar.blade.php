@@ -1,3 +1,4 @@
+<div class="wrapper">
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <!-- Brand Logo -->
@@ -388,3 +389,4 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+</div>
