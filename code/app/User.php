@@ -49,6 +49,10 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, 'user_id', 'id');
     }
     
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+
     // helpers
     public function isAdmin () {
         return $this->role <= 1;

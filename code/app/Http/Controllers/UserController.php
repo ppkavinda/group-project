@@ -21,9 +21,14 @@ class UserController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('profile.index', compact('user'));
+        return view('profile.index', ['user'=>$user]);
     }
     
+    public function show (User $user) {
+        $courses = $user->courses;
+        return view('profile.index', compact('user'));
+    }
+
     public function edit(Request $request, User $user)
     {
         $user->name = $request->name;
@@ -42,10 +47,6 @@ class UserController extends Controller
         return $user;
     }
     
-    public function show(User $user)
-    {
-        return $user;
-    }
 
     public function get()
     {

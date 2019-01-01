@@ -9,6 +9,7 @@
 
 <link rel="stylesheet" href="/css/font-awesome.css">
 <link rel="stylesheet" href="/css/study.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 @stack('styles')
 </head>
 <body>
@@ -44,7 +45,20 @@
 	});
 						
 	$().UItoTop({ easingType: 'easeOutQuart' });
-								
+
+//view uploaded image in add post
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                	$('#viewImg')
+                	.attr('src', e.target.result);
+            	};
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }							
 </script>
 
 </body>

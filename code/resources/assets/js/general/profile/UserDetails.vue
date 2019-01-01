@@ -85,6 +85,13 @@
                         </div> 
                 </div>
             </form>
+            <br>
+        <div class="col-md-5">
+        <div>
+            <center><a class="btn btn-dark" href="YourAdvertisements">Your Advertisements &nbsp <i class="fa fa-angle-right"></i></a></center>
+            <br>
+        </div>
+        </div>
         </div>
             <!-- image upload -->
             <div class="col-md-6">

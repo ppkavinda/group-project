@@ -52,8 +52,11 @@
 									</div>
 									<div class="col-sm-3 multi-gd-img">
 										<ul class="multi-column-dropdown">
-											<li><a href="{{ route('categories.men') }}">Clothing</a></li>
-											<li><a href="{{ route('categories.women') }}">Wallets</a></li>
+											<li><a href="/categories/{{'1'}}">Clothes</a></li>
+											<li><a href="/categories/{{'2'}}">Masks</a></li>
+											<li><a href="/categories/{{'3'}}">Soap</a></li>
+											<li><a href="/categories/{{'4'}}">Spices</a></li>
+											<li><a href="/categories/{{'5'}}">Shoes</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-3 multi-gd-img">

@@ -38,9 +38,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="w3_agile_map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14676.24182205218!2d79.94925095467904!3d6.90285372824004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf7bc4d1d30bee97e!2zRGl2aXNpb25hbCBTZWNyZXRhcmlhdCBLYWR1d2VsYSDgtprgtqngt5Tgt4Dgt5ngtr0g4La04LeK4oCN4La74LeP4Lav4Lea4LeB4LeT4La6IOC2veC3muC2muC2uOC3iiDgtprgt4_gtrvgt4rgtrrgt4_gtr3gtro!5e0!3m2!1sen!2slk!4v1536594037413" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></iframe>
-	</div>
 	<div class="contact">
 		<div class="container">
 			<h3 class="w3l_header w3_agileits_header1">Inquiry <span>Info</span></h3>

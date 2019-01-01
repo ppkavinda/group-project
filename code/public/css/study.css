@@ -22183,6 +22183,43 @@ p.copy-right a:hover {
   left: 10%;
 }
 
+#viewImg {
+  max-width: 180px;
+}
+
+#labels {
+  font-weight: bold;
+}
+
+#select {
+  min-width: 265px;
+  min-height: 45px;
+  border-width: 3px;
+  border-color: bisque;
+  margin: 10px 10px 10px 0px;
+}
+
+.formColor {
+  background: antiquewhite;
+}
+
+.viewAdd {
+  background: #10707f;
+  border: 1px solid #000;
+}
+
+.advertisementBorder {
+  border: 2px solid #b5b8b8;
+  background: #ecebeb;
+  margin-left: 1cm;
+  margin-right: 1cm;
+}
+
+#about_list {
+  position: relative;
+  left: 10%;
+}
+
 .container-wide {
   width: 90%;
   padding-left: 7.5px;

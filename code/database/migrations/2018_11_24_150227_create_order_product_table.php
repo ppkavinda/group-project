@@ -17,8 +17,8 @@ class CreateOrderProductTable extends Migration
             $table->increments('id');
             $table->integer('order_id');
             $table->integer('product_id');
-            
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('amount');
+            $table->double('price');
         });
     }
 
