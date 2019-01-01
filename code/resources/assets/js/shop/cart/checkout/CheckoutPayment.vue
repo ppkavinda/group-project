@@ -3,7 +3,7 @@
     <br><br>
     <div class="form-group">
         <label for="URL" class="col-form-label"><strong><i class="fa fa-envelope-open"></i> Delivery Address:</strong></label>
-        <div class="form-control-plaintext" v-html="address" ></div>
+        <div class="form-control-plaintext" v-html="formatedAddress" ></div>
     </div>
     <div class="form-group">
         <ul>
@@ -45,8 +45,8 @@
         <input class="form-control" type="hidden" name="order_id" :value="delivery.orderId">
         <input class="form-control" type="hidden" name="items" :value="items">
         <input class="form-control" type="hidden" name="currency" value="LKR">
-        <input class="form-control" type="hidden" name="first_name" :value="user.first_name">
-        <input class="form-control" type="hidden" name="last_name" :value="user.last_name">
+        <input class="form-control" type="hidden" name="first_name" :value="user.name">
+        <input class="form-control" type="hidden" name="last_name" :value="user.name">
         <input class="form-control" type="hidden" name="email" :value="user.email">
         <input class="form-control" type="hidden" name="phone" :value="user.telephone">
         <input class="form-control" type="hidden" name="address" :value="address">
@@ -99,6 +99,13 @@ export default {
         //     return total;
         // },
         address () {
+            if (this.newAddress) 
+                return this.user.name + ', ' + this.delivery.address1 + ', '
+                    + this.delivery.address2 + '. ' + this.delivery.city + ' ' + this.delivery.telephone
+            return this.user.name + ', ' + this.user.address1 + ' ' 
+                + this.user.address2 + ' ' + this.user.city + ' ' + this.user.telephone
+        },
+        formatedAddress () {
             if (this.newAddress) 
                 return this.user.name + ',<br/>' + this.delivery.address1 + '\n,<br/>'
                     + this.delivery.address2 + '.<br/>' + this.delivery.city + '<br/>' + this.delivery.telephone

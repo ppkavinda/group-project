@@ -17,6 +17,9 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'category_id' => function () {
             return factory('App\Category')->create()->id;
         },
+        'kind' => $faker->words(2, true),
+        'type' => $faker->words(2, true),
+        'sizes' => $faker->randomElement(['M', 'S', 'L']),
         'ratings' => $faker->randomFloat(1, 0, 5),
     ];
 });
