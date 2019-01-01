@@ -1,3 +1,6 @@
-<register ></register>
+@extends('layouts.app')
+@section('content')
+<register></register>
+@endsection
 
 
