@@ -99,7 +99,8 @@ body {
   margin-left: -2px;
 }
 
-/* Profile Content */
+/* Profile Content
+ */
 .profile-content {
   padding: 20px;
   background: #fff;
@@ -115,3 +116,12 @@ body {
   }
 
   .table-responsive{margin-top:25px;}
+  
+  .fieldset-title {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eaeaf1;
+    margin-bottom: 30px;
+    color: #616670;
+    font-size: 16px
+    }
+    

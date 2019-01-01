@@ -22204,3 +22204,7 @@ p.copy-right a:hover {
   display: grid;
 }
 
+.bg-img {
+  background: url(/dist/img/bg.jpg);
+}
+
