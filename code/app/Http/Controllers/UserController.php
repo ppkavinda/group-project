@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
+
 
 class UserController extends Controller
 {
@@ -43,13 +44,41 @@ class UserController extends Controller
         return auth()->user();
     }
 
-    public function user_Details_all(){
-      $user=User::get();
-      $usercount=\App\User::count();
-      $i=1;
-      for($i=1;$i<$usercount+!1;$i++){
-          $i=$i++;
-      }
+    public function user_Details(){
+        
+       $users = \App\User::join('roles','users.role','=','roles.id')->select('users.*','roles.role')->get();
       
+       return view('admin.users.view')->with(compact('users'));
+    
+    }
+    
+
+    public function search_user(Request $request ){
+        $request->validate([
+            'search_users' => 'required',
+        ]);
+
+        $search = $request->input('search_users');
+        if( $search != "")
+        {
+            $users= \App\User::join('roles', 'users.role', '=', 'roles.id')
+                            ->select('users.*', 'roles.role')
+                            ->where('name', 'LIKE', '%'. $search .'%')
+                            ->orWhere('email', 'LIKE', '%'.$search .'%')
+                            ->orWhere('nic', 'LIKE', '%'. $search .'%')
+                            ->orWhere('roles.role', 'LIKE', '%'. $search .'%')
+                            ->get();
+
+            if(count($users) > 0)
+            {
+                return view('admin.users.search')->withDetails($users)->withQuery($search);
+            }
+            
+        //dd($users);\
+        return view('admin.users.search')->withMessage("No Users Found! "); 
+        }
+
+    
+
     }
 }

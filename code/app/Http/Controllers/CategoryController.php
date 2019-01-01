@@ -14,7 +14,7 @@ class CategoryController extends Controller
         if($request->isMethod('post')){
 
             $request->validate([
-                'category_name' => 'required|min:5',
+                'category_name' => 'required|min:5|unique:categories,title',
             ]);
            
             $data = $request->all();
@@ -26,19 +26,24 @@ class CategoryController extends Controller
             return redirect('/admin/view-category')->with('flash_message_success','Category added Sucessfully!');
         }
        
-        return view('admin.category.add_categories');
+        return view('admin.category.add');
     
     }
 
     public function editCategory(Request $request,$id= null){
         if($request->isMethod('post')){
+
+            $request->validate([
+                'category_name' => 'required|min:5|unique:categories,title',
+            ]);
+            
             $data = $request->all();
-            Category::where(['id'=>$id])->update(['category_title'=>$data['category_name']
+            Category::where(['id'=>$id])->update(['title'=>$data['category_name']
             ]);
             return redirect('/admin/view-category')->with('flash_message_success','Category edited Sucessfully!');
         }
         $categoryDetails =Category::where(['id'=>$id])->first();
-        return view('admin.category.edit_categories')->with(compact('categoryDetails'));
+        return view('admin.category.edit')->with(compact('categoryDetails'));
     }
 
     public function deleteCategory($id= null){
@@ -54,7 +59,7 @@ class CategoryController extends Controller
         ->orderBy('updated_at','desc')
         ->get();
         $categories=json_decode(json_encode($categories));
-        return view('admin.category.view_categories')->with(compact('categories'));
+        return view('admin.category.view')->with(compact('categories'));
     }
 
    // public function searchCategory(){

@@ -44,7 +44,8 @@
                 <h3 class="card-title">New Courses</h3>
               </div>
 
-              <form class="form-horizontal" method="post" action="{{url('/admin/add-category') }}" name="add_category" id="add_category"  >{{ csrf_field() }}
+              <form class="form-horizontal" method="post" action="{{url('/admin/add-category') }}" name="add_category" id="add_category"  >
+              {{ csrf_field() }}
                 <div class="card-body">
                   <div class="form-group">
                     <label for="categoryName">Category Name</label>
@@ -60,7 +61,8 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" value="Add Category" class="btn btn-primary">Add</button>
+                  <button type="submit" value="Add Category" class="btn btn-block btn-primary" 
+                  onclick="return confirm('Do you want to add new Category?')" >Add</button>
                 </div>
               </form>
            

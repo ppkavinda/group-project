@@ -19,7 +19,7 @@ class InquiryController extends Controller
 
     public function viewInquire(){
         $inquiries=\App\Inquiry::get();
-        return view('admin.inquiries.view_inquiries')->with(compact('inquiries'));
+        return view('admin.inquiries.view')->with(compact('inquiries'));
 
     }
 

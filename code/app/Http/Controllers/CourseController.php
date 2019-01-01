@@ -34,65 +34,99 @@ class CourseController extends Controller
     public function addCourse(Request $request){
         
         if($request->isMethod('post') ){
+
+            $request->validate([
+                
+                'course_title'      => 'required|min:5',
+                'course_subtitle'   => 'required|min:5|unique:courses,subtitle',   
+                'course_description'=> 'required|min:5|unique:courses,description',
+                'cover_img'         => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+
+            ]);
            
             $data=$request->all();
             $course=new Course;
-            $course->category_id=$data['category_id'];
-            $course->title =$data['course_title'];
-            $course->subtitle=$data['course_subtitle'];
+            $course->category_id= $data['category_id'];
+            $course->title = $data['course_title'];
+            $course->subtitle = $data['course_subtitle'];
+
             if(!empty($data['course_description'])){
-                $course->description=$data['course_description'];
+                $course->description = $data['course_description'];
             }
             else{
-                $course->description='';
+                $course->description = '';
             }
            
             $file = $request->file('cover_img');
-                $destinationPath = 'dist/img/courses';
-                $filename=$file->getClientOriginalName();
-                $file->move($destinationPath,$file->getClientOriginalName());
+                               
+                $filename = $file->store('img/courses', 'public');
                
-                $course->cover_img=$filename;
+                $course->cover_img = $filename;
             
           
             $course->save();
             return redirect('/admin/view-course')->with('flash_message_success','Courses added Sucessfully!');
-        
-           
-                
-
         }
         
-        $levels = Category::get();
-       // echo $levels;
-        return view('admin.course.add_courses')->with(compact('levels'));
+        $categories = Category::get();
+         // echo $levels;
+        return view('admin.course.add')->with(compact('categories'));
     }
+
+
     public function editCourse(Request $request,$id= null){
         if($request->isMethod('post')){
-            $data = $request->all();
-           Course::where(['id'=>$id])->update([
-               
-               'category_title'=>$data['category_name']
+            $request->validate([
+                
+                'course_title'      => 'required|min:5',
+                'course_subtitle'   => 'required|min:5|unique:courses,subtitle',   
+                'course_description'=> 'required|min:5|unique:courses,description',
+                'cover_img'         => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+
             ]);
-            return redirect('/admin/view-category')->with('flash_message_success','Category edited Sucessfully!');
+
+            $file = $request->file('cover_img');
+                                
+                $filename = $file->store('img/courses', 'public');
+
+                $data = $request->all();
+
+                Course::where(['id'=>$id])->update([
+               
+               'category_id'=>$data['category_id'],
+               'title'=>$data['course_title'],
+               'subtitle'=>$data['course_subtitle'],
+               'description'=>$data['course_description'],
+               
+               'cover_img'=>$filename,
+               
+            ]);
+           // dd($filename);
+            return redirect('/admin/view-course')->with('flash_message_success','Category edited Sucessfully!');
         }
-        $categoryDetails =Category::where(['id'=>$id])->first();
-        return view('admin.category.edit_categories')->with(compact('courseDetails'));
+        $categories = Category::get();
+        $courseDetails =Course::where(['id'=>$id])->first();
+        //dd($courseDetails);
+        return view('admin.course.edit')->with(compact(['courseDetails','categories']));
     }
 
     public function viewCourses(){
-        $courses=DB::table('courses')
-        ->join('categories', 'category_id'	, '=', 'categories.id')
-        ->select('courses.*','categories.category_title')
-        ->get();
-        return view('admin.course.view_courses')->with(compact('courses'));
+        $courses = \App\Course::get();
+        //dd($courses);
+        return view('admin.course.view')->with(compact('courses'));
     }
-    public function deleteCourse($id= null){
+
+    public function deleteCourse($id = null){
         if(!empty($id)){
-            Course::where(['id'=>$id])->delete();
+            Course::where(['id'=> $id])->delete();
             return redirect()->back()->with('flash_message_success','Category deleted Sucessfully!');
         }
 
+    }
+
+    public function indexAdmin() {
+        $courses = \App\Course::get();
+	    return view('admin.course.select', ['courses' => $courses]);
     }
 
     

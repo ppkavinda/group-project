@@ -41,7 +41,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="/admin/view-users" class="nav-link">
-              <i class="nav-icon fa fa-edit"></i>
+              <i class="nav-icon fa fa-user"></i>
               <p>
                Users
                 <i class="fa fa-angle-left right"></i>
@@ -50,21 +50,15 @@
             <ul class="nav nav-treeview">
             
               <li class="nav-item">
-                <a href="/admin/view-inquiry" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Entrepreneur</p>
+                <a href="/admin/view-users" class="nav-link">
+                  <i class="fa fa-user nav-icon"></i>
+                  <p>View</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/view-inquiry" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Customer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/view-inquiry" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Facilitator</p>
+                <a href="/admin/search-users" class="nav-link">
+                  <i class="fa fa-user nav-icon"></i>
+                  <p>Search</p>
                 </a>
               </li>
             </ul>
@@ -76,7 +70,7 @@
     </a>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-edit"></i>
+              <i class="nav-icon fa fa-list"></i>
               <p>
                 Categories
                 <i class="fa fa-angle-left right"></i>
@@ -85,27 +79,27 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/admin/add-category" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
+                  <i class="fa fa-edit nav-icon"></i>
                   <p>Add Category</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin/view-category" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
+                  <i class="fa fa-edit nav-icon"></i>
                   <p>Edit Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Delete Category</p>
+                <a href="/admin/view-category" class="nav-link">
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>View Categories</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-edit"></i>
+            <a href="/admin/view-courselist" class="nav-link">
+              <i class="nav-icon fa fa-university"></i></i>
               <p>
                 Courses
                 <i class="fa fa-angle-left right"></i>
@@ -114,28 +108,51 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/admin/add-course" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
+                  <i class="fa fa-edit nav-icon"></i>
                   <p>Add  Courses</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin/view-course" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
+                  <i class="fa fa-edit nav-icon"></i>
                   <p>Edit Courses</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin/view-course" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Delete Courses</p>
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>View Course</p>
                 </a>
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-clipboard"></i>
+              <p>
+               Posts
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/add-category" class="nav-link">
+                  <i class="fa fa-edit nav-icon"></i>
+                  <p>Add Posts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/view-category" class="nav-link">
+                  <i class="fa fa-edit nav-icon"></i>
+                  <p>Edit Posts</p>
+                </a>
+              </li>
+              </ul>
+          </li> 
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-edit"></i>
+              <i class="nav-icon fa fa-envelope-o"></i>
               <p>
                 Inquiry
                 <i class="fa fa-angle-left right"></i>
@@ -145,13 +162,13 @@
             
               <li class="nav-item">
                 <a href="/admin/view-inquiry" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>View Inquiry</p>
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>View Inquiries</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin/view-inquiry" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
+                  <i class="fa fa-edit nav-icon"></i>
                   <p>Delete Inquiry</p>
                 </a>
               </li>
@@ -248,140 +265,20 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/admin/view-category" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>View Category</p>
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>Category Table</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="pages/tables/data.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
+                  <i class="fa fa-table nav-icon"></i>
                   <p>Data Tables</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-header">EXAMPLES</li>
-          <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
-              <i class="nav-icon fa fa-calendar"></i>
-              <p>
-                Calendar
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-envelope-o"></i>
-              <p>
-                Mailbox
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Inbox</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/mailbox/compose.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Compose</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/mailbox/read-mail.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Read</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
-              <p>
-                Pages
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Invoice</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/profile.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/login.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Login</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/register.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Register</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/lockscreen.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Lockscreen</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-plus-square-o"></i>
-              <p>
-                Extras
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/examples/404.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Error 404</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/500.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Error 500</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/blank.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Blank Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="starter.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Starter Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-header">MISCELLANEOUS</li>
-          <li class="nav-item">
-            <a href="https://adminlte.io/docs" class="nav-link">
-              <i class="nav-icon fa fa-file"></i>
-              <p>Documentation</p>
-            </a>
-          </li>
+          <li class="nav-header"></li>
+          
           
         </ul>
       </nav>
