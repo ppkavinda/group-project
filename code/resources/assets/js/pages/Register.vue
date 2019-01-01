@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('content')
-
 <template>
 <!-- background image -->
 <div class="bg-img">
@@ -12,13 +10,13 @@
                     <div class="card-header">
                         <p class="login-box-msg" style="color:DodgerBlue;font-size:200%;"><b>Sign Up and Start Learning!</b></p>
                     </div>
-
+                    <!-- Logo -->
                     <div class="login-logo">
                         <a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .6"></a>
                     </div>
 
                  <form method="POST" @submit.prevent="onSubmit" @keydown="clearError($event.target.name)">
-                 {{ csrf_field() }}
+                <!-- Name -->
                  <div class="form-group row">
                     <label for="name" class="col-md-4  text-md-right">Name </label>
                      <div class="col-md-6">
@@ -28,7 +26,7 @@
                         </span>
                      </div>
                  </div>
-
+                <!-- Email Address -->
                  <div class="form-group row">
                      <label for="email" class="col-md-4 col-form-label text-md-right">Email Address </label>
                          <div class="col-md-6">
@@ -38,7 +36,7 @@
                                  </span>
                          </div>
                  </div>
-
+                <!-- NIC -->
                 <div class="form-group row">
                     <label for="nic" class="col-md-4 col-form-label text-md-right">National ID No:</label>
                         <div class="col-md-6">
@@ -48,14 +46,14 @@
                                 </span>
                         </div>
                 </div>
-
+                <!-- Password -->
                 <div class="form-group row">
                     <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                         <div class="col-md-6">
                             <input id="password" @keyup="confirmPassword" type="password" class="form-control" v-model="user.password" name="password" placeholder="Password"  required>
                         </div>
                 </div>
-
+                <!-- Confirm Password -->
                 <div class="form-group row">
                     <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
                         <div class="col-md-6">
@@ -65,7 +63,7 @@
                                 </span>
                         </div>
                 </div>
-
+                <!-- Submit button -->
                 <div class="form-group row mb-0">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-primary">Join with us</button>

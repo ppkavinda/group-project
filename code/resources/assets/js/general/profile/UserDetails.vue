@@ -3,7 +3,7 @@
     <h3 class="w3l_header mt-4 mb-5">Edit your <span>detail</span></h3>
     <div class="row">
         <div class="col-md-6">
-            <form  method="POST" @submit.prevent="updateDetails">
+            <form  method="POST"  @submit.prevent="updateDetails">
                 <!-- Personal Information -->
                 <h3>Personal Info</h3>
                 <!-- email address -->
@@ -137,10 +137,10 @@ export default {
             })
     },
     methods: {
-        onImageLoad (file) {
+        onImageLoad : function (file) {
             this.user.profile_pic = file.src
         },
-        updateDetails () {
+        updateDetails : function () {
             axios.post('users/' + this.userId + '/edit', this.user)
                 .then(res => {
                     this.user = res.data

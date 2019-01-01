@@ -27418,8 +27418,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -27541,11 +27539,6 @@ var render = function() {
                 }
               },
               [
-                _vm._v(
-                  "\r\n                 " +
-                    _vm._s(_vm.csrf_field()) +
-                    "\r\n                 "
-                ),
                 _c("div", { staticClass: "form-group row" }, [
                   _c(
                     "label",
@@ -29682,7 +29675,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.onError();
             });
         },
-
         onSuccess: function onSuccess() {
             this.submitButton.text = 'Saved !';
             this.submitButton.class = 'btn-success';
