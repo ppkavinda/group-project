@@ -96,8 +96,8 @@
 						</li>
 
 						<li class="active nav-item menu__item {{ Request::is('register') ? 'menu__item--current' : '' }}">
-								<a class="nav-link menu__link"  href="/register">
-								<i class="fa fa-user" aria-hidden="true"></i> Sign Up </a>
+								<a class="nav-link menu__link" href="/register">
+								<i class="fa fa-user" aria-hidden="true"></i> Sign Up</a>
 						</li>
 						@else
 						<li class="nav-item menu__item dropdown {{ Request::is('profile*') ? 'menu__item--current' : '' }}">
@@ -105,6 +105,7 @@
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 									{{ Auth::user()->name }} <span class="fa fa-caret-down"></span>
 							</a>
+							
 
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="/profile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a>

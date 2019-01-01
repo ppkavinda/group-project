@@ -8,6 +8,8 @@ use Illuminate\Routing\Controller as Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -30,10 +32,10 @@ class UserController extends Controller
         $user->contact = $request->contact;
         $user->address1 = $request->address1;
         $user->address2 = $request->address2;
-        $user->description = $request->description;
-        $user->profile_pic = $request->profile_pic;
         $user->city = $request->city;
         $user->postal_code = $request->postal_code;
+        $user->description = $request->description;
+        $user->profile_pic = $request->profile_pic;
         
 
         $user->save();
@@ -48,5 +50,19 @@ class UserController extends Controller
     public function get()
     {
         return auth()->user();
+    }
+    
+   
+
+    public function updatePassword(Request $request) {
+        $oldPassword = $request->oldPassword;
+        $newPassword = $request->newPassword;
+        if(!Hash::check($oldPassword, Auth::user()->password)){
+          return back()->with('msg','The specified password does not match the database password'); //when user enter wrong password as current password
+        }else{
+            $request->user()->fill(['password' => Hash::make($newPassword)])->save(); //updating password into user table
+           return back()->with('msg','Password has been updated');
+        }
+        echo 'here update query for password';
     }
 }
