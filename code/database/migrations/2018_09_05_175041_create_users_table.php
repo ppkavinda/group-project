@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->text('city')->nullable();
             $table->integer('postal_code')->nullable();
             $table->text('description')->nullable();
-            $table->string('profile_pic')->default('/dist/img/login/user.jpg');
+            $table->string('profile_pic')->default('/dist/img/avatar5.png');
             $table->string('api_token', 60)->unique();
             $table->rememberToken();
             $table->integer('role')->default(4);

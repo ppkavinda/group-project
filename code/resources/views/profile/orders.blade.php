@@ -15,16 +15,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Ladies Blouse</td>
-            <td>2</td>
-            <td>Rs 750.00</td>
-            <td>Rs 1500.00</td>
-            <td>12/12/2018</td>
-            <td><span class="label label-info">Processing</span></td>
-          </tr>
+        
+        $products = Product::all()->filter(function($orders));
+        $ordersOfCurrentUser = Auth::user()->orders();
+
+        $productsOfCurrrentUser = new Collection([]);
+
+        foreach($order as $ordersOfCurrentUser) {
+          $productsOfCurrrentUser = $productsOfCurrrentUser->merge($order->products()->get());
+        }
+        
         </tbody>
       </table>
     </div>
+  </div>
 </div>

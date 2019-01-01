@@ -27,6 +27,8 @@ class CreateProductsTable extends Migration
             $table->integer('category_id');
             $table->double('ratings')->default(0);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('user_id')->on('orders');
         });
     }
 
