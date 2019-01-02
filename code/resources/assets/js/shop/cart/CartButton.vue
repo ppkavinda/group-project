@@ -1,6 +1,6 @@
 <template>
 <a @click.prevent="toggleCart" class="nav-link menu__link" href="/cart">
-    <i class="fa fa-shopping-cart" aria-hidden="true"></i> My cart <cart-badge :initial-count="initialCartCount"></cart-badge>
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i> My cart <cart-badge :initial-cart="initialCart"></cart-badge>
 </a>
 </template>
 
@@ -8,7 +8,7 @@
 import CartBadge from './CartBadge'
 
 export default {
-    props: ['initialCartCount'],
+    props: ['initialCart'],
     components: {CartBadge},
     data () {
         return {
