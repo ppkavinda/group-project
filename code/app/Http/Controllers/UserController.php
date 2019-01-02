@@ -20,6 +20,13 @@ class UserController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $role=$user->role;
+        //Admin profile login
+        if($role == 1){
+
+          return view('admin.profile.index', ['user'=>$user]);
+       
+        }
         return view('profile.index', ['user'=>$user]);
     }
     
@@ -56,7 +63,7 @@ class UserController extends Controller
 
     public function search_user(Request $request ){
         $request->validate([
-            'search_users' => 'required',
+            'search' => 'required',
         ]);
 
         $search = $request->input('search_users');

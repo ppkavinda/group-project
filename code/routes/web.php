@@ -145,15 +145,13 @@ Route::get('shoes', function(){
 
 Route::post('/postAdd','ProductController@store');
 
-<<<<<<< HEAD
 Route::get('/admin/post', 'PostController@adminindex');
 
-Route::get('/admin/profile', 'AdminController@index')->middleware('auth');
+Route::get('/admin/profile', 'UserController@index')->middleware('auth');
 //Route::get('/profile', 'UserController@index')->middleware('auth');
 //Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
 //Route::post('/users/{user}/edit', 'AdminController@edit');
 //Route::get('/user', 'UserController@get');
-=======
 Route::get('YourAdvertisements','ProductController@index');
 Route::get('YourAdvertisements/{productId}/delete','ProductController@destroy');
 Route::post('/YourAdvertisements/{productId}/update','ProductController@update');
@@ -161,5 +159,4 @@ Route::post('/YourAdvertisements/{productId}/update','ProductController@update')
 //view advertisement for buyers
 Route::get('/categories/{kind}/{type}','ProductController@viewKindAdvertisements');
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
->>>>>>> 12b0b65da14e701db19644ab58e6517fbaa5087a
 

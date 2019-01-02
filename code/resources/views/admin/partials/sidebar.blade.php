@@ -50,19 +50,19 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="admin/profile" class="nav-link">
+              <a href="/admin/profile" class="nav-link">
                 <i class="fa fa-user nav-icon"></i>
                 <p> My Details</p>
               </a>
               </li>
               <li class="nav-item">
-              <a href="admin/profile" class="nav-link">
+              <a href="/profile" class="nav-link">
                 <i class="fa fa-book nav-icon"></i>
                 <p> My Courses</p>
               </a>
               </li>
               <li class="nav-item">
-              <a href="admin/profile" class="nav-link">
+              <a href="/profile" class="nav-link">
                 <i class="fa fa-shopping-cart nav-icon"></i>
                 <p> Cart</p>
               </a>

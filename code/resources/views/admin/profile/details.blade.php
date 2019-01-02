@@ -1,12 +1,12 @@
 <div class="content-wrapper">
-<h3 class="w3l_header mt-6 mb-6">Edit your details</h3>
+<h3 class="w3l_header mt-5 mb-5">Edit your details</h3>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <form action="/users/{{ auth()->user()->id }}/edit" method="POST">
             @csrf
             <div class="form-group row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <input type="text" name="email" class="form-control" id="staticEmail" 
                         value="{{ auth()->user()->email }}" placeholder="Change your email">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
@@ -14,7 +14,7 @@
             </div>
             <div class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <input type="text" name="name" class="form-control" id="inputName" 
                         value="{{ auth()->user()->name }}" placeholder="Change your name">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group row">
                 <label for="inputNic" class="col-sm-2 col-form-label">NIC</label>
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <input type="text" name="nic" class="form-control" id="inputNic" 
                         value="{{ auth()->user()->nic }}" placeholder="Change your NIC">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
@@ -30,7 +30,7 @@
             </div>
              <div class="form-group row">
                 <label for="inputContact" class="col-sm-2 col-form-label">Contact Number</label>
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <input type="Number" name="contact" class="form-control" 
                         id="inputContact"  placeholder="Enter your contact Number">
                     <i aria-hidden="true" ></i>
@@ -38,7 +38,7 @@
             </div>
              <div class="form-group row">
                 <label for="inputAddress" class="col-sm-2 col-form-label">Delivery Address</label>
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <input type="text" name="address" class="form-control" 
                         id="inputAddress"  placeholder="Enter your Delivery Address">
                     <i aria-hidden="true" ></i>
@@ -46,7 +46,7 @@
             </div>
             <div class="form-group row">
                 <label for="inputDesc" class="col-sm-2 col-form-label">Description</label>
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <textarea name="description" class="form-control" id="inputDesc" 
                         placeholder="Say something about you..."></textarea>
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
@@ -55,7 +55,7 @@
             <input type="submit" class="btn offset-md-2 btn-primary" value="Save">
         </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <center>
             <div class=" mx-auto" style="width: 25rem;">
                 <center>

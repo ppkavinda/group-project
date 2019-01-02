@@ -40,11 +40,11 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="categoryName">Search</label>
-                    <input type="text" class="form-control" name="search_users" id="search_users" placeholder="Search" required >
+                    <input type="text" class="form-control" name="search" id="search" placeholder="Search" required >
 
-                    @if ($errors->has('search_users'))
+                    @if ($errors->has('search'))
                         <span class="invalid-feedback d-block" role="alert">
-                            <strong>{{ $errors->first('search_users') }}</strong>
+                            <strong>{{ $errors->first('search') }}</strong>
                         </span>
                     @endif
                   </div>

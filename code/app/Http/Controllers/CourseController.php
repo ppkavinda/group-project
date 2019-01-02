@@ -102,7 +102,7 @@ class CourseController extends Controller
                
             ]);
            // dd($filename);
-            return redirect('/admin/view-course')->with('flash_message_success','Category edited Sucessfully!');
+            return redirect('/admin/view-course')->with('flash_message_success','Courses edited Sucessfully!');
         }
         $categories = Category::get();
         $courseDetails =Course::where(['id'=>$id])->first();
@@ -119,7 +119,6 @@ class CourseController extends Controller
     public function deleteCourse($id = null){
         if(!empty($id)){
             Course::where(['id'=> $id])->delete();
-            return redirect()->back()->with('flash_message_success','Category deleted Sucessfully!');
         }
 
     }
