@@ -16,6 +16,7 @@ class studyController extends Controller
         $users=\App\User::count();
         $facilitatorCount=\App\Facilitator::count();
         $courseCount=\App\Course::count();
-        return view('study.index1', ['users'=>$users, 'facilitatorCount'=>$facilitatorCount, 'courseCount'=>$courseCount]);
+        
+       return view('admin.content',['users'=>$users, 'facilitatorCount'=>$facilitatorCount, 'courseCount'=>$courseCount]);
     }
 }
