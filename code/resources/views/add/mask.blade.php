@@ -39,7 +39,7 @@
                                             <select class="form-control" id="select" name="category">
                                             <option>Paper</option>
                                             <option>Plastic</option>
-                                            <option>Plothene</option>
+                                            <option>Ploythene</option>
                                             <option>Wood</option>
                                             </select>
                                         </div>
@@ -55,8 +55,8 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="weight" id="labels">&nbsp Size (height*width) &nbsp</label>
-                                            <input multiple class="form-control" id="select" name="sizes" required>
+                                            <label for="weight" id="labels">&nbsp Size(cm) (height*width) &nbsp</label>
+                                            <input multiple class="form-control" id="select" name="sizes[]" required>
                                         </div>
                                     </div>
                                 </div>

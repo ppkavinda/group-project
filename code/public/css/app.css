@@ -16627,3 +16627,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   display: grid;
 }
 
+.checked {
+  color: orange;
+}
+

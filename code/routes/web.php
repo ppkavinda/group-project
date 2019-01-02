@@ -13,8 +13,9 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::view('/','welcome.home');
 
-Route::get('/', 'studyController@index');
+Route::get('/study', 'studyController@index');
 
 // authenticating routes
 Auth::routes();
@@ -55,7 +56,7 @@ Route::post('/checkout/notify', 'CheckoutController@notify');
 Route::post('/orders/store', 'OrderController@store');
 
 // study
-Route::view('/study', 'study.index');
+//Route::view('/study', 'study.index');
 
 Route::get('/enroll/{id}', 'EnrollController@create');
 
@@ -125,5 +126,8 @@ Route::get('YourAdvertisements/{productId}/delete','ProductController@destroy');
 Route::post('/YourAdvertisements/{productId}/update','ProductController@update');
 
 //view advertisement for buyers
-Route::get('/categories/{kind}/{type}','ProductController@viewKindAdvertisements');
+Route::get('/categories', 'ProductController@allAdvertisements');
+Route::get('/categories/{kind}/{type}/{category_id}','ProductController@viewKindAdvertisements');
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
+Route::get('/categories/{kind}/{category_id}', 'ProductController@viewOnlyKindAdvertisements');
+Route::get('/quickView/{id}','ProductController@quickViewAdvertisement');

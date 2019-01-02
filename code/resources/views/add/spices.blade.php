@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="amount" id="labels">&nbsp Amount &nbsp</label>
+                                            <label for="amount" id="labels">&nbsp Amount(packets) &nbsp</label>
                                             <input multi class="form-control" type="number" id="select" name="amount" required>
                                         </div>
                                     </div>
@@ -58,7 +58,17 @@
                                         <div class="form-group">
                                             <label for="sizes" id="labels">&nbsp Weight &nbsp</label>
                                             <br>
-                                            <input type ="text" id="select" name="sizes" required>    
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="100g" checked>&nbsp100g
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="200g">&nbsp200g
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="400g">&nbsp400g
+                                                </div>
+                                            </div>     
                                         </div>
                                     </div>
                                 </div>
@@ -80,13 +90,13 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="price" id="labels">&nbsp Price(per 100g Rs.) &nbsp</label>
+                                            <label for="price" id="labels">&nbsp Price(Per Packet Rs.) &nbsp</label>
                                             <input multi class="form-control" type="number" id="select" name="price" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="discount" id="labels">&nbsp Discount(one cloth Rs.) &nbsp</label>
+                                            <label for="discount" id="labels">&nbsp Discount(Per Packect Rs.) &nbsp</label>
                                             <input multi class="form-control" type="number" id="select" name="discount" required>
                                         </div>
                                     </div>

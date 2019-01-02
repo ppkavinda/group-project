@@ -56,8 +56,8 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="weight" id="labels">&nbsp Weight of piece &nbsp</label>
-                                            <input multiple class="form-control" id="select" name="sizes" required>
+                                            <label for="weight" id="labels">&nbsp Weight of piece(g) &nbsp</label>
+                                            <input multiple class="form-control" id="select" name="sizes[]" required>
                                         </div>
                                     </div>
                                 </div>
