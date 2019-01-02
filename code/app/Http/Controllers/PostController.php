@@ -183,4 +183,10 @@ class PostController extends Controller
     public function getOne (Request $request, Post $post) {
         return response()->json($post);
     }
+
+
+    public function adminindex() {
+        $posts = \App\Post::all();
+        return view('admin.posts.index', ['posts' => $posts]);
+    }
 }

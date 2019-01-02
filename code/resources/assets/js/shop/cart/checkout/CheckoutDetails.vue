@@ -72,8 +72,11 @@ export default {
             axios.post('/checkout/details', this.details)
                 .then( res => {
                     console.log(res.data)
+                    
+                    this.user = res.data
                     this.errors = {}
-                    this.$emit('gotoShipping')
+
+                    this.$emit('gotoShipping', res.data)
                 })
                 .catch (err => {
                     console.log(err.response.data.errors)
@@ -83,7 +86,7 @@ export default {
     },
     created () {
         this.details = JSON.parse(this.initialDetails)
-        // console.log(this.details)
+        console.log(this.details)
     }
 }
 </script>
