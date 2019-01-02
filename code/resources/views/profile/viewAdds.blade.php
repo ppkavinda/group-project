@@ -28,9 +28,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="size" class="col-sm-3 col-form-label">&nbsp Size/Weight</label>
+                            <div class="col-sm-3">&nbsp Size/Weight</div>
                             <div class="col-sm-9">
-                                <input type="text" id="size" value={{$posts[$x]['sizes']}}>
+                                {{$posts[$x]['sizes']}}
                             </div>
                         </div>
                     </fieldset>

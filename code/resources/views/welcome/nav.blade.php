@@ -2,19 +2,13 @@
 	<div class="header-bot_inner_wthreeinfo_header_mid">
 		<div class="row ">
 			<!-- header-bot -->
-			<div class="col-md-8 logo_agile">
+			<div class="col-md-12 logo_agile">
 				<h1>
 					<a href="/">
 						<img src="/dist/img/logo_without_vidatha.png" alt="logo">
-						<span>Learning</span>Center
+							<span>Welcome</span>
 					</a>
 				</h1>
-			</div>
-			<div class="col-md-4 header-middle">
-				<form action="{{ route('search.study') }}" method="GET">
-					<input type="search" name="q" placeholder="Search here..." required="">
-					<input type="submit" value=" ">
-				</form>
 			</div>
         <!-- header-bot -->
 		</div>
@@ -38,43 +32,13 @@
 				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 				  <ul class="navbar-nav menu__list mr-auto">
 						<li class="nav-item menu__item {{ Request::is('/') ? 'menu__item--current' : '' }}">
-							<a class="nav-link menu__link" href="/study">Home <span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item dropdown menu__item">
-							<a href="#" class="nav-link dropdown-toggle menu__link" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-								Categories
-								<span class="fa fa-caret-down"></span>
-							</a>
-							<ul class="dropdown-menu multi-column columns-3" area-labelledby="navbarDropdown">
-								<div class="agile_inner_drop_nav_info row">
-									<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-										<a><img src="/dist/img/top2.jpg" alt="categories"/></a>
-									</div>
-									<div class="col-sm-3 multi-gd-img">
-										<ul class="multi-column-dropdown">
-											<li><a href="/categories/{{'1'}}">Clothes</a></li>
-											<li><a href="/categories/{{'2'}}">Masks</a></li>
-											<li><a href="/categories/{{'3'}}">Soap</a></li>
-											<li><a href="/categories/{{'4'}}">Spices</a></li>
-											<li><a href="/categories/{{'5'}}">Shoes</a></li>
-										</ul>
-									</div>
-									<!-- <div class="col-sm-3 multi-gd-img">
-										<ul class="multi-column-dropdown">
-											<li><a href="{{ route('categories.jewellery') }}">Jewellery</a></li>
-											{{-- <li><a href="categories/">Sunglasses</a></li> --}}
-											{{-- <li><a href="categories/">Perfumes</a></li> --}}
-											{{-- <li><a href="categories/">Beauty</a></li> --}}
-											{{-- <li><a href="categories/">Shirts</a></li> --}}
-											{{-- <li><a href="categories/">Sunglasses</a></li> --}}
-											{{-- <li><a href="categories/">Swimwear</a></li> --}}
-										</ul>
-									</div> -->
-								</div>
-							</ul>
+							<a class="nav-link menu__link" href="/">Welcome <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item menu__item {{ Request::is('courses*') ? 'menu__item--current' : '' }}">
-							<a class="nav-link menu__link" href="/courses">Courses</a>
+							<a class="nav-link menu__link" href="/study">Learning Center</a>
+						</li>
+						<li class="nav-item menu__item {{ Request::is('courses*') ? 'menu__item--current' : '' }}">
+							<a class="nav-link menu__link" href="/shop">Shopping Center</a>
 						</li>
 						<li class="nav-item menu__item {{ Request::is('about') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/about">About</a>
@@ -84,13 +48,8 @@
 						</li>
 					</ul>
 					<ul class="navbar-nav menu__list ml-auto"> 
-						<li class=" nav-item menu__item">
-							<div class="wthreecartaits wthreecartaits2 cart cart box_1" id="testcart" title="Go to Shopping center"> 
-								<a href="/shop" class="w3view-cart"><i class="fa fa-cart-arrow-down" ></i></a>
-							</div>
-						</li>
 						<li class="nav-item menu__item {{ Request::is('/cart') ? 'menu__item--current' : '' }}">
-							<cart-button initial-cart="{{ Cart::content() }}"></cart-button>
+							<cart-button initial-cart-count="{{ Cart::count() }}"></cart-button>
 						</li>
 						@guest
 						<li class="active nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}"> 
