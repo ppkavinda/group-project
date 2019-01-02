@@ -11,8 +11,8 @@
 				</h1>
 			</div>
 			<div class="col-md-4 header-middle">
-				<form action="#" method="post">
-					<input type="search" name="search" placeholder="Search here..." required="">
+				<form action="{{ route('search') }}" method="GET">
+					<input type="search" name="q" placeholder="Search here..." required="">
 					<input type="submit" value=" ">
 				</form>
 			</div>
