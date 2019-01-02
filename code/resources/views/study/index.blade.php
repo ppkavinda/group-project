@@ -62,6 +62,63 @@
 
 		</div>
 	</div>
+<!--shop links -->
+	<div class="banner-bottom">
+	<div class="p-3 mb-2 bg-secondary text-white">
+		<div class="container">
+		<h3>Our<span class="fixed_w3"> Top Product </span>Categories</h3>
+			<div class="agileits_banner_bottom_grids">
+			<div class="p-3 mb-2 bg-dark text-white">
+				<div class="row">
+					<div class="col-md-3 agileits_banner_bottom_grid">
+						<a href="/courses">
+							<div class="hovereffect w3ls_banner_bottom_grid">
+									<img src="/dist/img/shoesProduct.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;" >
+								<div class="overlay">
+								<h4>Shoes and Slippers</h4>
+								<p>Product</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 agileits_banner_bottom_grid">
+						<a href="/courses">
+							<div class="hovereffect w3ls_banner_bottom_grid">
+								<img src="/dist/img/clothesProduct.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;">
+								<div class="overlay">
+								<h4>Clothes</h4>
+									<p>Product</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 agileits_banner_bottom_grid">
+						<a href="/courses">
+							<div class="hovereffect w3ls_banner_bottom_grid">
+								<img src="/dist/img/spicesProduct.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;">
+								<div class="overlay">
+								<h4>Spices</h4>
+									<p>Product</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 agileits_banner_bottom_grid">
+						<div class="hovereffect w3ls_banner_bottom_grid">
+							<img src="/dist/img/maskProduct.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;">
+							<div class="overlay">
+							<h4>Masks</h4>
+								<p>Products</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
+		</div>
+		</div>
+	</div>
 <!-- //banner-bottom -->
 
 	<!-- services -->
@@ -106,7 +163,7 @@
 		</div>
 	</div>
 <!-- testimonials -->		
-<div class="testimonials">
+<!-- <div class="testimonials">
 		<div class="container">
 			<h3>Our Most Experienced Facilitator</h3>
 			<ul class="slides row">
@@ -154,7 +211,7 @@
 				</li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
 	<!-- //blog -->
 <!-- stats -->
 	<div class="stats" id="stats">

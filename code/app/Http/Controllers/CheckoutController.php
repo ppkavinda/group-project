@@ -27,7 +27,8 @@ class CheckoutController extends Controller
     }
     public function success(Request $request)
     {
-        // dd('success', $request);
+        \Cart::destroy();
+        return view('shop.cart.success');
     }
     public function cancel(Request $request)
     {

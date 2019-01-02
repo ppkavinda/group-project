@@ -41,6 +41,13 @@
                 </div>
                 <input type="submit" class="btn offset-md-2" :class="submitButton.class" v-model="submitButton.text">
             </form>
+            <br>
+        <div class="col-md-5">
+        <div>
+            <center><a class="btn btn-dark" href="YourAdvertisements">Your Advertisements &nbsp <i class="fa fa-angle-right"></i></a></center>
+            <br>
+        </div>
+        </div>
         </div>
         <div class="col-md-6">
             <div class="mx-auto" style="width: 25rem;">
