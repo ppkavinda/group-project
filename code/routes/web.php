@@ -13,8 +13,9 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::view('/','welcome.home');
 
-Route::get('/', 'studyController@index');
+Route::get('/study', 'studyController@index');
 
 // authenticating routes
 Auth::routes();
@@ -56,7 +57,7 @@ Route::post('/orders/store', 'OrderController@store');
 Route::put('/orders/{order}/edit', 'OrderController@update');
 
 // study
-Route::view('/study', 'study.index');
+//Route::view('/study', 'study.index');
 
 Route::get('/enroll/{id}', 'EnrollController@create');
 
@@ -145,7 +146,6 @@ Route::get('shoes', function(){
 
 Route::post('/postAdd','ProductController@store');
 
-<<<<<<< HEAD
 Route::get('/admin/post', 'PostController@adminindex');
 
 Route::get('/admin/profile', 'AdminController@index')->middleware('auth');
@@ -153,13 +153,17 @@ Route::get('/admin/profile', 'AdminController@index')->middleware('auth');
 //Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
 //Route::post('/users/{user}/edit', 'AdminController@edit');
 //Route::get('/user', 'UserController@get');
-=======
+
 Route::get('YourAdvertisements','ProductController@index');
 Route::get('YourAdvertisements/{productId}/delete','ProductController@destroy');
 Route::post('/YourAdvertisements/{productId}/update','ProductController@update');
 
 //view advertisement for buyers
+Route::get('/categories', 'ProductController@allAdvertisements');
+Route::get('/categories/{kind}/{type}/{category_id}','ProductController@viewKindAdvertisements');
+Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
+Route::get('/categories/{kind}/{category_id}', 'ProductController@viewOnlyKindAdvertisements');
+Route::get('/quickView/{id}','ProductController@quickViewAdvertisement');
 Route::get('/categories/{kind}/{type}','ProductController@viewKindAdvertisements');
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
->>>>>>> 12b0b65da14e701db19644ab58e6517fbaa5087a
 

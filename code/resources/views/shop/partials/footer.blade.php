@@ -28,7 +28,7 @@
 						<div class="col-md-4 sign-gd">
 							<h4>Learning <span>Center</span> </h4>
 							<ul>
-								<li><a href="/">Home</a></li>
+								<li><a href="/study">Home</a></li>
 								<li><a href="/register">Sign Up</a></li>
 								<li><a href="/login">Sign In</a></li>
 								<li><a href="/courses">Courses</a></li>

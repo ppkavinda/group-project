@@ -22232,6 +22232,156 @@ p.copy-right a:hover {
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+.header-bot {
+  background: beige;
+}
+
+#myCarousel1.carousel-caption {
+  position: inherit;
+  min-height: 500px !important;
+  padding-top: 10em;
+}
+
+/*-- banner --*/
+
+#myCarousel1.carousel .carousel-item {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/chefBanner1.jpg) no-repeat;
+  background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/chefBanner1.jpg) no-repeat;
+  background-size: cover;
+  width: 600px;
+  height: 600px;
+}
+
+#myCarousel1.carousel .carousel-item.item2 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/shoemaking.jpg) no-repeat;
+  background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/shoemaking.jpg) no-repeat;
+  background-size: cover;
+}
+
+#myCarousel1.carousel .carousel-item.item3 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/maskMaking.jpg) no-repeat;
+  background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/maskMaking.jpg) no-repeat;
+  background-size: cover;
+}
+
+#myCarousel1.carousel .carousel-item.item4 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/4.jpg) no-repeat;
+  background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/4.jpg) no-repeat;
+  background-size: cover;
+}
+
+#myCarousel1.carousel .carousel-item.item5 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/vidathBanner.jpg) no-repeat;
+  background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/vidathBanner.jpg) no-repeat;
+  background-size: cover;
+}
+
+#myCarousel1.carousel-caption {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+#myCarousel1.carousel-caption h2,
+#myCarousel1.carousel-caption h3 {
+  font-size: 3em;
+  font-weight: 600;
+  letter-spacing: 14px;
+  text-transform: uppercase;
+}
+
+#myCarousel1.carousel-caption h2 span,
+#myCarousel1.carousel-caption h3 span {
+  font-weight: 800;
+  color: #2fdab8;
+}
+
+#myCarousel1.carousel-caption p {
+  letter-spacing: 12px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #ffb900;
+  margin-top: 1em;
+}
+
+#myCarousel1.carousel-caption a {
+  color: #fff;
+  letter-spacing: 3px;
+  padding: 8px 20px;
+  margin-top: 2em;
+}
+
+#myCarousel2.carousel-caption {
+  position: inherit;
+  min-height: 500px !important;
+  padding-top: 10em;
+}
+
+/*-- banner --*/
+
+#myCarousel2.carousel .carousel-item {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/maskBanner.jpg) no-repeat;
+  background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/maskBanner.jpg) no-repeat;
+  background-size: cover;
+  width: 600px;
+  height: 600px;
+}
+
+#myCarousel2.carousel .carousel-item.item2 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/shoeBanner.jpg) no-repeat;
+  background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/shoeBanner.jpg) no-repeat;
+  background-size: cover;
+}
+
+#myCarousel2.carousel .carousel-item.item3 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/slippersBanner.jpg) no-repeat;
+  background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/slippersBanner.jpg) no-repeat;
+  background-size: cover;
+}
+
+#myCarousel2.carousel .carousel-item.item4 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/clothesBanner.jpg) no-repeat;
+  background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/clothesBanner.jpg) no-repeat;
+  background-size: cover;
+}
+
+#myCarousel2.carousel .carousel-item.item5 {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/vidathBanner.jpg) no-repeat;
+  background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/vidathBanner.jpg) no-repeat;
+  background-size: cover;
+}
+
+#myCarousel2.carousel-caption {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+#myCarousel2.carousel-caption h2,
+#myCarousel2.carousel-caption h3 {
+  font-size: 3em;
+  font-weight: 600;
+  letter-spacing: 14px;
+  text-transform: uppercase;
+}
+
+#myCarousel2.carousel-caption h2 span,
+#myCarousel2.carousel-caption h3 span {
+  font-weight: 800;
+  color: #2fdab8;
+}
+
+#myCarousel2.carousel-caption p {
+  letter-spacing: 12px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #ffb900;
+  margin-top: 1em;
+}
+
+#myCarousel2.carousel-caption a {
+  color: #fff;
+  letter-spacing: 3px;
+  padding: 8px 20px;
+  margin-top: 2em;
+}
+
 .col-center {
   float: none;
   margin: 0 auto;
@@ -22239,5 +22389,9 @@ p.copy-right a:hover {
 
 .top_nav_left {
   display: grid;
+}
+
+.checked {
+  color: orange;
 }
 

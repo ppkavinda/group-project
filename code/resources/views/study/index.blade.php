@@ -11,14 +11,14 @@
 		<div class="container">
 			<h3>Join with us, To be a <span class="fixed_w3">Successful Entrepreneur.</span> Start your journey <span class="fixed_w3"> Today! </span></h3>
 			<br /><br />
-			<h4>Top Online Course Categories</h4>
+			<h3><span class="fixed_w3">Top </span>Online Course Categories</h3>
 
 			<div class="agileits_banner_bottom_grids">
 				<div class="row">
 					<div class="col-md-3 agileits_banner_bottom_grid">
 						<a href="/courses">
 							<div class="hovereffect w3ls_banner_bottom_grid">
-									<img src="/dist/img/slipper.jpg" alt=" " class="img-fluid" />
+									<img src="/dist/img/slipper.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;"/>
 								<div class="overlay">
 								<h4>Shoes and Slippers</h4>
 								<p>Course</p>
@@ -29,7 +29,7 @@
 					<div class="col-md-3 agileits_banner_bottom_grid">
 						<a href="/courses">
 							<div class="hovereffect w3ls_banner_bottom_grid">
-								<img src="/dist/img/course3.jpg" alt=" " class="img-fluid" />
+								<img src="/dist/img/clothCourse.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;"/>
 								<div class="overlay">
 								<h4>Clothes</h4>
 									<p>Course</p>
@@ -40,7 +40,7 @@
 					<div class="col-md-3 agileits_banner_bottom_grid">
 						<a href="/courses">
 							<div class="hovereffect w3ls_banner_bottom_grid">
-								<img src="/dist/img/course3.jpg" alt=" " class="img-fluid" />
+								<img src="/dist/img/course3.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;" />
 								<div class="overlay">
 								<h4>Spices</h4>
 									<p>Course</p>
@@ -50,7 +50,7 @@
 					</div>
 					<div class="col-md-3 agileits_banner_bottom_grid">
 						<div class="hovereffect w3ls_banner_bottom_grid">
-							<img src="/dist/img/4.jpg" alt=" " class="img-fluid" />
+							<img src="/dist/img/cookCourse.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;" />
 							<div class="overlay">
 							   <h4>Cooking</h4>
 							    <p>Course</p>
@@ -66,12 +66,12 @@
 	<div class="banner-bottom">
 	<div class="p-3 mb-2 bg-secondary text-white">
 		<div class="container">
-		<h3>Our<span class="fixed_w3"> Top Product </span>Categories</h3>
+		<h3 class="w3l_header w3_agileits_header two">Our <span>Top Product</span></h3>
 			<div class="agileits_banner_bottom_grids">
 			<div class="p-3 mb-2 bg-dark text-white">
 				<div class="row">
 					<div class="col-md-3 agileits_banner_bottom_grid">
-						<a href="/courses">
+						<a href="/categories/{{'5'}}">
 							<div class="hovereffect w3ls_banner_bottom_grid">
 									<img src="/dist/img/shoesProduct.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;" >
 								<div class="overlay">
@@ -82,7 +82,7 @@
 						</a>
 					</div>
 					<div class="col-md-3 agileits_banner_bottom_grid">
-						<a href="/courses">
+						<a href="/categories/{{'1'}}">
 							<div class="hovereffect w3ls_banner_bottom_grid">
 								<img src="/dist/img/clothesProduct.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;">
 								<div class="overlay">
@@ -93,7 +93,7 @@
 						</a>
 					</div>
 					<div class="col-md-3 agileits_banner_bottom_grid">
-						<a href="/courses">
+						<a href="/categories/{{'4'}}">
 							<div class="hovereffect w3ls_banner_bottom_grid">
 								<img src="/dist/img/spicesProduct.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;">
 								<div class="overlay">
@@ -104,13 +104,15 @@
 						</a>
 					</div>
 					<div class="col-md-3 agileits_banner_bottom_grid">
-						<div class="hovereffect w3ls_banner_bottom_grid">
-							<img src="/dist/img/maskProduct.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;">
-							<div class="overlay">
-							<h4>Masks</h4>
-								<p>Products</p>
+						<a href="/categories/{{'2'}}">
+							<div class="hovereffect w3ls_banner_bottom_grid">
+								<img src="/dist/img/maskProduct.jpg" alt=" " class="img-fluid" style="width:250px; height:250px;">
+								<div class="overlay">
+								<h4>Masks</h4>
+									<p>Products</p>
+								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 			</div>

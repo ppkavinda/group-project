@@ -60,9 +60,28 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="sizes" id="labels">&nbsp Sizes (xs,s,m,l,xl,xxl) &nbsp</label>
+                                            <label for="sizes" id="labels">&nbsp Sizes (XS,S,M,L,XL,XXL) &nbsp</label>
                                             <br>
-                                            <input type ="text" id="select" name="sizes" required>    
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="XS">&nbspXS
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="S">&nbspS
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="M">&nbspM
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="L">&nbspL
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="XL">&nbspXL
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="XXL">&nbspXXL
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

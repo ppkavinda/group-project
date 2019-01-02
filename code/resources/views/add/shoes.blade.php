@@ -55,9 +55,28 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="sizes" id="labels">&nbsp Sizes range &nbsp</label>
+                                            <label for="sizes" id="labels">&nbsp Sizes &nbsp</label>
                                             <br>
-                                            <input type ="text" id="select" name="sizes" required>    
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="5" checked>&nbsp5
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="6">&nbsp6
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="7">&nbsp7
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="8">&nbsp8
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="9">&nbsp9
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <input type ="checkbox" name="sizes[]" value="10">&nbsp10
+                                                </div>
+                                            </div>    
                                         </div>
                                     </div>
                                 </div>
