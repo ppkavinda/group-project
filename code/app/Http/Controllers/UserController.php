@@ -61,39 +61,35 @@ class UserController extends Controller
     }
     
 
-    public function search_user(Request $request ){
-        $request->validate([
-            'search' => 'required',
-        ]);
-
-        $search = $request->input('search_users');
-        if( $search != "")
-        {
-            $users= \App\User::join('roles', 'users.role', '=', 'roles.id')
-                            ->select('users.*', 'roles.role')
-                            ->where('name', 'LIKE', '%'. $search .'%')
-                            ->orWhere('email', 'LIKE', '%'.$search .'%')
-                            ->orWhere('nic', 'LIKE', '%'. $search .'%')
-                            ->orWhere('roles.role', 'LIKE', '%'. $search .'%')
-                            ->get();
-
-            if(count($users) > 0)
-            {
-                return view('admin.users.search')->withDetails($users)->withQuery($search);
-            }
-            
-        //dd($users);\
-        return view('admin.users.search')->withMessage("No Users Found! "); 
-        }
-
-    
-
-    }
-
-
-    public function admin_profile_index()
-    {
-        $user = auth()->user();
-        return view('admin.profile.index', compact('user'));
-    }
-}
+     
+     public function search_user(Request $request )
+     {
+         $request->validate([
+             'search_users' => 'required',
+         ]);
+         $search = $request->input('search_users');
+         if( $search != "")
+         {
+             $users= \App\User::join('roles', 'users.role', '=', 'roles.id')
+                             ->select('users.*', 'roles.role')
+                             ->where('name', 'LIKE', '%'. $search .'%')
+                             ->orWhere('email', 'LIKE', '%'.$search .'%')
+                             ->orWhere('nic', 'LIKE', '%'. $search .'%')
+                             ->orWhere('roles.role', 'LIKE', '%'. $search .'%')
+                             ->get();
+             if(count($users) > 0)
+             {
+                 return view('admin.users.search')->withDetails($users)->withQuery($search);
+             }
+             
+         //dd($users);\
+         return view('admin.users.search')->withMessage("No Users Found! "); 
+         }
+     
+     }
+     public function admin_profile_index()
+     {
+         $user = auth()->user();
+         return view('admin.profile.index', compact('user'));
+     }
+ }

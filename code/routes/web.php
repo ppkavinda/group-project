@@ -111,7 +111,6 @@ Route::get('/admin/delete-inquiry/{id}','InquiryController@deleteInquire');
 //Users
 Route::get('/admin/view-users','UserController@user_Details');
 Route::get('/admin/search-users','UserController@user_Details');
-
 Route::post('/admin/search-users','UserController@search_user');
 
 Route::get('test', function () {

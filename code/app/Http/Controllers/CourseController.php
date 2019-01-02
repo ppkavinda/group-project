@@ -119,6 +119,7 @@ class CourseController extends Controller
     public function deleteCourse($id = null){
         if(!empty($id)){
             Course::where(['id'=> $id])->delete();
+            return redirect()->back()->with('flash_message_success','Courses deleted Sucessfully!');
         }
 
     }
