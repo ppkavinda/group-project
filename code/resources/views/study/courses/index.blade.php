@@ -10,7 +10,6 @@
 			<div class="inner_w3l_agile_grids-gal row">
 
 				@foreach ($courses as $course)
-				{{-- {{ dd ($course->title)}} --}}
 					@include('study.courses.courseBox')
 				@endforeach
 

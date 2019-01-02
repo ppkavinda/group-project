@@ -29,7 +29,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-8 agileits_w3layouts_service_grid">
-						<img src="/dist/img/{{ $course->cover_img }}" class="img-fluid" alt="{{ $course->title }}">
+						<img src="{{ $course->cover_img }}" class="img-fluid" alt="{{ $course->title }}">
 					</div>
 				</div>
 			</div>

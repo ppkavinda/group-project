@@ -14,7 +14,7 @@
                     <div class="col-md-9">
                         <h5 class="card-title">{{ $course->title }}</h5>
                         <p class="card-text">{{ $course->description }}</p>
-                        <a href="{{ route('posts.show', $course->id) }}" class="btn btn-primary mt-1">Show full post</a>
+                        <a href="{{ route('courses.show', $course->id) }}" class="btn btn-primary mt-1">Show full post</a>
                     </div>
                 </div>
             </div>

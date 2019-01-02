@@ -63,7 +63,7 @@ Route::view('/study', 'study.index');
 Route::get('/enroll/{id}', 'EnrollController@create');
 
 Route::get('/courses', 'CourseController@index');
-Route::get('/courses/{course}', 'CourseController@show');
+Route::get('/courses/{course}', 'CourseController@show')->name('courses.show');
 
 Route::get('/posts/get/{post}', 'PostController@getOne');
 Route::post('/posts/image', 'PostController@uploadImage');
