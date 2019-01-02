@@ -54,7 +54,8 @@ Route::post('/checkout/notify', 'CheckoutController@notify');
 
 Route::post('/orders/store', 'OrderController@store');
 Route::put('/orders/{order}/edit', 'OrderController@update');
-Route::get('/search', 'SearchController@index')->name('search');
+Route::get('/search', 'SearchController@shop')->name('search.shop');
+Route::get('/search', 'SearchController@study')->name('search.study');
 
 // study
 Route::view('/study', 'study.index');
