@@ -42,10 +42,10 @@ export default {
         onClick () {
             if (!this.product.quantity) {
                 this.errors.quantity = ['Invalid quantity']
+                return
             }
             axios.post(`/cart/${this.product.id}`, this.product)
                 .then(res => {
-                    // console.log(res)
                     window.Event.$emit('added-to-cart', res.data)
                 })
                 .catch(err => {
