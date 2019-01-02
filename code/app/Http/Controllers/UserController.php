@@ -81,4 +81,11 @@ class UserController extends Controller
     
 
     }
+
+
+    public function admin_profile_index()
+    {
+        $user = auth()->user();
+        return view('admin.profile.index', compact('user'));
+    }
 }

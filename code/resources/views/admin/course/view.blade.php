@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Table</h1>
+            <h1>Courses Table</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-              <li class="breadcrumb-item active">Categories Table</li>
+              <li class="breadcrumb-item active">Courses Table</li>
             </ol>
           </div>
         </div>
@@ -36,7 +36,7 @@
                 </div>
 
               @endif
-                <h3 class="card-title">Categories</h3>
+                <h3 class="card-title">Courses</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -74,9 +74,12 @@
                     
                     <a href="{{ url('admin/delete-course/'.$course->id)}}"class="btn btn-danger btn mini" 
                      onclick="return confirm('Are You Sure ?')">Delete</a>
-                    <a href="{{ url('admin/delete-course/'.$course->id)}}"class="btn btn-danger btn mini" 
-                     onclick="return confirm('Do You want to see ?')">Delete</a>
-                   
+                     <br>
+                    
+                    <br>
+                    <a href="{{ url('admin/delete-course/'.$course->id)}}"class="btn btn-info btn mini" 
+                     onclick="return confirm('Do You want to see ?')">Post</a>
+                    
                     </td> 
                     </tr>
                 

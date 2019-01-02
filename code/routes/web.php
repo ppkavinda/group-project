@@ -84,6 +84,7 @@ Route::post('/inquiry', 'InquiryController@store');
 Route::get('/home', 'HomeController@index')->name('home');
 //sachintha
 
+
 // admin
 Route::view('/admin', 'admin.index');
 Route::match(['get','post'],'/admin/add-category','CategoryController@addCategory');
@@ -91,6 +92,8 @@ Route::match(['get','post'],'/admin/edit-category/{id}','CategoryController@edit
 Route::match(['get','post'],'/admin/delete-category/{id}','CategoryController@deleteCategory');
 Route::get('/admin/view-category','CategoryController@viewCategories');
 //Route::match(['get','post'],'/admin/search-category','CategoryController@searchCategory');
+//courses
+
 
 Route::match(['get','post'],'/admin/add-course','CourseController@addCourse');
 Route::match(['get','post'],'/admin/edit-course/{id}','CourseController@editCourse');
@@ -101,12 +104,18 @@ Route::get('/admin/view-course','CourseController@viewCourses');
 Route::get('/admin/view-inquiry','InquiryController@viewInquire');
 Route::get('/admin/delete-inquiry/{id}','InquiryController@deleteInquire');
 
-
+//Users
 Route::get('/admin/view-users','UserController@user_Details');
 Route::get('/admin/search-users','UserController@user_Details');
 
 Route::post('/admin/search-users','UserController@search_user');
 
 
+Route::get('/admin/post', 'PostController@adminindex');
 
+Route::get('/admin/profile', 'AdminController@index')->middleware('auth');
+//Route::get('/profile', 'UserController@index')->middleware('auth');
+//Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
+//Route::post('/users/{user}/edit', 'AdminController@edit');
+//Route::get('/user', 'UserController@get');
 

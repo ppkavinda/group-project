@@ -14,17 +14,37 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/" class="nav-link">Study</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/contact" class="nav-link">Contact</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/about" class="nav-link">About</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Sign in</a>
-      </li>
+          <li class="nav-item d-none d-sm-inline-block">
+              <a href="/contact" class="nav-link">Contact</a>
+          </li>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="/about" class="nav-link">About</a>
+           </li>
+      @guest
+						
+		    	@else
+						<li class="nav-item menu__item dropdown {{ Request::is('profile*') ? 'menu__item--current' : '' }}">
+							<a id="navbarDropdown" class="nav-link menu__link" href="#" role="button" 
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+									{{ Auth::user()->name }} <span class="fa fa-caret-down"></span>
+							</a>
 
-      \
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								
+								<a class="dropdown-item" href="{{ route('logout') }}"
+									onclick="event.preventDefault();
+										document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+								</a>
+
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form>
+							</div>
+						</li>
+						@endguest
+
+      
     </ul>
 
     <!-- SEARCH FORM -->

@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><b>Course</b></h1>
+            <h1><b>Category</b></h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-         
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item active">New Category</li>
             </ol>
           </div>
         </div>
@@ -41,7 +41,7 @@
                 </div>
 
               @endif
-                <h3 class="card-title">New Courses</h3>
+                <h3 class="card-title">New Category</h3>
               </div>
 
               <form class="form-horizontal" method="post" action="{{url('/admin/add-category') }}" name="add_category" id="add_category"  >
@@ -87,5 +87,5 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
-
+</body>
 @endsection

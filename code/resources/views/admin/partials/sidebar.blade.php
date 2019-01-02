@@ -40,6 +40,64 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+               My Profile
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+              <a href="admin/profile" class="nav-link">
+                <i class="fa fa-user nav-icon"></i>
+                <p> My Details</p>
+              </a>
+              </li>
+              <li class="nav-item">
+              <a href="admin/profile" class="nav-link">
+                <i class="fa fa-book nav-icon"></i>
+                <p> My Courses</p>
+              </a>
+              </li>
+              <li class="nav-item">
+              <a href="admin/profile" class="nav-link">
+                <i class="fa fa-shopping-cart nav-icon"></i>
+                <p> Cart</p>
+              </a>
+              </li>
+              <li class="nav-item">
+              <a href="admin/profile" class="nav-link">
+                <i class="fa fa-gear nav-icon"></i>
+                <p> Settings</p>
+              </a>
+              </li>
+            </ul>
+        </li>
+          
+       <!--- <a class="nav-link active profile-nav-link" id="v-pills-details-tab" 
+             href="#v-pills-details" role="tab" 
+            aria-controls="v-pills-details" aria-selected="false">
+                <i class="fa fa-user" ></i> My details
+        </a>
+        <a class="nav-link profile-nav-link" id="v-pills-profile-tab" 
+            data-toggle="pill" href="#v-pills-courses" role="tab" 
+            aria-controls="v-pills-profile" aria-selected="false">
+                <i class="fa fa-book"></i> My Courses
+        </a>
+        <a class="nav-link profile-nav-link" id="v-pills-messages-tab" 
+            data-toggle="pill" href="#v-pills-cart" role="tab" 
+            aria-controls="v-pills-cart" aria-selected="false">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+            </a>
+        <a class="nav-link profile-nav-link" id="v-pills-settings-tab" 
+            data-toggle="pill" href="#v-pills-settings" role="tab" 
+            aria-controls="v-pills-settings" aria-selected="false">
+                <i class="fa fa-gear"></i> Settings-->
+        </a>
+   
+          <li class="nav-item has-treeview">
             <a href="/admin/view-users" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>
@@ -99,7 +157,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="/admin/view-courselist" class="nav-link">
-              <i class="nav-icon fa fa-university"></i></i>
+              <i class="nav-icon fa fa-book"></i></i>
               <p>
                 Courses
                 <i class="fa fa-angle-left right"></i>
