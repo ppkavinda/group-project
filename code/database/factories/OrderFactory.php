@@ -12,7 +12,7 @@ $factory->define(Order::class, function (Faker $faker) {
         'postal_code' => $faker->postcode,
         'telephone' => $faker->phonenumber,
         'user_id' => function () {
-            factory('App\User')->create()->id;
+            return factory('App\User')->create()->id;
         },
     ];
 });
