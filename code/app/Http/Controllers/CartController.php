@@ -42,9 +42,9 @@ class CartController extends Controller
      */
     public function store(Request $request, Product $product)
     {
-        $request->validate([
-            'quantity' => "max:$product->amount",
-        ]);
+        if ($request->quantity > $product->amount) {
+            abort(422, "Invalid quantity");
+        }
 
         $cartItem = \Cart::add(
             $product->id,
@@ -92,6 +92,12 @@ class CartController extends Controller
     public function update(Request $request, $rowId)
     {
         $previousItem = \Cart::get($rowId);
+        $product = Product::find($previousItem->id);
+
+        if ($request->quantity > $product->amount) {
+            abort(422, 'Invalid quantity');
+        }
+
         $increment = $request->quantity - $previousItem->qty;
 
         $updated = \Cart::update($rowId, $request->quantity);

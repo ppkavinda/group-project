@@ -33309,6 +33309,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 // import AddToCartButton from './AddToCartButton'
 
@@ -33319,6 +33321,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             product: {
                 quantity: 1
+            },
+            errors: {
+                quantity: []
             }
         };
     },
@@ -33327,25 +33332,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         errorQuantity: function errorQuantity() {
             this.product.quantity = 1;
             console.log('error');
-        }
-        //     onClick () {
-        //         if (!this.product.quantity) {
-        //             this.errors.quantity = ['Invalid quantity']
-        //             return
-        //         }
-        //         axios.post(`/cart/${this.product.id}`, this.product)
-        //             .then(res => {
-        //                 window.Event.$emit('added-to-cart', res.data)
-        //             })
-        //             .catch(err => {
-        //                 // TODO replace to open the login model
-        //                 if (err.response.status == 401) {
-        //                 // console.log(err.response) 
-        //                     window.location.replace('/login')
-        //                 }
-        //             })
-        //     },
+        },
 
+        // onClick () {
+        //     if (this.product.quantity <= 0) {
+        //         this.$emit('invalidQuantity')
+        //         this.errors.quantity = ['Invalid quantity']
+        //         return
+        //     }
+        //     axios.post(`/cart/${this.product.id}`, this.product)
+        //         .then(res => {
+        //             window.Event.$emit('added-to-cart', res.data)
+        //         })
+        //         .catch(err => {
+        //             if (err.response.status == 422) {
+        //                 this.$emit('invalidQuantity')
+        //                 this.errors.quantity = ['Invalid quantity']
+        //             }
+        //             // TODO replace to open the login model
+        //             if (err.response.status == 401) {
+        //             // console.log(err.response) 
+        //                 window.location.replace('/login')
+        //             }
+        //         })
+        // },
+        onClick: function onClick() {
+            var _this = this;
+
+            if (!this.product.quantity) {
+                this.errors.quantity = ['Invalid quantity'];
+                return;
+            }
+            axios.post('/cart/' + this.product.id, this.product).then(function (res) {
+                window.Event.$emit('added-to-cart', res.data);
+            }).catch(function (err) {
+                _this.errors.quantity = ["Invalid quantity"];
+                // TODO replace to open the login model
+                if (err.response.status == 401) {
+                    // console.log(err.response) 
+                    window.location.replace('/login');
+                }
+            });
+        },
+        clearErrors: function clearErrors() {
+            this.errors = {
+                quantity: []
+            };
+        }
     },
     computed: {
         getRating: function getRating() {
@@ -33423,6 +33456,7 @@ var render = function() {
           attrs: { id: "quantity", type: "number", min: "1" },
           domProps: { value: _vm.product.quantity },
           on: {
+            click: _vm.clearErrors,
             input: function($event) {
               if ($event.target.composing) {
                 return
@@ -33430,7 +33464,13 @@ var render = function() {
               _vm.$set(_vm.product, "quantity", $event.target.value)
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _vm.errors.quantity.length
+          ? _c("small", { staticClass: "invalid-feedback d-block pl-3" }, [
+              _vm._v(_vm._s(_vm.errors.quantity[0]))
+            ])
+          : _vm._e()
       ])
     ]),
     _vm._v(" "),
@@ -33448,12 +33488,15 @@ var render = function() {
               "snipcart-details top_brand_home_details item_add single-item p-3 minicart-showing"
           },
           [
-            _c("add-to-cart-button", {
-              attrs: { product: _vm.product },
-              on: { quantityError: _vm.errorQuantity }
-            })
-          ],
-          1
+            _c(
+              "a",
+              {
+                staticClass: "hvr-outline-out button2",
+                on: { click: _vm.onClick }
+              },
+              [_vm._v("Add to cart")]
+            )
+          ]
         )
       ]
     )
@@ -33491,7 +33534,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(143)
 /* template */
-var __vue_template__ = __webpack_require__(144)
+var __vue_template__ = null
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -33564,7 +33607,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33575,9 +33618,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -33590,51 +33630,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    methods: {
-        onClick: function onClick() {
-            if (this.product.quantity <= 0) {
-                this.$emit('quantityError');
-                this.errors.quantity = ['Invalid quantity'];
-                return;
-            }
-            axios.post('/cart/' + this.product.id, this.product).then(function (res) {
-                window.Event.$emit('added-to-cart', res.data);
-            }).catch(function (err) {
-                // TODO replace to open the login model
-                if (err.response.status == 401) {
-                    // console.log(err.response) 
-                    window.location.replace('/login');
-                }
-            });
-        }
-    }
+    methods: {}
 });
 
 /***/ }),
-/* 144 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "a",
-    { staticClass: "hvr-outline-out button2", on: { click: _vm.onClick } },
-    [_vm._v("Add to cart")]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-79007032", module.exports)
-  }
-}
-
-/***/ }),
+/* 144 */,
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -33756,7 +33756,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 window.Event.$emit('updated-cart', { rowId: item.rowId, qty: res.data.cart.updated.qty });
                 console.log(res);
             }).catch(function (err) {
-                console.log(err);
+                console.log(err, err.response.data.message);
             });
         },
         removeItem: function removeItem(item) {
