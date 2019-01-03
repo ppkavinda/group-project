@@ -34030,6 +34030,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
+        // subtotal of cart
         total: function total() {
             var total = 0;
             for (var key in this.items) {
@@ -34042,27 +34043,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
+        /**
+         * send the updated quantity to \Cart
+         * triggered when user change the quantity of a product in cart
+         */
         updateItem: function updateItem(item) {
             if (item.qty < 1) return;
 
             axios.put('/cart/' + item.rowId, { rowId: item.rowId, quantity: item.qty }).then(function (res) {
+                // emit an event to catch from cartBadge
                 window.Event.$emit('updated-cart', { rowId: item.rowId, qty: res.data.cart.updated.qty });
                 console.log(res);
             }).catch(function (err) {
                 console.log(err, err.response.data.message);
             });
         },
+
+        /**
+         * remove an item from the cart
+         */
         removeItem: function removeItem(item) {
             var _this = this;
 
-            window.Event.$emit('removed-from-cart', { rowId: item.rowId, qty: item.qty });
-
             axios.delete('/cart/' + item.rowId).then(function (res) {
+
                 Vue.delete(_this.items, item.rowId);
+
+                // disable checkout button if cart is empty
                 _this.disableCheckout = _this.items == null || !Object.keys(_this.items);
 
+                // emit an event to catch from cartBadge
+                window.Event.$emit('removed-from-cart', { rowId: item.rowId, qty: item.qty });
+
                 // TODO: redirect to better place
-                if (!Object.keys(_this.items).length && _this.url == '/checkout') window.location.replace('/');
+                // redirect to /shop if no products in the cart
+                if (!Object.keys(_this.items).length && _this.url == '/checkout') window.location.replace('/shop');
             }).catch(function (err) {
                 console.log(err);
             });
@@ -34456,6 +34471,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     computed: {
+        // count of products in cart
         count: function count() {
             var _this = this;
 
@@ -34470,20 +34486,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     beforeMount: function beforeMount() {
         var _this2 = this;
 
+        /**
+         * listening for events, emitted by CartModel
+         */
         window.Event.$on('added-to-cart', function (item) {
             console.log(item);
             Vue.set(_this2.items, item.rowId, item);
-            // this.count++
         });
         window.Event.$on('removed-from-cart', function (item) {
             Vue.delete(_this2.items, item.rowId);
-            // this.count -= item.qty
         });
         window.Event.$on('updated-cart', function (item) {
             _this2.items[item.rowId].qty = item.qty;
-            // this.count = count.qty
         });
-        // this.count = this.initialCount
     }
 });
 
@@ -34906,6 +34921,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        /**
+         * store user details 
+         */
         onNext: function onNext() {
             var _this = this;
 
@@ -35368,6 +35386,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        /**
+         * store the order
+         */
         createOrder: function createOrder(e) {
             var _this = this;
 
@@ -35381,6 +35402,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             // if order is laready saved update it otherwise save it
             if (!this.savedOrder) {
+                // create
                 axios.post('/orders/store', data).then(function (res) {
                     // console.log(res.data)
                     _this.delivery.orderId = res.data;
@@ -35391,6 +35413,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.errors = err.response.data.errors;
                 });
             } else {
+                // update
                 axios.put('/orders/' + this.delivery.orderId + '/edit', data).then(function (res) {
                     // console.log(res.data)
                     _this.errors = {};
@@ -35931,6 +35954,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     computed: {
+        // items as a string (to send to payhere)
         items: function items() {
             var _this = this;
 
@@ -35940,6 +35964,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             return str;
         },
+
+        // products as a array
         products: function products() {
             var _this2 = this;
 
@@ -35955,10 +35981,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //     this.products.forEach(prod => total += prod.price * prod.qty)
         //     return total;
         // },
+        // full address for store in data base
         address: function address() {
             if (this.newAddress) return this.user.name + ', ' + this.delivery.address1 + ', ' + this.delivery.address2 + '. ' + this.delivery.city + ' ' + this.delivery.telephone;
             return this.user.name + ', ' + this.user.address1 + ' ' + this.user.address2 + ' ' + this.user.city + ' ' + this.user.telephone;
         },
+
+        // address for display on page
         formatedAddress: function formatedAddress() {
             if (this.newAddress) return this.user.name + ',<br/>' + this.delivery.address1 + '\n,<br/>' + this.delivery.address2 + '.<br/>' + this.delivery.city + '<br/>' + this.delivery.telephone;
             return this.user.name + ',<br/>' + this.user.address1 + '\n,<br/>' + this.user.address2 + '.<br/>' + this.user.city + '<br/>' + this.user.telephone;

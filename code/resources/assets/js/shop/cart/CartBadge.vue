@@ -17,6 +17,7 @@ export default {
         }
     },
     computed: {
+        // count of products in cart
         count () {
             let totalItems = 0
             Object.keys(this.items).forEach(item => {
@@ -27,20 +28,19 @@ export default {
         }
     },
     beforeMount () {
+        /**
+         * listening for events, emitted by CartModel
+         */
         window.Event.$on('added-to-cart', (item) => {
             console.log(item)
             Vue.set(this.items, item.rowId, item)
-            // this.count++
         })
         window.Event.$on('removed-from-cart', (item) => {
             Vue.delete(this.items, item.rowId)
-            // this.count -= item.qty
         })
         window.Event.$on('updated-cart', (item) => {
             this.items[item.rowId].qty = item.qty
-            // this.count = count.qty
         })
-        // this.count = this.initialCount
     }
 }
 </script>

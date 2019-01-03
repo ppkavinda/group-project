@@ -35,7 +35,7 @@ class CartController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * store the product in cart (sent from AddToCart)
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -83,7 +83,7 @@ class CartController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * update a cart item (sent from CartModel)
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\cart  $cart
@@ -109,7 +109,7 @@ class CartController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * remove product from cart
      *
      * @param  \App\cart  $cart
      * @return \Illuminate\Http\Response

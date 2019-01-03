@@ -41,7 +41,8 @@
 							<a class="nav-link menu__link" href="/study">Home <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item dropdown menu__item">
-							<a href="#" class="nav-link dropdown-toggle menu__link" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<a href="#" class="nav-link dropdown-toggle menu__link" id="navbarDropdown" data-toggle="dropdown" role="button" 
+							aria-haspopup="true" aria-expanded="false">
 								Categories
 								<span class="fa fa-caret-down"></span>
 							</a>
