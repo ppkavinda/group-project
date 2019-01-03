@@ -27,7 +27,7 @@ class CoursesTableSeeder extends Seeder
             'title' => 'Chilli Sauce ',
             'subtitle' => 'Chilli Sauce Manufacturing and distributing',
             'cover_img' => '/dist/img/chillipaste.png',
-            'description' => 'Chilli paste is declious food.It can prepare Easier.Now We lok Step by Step How We Prepare it',
+            'description' => 'Chilli paste is a declious food. It can be prepared Easily. Now We look into Step by step guid on How We Prepare it',
             'id' => 2
         ]);
 
