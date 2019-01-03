@@ -6,18 +6,21 @@ use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
-    public function __construct () {
+    public function __construct()
+    {
         $this->middleware(['facilitator', 'auth']);
     }
 
-    public function create () {
+    public function create()
+    {
         $courses = \App\Course::get();
-        return view ('study.videos.create', compact('courses'));
+        return view('study.videos.create', compact('courses'));
     }
 
-    public function store (Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
-            'video' => 'required|mimetypes:video/*|max:102000',
+            'video' => 'required|mimetypes:video/*|size:102000',
             'course_id' => 'required|exists:courses,id',
             'title' => 'required|max:50',
         ]);

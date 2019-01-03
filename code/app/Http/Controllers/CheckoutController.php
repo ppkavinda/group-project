@@ -28,7 +28,11 @@ class CheckoutController extends Controller
     public function success(Request $request)
     {
         \Cart::destroy();
-        return view('shop.cart.success');
+
+        $order = Order::with('products')->find($request->order_id);
+        // dd($order->products[0]->pivot);
+
+        return view('shop.cart.success', compact('order'));
     }
     public function cancel(Request $request)
     {

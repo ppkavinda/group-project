@@ -11,8 +11,8 @@
 				</h1>
 			</div>
 			<div class="col-md-4 header-middle">
-				<form action="#" method="post">
-					<input type="search" name="search" placeholder="Search here..." required="">
+				<form action="{{ route('search.study') }}" method="GET">
+					<input type="search" name="q" placeholder="Search here..." required="">
 					<input type="submit" value=" ">
 				</form>
 			</div>
@@ -90,7 +90,7 @@
 							</div>
 						</li>
 						<li class="nav-item menu__item {{ Request::is('/cart') ? 'menu__item--current' : '' }}">
-							<cart-button initial-cart-count="{{ Cart::count() }}"></cart-button>
+							<cart-button initial-cart="{{ Cart::content() }}"></cart-button>
 						</li>
 						@guest
 						<li class="active nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}"> 
