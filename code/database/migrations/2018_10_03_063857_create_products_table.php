@@ -27,6 +27,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->double('price');
             $table->integer('amount');
+            $table->integer('reserved')->default(0);
             $table->text('description');
             $table->integer('user_id');
             $table->string('img1')->nullable();

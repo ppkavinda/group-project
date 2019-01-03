@@ -33323,9 +33323,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onClick: function onClick() {
             if (!this.product.quantity) {
                 this.errors.quantity = ['Invalid quantity'];
+                return;
             }
             axios.post('/cart/' + this.product.id, this.product).then(function (res) {
-                // console.log(res)
                 window.Event.$emit('added-to-cart', res.data);
             }).catch(function (err) {
                 // TODO replace to open the login model
@@ -33588,8 +33588,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateItem: function updateItem(item) {
             if (item.qty < 1) return;
 
-            axios.put('/cart/' + item.rowId, { quantity: item.qty }).then(function (res) {
-                window.Event.$emit('updated-cart', res.data.cart.count);
+            axios.put('/cart/' + item.rowId, { rowId: item.rowId, quantity: item.qty }).then(function (res) {
+                window.Event.$emit('updated-cart', { rowId: item.rowId, qty: res.data.cart.updated.qty });
                 console.log(res);
             }).catch(function (err) {
                 console.log(err);
@@ -33598,12 +33598,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeItem: function removeItem(item) {
             var _this = this;
 
-            window.Event.$emit('removed-from-cart', { qty: item.qty });
+            window.Event.$emit('removed-from-cart', { rowId: item.rowId, qty: item.qty });
 
             axios.delete('/cart/' + item.rowId).then(function (res) {
                 Vue.delete(_this.items, item.rowId);
-                // console.log(Object.keys(this.items))
-                _this.disableCheckout = _this.items == null || Object.keys(_this.items);
+                _this.disableCheckout = _this.items == null || !Object.keys(_this.items);
+
+                // TODO: redirect to better place
+                if (!Object.keys(_this.items).length && _this.url == '/checkout') window.location.replace('/');
             }).catch(function (err) {
                 console.log(err);
             });
@@ -33769,7 +33771,6 @@ var render = function() {
                                   staticClass: "minicart-remove",
                                   attrs: {
                                     type: "button",
-                                    disabled: _vm.url == "/checkout",
                                     "data-minicart-idx": "0"
                                   },
                                   on: {
@@ -33905,10 +33906,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['initialCartCount'],
     components: { CartBadge: __WEBPACK_IMPORTED_MODULE_0__CartBadge___default.a },
+    data: function data() {
+        return {
+            disabled: false
+        };
+    },
+
     methods: {
         toggleCart: function toggleCart() {
-            window.Event.$emit('open-cart');
+            if (!this.disabled) window.Event.$emit('open-cart');
         }
+    },
+    created: function created() {
+        var _this = this;
+
+        this.$on('disable-cart', function () {
+            return _this.disabled = true;
+        });
     }
 });
 
@@ -33971,26 +33985,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: { initialCount: {
+    props: {
+        initialCount: {
             default: 0,
             required: false
-        } },
+        }
+    },
     data: function data() {
         return {
+            items: [],
             count: 0
         };
     },
     beforeMount: function beforeMount() {
         var _this = this;
 
-        window.Event.$on('added-to-cart', function () {
-            _this.count++;
+        window.Event.$on('added-to-cart', function (item) {
+            console.log(item);
+            _this.items.push(item);
+            // this.count++
         });
         window.Event.$on('removed-from-cart', function (item) {
             _this.count -= item.qty;
         });
         window.Event.$on('updated-cart', function (count) {
-            _this.count = count;
+            _this.count = count.qty;
         });
         this.count = this.initialCount;
     }
@@ -34209,6 +34228,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -34220,23 +34240,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             user: {},
+            cart: this.initialCart,
             activeDetails: true,
             activeShipping: false,
             activePayment: false,
             progressFill: 'progress-fill-0',
             deliveryDetails: {},
-            // cart: {},
+            savedOrder: false,
             order_id: 3
         };
     },
 
     methods: {
-        goShipping: function goShipping() {
-            console.log('goShipping');
+        goShipping: function goShipping(user) {
             this.activeDetails = false;
             this.activeShipping = true;
             this.activePayment = false;
             this.progressFill = 'progress-fill-50';
+            if (user) this.user = user;
         },
         goDetails: function goDetails() {
             console.log('goDetails');
@@ -34251,6 +34272,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.activeDetails = false;
             this.activeShipping = false;
             this.activePayment = true;
+            this.savedOrder = true;
             this.progressFill = 'progress-fill-100';
         }
     },
@@ -34264,9 +34286,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     created: function created() {
+        var _this = this;
+
+        // if (this.successfull) this.goPayment()
         this.user = JSON.parse(this.initialUserDetails);
         this.cart = JSON.parse(this.initialCart);
-        if (this.successfull) this.goPayment();
+
+        window.Event.$on("added-to-cart", function (cartItem) {
+            Vue.set(_this.cart, cartItem.rowId, cartItem);
+        });
+
+        window.Event.$on('removed-from-cart', function (item) {
+            console.log('removed from cart', item.rowId);
+            Vue.delete(_this.cart, item.rowId);
+        });
+
+        window.Event.$on('updated-cart', function (item) {
+            console.log('updated', item);
+            // Vue.set(this.cart, item.rowId.qty, item.quantity)
+
+            _this.cart[item.rowId].qty = item.qty;
+        });
     }
 });
 
@@ -34399,8 +34439,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post('/checkout/details', this.details).then(function (res) {
                 console.log(res.data);
+
+                _this.user = res.data;
                 _this.errors = {};
-                _this.$emit('gotoShipping');
+
+                _this.$emit('gotoShipping', res.data);
             }).catch(function (err) {
                 console.log(err.response.data.errors);
                 _this.errors = err.response.data.errors;
@@ -34409,7 +34452,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.details = JSON.parse(this.initialDetails);
-        // console.log(this.details)
+        console.log(this.details);
     }
 });
 
@@ -34831,7 +34874,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['initialActive', 'subtotal', 'user'],
+    props: ['initialActive', 'subtotal', 'user', 'savedOrder'],
     data: function data() {
         return {
             active: this.initialActive,
@@ -34842,7 +34885,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 address2: '',
                 city: '',
                 postal_code: '',
-                telephone: ''
+                telephone: '',
+                orderId: 0
             },
             errors: {
                 address1: [],
@@ -34863,21 +34907,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.newAddress) {
                 data.delivery = this.delivery;
             }
-
-            axios.post('/orders/store', data).then(function (res) {
-                console.log(res.data);
-                _this.errors = {};
-                _this.onNext();
-            }).catch(function (err) {
-                console.log(err.response.data.errors);
-                _this.errors = err.response.data.errors;
-            });
+            // if order is laready saved update it otherwise save it
+            if (!this.savedOrder) {
+                axios.post('/orders/store', data).then(function (res) {
+                    // console.log(res.data)
+                    _this.delivery.orderId = res.data;
+                    _this.errors = {};
+                    _this.onNext(res.data);
+                }).catch(function (err) {
+                    console.log(err.response.data.errors);
+                    _this.errors = err.response.data.errors;
+                });
+            } else {
+                axios.put('/orders/' + this.delivery.orderId + '/edit', data).then(function (res) {
+                    // console.log(res.data)
+                    _this.errors = {};
+                    _this.onNext(res.data);
+                }).catch(function (err) {
+                    console.log(err.response.data.errors);
+                    _this.errors = err.res.data.errors;
+                });
+            }
         },
         onPrevious: function onPrevious() {
             console.log('previous');
             this.$emit('gotoDetails');
         },
-        onNext: function onNext() {
+        onNext: function onNext(orderId) {
             this.$emit('gotoPayment', this.delivery);
         },
         onPaymentSuccess: function onPaymentSuccess() {
@@ -35370,14 +35426,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['initialActive', 'subtotal', 'user', 'delivery', 'cart'],
+    props: ['initialActive', 'subtotal', 'user', 'delivery', 'cart', 'newAddress'],
     data: function data() {
         return {
             active: this.initialActive,
-            newAddress: false,
             order: {}
         };
     },
@@ -35398,8 +35458,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             return str;
         },
+        products: function products() {
+            var _this2 = this;
+
+            var prod = [];
+            Object.keys(this.cart).forEach(function (key) {
+                prod.push(_this2.cart[key]);
+            });
+            return prod;
+        },
+
+        // subtotal () {
+        //     let total = 0;
+        //     this.products.forEach(prod => total += prod.price * prod.qty)
+        //     return total;
+        // },
         address: function address() {
-            return this.user.address1 + ' ' + this.user.address2;
+            if (this.newAddress) return this.user.name + ', ' + this.delivery.address1 + ', ' + this.delivery.address2 + ' .';
+            return this.user.name + ', ' + this.user.address1 + ', ' + this.user.address2 + ' .';
         }
     },
     mounted: function mounted() {}
@@ -35420,9 +35496,64 @@ var render = function() {
       _c("br"),
       _c("br"),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "form-group" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.address,
+              expression: "address"
+            }
+          ],
+          staticClass: "form-control-plaintext",
+          attrs: { type: "text", name: "address", id: "address", readonly: "" },
+          domProps: { value: _vm.address },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.address = $event.target.value
+            }
+          }
+        })
+      ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "ul",
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._l(_vm.products, function(prod, index) {
+              return _c("li", { key: index }, [
+                _vm._v(
+                  _vm._s(prod.name + " x " + prod.qty + " = " + prod.price)
+                )
+              ])
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group row" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control-plaintext col-sm-7",
+          attrs: {
+            type: "text",
+            name: "subtotal",
+            id: "subtotal",
+            readonly: ""
+          },
+          domProps: { value: "LKR " + _vm.subtotal }
+        })
+      ]),
       _vm._v(" "),
       _c(
         "form",
@@ -35434,7 +35565,7 @@ var render = function() {
           }
         },
         [
-          _vm._m(2),
+          _vm._m(3),
           _vm._v(" "),
           _c("input", {
             staticClass: "form-control-plaintext plain-text",
@@ -35453,7 +35584,7 @@ var render = function() {
             attrs: {
               type: "hidden",
               name: "return_url",
-              value: "http://athwela.tk/checkout"
+              value: "http://athwela.tk/checkout/success"
             }
           }),
           _vm._v(" "),
@@ -35471,14 +35602,14 @@ var render = function() {
             attrs: {
               type: "hidden",
               name: "notify_url",
-              value: "http://athwela.tk/checkout/notify"
+              value: "http://athwela.tk:3000/checkout/notify"
             }
           }),
           _vm._v(" "),
           _c("input", {
             staticClass: "form-control",
             attrs: { type: "hidden", name: "order_id" },
-            domProps: { value: 234423 }
+            domProps: { value: _vm.delivery.orderId }
           }),
           _vm._v(" "),
           _c("input", {
@@ -35551,23 +35682,6 @@ var render = function() {
             },
             [_vm._v("Previous")]
           )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "next page-item pull-right" }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { href: "#" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.onNext($event)
-                }
-              }
-            },
-            [_vm._v("Next")]
-          )
         ])
       ])
     ]
@@ -35578,47 +35692,40 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { staticClass: "col-form-label", attrs: { for: "URL" } }, [
-        _vm._v("URL")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", name: "URL", id: "URL" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "form-text text-muted" }, [
-        _vm._v("Starts with http://")
-      ])
-    ])
+    return _c(
+      "label",
+      { staticClass: "col-form-label", attrs: { for: "URL" } },
+      [_c("strong", [_vm._v(" Delivery Address:")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "col-form-label", attrs: { for: "URL" } },
+      [_c("strong", [_vm._v(" Orderd Products:")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "col-form-label col-sm-2", attrs: { for: "URL" } },
+      [_c("strong", [_vm._v("Subtotal:")])]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "label",
-        { staticClass: "col-form-label", attrs: { for: "rangelength" } },
-        [_vm._v("Range restriction")]
+      _vm._v(
+        "\r\n                if above details are correct you can pay from here\r\n            "
       ),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", name: "rangelength", id: "rangelength" }
-      }),
-      _vm._v(" "),
-      _c("p", { staticClass: "form-text text-muted" }, [
-        _vm._v("Between 5 and 10")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
       _c(
         "button",
         {
@@ -35752,7 +35859,8 @@ var render = function() {
                 _c("checkout-shipping", {
                   attrs: {
                     "initial-active": _vm.activeShipping,
-                    user: _vm.user
+                    user: _vm.user,
+                    savedOrder: _vm.savedOrder
                   },
                   on: { gotoDetails: _vm.goDetails, gotoPayment: _vm.goPayment }
                 }),
@@ -35763,7 +35871,8 @@ var render = function() {
                     user: _vm.user,
                     subtotal: _vm.subTotal,
                     delivery: _vm.deliveryDetails,
-                    cart: JSON.parse(this.initialCart)
+                    newAddress: _vm.deliveryDetails.address1 != "",
+                    cart: _vm.cart
                   },
                   on: { gotoShipping: _vm.goShipping }
                 })

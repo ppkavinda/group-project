@@ -10,10 +10,19 @@ import CartBadge from './CartBadge'
 export default {
     props: ['initialCartCount'],
     components: {CartBadge},
+    data () {
+        return {
+            disabled: false,
+        }
+    },
     methods: {
         toggleCart () {
-            window.Event.$emit('open-cart')
+            if (!this.disabled)
+                window.Event.$emit('open-cart')
         }
+    },
+    created () {
+        this.$on('disable-cart', () => this.disabled = true)
     }
 }
 </script>

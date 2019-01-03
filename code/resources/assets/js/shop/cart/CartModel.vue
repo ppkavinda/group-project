@@ -15,7 +15,7 @@
                 </div>
                 <div class="minicart-details-remove col-md-1 my-auto">
                     <button type="button" class="minicart-remove" @click="removeItem(item)" 
-                        :disabled="url=='/checkout'" data-minicart-idx="0">x</button>            
+                         data-minicart-idx="0">x</button>            
                 </div>            
             </li>
         </ul>    
@@ -62,9 +62,9 @@ export default {
         updateItem (item) {
             if (item.qty < 1) return
 
-            axios.put(`/cart/${item.rowId}`, {quantity: item.qty})
+            axios.put(`/cart/${item.rowId}`, {rowId: item.rowId, quantity: item.qty})
                 .then(res => {
-                    window.Event.$emit('updated-cart', res.data.cart.count)
+                    window.Event.$emit('updated-cart', {rowId:item.rowId, qty:res.data.cart.updated.qty})
                     console.log(res)
                 })
                 .catch(err => {
@@ -72,13 +72,16 @@ export default {
                 })
         },
         removeItem (item) {
-            window.Event.$emit('removed-from-cart', {qty: item.qty})
+            window.Event.$emit('removed-from-cart', {rowId:item.rowId, qty: item.qty})
 
             axios.delete(`/cart/${item.rowId}`)
                 .then(res => {
                     Vue.delete(this.items, item.rowId)
-                    // console.log(Object.keys(this.items))
-                    this.disableCheckout = this.items == null || Object.keys(this.items)
+                    this.disableCheckout = this.items == null || !Object.keys(this.items)
+                    
+                    // TODO: redirect to better place
+                    if (!Object.keys(this.items).length && this.url == '/checkout') window.location.replace('/')
+                    
                 })
                 .catch(err => {
                     console.log(err)
