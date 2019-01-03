@@ -28,6 +28,9 @@ Route::get('/profile', 'UserController@index')->middleware('auth');
 Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
 Route::post('/users/{user}/edit', 'UserController@edit');
 Route::get('/user', 'UserController@get');
+Route::get('/order/{user}', 'UserController@myOrder');
+Route::post('/updatePassword', 'UserController@updatePassword');
+
 // shop
 Route::view('/shop', 'shop.index');
 

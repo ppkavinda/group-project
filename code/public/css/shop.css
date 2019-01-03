@@ -18160,6 +18160,10 @@ h2.resp-accordion:first-child {
   display: grid;
 }
 
+.bg-img {
+  background: url(/dist/img/bg.jpg);
+}
+
 .checked {
   color: orange;
 }
