@@ -103,6 +103,7 @@
                     </center>
                 </div>
             </div>
+            
         <input type="submit" class="btn offset-md-2" :class="submitButton.class" v-model="submitButton.text">
     </div>
 </div>
