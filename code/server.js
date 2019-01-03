@@ -4,8 +4,8 @@ const bodyParser = require('body-parser')
 const mysql = require('mysql')
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'prasad',
-    password: 'hondaz',
+    user: 'root',
+    password: '',
     database: 'athwela'
 })
 const app = express()
