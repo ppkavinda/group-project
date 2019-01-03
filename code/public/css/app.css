@@ -16631,3 +16631,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   background: url(/dist/img/bg.jpg);
 }
 
+.checked {
+  color: orange;
+}
+

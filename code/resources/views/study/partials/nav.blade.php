@@ -11,8 +11,8 @@
 				</h1>
 			</div>
 			<div class="col-md-4 header-middle">
-				<form action="#" method="post">
-					<input type="search" name="search" placeholder="Search here..." required="">
+				<form action="{{ route('search.study') }}" method="GET">
+					<input type="search" name="q" placeholder="Search here..." required="">
 					<input type="submit" value=" ">
 				</form>
 			</div>
@@ -38,7 +38,7 @@
 				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 				  <ul class="navbar-nav menu__list mr-auto">
 						<li class="nav-item menu__item {{ Request::is('/') ? 'menu__item--current' : '' }}">
-							<a class="nav-link menu__link" href="/">Home <span class="sr-only">(current)</span></a>
+							<a class="nav-link menu__link" href="/study">Home <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item dropdown menu__item">
 							<a href="#" class="nav-link dropdown-toggle menu__link" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -59,7 +59,7 @@
 											<li><a href="/categories/{{'5'}}">Shoes</a></li>
 										</ul>
 									</div>
-									<div class="col-sm-3 multi-gd-img">
+									<!-- <div class="col-sm-3 multi-gd-img">
 										<ul class="multi-column-dropdown">
 											<li><a href="{{ route('categories.jewellery') }}">Jewellery</a></li>
 											{{-- <li><a href="categories/">Sunglasses</a></li> --}}
@@ -69,7 +69,7 @@
 											{{-- <li><a href="categories/">Sunglasses</a></li> --}}
 											{{-- <li><a href="categories/">Swimwear</a></li> --}}
 										</ul>
-									</div>
+									</div> -->
 								</div>
 							</ul>
 						</li>
@@ -90,7 +90,7 @@
 							</div>
 						</li>
 						<li class="nav-item menu__item {{ Request::is('/cart') ? 'menu__item--current' : '' }}">
-							<cart-button initial-cart-count="{{ Cart::count() }}"></cart-button>
+							<cart-button initial-cart="{{ Cart::content() }}"></cart-button>
 						</li>
 						@guest
 						<li class="active nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}"> 

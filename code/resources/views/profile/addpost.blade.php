@@ -4,27 +4,27 @@
     <div class="col-5">
         <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center" style="font-size:20px">
-                <a href="/clothes"><i class="fa fa-map"></i>
+                <a href="/clothes">
                 Clothes</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center" style="font-size:20px">
-                <a href="/shoes"><i class="fas fa-boot"></i>
+                <a href="/shoes">
                 Shoes and Slippers</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center" style="font-size:20px">
-                <a href="/soap"><i class="fa fa-bath"></i>
+                <a href="/soap"></i>
                 Soap</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center" style="font-size:20px">
-                <a href="/spices"><i class="fa fa-bitbucket"></i>
+                <a href="/spices"></i>
                 Spices</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center" style="font-size:20px">
-                <a href="/mask"><i class="material-icons">&#xe420;</i>
+                <a href="/mask">
                 Masks</a>
                 <i class="fa fa-angle-right"></i>
             </li>

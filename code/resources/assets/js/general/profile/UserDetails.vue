@@ -88,7 +88,7 @@
             <br>
         <div class="col-md-5">
         <div>
-            <center><a class="btn btn-dark" href="YourAdvertisements">Your Advertisements &nbsp <i class="fa fa-angle-right"></i></a></center>
+            <center><a class="btn btn-dark" href="YourAdvertisements">Your Advertisements &nbsp; <i class="fa fa-angle-right"></i></a></center>
             <br>
         </div>
         </div>

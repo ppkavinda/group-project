@@ -15,27 +15,52 @@ class PostsTableSeeder extends Seeder
             'course_id' => 1,
             'published' => 1,
             'body' => '<h3>Ingredients<h3>
-            <ul><li>500 g extra virgin olive oil</li>
+            <ul>
+            <li>500 g extra virgin olive oil</li>
             <li>100 g coconut oil (Regular coconut oil that melts around 76ºF)</li>
             <li>10 g lavender essential oil</li>
             <li>80 g lye NaOH (Sodium hydroxide)</li>
-            <li>195 g water</li></ul>
+            <li>195 g water</li>
+            </ul>
             <br>
             <h3><strong>Instructions</strong><h3>
             <p> Discuss about how to manufaturing about soap step by step</p>
-<ol><li>Mix your lye into your water . Do this in a recipient that can handle heat; I used a glass bowl. It is best to do this step outside so that you do not
- fill your house with the fumes. Try not to breath them in!! Once the lye has dissolved, leave the mix to cool in an area where no kids or pets have access to it!!!</li>
-<li>Meanwhile, you can weigh and mix your olive and coconut oils. I mixed them in a large, glass bowl with room for adding and mixing the other ingredients.</li>
-<li>After the lye mixture has cooled a bit, bring it back inside and pour into your oil mix. Mix them together gently at first.</li>
-<li>Once your lye mix has been incorporated into your oils, you can start to blend them with a hand blender. Be careful not to spray the mixture all over!!</li>
- <li>I blended mine in the bottom of my sink, and distanced myself as much as the blender would allow, just in case!! You can do this step by hand, but it supposedly will take a very long time.</li>
-When your mixture starts to chicken like mayonnaise, after a few minutes, you are at the stage that is called "trace." That is what you want!!!</li>
-<li>Mix in your essential oils.</li>
-<li>Pour into soap molds. (I used a silicone pan and some plastic containers. It is a good idea to oil the plastic containers beforehand to prevent sticking.)</li>
-<li>Cover and set aside for at least 24 hours. It will probably get warm. If you cover it with a cloth to keep the warmth in, it supposedly contributes to the quality of the soap. </li>
-<li>After 24 hours, uncover and see if you can unmold it. If it is too soft, wait a few more hours and unmold. You can put it in a cold place to help shrink it a little to help the process out. Do not wait too long or it will be too hard to easily cut into bars.</li>
-<li>Cut into bars. I like the look of big, chunky square-ish bars. The nice thing about making your own, is that you can decide how you want to cut them.</li>
-<li>Let set for around a month, turning every day or two at first, and then every week later on. This is to let your soap dry out and harden.</li>
+<ol>
+    <li>Mix your lye into your water . Do this in a recipient that can handle heat; I used a glass bowl. 
+    It is best to do this step outside so that you do notfill your house with the fumes. Try not to breath them in!! 
+    Once the lye has dissolved, leave the mix to cool in an area where no kids or pets have access to it!!!
+    </li>
+    <li>Meanwhile, you can weigh and mix your olive and coconut oils. I mixed them in a large, glass bowl with room 
+    for adding and mixing the other ingredients.
+    </li>
+    <li>After the lye mixture has cooled a bit, bring it back inside and pour into your oil mix. Mix them together gently at first.
+    </li>
+    <li>Once your lye mix has been incorporated into your oils, you can start to blend them with a hand blender. Be 
+    careful not to spray the mixture all over!!
+    </li>
+    <li>I blended mine in the bottom of my sink, and distanced myself as much as the blender would allow, just in 
+    case!! You can do this step by hand, but it supposedly will take a very long time.
+    </li>
+    <li>When your mixture starts to chicken like mayonnaise, after a few minutes, you are at the stage that is called 
+    "trace." That is what you want!!!
+    </li>
+    <li>Mix in your essential oils.</li>
+    <li>Pour into soap molds. (I used a silicone pan and some plastic containers. It is a good idea to oil the plastic 
+    containers beforehand to prevent sticking.)
+    </li>
+    <li>Cover and set aside for at least 24 hours. It will probably get warm. If you cover it with a cloth to keep the 
+    warmth in, it supposedly contributes to the quality of the soap. 
+    </li>
+    <li>After 24 hours, uncover and see if you can unmold it. If it is too soft, wait a few more hours and unmold. You 
+    can put it in a cold place to help 
+    shrink it a little to help the process out. Do not wait too long or it will be too hard to easily cut into bars.
+    </li>
+    <li>Cut into bars. I like the look of big, chunky square-ish bars. The nice thing about making your own, is that 
+    you can decide how you want to cut them.
+    </li>
+    <li>Let set for around a month, turning every day or two at first, and then every week later on. This is to let 
+    your soap dry out and harden.
+    </li>
 </ol>',
             'user_id' => 1,
         ]);
@@ -44,6 +69,7 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
         \App\Post::create([
             'title' => 'Chilli Sauce Manufacturing',
             'course_id' => 2,
+            'published' => 1,
             'body' => '<h3><u>Ingredients</u></h3><br>
             <ul><li>Chilli 100g</li>
             <li>400g tomatoes</li>
@@ -69,6 +95,7 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
         \App\Post::create([
             'title' => 'Introduction about Candles Manufacturing',
             'course_id' => 3,
+            'published' => 1,
             'body' => '<h3><u>Introduction</u></h3><br>
             <p>Everyone uses us as candles as a light source. Vesak, Poson and Christmas, as well as weddings and birthday parties.
             <br><br>The candle is very easy to use and can be used as a cottage industry .It can start with a very low capital and the market risk is low .Also, you can use it again without the raw material wastage.
@@ -121,7 +148,7 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
             
             <br>
             <ul>
-            </li>Molds</li>
+            <li>Molds</li>
                  <ul>
                     <li>Holes 20 buckets molds</li>
             
@@ -131,7 +158,7 @@ When your mixture starts to chicken like mayonnaise, after a few minutes, you ar
             Fancy candles (Christmas tree, Aralia, Cranran flower) also uses silicon dyes according to modern technology .Also, molds can be made according to any model.
              <br>
             <li>Double wall boiler (because the boiling point of the parching wax burns up because of the fire and boils bitter bitters instead of the wall)</li>
-            <li>Wooden shelf</i>
+            <li>Wooden shelf</li>
             <li>Furnace</li>
             <li>Scissors / knife</li>
             </ul>
