@@ -47,6 +47,7 @@ export default {
         };
     },
     computed: {
+        // subtotal of cart
         total () {
             let total = 0
             for (let key in this.items) {
@@ -59,28 +60,42 @@ export default {
         }
     },
     methods: {
+        /**
+         * send the updated quantity to \Cart
+         * triggered when user change the quantity of a product in cart
+         */
         updateItem (item) {
             if (item.qty < 1) return
 
             axios.put(`/cart/${item.rowId}`, {rowId: item.rowId, quantity: item.qty})
                 .then(res => {
+                    // emit an event to catch from cartBadge
                     window.Event.$emit('updated-cart', {rowId:item.rowId, qty:res.data.cart.updated.qty})
                     console.log(res)
                 })
                 .catch(err => {
-                    console.log(err)
+                    console.log(err, err.response.data.message)
                 })
         },
+        /**
+         * remove an item from the cart
+         */
         removeItem (item) {
-            window.Event.$emit('removed-from-cart', {rowId:item.rowId, qty: item.qty})
 
             axios.delete(`/cart/${item.rowId}`)
                 .then(res => {
+
                     Vue.delete(this.items, item.rowId)
+
+                    // disable checkout button if cart is empty
                     this.disableCheckout = this.items == null || !Object.keys(this.items)
+
+                    // emit an event to catch from cartBadge
+                    window.Event.$emit('removed-from-cart', {rowId:item.rowId, qty: item.qty})
                     
                     // TODO: redirect to better place
-                    if (!Object.keys(this.items).length && this.url == '/checkout') window.location.replace('/')
+                    // redirect to /shop if no products in the cart
+                    if (!Object.keys(this.items).length && this.url == '/checkout') window.location.replace('/shop')
                     
                 })
                 .catch(err => {

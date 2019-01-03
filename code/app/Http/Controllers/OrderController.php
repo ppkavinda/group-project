@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+    /**
+     * store the order just before goto the payment options page
+     */
     public function store(Request $request)
     {
         if ($request->differentDelivery) {
@@ -25,9 +28,9 @@ class OrderController extends Controller
         // 2 - placed, payed, shipped
         // 3 - placed, payed, shipped, delivered
         $order = '';
-        // return $request->delivery['address1'] ?: auth()->user()->address1;
 
         DB::transaction(function () use (&$request, &$order) {
+            // save order
             $order = Order::create([
                 'user_id' => auth()->id(),
                 'address1' => $request->delivery['address1'] ?: auth()->user()->address1,
@@ -40,12 +43,17 @@ class OrderController extends Controller
 
             $products = [];
             
+            // store the products related to the order
             foreach (\Cart::content() as $key => $product) {
                 $order->products()->attach($product->id, ['price' => $product->price, 'amount' => $product->qty]);
             }
         });
         return response($order->id);
     }
+
+    /**
+     * update the stored order (when user click previous button on /checkout)
+     */
     public function update(Request $request, Order $order)
     {
         if ($request->differentDelivery) {
