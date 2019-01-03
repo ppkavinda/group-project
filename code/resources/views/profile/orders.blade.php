@@ -16,13 +16,15 @@
         </thead>
         <tbody>
         
-        $products = Product::all()->filter(function($orders));
+
         $ordersOfCurrentUser = Auth::user()->orders();
 
         $productsOfCurrrentUser = new Collection([]);
 
         foreach($order as $ordersOfCurrentUser) {
           $productsOfCurrrentUser = $productsOfCurrrentUser->merge($order->products()->get());
+
+          
         }
         
         </tbody>

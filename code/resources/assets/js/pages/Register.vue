@@ -14,8 +14,7 @@
                     <div class="login-logo">
                         <a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .6"></a>
                     </div>
-
-                 <form method="POST" @submit.prevent="onSubmit" @keydown="clearError($event.target.name)">
+                <form method="POST" @submit.prevent="onSubmit" @keydown="clearError($event.target.name)">
                 <!-- Name -->
                  <div class="form-group row">
                     <label for="name" class="col-md-4  text-md-right">Name </label>
@@ -84,7 +83,7 @@
 import axios from 'axios'
 
 export default {
-    data: function () {
+    data () {
         return {
             user: {
                 name: '',

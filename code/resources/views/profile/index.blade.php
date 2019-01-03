@@ -33,8 +33,8 @@
   <div class="col-10">
     <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-details" role="tabpanel" aria-labelledby="v-pills-details-tab">
-            {{-- @include('profile.details') --}}
-            <user-details user-id="{{ auth()->user()->id }}"></user-details>
+           @include('profile.details')
+            <!-- <user-details user-id="{{ auth()->user()->id }}"></user-details> -->
         </div>
         <div class="tab-pane fade" id="v-pills-courses" role="tabpanel" aria-labelledby="v-pills-courses-tab">
             @include('profile.courses')

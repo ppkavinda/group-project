@@ -10,7 +10,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
 class UserController extends Controller
 {
     public function __consctuct()
@@ -21,7 +20,8 @@ class UserController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('profile.index', ['user'=>$user]);
+        $courses = $user->courses;
+        return view('profile.index', ['user'=>$user],['courses'=>$courses]);
     }
     
     public function show (User $user) {
@@ -54,7 +54,7 @@ class UserController extends Controller
     }
     
    
-
+// Update Password
     public function updatePassword(Request $request) {
         $oldPassword = $request->oldPassword;
         $newPassword = $request->newPassword;
