@@ -164,7 +164,6 @@ Route::get('/categories/{kind}/{type}/{category_id}','ProductController@viewKind
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
 Route::get('/categories/{kind}/{category_id}', 'ProductController@viewOnlyKindAdvertisements');
 Route::get('/quickView/{id}','ProductController@quickViewAdvertisement');
-
 Route::get('/categories/{kind}/{type}','ProductController@viewKindAdvertisements');
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
 
