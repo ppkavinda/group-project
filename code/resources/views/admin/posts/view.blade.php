@@ -59,10 +59,10 @@
                 <thead>
                   <tr>
                     <th style="width: 40px" color="solid black">Course ID</th>
-                    <th>Category Name</th>
-                    <th>Course Name</th>
-                    <th>Sub Title</th>
-                    <th>Description</th>
+                    <th>title</th>
+                    <th>body</th>
+                    <th>course name</th>
+                    <th>Published by</th>
                     <!--<th>Cover Image</th>
                     
                     <th>updated_at</th> -->
@@ -72,26 +72,27 @@
                   </thead>
                   <tbody>
                   
-                  @foreach($courses as $course)
+                  @foreach($posts as $post)
                   <tr>
-                    <td><b>{{$course->id}}</b></td>
-                    <td><b>{{$course->category->title}}</b></td>
-                    <td><b>{{$course->title}}</b></td>
-                    <td><b>{{$course->subtitle}}</b></td>
-                    <td><b>{{$course->description}}</b></td>
-                  <!--  <td><img class="img-fluid" src="/storage/{{$course->cover_img}}" style="width:150px; "></td>-
+                    <td><b>{{$post->title}}</b></td>
+                    <td><b>{{$post->body}}</b></td>
+                    <td><b>{{$post->published}}</b></td>
+                    <td><b>{{$post->course_id}}</b></td>
+
+                    <td><b>{{$post->course_id}}</b></td>
+                  <!--  <td><img class="img-fluid" src="/storage/{{$post->cover_img}}" style="width:150px; "></td>-
                     
-                    <td><b> {{$course->updated_at}} </b>  </td>-->
+                    <td><b> {{$post->updated_at}} </b>  </td>-->
                     <td width="300" style="text-align: center">
 
-                    <a href="{{url('/admin/edit-course/'.$course->id) }}" class="btn btn-primary btn mini" 
+                    <a href="{{url('/admin/edit-course/'.$post->id) }}" class="btn btn-primary btn mini" 
                     onclick="return confirm('Do you want to edit this details?')" >Edit</a>
                     
-                    <a href="{{ url('/admin/delete-course/'.$course->id)}}"class="btn btn-danger btn mini" 
+                    <a href="{{ url('/admin/delete-course/'.$post->id)}}"class="btn btn-danger btn mini" 
                      onclick="return confirm('Are You Sure ?')">Delete</a>
                   
                     
-                    <a href="{{ url('/admin/view-course/posts/'.$course->id)}}"class="btn btn-info btn mini" 
+                    <a href="{{ url('/admin/view-course/posts/'.$post->id)}}"class="btn btn-info btn mini" 
                      onclick="return confirm('Do You want to see ?')">See  Posts</a>
                     
                     </td> 
@@ -104,7 +105,7 @@
                   
                 
                 </table>
-                {{$courses->links()}}
+                {{$posts->links()}}
               </div>
               <!-- /.card-body -->
               

@@ -21,17 +21,24 @@ class UserController extends Controller
     {
         $user = auth()->user();
         $role=$user->role;
-        //Admin profile login
-        if($role == 1){
-
+        //dd($role);
+        if($role == 1)
+        {
           return view('admin.profile.index', ['user'=>$user]);
-       
         }
         return view('profile.index', ['user'=>$user]);
-    }
+     }
     
     public function show (User $user) {
         $courses = $user->courses;
+        $role=$user->role;
+       // dd($user);
+        if($role == 1)
+      
+        {
+          return view('admin.profile.index',compact('user'));
+        }
+
         return view('profile.index', compact('user'));
     }
 
@@ -74,7 +81,7 @@ class UserController extends Controller
                              ->select('users.*', 'roles.role')
                              ->where('name', 'LIKE', '%'. $search .'%')
                              ->orWhere('email', 'LIKE', '%'.$search .'%')
-                             ->orWhere('nic', 'LIKE', '%'. $search .'%')
+                             ->orWhere('nic', 'LIKE', '%'.$search .'%')
                              ->orWhere('roles.role', 'LIKE', '%'. $search .'%')
                              ->get();
              if(count($users) > 0)
@@ -87,9 +94,7 @@ class UserController extends Controller
          }
      
      }
-     public function admin_profile_index()
-     {
-         $user = auth()->user();
-         return view('admin.profile.index', compact('user'));
-     }
+     
+
+  
  }

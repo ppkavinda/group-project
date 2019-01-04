@@ -111,8 +111,8 @@ class CourseController extends Controller
     }
 
     public function viewCourses(){
-        $courses = \App\Course::get();
-        //dd($courses);
+        $courses = \App\Course::paginate(2);
+     //   dd($courses);
         return view('admin.course.view')->with(compact('courses'));
     }
 
@@ -128,6 +128,19 @@ class CourseController extends Controller
         $courses = \App\Course::get();
 	    return view('admin.course.select', ['courses' => $courses]);
     }
+
+    public function search(Request $request)
+    {
+        $search =$request->get("search");
+        $courses=\App\Course::where('courses.title','like','%'.$search.'%') 
+                    ->orWhere('courses.subtitle','like','%'.$search.'%') 
+                    ->paginate(2);  
+       // dd($courses);
+        return view('admin.course.view',['courses'=>$courses]);
+    }
+
+
+ 
 
     
 

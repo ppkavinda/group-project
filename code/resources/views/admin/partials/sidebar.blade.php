@@ -39,7 +39,13 @@
               
             </ul>
           </li>
-          <li class="nav-item has-treeview">
+          <li class="nav-item">
+              <a href="/admin/profile" class="nav-link">
+                <i class="fa fa-user nav-icon"></i>
+                <p> My Profile</p>
+              </a>
+            </li>
+      <!--    <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>
@@ -74,7 +80,7 @@
               </a>
               </li>
             </ul>
-        </li>
+        </li>-->
           
        <!--- <a class="nav-link active profile-nav-link" id="v-pills-details-tab" 
              href="#v-pills-details" role="tab" 
@@ -115,7 +121,7 @@
               </li>
               <li class="nav-item">
                 <a href="/admin/search-users" class="nav-link">
-                  <i class="fa fa-user nav-icon"></i>
+                  <i class="fa fa-search nav-icon"></i>
                   <p>Search</p>
                 </a>
               </li>
@@ -194,15 +200,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/admin/add-category" class="nav-link">
+                <a href="/admin/edit-post" class="nav-link">
                   <i class="fa fa-edit nav-icon"></i>
-                  <p>Add Posts</p>
+                  <p>Edit Posts</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/view-category" class="nav-link">
-                  <i class="fa fa-edit nav-icon"></i>
-                  <p>Edit Posts</p>
+                <a href="/admin/view-posts" class="nav-link">
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>View Posts</p>
                 </a>
               </li>
               </ul>
@@ -228,6 +234,30 @@
                 <a href="/admin/view-inquiry" class="nav-link">
                   <i class="fa fa-edit nav-icon"></i>
                   <p>Delete Inquiry</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-product-hunt"></i>
+              <p>
+                Product
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              <li class="nav-item">
+                <a href="/admin/view-inquiry" class="nav-link">
+                  <i class="fa fa-edit nav-icon"></i>
+                  <p>Add Product</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/view-inquiry" class="nav-link">
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>View Product</p>
                 </a>
               </li>
             </ul>

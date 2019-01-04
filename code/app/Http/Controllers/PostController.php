@@ -6,6 +6,7 @@ use \App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
+
 class PostController extends Controller
 {
     /**
@@ -189,4 +190,31 @@ class PostController extends Controller
         $posts = \App\Post::all();
         return view('admin.posts.index', ['posts' => $posts]);
     }
+
+
+    public function admin_viewPosts_course(Request $request,$id= null)
+    {
+        $postscount = \App\Post::where(['posts.course_id'=>$id])->count();
+        $posts = \App\Post::join('courses','posts.course_id','=','courses.id')
+                    ->join('users','posts.user_id','=','users.id')
+                    ->select('posts.*','users.name')
+                    ->where(['posts.course_id'=>$id])->get();
+        
+          // dd($postscount);
+        return view('admin.course.posts')->with(compact(['posts','postscount']));
+        
+    }
+
+    public static function adminviewPosts()
+    {
+        $posts= \App\Post::course();
+       
+        
+       dd($s);
+        return view('admin.posts.view')->with(compact('posts'));
+
+      
+    }
+
+    
 }
