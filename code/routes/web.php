@@ -28,8 +28,9 @@ Route::get('/profile', 'UserController@index')->middleware('auth');
 Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
 Route::post('/users/{user}/edit', 'UserController@edit');
 Route::get('/user', 'UserController@get');
+
 // shop
-Route::view('/shop', 'shop.index');
+Route::get('/shop', 'ShopController@viewLatestTwoProduct');
 
 Route::view('/categories/men', 'shop.mens')->name('categories.men');
 Route::view('/categories/woman', 'shop.woman')->name('categories.women');
@@ -156,15 +157,6 @@ Route::get('/admin/profile', 'AdminController@index')->middleware('auth');
 //Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
 //Route::post('/users/{user}/edit', 'AdminController@edit');
 //Route::get('/user', 'UserController@get');
-<<<<<<< HEAD
-Route::get('YourAdvertisements', 'ProductController@index');
-Route::get('YourAdvertisements/{productId}/delete', 'ProductController@destroy');
-Route::post('/YourAdvertisements/{productId}/update', 'ProductController@update');
-
-//view advertisement for buyers
-Route::get('/categories/{kind}/{type}', 'ProductController@viewKindAdvertisements');
-Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
-=======
 
 Route::get('YourAdvertisements','ProductController@index');
 Route::get('YourAdvertisements/{productId}/delete','ProductController@destroy');
@@ -178,5 +170,6 @@ Route::get('/categories/{kind}/{category_id}', 'ProductController@viewOnlyKindAd
 Route::get('/quickView/{id}','ProductController@quickViewAdvertisement');
 Route::get('/categories/{kind}/{type}','ProductController@viewKindAdvertisements');
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
-
->>>>>>> d5d329b2b3259d81106fb6c3f6e02f537c5ebe0b
+//
+Route::post('/categories/priceRange', 'ProductController@priceRange');
+Route::get('/trendingProduct','ShopController@getTrendingProducts');

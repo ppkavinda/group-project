@@ -27265,10 +27265,10 @@ var staticRenderFns = [
           _vm._v("Athwela.io")
         ])
       ]),
-      _vm._v("\n    All rights reserved.\n    "),
+      _vm._v("\r\n    All rights reserved.\r\n    "),
       _c("div", { staticClass: "float-right d-none d-sm-inline-block" }, [
         _c("b", [_vm._v("Version")]),
-        _vm._v(" 1.0.0\n    ")
+        _vm._v(" 1.0.0\r\n    ")
       ])
     ])
   }
@@ -29601,7 +29601,7 @@ var content = __webpack_require__(106);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("1813ad36", content, false, {});
+var update = __webpack_require__(3)("2fbd7bea", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -29625,7 +29625,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.inputfile[data-v-64fbd914] {\n\twidth: 0.1px;\n\theight: 0.1px;\n\topacity: 0;\n\toverflow: hidden;\n\tposition: absolute;\n\tz-index: -1;\n}\n", ""]);
+exports.push([module.i, "\n.inputfile[data-v-64fbd914] {\r\n\twidth: 0.1px;\r\n\theight: 0.1px;\r\n\topacity: 0;\r\n\toverflow: hidden;\r\n\tposition: absolute;\r\n\tz-index: -1;\n}\r\n", ""]);
 
 // exports
 
@@ -32815,7 +32815,7 @@ var render = function() {
               staticClass: "col-md-10 offset-md-2 form-text text-muted",
               attrs: { id: "passwordHelpBlock" }
             },
-            [_vm._v("\n            Max file size : 100M\n        ")]
+            [_vm._v("\r\n            Max file size : 100M\r\n        ")]
           ),
           _vm._v(" "),
           _vm.errors.video
@@ -33055,7 +33055,7 @@ var content = __webpack_require__(132);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("4c8804bb", content, false, {});
+var update = __webpack_require__(3)("715bcce4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -33244,7 +33244,7 @@ var content = __webpack_require__(137);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("0176c4d4", content, false, {});
+var update = __webpack_require__(3)("225a3b27", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -33540,7 +33540,7 @@ var content = __webpack_require__(142);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("af3a1654", content, false, {});
+var update = __webpack_require__(3)("ce09be2e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -34321,7 +34321,7 @@ var content = __webpack_require__(156);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("395809fd", content, false, {});
+var update = __webpack_require__(3)("27be9986", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -34948,7 +34948,7 @@ var content = __webpack_require__(163);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("725296d6", content, false, {});
+var update = __webpack_require__(3)("5bb6bfd4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -34972,7 +34972,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.paypal-button-label[data-v-1104a225] {\n    padding-bottom: 20px;\n}\n", ""]);
+exports.push([module.i, "\n.paypal-button-label[data-v-1104a225] {\r\n    padding-bottom: 20px;\n}\r\n", ""]);
 
 // exports
 
@@ -35177,7 +35177,7 @@ var render = function() {
                 }
               }),
               _vm._v(
-                "\n                    Use my address as the shipping address\n            "
+                "\r\n                    Use my address as the shipping address\r\n            "
               )
             ]
           ),
@@ -35213,7 +35213,7 @@ var render = function() {
                 }
               }),
               _vm._v(
-                "\n                Add different delivery details\n            "
+                "\r\n                Add different delivery details\r\n            "
               )
             ]
           )
@@ -35710,25 +35710,25 @@ var render = function() {
                 _vm._v(" "),
                 _c("span", { staticClass: "col-md-7" }, [
                   _vm._v(
-                    "\n                    " +
+                    "\r\n                    " +
                       _vm._s(prod.name) +
-                      "\n                "
+                      "\r\n                "
                   )
                 ]),
-                _vm._v("\n                ×\n                "),
+                _vm._v("\r\n                ×\r\n                "),
                 _c("span", { staticClass: "col-md-1" }, [
                   _vm._v(
-                    "\n                    " +
+                    "\r\n                    " +
                       _vm._s(prod.qty) +
-                      "\n                "
+                      "\r\n                "
                   )
                 ]),
-                _vm._v("\n                =\n                "),
+                _vm._v("\r\n                =\r\n                "),
                 _c("span", { staticClass: "col-md-3" }, [
                   _vm._v(
-                    "\n                    LKR " +
+                    "\r\n                    LKR " +
                       _vm._s(prod.price) +
-                      "\n                "
+                      "\r\n                "
                   )
                 ])
               ])

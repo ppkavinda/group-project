@@ -24,7 +24,7 @@
 </head>
 <body>
 	<div id="app">
-		@include('study.partials.nav')
+		@include('shop.nav')
 		@yield('content')
 		@include('shop.partials.footer')
 		

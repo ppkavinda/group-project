@@ -22395,3 +22395,9 @@ p.copy-right a:hover {
   color: orange;
 }
 
+.newestProduct {
+  font-weight: 700;
+  line-height: 75px;
+  text-shadow: 1px 3px 1px black;
+}
+

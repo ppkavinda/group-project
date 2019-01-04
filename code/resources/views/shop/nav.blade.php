@@ -4,9 +4,9 @@
 			<!-- header-bot -->
 			<div class="col-md-8 logo_agile">
 				<h1>
-					<a href="/study">
+					<a href="/shop">
 						<img src="/dist/img/logo_without_vidatha.png" alt="logo">
-						<span>Learning</span>Center
+						<span>Shopping</span>Center
 					</a>
 				</h1>
 			</div>
@@ -43,7 +43,7 @@
 						<li class="nav-item menu__item {{ Request::is('study') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/study">Learning Center</a>
 						</li>
-						<!-- <li class="nav-item dropdown menu__item">
+						<li class="nav-item dropdown menu__item">
 							<a href="#" class="nav-link dropdown-toggle menu__link" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								Categories
 								<span class="fa fa-caret-down"></span>
@@ -64,16 +64,13 @@
 									</div>
 								</div>
 							</ul>
-						</li> -->
-						<li class="nav-item menu__item {{ Request::is('courses*') ? 'menu__item--current' : '' }}">
-							<a class="nav-link menu__link" href="/courses">Courses</a>
 						</li>
-						<li class="nav-item menu__item {{ Request::is('about') ? 'menu__item--current' : '' }}">
+						<!-- <li class="nav-item menu__item {{ Request::is('about') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/about">About</a>
 						</li>
 						<li class=" nav-item menu__item {{ Request::is('contact') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/contact">Contact</a>
-						</li>
+						</li> -->
 					</ul>
 					<ul class="navbar-nav menu__list ml-auto"> 
 						<li class=" nav-item menu__item">
