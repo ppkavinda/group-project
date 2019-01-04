@@ -89,6 +89,9 @@ export default {
         }
     },
     methods: {
+        /**
+         * store the order
+         */
         createOrder (e) {
             let data = {
                 user: this.user,
@@ -99,7 +102,7 @@ export default {
                 data.delivery = this.delivery
             }
             // if order is laready saved update it otherwise save it
-            if (!this.savedOrder) {
+            if (!this.savedOrder) {     // create
                 axios.post('/orders/store', data)
                     .then( res => {
                         // console.log(res.data)
@@ -111,7 +114,7 @@ export default {
                         console.log(err.response.data.errors)
                         this.errors = err.response.data.errors
                     })
-            } else {
+            } else {        // update
                 axios.put(`/orders/${this.delivery.orderId}/edit`, data)
                     .then( res => {
                         // console.log(res.data)

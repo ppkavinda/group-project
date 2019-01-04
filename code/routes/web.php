@@ -13,7 +13,7 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/','welcome.home');
+Route::view('/', 'welcome.home');
 
 Route::get('/study', 'studyController@index');
 
@@ -28,6 +28,10 @@ Route::get('/profile', 'UserController@index')->middleware('auth');
 Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
 Route::post('/users/{user}/edit', 'UserController@edit');
 Route::get('/user', 'UserController@get');
+
+Route::get('/order/{user}', 'UserController@myOrder');
+Route::post('/updatePassword', 'UserController@updatePassword');
+
 
 // shop
 Route::get('/shop', 'ShopController@viewLatestTwoProduct');
@@ -119,8 +123,7 @@ Route::get('/admin/search-users', 'UserController@user_Details');
 Route::post('/admin/search-users', 'UserController@search_user');
 
 Route::get('test', function () {
-    $order = App\Product::search('aliquam')->get();
-    dd($order);
+    return new App\Mail\Welcome(factory('App\User')->make());
 });
 
 Auth::routes();
@@ -158,18 +161,21 @@ Route::get('/admin/profile', 'AdminController@index')->middleware('auth');
 //Route::post('/users/{user}/edit', 'AdminController@edit');
 //Route::get('/user', 'UserController@get');
 
+
 Route::get('YourAdvertisements','ProductController@index');
 Route::get('YourAdvertisements/{productId}/delete','ProductController@destroy');
 Route::post('/YourAdvertisements/{productId}/update','ProductController@update');
 
+
 //view advertisement for buyers
 Route::get('/categories', 'ProductController@allAdvertisements');
-Route::get('/categories/{kind}/{type}/{category_id}','ProductController@viewKindAdvertisements');
+Route::get('/categories/{kind}/{type}/{category_id}', 'ProductController@viewKindAdvertisements');
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
 Route::get('/categories/{kind}/{category_id}', 'ProductController@viewOnlyKindAdvertisements');
-Route::get('/quickView/{id}','ProductController@quickViewAdvertisement');
-Route::get('/categories/{kind}/{type}','ProductController@viewKindAdvertisements');
+Route::get('/quickView/{id}', 'ProductController@quickViewAdvertisement');
+Route::get('/categories/{kind}/{type}', 'ProductController@viewKindAdvertisements');
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
-//
+
 Route::post('/categories/priceRange', 'ProductController@priceRange');
 Route::get('/trendingProduct','ShopController@getTrendingProducts');
+

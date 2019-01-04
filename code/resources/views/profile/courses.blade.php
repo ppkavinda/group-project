@@ -29,4 +29,3 @@
         <h5 class="m-3">In order to publish posts in this site, you have to register as a <a href="#">Facilitator</a></h5>
     </div>
 </div>
-

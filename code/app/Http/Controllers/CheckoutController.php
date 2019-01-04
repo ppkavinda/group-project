@@ -25,21 +25,29 @@ class CheckoutController extends Controller
         }
         return view('shop.cart.checkout', compact('successful'));
     }
+
+    /**
+     * after paying for a order, if it successfull, payhere will redirect to here
+     */
     public function success(Request $request)
     {
         \Cart::destroy();
 
         $order = Order::with('products')->find($request->order_id);
-        // dd($order->products[0]->pivot);
 
         return view('shop.cart.success', compact('order'));
     }
+
+    /**
+     * after paying for a order, if it fails, payhere will redirect to here
+     */
     public function cancel(Request $request)
     {
         dd('cancel', $request);
     }
     
     /**
+     * NOT USED, HANDLED BY server.js
      * store the payment & order data
      * after payment is completed
      * triggerd by payhere
@@ -105,7 +113,6 @@ class CheckoutController extends Controller
         $user->postal_code = $request->postal_code;
         $user->telephone = $request->telephone;
         $user->save();
-        // dd(auth()->user());
         return $request;
     }
 }

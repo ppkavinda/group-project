@@ -5,11 +5,17 @@
 .top_nav_left {
 	display: grid;
 }
+.bg-img{
+
+    background: url(/dist/img/bg.jpg);
+}
 .checked {
 	color: orange;
   }
+
 .newestProduct{
 	font-weight:700;
 	line-height:75px;
 	text-shadow: 1px 3px 1px black;
 }
+

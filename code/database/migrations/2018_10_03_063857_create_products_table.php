@@ -40,6 +40,8 @@ class CreateProductsTable extends Migration
             $table->string('type');
             $table->string('sizes');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('user_id')->on('orders');
         });
     }
 

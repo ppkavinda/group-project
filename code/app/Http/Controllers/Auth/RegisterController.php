@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Mail\Welcome;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -64,20 +66,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'nic' => $data['nic'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'api_token' => str_random(60),
         ]);
+
+        Mail::to($user)->send(new Welcome($user));
+
+        return $user;
     }
     
     /**
      * LiveValidation
      * validating forms on the fly
      */
-    protected function liveValidate () {
+    protected function liveValidate()
+    {
         // dd(request()->all());
         if (request()->name) {
             request()->validate([

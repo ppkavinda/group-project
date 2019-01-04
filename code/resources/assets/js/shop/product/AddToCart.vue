@@ -17,12 +17,14 @@
     <div class="color-quality">
         <div class="color-quality-right">
             <label for="quantity"><h5>Quality :</h5></label>
-            <input id="quantity" type="number" min="1" v-model="product.quantity" class="p-1">
+            <input id="quantity" type="number" @click="clearErrors" min="1" v-model="product.quantity" class="p-1">
+            <small v-if="errors.quantity.length" class="invalid-feedback d-block pl-3">{{ errors.quantity[0] }}</small>
         </div>
     </div>
     <div class="occasion-cart" style="position:relative; top:3rem;width:40%;">
         <div class="snipcart-details top_brand_home_details item_add single-item p-3 minicart-showing">
-            <add-to-cart-button @quantityError="errorQuantity" :product="product"></add-to-cart-button>
+            <!-- <add-to-cart-button @invalidQuantity="errorQuantity" :product="product"></add-to-cart-button> -->
+            <a @click="onClick" class="hvr-outline-out button2">Add to cart</a>
         </div>
     </div>
 </div>
@@ -39,30 +41,61 @@ export default {
             product: {
                 quantity: 1,
             },
+            errors: {
+                quantity: [],
+            },
         }
     },
     methods: {
         errorQuantity () {
             this.product.quantity = 1
             console.log('error')
+        },
+        // onClick () {
+        //     if (this.product.quantity <= 0) {
+        //         this.$emit('invalidQuantity')
+        //         this.errors.quantity = ['Invalid quantity']
+        //         return
+        //     }
+        //     axios.post(`/cart/${this.product.id}`, this.product)
+        //         .then(res => {
+        //             window.Event.$emit('added-to-cart', res.data)
+        //         })
+        //         .catch(err => {
+        //             if (err.response.status == 422) {
+        //                 this.$emit('invalidQuantity')
+        //                 this.errors.quantity = ['Invalid quantity']
+        //             }
+        //             // TODO replace to open the login model
+        //             if (err.response.status == 401) {
+        //             // console.log(err.response) 
+        //                 window.location.replace('/login')
+        //             }
+        //         })
+        // },
+        onClick () {
+            if (!this.product.quantity) {
+                this.errors.quantity = ['Invalid quantity']
+                return
+            }
+            axios.post(`/cart/${this.product.id}`, this.product)
+                .then(res => {
+                    window.Event.$emit('added-to-cart', res.data)
+                })
+                .catch(err => {
+                    this.errors.quantity = ["Invalid quantity"]
+                    // TODO replace to open the login model
+                    if (err.response.status == 401) {
+                    // console.log(err.response) 
+                        window.location.replace('/login')
+                    }
+                })
+        },
+        clearErrors () {
+            this.errors = {
+                quantity: []
+            }
         }
-    //     onClick () {
-    //         if (!this.product.quantity) {
-    //             this.errors.quantity = ['Invalid quantity']
-    //             return
-    //         }
-    //         axios.post(`/cart/${this.product.id}`, this.product)
-    //             .then(res => {
-    //                 window.Event.$emit('added-to-cart', res.data)
-    //             })
-    //             .catch(err => {
-    //                 // TODO replace to open the login model
-    //                 if (err.response.status == 401) {
-    //                 // console.log(err.response) 
-    //                     window.location.replace('/login')
-    //                 }
-    //             })
-    //     },
     },
     computed: {
         getRating () {

@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
 
-        'name', 'email', 'password', 'nic'
+        'name', 'email', 'password', 'nic', 'api_token'
     ];
 
     /**
@@ -29,34 +29,43 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function courses () {
+    public function courses()
+    {
         return $this->belongsToMany(Course::class, 'enroll', 'user_id', 'course_id')->withTimestamps();
     }
 
-    public function posts () {
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 
-    public function comments () {
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
-    public function cart () {
+    public function cart()
+    {
         return $this->belongsToMany(Product::class, 'carts', 'user_id', 'product_id')->withPivot('quantity')->withTimestamps();
     }
 
-    public function products(){
+    public function products()
+    {
         return $this->hasMany(Product::class);
     }
 
     // helpers
-    public function isAdmin () {
+    public function isAdmin()
+    {
         return $this->role <= 1;
     }
-    public function isFacilitator () {
+    public function isFacilitator()
+    {
         return $this->role <= 2;
     }
-    public function isEntrepreneur () {
+    public function isEntrepreneur()
+    {
         return $this->role <= 3;
     }
+    
 }
