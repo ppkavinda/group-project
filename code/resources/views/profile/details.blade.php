@@ -134,8 +134,8 @@
                 <label for="inputExperience" class="col-sm-2 ">Experience Level</label>
                 <div class="col-sm-10">
                     <div class="customSelect">
-                    <div class="select">
-                    <select id="experience" name=experience multiple class="form-control">
+                      <div class="select">
+                        <select id="experience" name=experience multiple class="form-control">
                             <option value="" disabled selected>Select your relevant experience level</option>
                             <option value="1">Less than 1 year</option>   
                             <option value="2">1-3 years</option> 
@@ -143,8 +143,8 @@
                             <option value="4">5-8years</option>           
                             <option value="5">8-10years</option>           
                             <option value="6">10+ years</option>                
-                    </select>
-                    </div>
+                        </select>
+                        </div>
                     </div>  
                 </div>
             </div>
@@ -194,33 +194,3 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function(){
-    $('#framework').multiselect({
-    nonSelectedText: 'Select Framework',
-    enableFiltering: true,
-    enableCaseInsensitiveFiltering: true,
-    buttonWidth:'400px'
-    });
- 
- $('#framework_form').on('submit', function(event){
-  event.preventDefault();
-  var form_data = $(this).serialize();
-  $.ajax({
-   url:"insert.php",
-   method:"POST",
-   data:form_data,
-   success:function(data)
-   {
-    $('#framework option:selected').each(function(){
-     $(this).prop('selected', false);
-    });
-    $('#framework').multiselect('refresh');
-    alert(data);
-   }
-  });
- });
- 
- 
-});
-</script>

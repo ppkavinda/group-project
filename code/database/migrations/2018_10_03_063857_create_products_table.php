@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -41,7 +33,7 @@ class CreateProductsTable extends Migration
             $table->string('sizes');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user_id')->on('orders');
+           
         });
     }
 
