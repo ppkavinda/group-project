@@ -79,6 +79,7 @@ export default {
         },
     },
     computed: {
+        // items as a string (to send to payhere)
         items () {
             let str = ''
             Object.keys(this.cart).forEach(key => {
@@ -86,6 +87,7 @@ export default {
             });
             return str
         },
+        // products as a array
         products () {
             let prod = [];
             Object.keys(this.cart).forEach(key => {
@@ -98,6 +100,7 @@ export default {
         //     this.products.forEach(prod => total += prod.price * prod.qty)
         //     return total;
         // },
+        // full address for store in data base
         address () {
             if (this.newAddress) 
                 return this.user.name + ', ' + this.delivery.address1 + ', '
@@ -105,6 +108,7 @@ export default {
             return this.user.name + ', ' + this.user.address1 + ' ' 
                 + this.user.address2 + ' ' + this.user.city + ' ' + this.user.telephone
         },
+        // address for display on page
         formatedAddress () {
             if (this.newAddress) 
                 return this.user.name + ',<br/>' + this.delivery.address1 + '\n,<br/>'
