@@ -147,4 +147,31 @@ class ProductController extends Controller
         $sameKindOfProduct = Product::where('kind',$post[0]['kind'])->get();
         return view('shop.quickView',['post'=>$post,'user'=>$user, 'sameKindOfProduct'=>$sameKindOfProduct]);
     }
+
+    //price range
+    public function priceRange(Request $request){
+        $priceFrom = $request['fromValue'];
+        $priceTo = $request['toValue'];
+        $category = $request['category'];
+        $category_id = 0;
+        if($category=="All"){
+            $category_id=0;
+        }elseif($category=="Clothes"){
+            $category_id= 1;
+        }elseif($category=="Shoes and Slippers"){
+            $category_id=5;
+        }elseif($category=="Soap"){
+            $category_id=3;
+        }elseif($category=="Spices"){
+            $category_id=4;
+        }elseif($category=="Masks"){
+            $category_id=2;
+        }
+        if($category_id==0){
+            $addPosts = Product::where('price','>=',$priceFrom)->where('price','<=',$priceTo)->get();
+        }else{
+            $addPosts = Product::where('category_id',$category_id)->where('price','>=',$priceFrom)->where('price','<=',$priceTo)->get();
+        }
+        return view('shop.mens',['addPosts'=> $addPosts, 'category_id'=>$category_id]);
+    }
 }

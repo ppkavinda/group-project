@@ -59,9 +59,9 @@
                 <div class="col-md-">
                     <div class="item-info-product ">    
                         <div class="info-product-price">
-                            <span class="item_price" id="price">Rs.{{$post[0]['price']-$post[0]['discount']}}</span>
+                            <span class="item_price" id="price">LKR.{{$post[0]['price']-$post[0]['discount']}}</span>
                             @if($post[0]['discount']!=null)
-                            <del style="color:red;">Rs.{{$post[0]['price']}}</del>
+                            <del style="color:red;">LKR.{{$post[0]['price']}}</del>
                             @endif
                         </div>
                     </div>
