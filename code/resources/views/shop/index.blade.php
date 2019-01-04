@@ -122,25 +122,33 @@
     <div class="banner_bottom_agile_info">
 	    <div class="container">
             <div class="banner_bottom_agile_info_inner_w3ls row">
-    	           <div class="col-md-6 wthree_banner_bottom_grid_three_left1 grid">
+				<div class="col-md-5 wthree_banner_bottom_grid_three_left1 grid">
+					<a href="/quickView/{{$latest[0]['id']}}">
 						<figure class="effect-roxy">
-							<img src="/dist/img/bottom1.jpg" alt=" " class="img-responsive" />
+							<img src="/storage/{{$latest[0]['img1']}}" alt=" " class="img-fluid"  style="width:510px; height:400px;" />
 							<figcaption>
-								<h3><span>F</span>all Ahead</h3>
-								<p>New Arrivals</p>
+								<h3>{{$latest[0]['name']}}</h3>
+								<p><font color="red">New Arrivals</font></p>
 							</figcaption>			
 						</figure>
-					</div>
-					 <div class="col-md-6 wthree_banner_bottom_grid_three_left1 grid">
+					</a>
+				</div>
+				<div class="col-md-2">
+					<br><br><br>
+					<center><h1 class="newestProduct">Our<span style="color:red;"> Newest </span>Products</h1></center>		
+				</div>
+					<div class="col-md-5 wthree_banner_bottom_grid_three_left1 grid">
+					<a href="/quickView/{{$latest[1]['id']}}">
 						<figure class="effect-roxy">
-							<img src="/dist/img/bottom2.jpg" alt=" " class="img-responsive" />
+							<img src="/storage/{{$latest[1]['img1']}}" alt=" " class="img-responsive" style="width:510px; height:400px;"/>
 							<figcaption>
-								<h3><span>F</span>all Ahead</h3>
-								<p>New Arrivals</p>
+								<h3>{{$latest[1]['name']}}</h3>
+								<p><font color="red">New Arrivals</font></p>
 							</figcaption>			
 						</figure>
-					</div>
-					<div class="clearfix"></div>
+					</a>
+				</div>
+				<div class="clearfix"></div>
 		    </div> 
 		 </div> 
     </div>

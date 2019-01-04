@@ -45,7 +45,7 @@
                         <label for="addDetails" class="col-sm-3 col-form-label">&nbsp Details</label>
                         <div class="col-sm-9">
                             <textarea name="addDetails" id="details" cols="44"rows="2">{{$posts[$x]['description']}}</textarea>
-                            <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
+                           
                         </div>
                     </div>
                     <div class="form-group row">
