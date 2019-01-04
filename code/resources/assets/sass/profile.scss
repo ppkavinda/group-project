@@ -126,38 +126,36 @@ body {
     }
    
 
-    .customSelect {
+    .fieldset-title.customSelect {
       position: relative;
       font-family: Arial;
     }
-
-    .customSelect select{
-      width:100%;
-      height:100%;
+    
+    .fieldset-title.customSelect select {
+      width: 100%;
+      height: 100%;
       background: none;
-      border:none;
+      border: none;
       -webkit-appearance: none;
       padding: 0 50px 0 20px;
       cursor: pointer;
       font: 300 1 8px/1.5 'Robot',sans-serif;
       text-indent: 5px;
-          
     }
     
-    .customSelect select::-ms-expand{
+    .fieldset-title.customSelect select::-ms-expand {
       display: none;
     }
     
-    .customSelect select:focus{
+    .fieldset-title.customSelect select:focus {
       outline: none;
     }
     
-    .customSelect option{
+    .fieldset-title.customSelect option {
       font: 300 1 8px/1.5 'Robot',sans-serif;
-    
     }
     
-    .customSelect.select:before {
+    .fieldset-title.customSelect.select:before {
       content: '';
       /* font-family: "Font Awesome 5 Free"; */
       position: absolute;
@@ -173,18 +171,16 @@ body {
       pointer-events: none;
     }
     
-    
-    
-    .customSelect:hover:after {
+    .fieldset-title.customSelect:hover:after {
       content: '';
       width: 0;
       height: 0;
       border-style: solid;
       border-width: 10px 7px 0;
-      border-color:#fff ;
+      border-color: #fff;
       position: absolute;
       top: 50%;
       right: 11px;
-      transform: translateY(-50%)
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
     }
-    
