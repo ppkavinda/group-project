@@ -10,19 +10,25 @@
             aria-controls="v-pills-details" aria-selected="true">
                 <i class="fa fa-user" aria-hidden="true"></i> My details
         </a>
-        <!-- MyCourses -->
+    <!-- MyCourses -->
         <a class="nav-link profile-nav-link" id="v-pills-profile-tab" 
             data-toggle="pill" href="#v-pills-courses" role="tab" 
             aria-controls="v-pills-profile" aria-selected="false">
                 <i class="fa fa-book"></i> My Courses
         </a>
-        <!-- MyOrders -->
+    <!-- MyOrders -->
         <a class="nav-link profile-nav-link" id="v-pills-messages-tab" 
             data-toggle="pill" href="#v-pills-orders" role="tab" 
             aria-controls="v-pills-orders" aria-selected="false">
                 <i class="fa fa-list" aria-hidden="true"></i> My Orders
         </a>
-        <!-- Settings -->
+    <!-- Adds -->
+    <a class="nav-link profile-nav-link" id="v-pills-publishAdd-tab" 
+            data-toggle="pill" href="#v-pills-settings" role="tab" 
+            aria-controls="v-pills-publishAdd" aria-selected="false">
+                <i class="fa fa-gear"></i> My Advertisments
+        </a>
+    <!-- Settings -->
         <a class="nav-link profile-nav-link" id="v-pills-settings-tab" 
             data-toggle="pill" href="#v-pills-settings" role="tab" 
             aria-controls="v-pills-settings" aria-selected="false">
@@ -33,14 +39,14 @@
   <div class="col-10">
     <div class="tab-content" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-        {{-- <!-- @include('profile.details') --> --}}
+         @include('profile.details') 
         <user-details user-id="{{ auth()->user()->id }}"></user-details>
       </div>
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
         @include('profile.courses')
       </div>
-      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-        @include('profile.cart')
+      <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
+        @include('profile.orders')
       </div>
       <div class="tab-pane fade" id="v-pills-publishAdd" role="tabpanel" aria-labelledby="v-pills-publishAdd-tab">
         @include('profile.addpost')

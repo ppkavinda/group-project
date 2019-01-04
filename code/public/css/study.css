@@ -22514,7 +22514,7 @@ body {
   border-bottom: 1px solid #eaeaf1;
   margin-bottom: 30px;
   color: #616670;
-  font-size: 16px;
+  font-size: 30px;
 }
 
 .table-responsive {
@@ -22526,7 +22526,7 @@ body {
   border-bottom: 1px solid #eaeaf1;
   margin-bottom: 30px;
   color: #616670;
-  font-size: 16px;
+  font-size: 30px;
 }
 
 .customSelect {
@@ -22560,16 +22560,10 @@ body {
 
 .customSelect.select:before {
   content: '';
-  /* font-family: "Font Awesome 5 Free"; */
   position: absolute;
   top: 0;
   right: 0;
   width: 40px;
-  /* height: 50px; */
-  /* text-align: center; */
-  /* line-height: 50px; */
-  /* color: #fff; */
-  /* font-size: 28px; */
   background: #007ce0;
   pointer-events: none;
 }
@@ -22580,11 +22574,10 @@ body {
   height: 0;
   border-style: solid;
   border-width: 10px 7px 0;
-  border-color: #fff;
+  border-color: #fff  transparent transparent transparent;
   position: absolute;
   top: 50%;
   right: 11px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 

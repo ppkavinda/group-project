@@ -31,6 +31,7 @@ Route::get('/user', 'UserController@get');
 Route::get('/order/{user}', 'UserController@myOrder');
 Route::post('/updatePassword', 'UserController@updatePassword');
 
+
 // shop
 Route::view('/shop', 'shop.index');
 
