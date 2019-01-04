@@ -102,11 +102,11 @@
             <div class="form-group row">
                 <label for="inputCourse" class="col-sm-2 col-form-label">Courses conducting</label>
                 <div class="col-sm-10">
-                    <select name="courses[]" multiple class="form-control">
-                    <option value="" disabled selected>Select your conducting courses</option>
-                        @foreach($courses as $course)
-                            <option  value="{{ $course->id }}">{{ $course->title }}</option>
-                        @endforeach            
+                    <select name="courses[]" class="form-control col-md-15" id="coursesAvailable">
+                        <option value="" disabled selected>Select your conducting courses</option>
+                            @foreach($courses as $course)
+                                <option  value="{{ $course->id }}">{{ $course->title }}</option>
+                            @endforeach            
                     </select>
                 </div>
             </div>
@@ -115,7 +115,8 @@
             <div class="form-group row">
                 <label for="inputDays" class="col-sm-2 col-form-label">Available days</label>
                     <div class="col-sm-10">
-                        <select id="framework" name="days[]" multiple class="form-control" > 
+                    <select name="days" class="form-control col-md-15" id="availableDays">
+                            <option>Select one...</option>
                             <option value="" disabled selected>Select your available days</option>
                             <option value="8">Whole week</option> 
                             <option value="1">Monday</option>   
@@ -124,18 +125,15 @@
                             <option value="4">Thursday</option>           
                             <option value="5">Friday</option>           
                             <option value="6">Saturday</option>           
-                            <option value="7">Sunday</option> 
-                                     
+                            <option value="7">Sunday</option>                                      
                         </select>
                     </div>
             </div>
             <!-- Experience Level -->
             <div class="form-group row">
                 <label for="inputExperience" class="col-sm-2 ">Experience Level</label>
-                <div class="col-sm-10">
-                    <div class="customSelect">
-                      <div class="select">
-                        <select id="experience" name=experience multiple class="form-control">
+                    <div class="col-sm-10">
+                    <select name="days" class="form-control col-md-15" id="experience">
                             <option value="" disabled selected>Select your relevant experience level</option>
                             <option value="1">Less than 1 year</option>   
                             <option value="2">1-3 years</option> 
@@ -143,17 +141,15 @@
                             <option value="4">5-8years</option>           
                             <option value="5">8-10years</option>           
                             <option value="6">10+ years</option>                
-                        </select>
-                        </div>
-                    </div>  
-                </div>
+                    </select>
+                    </div>
             </div>
 
             <!-- Education Level -->
             <div class="form-group row">
                 <label for="inputExperience" class="col-sm-2 col-form-label">Education Level</label>
                 <div class="col-sm-10">
-                    <select id="eduction" name="education" multiple class="form-control">
+                    <select name="education" class="form-control col-md-15" id="eduction">
                             <option value="" disabled selected>Select your your highest level of education </option>
                             <option value="1">GCE O/L</option>   
                             <option value="2">GCE A/L</option> 
