@@ -3,6 +3,9 @@
 use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\ProductController;
 
+// use Illuminate\Notifications;
+use Illuminate\Support\Facades\Notification;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -123,7 +126,13 @@ Route::get('/admin/search-users', 'UserController@user_Details');
 Route::post('/admin/search-users', 'UserController@search_user');
 
 Route::get('test', function () {
-    return new App\Mail\Welcome(factory('App\User')->make());
+    // return new App\Mail\Welcome(factory('App\User')->make());
+    // dd(auth()->user());
+    // auth()->user()->nofity(new \App\Notifications\OrderPlaced);
+    // Notification::send(auth()->user(), new \App\Notifications\OrderPlaced('sample mesg'));
+    // return dd(auth()->user()->notifications[0]->data['order_id']);
+    $a = request()->session()->put('a', true);
+    dd(request()->session()->get('a'));
 });
 
 Auth::routes();
