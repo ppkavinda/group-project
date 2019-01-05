@@ -78,8 +78,8 @@
                   <tr>
                     <td><b>{{$category->id}}</b></td>
                     <td><b>{{$category->title}}</b></td>
-                    <td><b>{{$category->created_at}} </b>   </td>
-                    <td><b> {{$category->updated_at}} </b>  </td>
+                    <td><b>{{date('M j,Y H:i',strtotime($category->created_at))	}} </b></td>
+                    <td><b>{{date('M j,Y H:i',strtotime($category->updated_at)) }}</b></td>
                     <td style="height: 30px; text-align: center">
                     <span>
                     <a href="{{ url('admin/edit-category/'.$category->id)}}" class="btn btn-primary btn mini"  

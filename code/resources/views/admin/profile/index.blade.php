@@ -15,20 +15,20 @@
   <div class="col-10">
     <div class="tab-content" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-        @include('profile.details')
+        @include('admin.profile.details')
         <user-details user-id="{{ auth()->user()->id }}"></user-details>
       </div>
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-        @include('profile.courses')
+        @include('admin.profile.courses')
       </div>
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-        @include('profile.cart')
+        @include('admin.profile.cart')
       </div>
       <div class="tab-pane fade" id="v-pills-publishAdd" role="tabpanel" aria-labelledby="v-pills-publishAdd-tab">
-        @include('profile.addpost')
+        @include('admin.profile.addpost')
       </div>
       <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-        @include('profile.settings')
+        @include('admin.profile.settings')
       </div>
     </div>
   </div>

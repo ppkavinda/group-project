@@ -64,11 +64,11 @@
                       {!!$post->body!!}
                       </div>
                       <div>
-                          <a href="http://www.jquery2dotnet.com/2014/01/jquery-highlight-table-row-and-column.html" 
+                          <a href="{{url('posts/'.$post->id ) }}" 
                           class="btn btn-success btn-sm">Read more</a>
-                          <a href="http://www.jquery2dotnet.com/2014/01/jquery-highlight-table-row-and-column.html" 
+                          <a href="{{url('posts/'.$post->id ) }}"
                           class="btn btn-primary btn-sm">Edit</a>
-                          <a href="http://www.jquery2dotnet.com/2014/01/jquery-highlight-table-row-and-column.html" 
+                          <a href="{{ url('/admin/delete-post/'.$post->id)}}" 
                           class="btn btn-warning btn-sm">Delete</a>
                        </div>
                     </div>

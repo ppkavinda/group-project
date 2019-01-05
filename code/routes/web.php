@@ -89,7 +89,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //sachintha
 
 
-// admin
+// admin-admin
 Route::view('/admin', 'admin.index');
 Route::match(['get','post'],'/admin/add-category','CategoryController@addCategory');
 Route::match(['get','post'],'/admin/edit-category/{id}','CategoryController@editCategory');
@@ -99,32 +99,43 @@ Route::get('/admin/serach-category','CategoryController@search');
 //Route::match(['get','post'],'/admin/search-category','CategoryController@searchCategory');
 //courses
 
-
+//course-sachintha
 Route::match(['get','post'],'/admin/add-course','CourseController@addCourse');
 Route::match(['get','post'],'/admin/edit-course/{id}','CourseController@editCourse');
 Route::match(['get','post'],'/admin/delete-course/{id}','CourseController@deleteCourse');
 
 Route::get('/admin/view-course','CourseController@viewCourses');
-Route::get('/admin/serach-course','CourseController@search');
+Route::get('/admin/search-course','CourseController@search');
+//view inquery-Sachintha
 Route::get('/admin/view-inquiry','InquiryController@viewInquire');
 Route::get('/admin/delete-inquiry/{id}','InquiryController@deleteInquire');
 
-//Users
+
 Route::get('/admin/view-users','UserController@user_Details');
 Route::get('/admin/search-users','UserController@user_Details');
 Route::post('/admin/search-users','UserController@search_user');
-//posts
+//user-sachintha
 Route::get('/admin/view-course/posts/{id}','PostController@admin_viewPosts_course');
 
 Route::get('/admin/view-posts','PostController@adminviewPosts');
 Route::get('/admin/view-users','UserController@user_Details');
 
+///post-sachintha
+Route::get('/admin/search-post','PostController@search');
+Route::get('/admin/delete-post/{id}','PostController@deletePost');
+Route::post('/admin/delete-post/{id}','PostController@deletePost');
 
-Route::get('/admin/profile', 'UserController@index')->middleware('auth');
-//Route::get('/profile', 'UserController@index')->middleware('auth');
-//Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
-//Route::post('/users/{user}/edit', 'AdminController@edit');
-//Route::get('/user', 'UserController@get');
+///comments- sachintha
+Route::get('/admin/view-comments','CommentController@view_comments');
+Route::get('/admin/search-comments','CommentController@search');
+Route::get('/admin/search-comments/{id}','CommentController@admin_viewComments_on_post');
+
+Route::get('/admin/delete-comment/{id}','CommentController@deleteComment');
+Route::post('/admin/delete-comment/{id}','CommentController@deleteComment');
+
+//generate PDF
+
+Route::get('/admin/courses/generate-pdf','CourseController@generatePDF');
 
 Route::get('test', function () {
     dd(\Cart::content());
