@@ -2,7 +2,9 @@
 @section('content')
 
 <div class="container contact">
-	<h3 class="w3l_header w3_agileits_header"> {{ explode(' ', $course->title)[0] }} <span>{{ substr($course->title, strpos($course->title, ' ')) }}</span></h3>
+	<h3 class="w3l_header w3_agileits_header"> 
+		{{ explode(' ', $course->title)[0] }} 
+		<span>{{ substr($course->title, strpos($course->title, ' ')) }}</span></h3>
 		<div class="wthree_services_grids row">	
 			<div class="col-md-6 wthree_services_grid_left">
 						
@@ -27,7 +29,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-8 agileits_w3layouts_service_grid">
-						<img src="/dist/img/{{ $course->cover_img }}" class="img-fluid" alt="{{ $course->title }}">
+						<img src="{{ $course->cover_img }}" class="img-fluid" alt="{{ $course->title }}">
 					</div>
 				</div>
 			</div>
@@ -42,7 +44,8 @@
 				<div class="container">
 					<div class="wthree_services_grids mb-2">
 						<div class="wthree_services_grid_left">
-							To see the posts about {{ $course->title }}: <a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
+							To see the posts about {{ $course->title }}: 
+							<a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
 						</div>
 					</div>
 				</div>
@@ -61,7 +64,8 @@
 					<div class="container">
 						<div class="wthree_services_grids mb-2">
 							<div class="wthree_services_grid_left">
-								To see the posts about {{ $course->title }}: <a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
+								To see the posts about {{ $course->title }}: 
+								<a class="hvr-outline-out enroll-btn" href="/enroll/{{ $course->id }}">ENROLL now </a>
 							</div>
 						</div>
 					</div>

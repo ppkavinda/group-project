@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/css/font-awesome.css">
 <link rel="stylesheet" href="/css/study.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 @stack('styles')
 </head>
 <body>

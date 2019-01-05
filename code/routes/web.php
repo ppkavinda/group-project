@@ -13,8 +13,9 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::view('/', 'welcome.home');
 
-Route::get('/', 'studyController@index');
+Route::get('/study', 'studyController@index');
 
 // authenticating routes
 Auth::routes();
@@ -27,8 +28,13 @@ Route::get('/profile', 'UserController@index')->middleware('auth');
 Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
 Route::post('/users/{user}/edit', 'UserController@edit');
 Route::get('/user', 'UserController@get');
+
+Route::get('/order/{user}', 'UserController@myOrder');
+Route::post('/updatePassword', 'UserController@updatePassword');
+
+
 // shop
-Route::view('/shop', 'shop.index');
+Route::get('/shop', 'ShopController@viewLatestTwoProduct');
 
 Route::view('/categories/men', 'shop.mens')->name('categories.men');
 Route::view('/categories/woman', 'shop.woman')->name('categories.women');
@@ -37,7 +43,7 @@ Route::get('/categories/jewellery', function () {
 })->name('categories.jewellery');
 
 Route::post('/products', 'ProductController@store');
-Route::get('/products/{product}', 'ProductController@show');
+Route::get('/products/{product}', 'ProductController@show')->name('products.show');
 
 Route::post('/reviews/{product}/create', 'ReviewController@store')->name('reviews.store');
 
@@ -54,14 +60,16 @@ Route::post('/checkout/notify', 'CheckoutController@notify');
 
 Route::post('/orders/store', 'OrderController@store');
 Route::put('/orders/{order}/edit', 'OrderController@update');
+Route::get('/search', 'SearchController@shop')->name('search.shop');
+Route::get('/search', 'SearchController@study')->name('search.study');
 
 // study
-Route::view('/study', 'study.index');
+//Route::view('/study', 'study.index');
 
 Route::get('/enroll/{id}', 'EnrollController@create');
 
 Route::get('/courses', 'CourseController@index');
-Route::get('/courses/{course}', 'CourseController@show');
+Route::get('/courses/{course}', 'CourseController@show')->name('courses.show');
 
 Route::get('/posts/get/{post}', 'PostController@getOne');
 Route::post('/posts/image', 'PostController@uploadImage');
@@ -91,6 +99,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // admin-admin
 Route::view('/admin', 'admin.index');
+
 Route::match(['get','post'],'/admin/add-category','CategoryController@addCategory');
 Route::match(['get','post'],'/admin/edit-category/{id}','CategoryController@editCategory');
 Route::match(['get','post'],'/admin/delete-category/{id}','CategoryController@deleteCategory');
@@ -137,8 +146,14 @@ Route::post('/admin/delete-comment/{id}','CommentController@deleteComment');
 
 Route::get('/admin/courses/generate-pdf','CourseController@generatePDF');
 
+
+
+
+
+
+
 Route::get('test', function () {
-    dd(\Cart::content());
+    return new App\Mail\Welcome(factory('App\User')->make());
 });
 
 Auth::routes();
@@ -146,36 +161,53 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //selling post
-Route::get('soap', function(){
-	return view('add.soap');
+Route::get('soap', function () {
+    return view('add.soap');
 });
 
-Route::get('clothes',function(){
-	return view('add.clothes');
+Route::get('clothes', function () {
+    return view('add.clothes');
 });
 
-Route::get('spices', function(){
-	return view('add.spices');
+Route::get('spices', function () {
+    return view('add.spices');
 });
 
-Route::get('mask', function(){
-	return view('add.mask');
+Route::get('mask', function () {
+    return view('add.mask');
 });
 
-Route::get('shoes', function(){
+Route::get('shoes', function () {
     return view('add.shoes');
 });
 
-Route::post('/postAdd','ProductController@store');
+Route::post('/postAdd', 'ProductController@store');
 
 Route::get('/admin/post', 'PostController@adminindex');
+
+
+Route::get('/admin/profile', 'AdminController@index')->middleware('auth');
+//Route::get('/profile', 'UserController@index')->middleware('auth');
+//Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
+//Route::post('/users/{user}/edit', 'AdminController@edit');
+//Route::get('/user', 'UserController@get');
 
 Route::get('YourAdvertisements','ProductController@index');
 Route::get('YourAdvertisements/{productId}/delete','ProductController@destroy');
 Route::post('/YourAdvertisements/{productId}/update','ProductController@update');
 
+
 //view advertisement for buyers
-Route::get('/categories/{kind}/{type}','ProductController@viewKindAdvertisements');
+Route::get('/categories', 'ProductController@allAdvertisements');
+Route::get('/categories/{kind}/{type}/{category_id}', 'ProductController@viewKindAdvertisements');
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
+
+Route::get('/categories/{kind}/{category_id}', 'ProductController@viewOnlyKindAdvertisements');
+Route::get('/quickView/{id}', 'ProductController@quickViewAdvertisement');
+Route::get('/categories/{kind}/{type}', 'ProductController@viewKindAdvertisements');
+Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
+
+Route::post('/categories/priceRange', 'ProductController@priceRange');
+Route::get('/trendingProduct','ShopController@getTrendingProducts');
 
 

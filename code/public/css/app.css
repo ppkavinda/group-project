@@ -3263,7 +3263,7 @@ fieldset:disabled a.btn {
 .btn-outline-success:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-success.dropdown-toggle:focus {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
-          box-shadow: 0 0 0 0.2rem rgba(98, 129, 105, 0.5);
+          box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
 }
 
 .btn-outline-info {
@@ -3726,7 +3726,7 @@ input[type="button"].btn-block {
   color: #212529;
   text-align: inherit;
   white-space: nowrap;
-  background-color: #212529bf;
+  background-color: transparent;
   border: 0;
 }
 
@@ -3734,7 +3734,7 @@ input[type="button"].btn-block {
 .dropdown-item:focus {
   color: #16181b;
   text-decoration: none;
-  background-color: #303234;
+  background-color: #f8f9fa;
 }
 
 .dropdown-item.active,
@@ -16625,5 +16625,19 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 
 .top_nav_left {
   display: grid;
+}
+
+.bg-img {
+  background: url(/dist/img/bg.jpg);
+}
+
+.checked {
+  color: orange;
+}
+
+.newestProduct {
+  font-weight: 700;
+  line-height: 75px;
+  text-shadow: 1px 3px 1px black;
 }
 

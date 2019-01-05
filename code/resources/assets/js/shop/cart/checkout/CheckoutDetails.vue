@@ -68,6 +68,9 @@ export default {
         }
     },
     methods: {
+        /**
+         * store user details 
+         */
         onNext () {
             axios.post('/checkout/details', this.details)
                 .then( res => {

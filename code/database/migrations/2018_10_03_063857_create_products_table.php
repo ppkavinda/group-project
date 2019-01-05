@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -40,6 +32,8 @@ class CreateProductsTable extends Migration
             $table->string('type');
             $table->string('sizes');
             $table->timestamps();
+
+           
         });
     }
 

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\comment;
+use App\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function __construct () {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     /**
@@ -64,7 +65,7 @@ class CommentController extends Controller
      */
     public function show($post)
     {
-        $comments = Comment::with(['user'])->where('post_id','=', $post)->latest()->get();
+        $comments = Comment::with(['user'])->where('post_id', '=', $post)->latest()->get();
         return response()->json($comments);
     }
 

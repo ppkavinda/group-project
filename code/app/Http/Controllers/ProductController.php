@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -43,7 +44,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        //dd(implode(" ",$request->sizes));
         $product = new Product;
+        $size = implode(",",$request->sizes);
         $product::create([
             'name'=> $request['name'],
             'price' => $request['price'],
@@ -55,7 +58,7 @@ class ProductController extends Controller
             'category_id' => $request['kind'],
             'kind'=> $request['category'],
             'type' => $request['type'],
-            'sizes' => $request['sizes']
+            'sizes' => $size
         ]); 
         return redirect('/profile');
     }
@@ -111,11 +114,64 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    public function viewKindAdvertisements(Request $request, $kind, $type){
-        return view('shop.mens',['kind'=>$kind, 'type'=>$type]);
+    //get all product
+    public function allAdvertisements(Request $request){
+        $addPosts = Product::get();
+        $category_id = 0;
+        $latest = Product::latest()->limit(2)->get();
+        return view('shop.mens',['addPosts'=> $addPosts,'category_id'=>$category_id, 'latest'=> $latest]);
     }
+
+    //get specific category and type products
+    public function viewKindAdvertisements(Request $request, $kind, $type, $category_id){
+        $addPosts = Product::where('kind',$kind)->where('type',$type)->get();
+        return view('shop.mens',['addPosts'=>$addPosts, 'category_id'=>$category_id]);
+    }
+
+    //get all product in this category
     public function viewAdvertisements(Request $request, $category_id){
         $addPosts= Product::where('category_id',$category_id)->get();
         return view('shop.mens',['addPosts'=>$addPosts,'category_id'=>$category_id]);
+    }
+
+    //get spices
+    public function viewOnlyKindAdvertisements(Request $request, $kind, $category_id){
+        $addPosts = Product::where('kind',$kind)->get();
+        return view('shop.mens',['addPosts'=>$addPosts, 'category_id'=>$category_id]);
+    }
+
+    //get quick view
+    public function quickViewAdvertisement(Request $request, $id){
+        $post = Product::where('id', $id)->get();
+        $user = User::where('id',$post[0]['user_id'])->get();
+        $sameKindOfProduct = Product::where('kind',$post[0]['kind'])->get();
+        return view('shop.quickView',['post'=>$post,'user'=>$user, 'sameKindOfProduct'=>$sameKindOfProduct]);
+    }
+
+    //price range
+    public function priceRange(Request $request){
+        $priceFrom = $request['fromValue'];
+        $priceTo = $request['toValue'];
+        $category = $request['category'];
+        $category_id = 0;
+        if($category=="All"){
+            $category_id=0;
+        }elseif($category=="Clothes"){
+            $category_id= 1;
+        }elseif($category=="Shoes and Slippers"){
+            $category_id=5;
+        }elseif($category=="Soap"){
+            $category_id=3;
+        }elseif($category=="Spices"){
+            $category_id=4;
+        }elseif($category=="Masks"){
+            $category_id=2;
+        }
+        if($category_id==0){
+            $addPosts = Product::where('price','>=',$priceFrom)->where('price','<=',$priceTo)->get();
+        }else{
+            $addPosts = Product::where('category_id',$category_id)->where('price','>=',$priceFrom)->where('price','<=',$priceTo)->get();
+        }
+        return view('shop.mens',['addPosts'=> $addPosts, 'category_id'=>$category_id]);
     }
 }
