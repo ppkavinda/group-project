@@ -48,6 +48,9 @@ class OrderController extends Controller
                 $order->products()->attach($product->id, ['price' => $product->price, 'amount' => $product->qty]);
             }
         });
+
+        $request->session()->put('notification_sent', false);
+
         return response($order->id);
     }
 

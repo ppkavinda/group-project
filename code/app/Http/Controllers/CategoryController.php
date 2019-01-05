@@ -54,23 +54,22 @@ class CategoryController extends Controller
 
     }
 
-    public function viewCategories(){
-        $categories=DB::table('categories')
-        ->orderBy('updated_at','desc')
-        ->get();
-        $categories=json_decode(json_encode($categories));
-        return view('admin.category.view')->with(compact('categories'));
+    public function viewCategories()
+    {
+        $categories=DB::table('categories')->paginate(5);
+        
+        /// dd($categories);
+        
+        return view('admin.category.view',['categories'=> $categories]);
     }
 
-   // public function searchCategory(){
-     //    $name= Input::get('category_name');
-      //   if($name!= ""){
-         //    $categories=Category::where('category_title','LIKE','%'.$name.'%')
-                                       // ->get();
-         //   if(count($categories)>0)
-         //   return view('admin.category.view_categories')->withDetails($categories)->withQuery($name);
-       //  }
-       //  return view('admin.category.view_categories')->withMessage("No user found!"); 
-  // }
+    public function search(Request $request)
+    {
+        $search =$request->get("search");
+        $categories=\App\Category::where('title','like','%'.$search.'%') ->paginate(5);  
+        return view('admin.category.view',['categories'=>$categories]);
+    }
+
+
 
 }// @foreach($categories as $category)
