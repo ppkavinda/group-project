@@ -7,13 +7,11 @@
                 <div class="w3layouts_mail_grid">
                     <div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
                         <div class="agileits_mail_grid_right1 agile_mail_grid_right1">
-                            <form action="/postAdd" method="post" enctype="multipart/form-data">
+                            <form action="/postAdd/{{4}}" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="radio-inline">
-                                            <input type="radio" name="kind" value="4" checked>&nbsp Spices
-                                        </label>
+                                            <h3>Spices</h3>
                                     </div>
                                 </div>
                                 <hr>
@@ -23,12 +21,6 @@
                                             <label for="name" id="labels">&nbsp Name of the product &nbsp</label>
                                             <br>
                                             <input type ="text" id="select" name="name" required>    
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="amount" id="labels">&nbsp Amount(packets) &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="amount" required>
                                         </div>
                                     </div>
                                 </div>
@@ -60,13 +52,16 @@
                                             <br>
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                <input type ="checkbox" name="sizes[]" value="100g" checked>&nbsp100g
+                                                <label for="sizes100" id="labels">100g</label>
+                                                <input type ="number" name="sizes100" style="width:75px;">
                                                 </div>
                                                 <div class="col-sm-4">
-                                                <input type ="checkbox" name="sizes[]" value="200g">&nbsp200g
+                                                <label for="sizes200" id="labels">200g</label>
+                                                <input type ="number" name="sizes200" style="width:75px;">
                                                 </div>
                                                 <div class="col-sm-4">
-                                                <input type ="checkbox" name="sizes[]" value="400g">&nbsp400g
+                                                <label for="sizes400" id="labels">400g</label>
+                                                <input type ="number" name="sizes400" style="width:75px;">
                                                 </div>
                                             </div>     
                                         </div>

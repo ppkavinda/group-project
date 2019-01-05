@@ -34,7 +34,7 @@ Route::post('/updatePassword', 'UserController@updatePassword');
 
 
 // shop
-Route::get('/shop', 'ShopController@viewLatestTwoProduct');
+Route::get('/shop', 'ShopController@viewLatestAndRatingProducts');
 
 Route::view('/categories/men', 'shop.mens')->name('categories.men');
 Route::view('/categories/woman', 'shop.woman')->name('categories.women');
@@ -151,7 +151,7 @@ Route::get('shoes', function () {
     return view('add.shoes');
 });
 
-Route::post('/postAdd', 'ProductController@store');
+Route::post('/postAdd/{id}', 'ProductController@store');
 
 Route::get('/admin/post', 'PostController@adminindex');
 

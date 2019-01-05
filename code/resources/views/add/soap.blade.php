@@ -7,18 +7,16 @@
                 <div class="w3layouts_mail_grid">
                     <div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
                         <div class="agileits_mail_grid_right1 agile_mail_grid_right1">
-                            <form action="/postAdd" method="post" enctype="multipart/form-data">
+                            <form action="/postAdd/{{'3'}}" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="radio-inline">
-                                            <input type="radio" name="kind" value="3" checked>&nbsp Soap
-                                        </label>
+                                        <h3>Soap</h3>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="name" id="labels">&nbsp Name of the product &nbsp</label>
                                             <br>
@@ -26,11 +24,23 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="amount" id="labels">&nbsp Amount &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="amount" required>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="sizes" id="labels">&nbsp Size(g) &nbsp</label>
+                                            <select class="form-control" id="select" name="sizes">
+                                                <option></option>
+                                                <option>50g</option>
+                                                <option>100g</option>
+                                                <option>200g</option>
+                                            </select>
                                     </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="amount" id="labels">&nbsp Name of the product &nbsp</label>
+                                        <br>
+                                        <input type ="number" id="select" name="amount" required>    
+                                    </div>
+                                </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -52,12 +62,6 @@
                                             <option>Powder</option>
                                             <option>Other</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="weight" id="labels">&nbsp Weight of piece(g) &nbsp</label>
-                                            <input multiple class="form-control" id="select" name="sizes[]" required>
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +89,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="discount" id="labels">&nbsp Discount(one cloth Rs.) &nbsp</label>
+                                            <label for="discount" id="labels">&nbsp Discount(one piece Rs.) &nbsp</label>
                                             <input multi class="form-control" type="number" id="select" name="discount" required>
                                         </div>
                                     </div>
