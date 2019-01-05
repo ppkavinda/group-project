@@ -269,7 +269,6 @@
                                 </div>
                                 <div class="item-info-product ">
                                     <h3><a href="/quickView/{{$addPosts[$x]['id']}}">{{$addPosts[$x]['name']}}</a></h3>
-                                    <h4><a href="/quickView/{{$addPosts[$x]['id']}}">Available Sizes :{{$addPosts[$x]['sizes']}}</a></h4>
                                     <div class="info-product-price">
                                         <span class="item_price">LKR.{{$addPosts[$x]['price']-$addPosts[$x]['discount']}}</span>
                                         @if($addPosts[$x]['discount']!=null)
