@@ -10,6 +10,26 @@ class Product extends Model
     use Searchable;
 
     protected $guarded = [];
+
+    public function clothes(){
+        return $this->hasMany(Cloth::class);
+    }
+    
+    public function masks(){
+        return $this->hasMany(Mask::class);
+    }
+
+    public function soaps(){
+        return $this->hasMany(Soap::class);
+    }
+
+    public function spices(){
+        return $this->hasMany(Spice::class);
+    }
+
+    public function shoes(){
+        return $this->hasMany(Shoe::class);
+    }
     
     public function searchableAs()
     {

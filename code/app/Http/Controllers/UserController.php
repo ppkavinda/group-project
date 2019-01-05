@@ -20,12 +20,29 @@ class UserController extends Controller
     public function index()
     {
         $user = auth()->user();
+
+        $role=$user->role;
+        //dd($role);
+        if($role == 1)
+        {
+          return view('admin.profile.index', ['user'=>$user]);
+        }
+
         $courses = $user->courses;
+      
         return view('profile.index', ['user'=>$user],['courses'=>$courses]);
     }
     
     public function show (User $user) {
         $courses = $user->courses;
+        $role=$user->role;
+       // dd($user);
+        if($role == 1)
+      
+        {
+          return view('admin.profile.index',compact('user'));
+        }
+
         return view('profile.index', compact('user'));
     }
 
@@ -52,7 +69,36 @@ class UserController extends Controller
     {
         return auth()->user();
     }
-    
+
+     public function search_user(Request $request )
+     {
+         $request->validate([
+             'search_users' => 'required',
+         ]);
+         $search = $request->input('search_users');
+         if( $search != "")
+         {
+             $users= \App\User::join('roles', 'users.role', '=', 'roles.id')
+                             ->select('users.*', 'roles.role')
+                             ->where('name', 'LIKE', '%'. $search .'%')
+                             ->orWhere('email', 'LIKE', '%'.$search .'%')
+                             ->orWhere('nic', 'LIKE', '%'.$search .'%')
+                             ->orWhere('roles.role', 'LIKE', '%'. $search .'%')
+                             ->get();
+             if(count($users) > 0)
+             {
+                 return view('admin.users.search')->withDetails($users)->withQuery($search);
+             }
+             
+         //dd($users);\
+         return view('admin.users.search')->withMessage("No Users Found! "); 
+         }
+     
+     }
+     
+
+  
+ }
    
 // Update Password
     public function updatePassword(Request $request) {
@@ -67,3 +113,4 @@ class UserController extends Controller
         echo 'here update query for password';
     }
 }
+

@@ -184,12 +184,12 @@
                 @csrf
                     <div class="form-group mb-1">
                         <b>&nbspFrom&nbsp</b>
-                        <label for="staticEmail2" class="sr-only">From</label>
+                        <label for="staticEmail2" class="sr-only">From(LKR)</label>
                         <input type="number" class="form-control" id="selectFrom" name="fromValue" min="0" required>
                     </div>
                     <div class="form-group mx-sm-3 mb-2">
                         <b>&nbspTo&nbsp</b>
-                        <label for="inputPassword2" class="sr-only">To</label>
+                        <label for="inputPassword2" class="sr-only">To(LKR)</label>
                         <input type="number" class="form-control" id="selectTo" name="toValue" required>
                     </div>
                     <div class="form-group mx-sm-3 mb-1">

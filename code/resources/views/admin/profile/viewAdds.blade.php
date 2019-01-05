@@ -28,9 +28,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-3">&nbsp Size/Weight</div>
+                            <label for="size" class="col-sm-3 col-form-label">&nbsp Size/Weight</label>
                             <div class="col-sm-9">
-                                {{$posts[$x]['sizes']}}
+                                <input type="text" id="size" value={{$posts[$x]['sizes']}}>
                             </div>
                         </div>
                     </fieldset>
@@ -45,6 +45,7 @@
                         <label for="addDetails" class="col-sm-3 col-form-label">&nbsp Details</label>
                         <div class="col-sm-9">
                             <textarea name="addDetails" id="details" cols="44"rows="2">{{$posts[$x]['description']}}</textarea>
+                            <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                         </div>
                     </div>
                     <div class="form-group row">

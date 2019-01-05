@@ -85,6 +85,7 @@
 
               @endif
               <div class="container">
+              <div class="container">
 		          @if(isset($details))
               <div class="alert alert-secondary" role="alert">
 	              <button type="button" class="close" data-dismiss="alert">×</button>	
@@ -153,6 +154,4 @@
 
 </body>
 </html>
-
-
- @endsection
+@endsection

@@ -6,6 +6,7 @@ use \App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
+
 class PostController extends Controller
 {
     /**
@@ -21,6 +22,7 @@ class PostController extends Controller
      * NOT USED
      */
     public function index () {
+        $user = auth()->user();
         $posts = \App\Post::all();
         return view('study.posts.index', ['posts' => $posts]);
     }
@@ -30,6 +32,13 @@ class PostController extends Controller
      * only facilitator can acces
      */
     public function create () {
+        $user=auth()->user();
+        $role=$user->role;
+        if($role == 1)
+        {
+         $courses = \App\Course::get();
+        return view('admin.posts.create', compact('courses'));
+        }
         $courses = \App\Course::get();
         return view('study.posts.create', compact('courses'));
     }
@@ -46,7 +55,10 @@ class PostController extends Controller
             ) {
                 return redirect("/courses/{$post->course->id}");
             }
-
+        if((request()->user()->role)==1)
+        {
+            return view('admin.posts.index', compact('post'));
+        }
         return view('study.posts.index', compact('post'));
     }
   
@@ -91,7 +103,15 @@ class PostController extends Controller
      * only facilitator can access
      */
     public function edit (Post $post) {
+        $user = auth()->user();
+        
+        $role= $user->role;
         $courses = \App\Course::get();
+        if($role == 1)
+        {  //admin
+            return view('admin.posts.edit', compact('courses', 'post'));
+        }
+        
         return view('study.posts.edit', compact('courses', 'post'));
     }
     
@@ -189,4 +209,55 @@ class PostController extends Controller
         $posts = \App\Post::all();
         return view('admin.posts.index', ['posts' => $posts]);
     }
+
+
+    public function admin_viewPosts_course(Request $request,$id= null)
+    {
+        $postscount = \App\Post::where(['posts.course_id'=>$id])->count();
+        $posts = \App\Post::join('courses','posts.course_id','=','courses.id')
+                    ->join('users','posts.user_id','=','users.id')
+                    ->select('posts.*','users.name')
+                    ->where(['posts.course_id'=>$id])->get();
+        
+          // dd($postscount);
+        return view('admin.course.posts')->with(compact(['posts','postscount']));
+        
+    }
+
+    public function adminviewPosts()
+    {
+        $posts= \App\Post::paginate(3);
+       
+        
+       //dd($posts);
+        return view('admin.posts.view')->with(compact('posts'));
+
+      
+    }
+ 
+   
+   
+
+    public function deletePost($id = null)
+    {
+        if(!empty($id)){
+            Post::where(['id'=> $id])->delete();
+            return redirect()->back()->with('flash_message_success','Post deleted Sucessfully!');
+           
+        }
+
+    }
+
+    public static function search(Request $request)
+    {   
+        
+        $search = $request->get("search");
+        
+        $posts=\App\Post::where('posts.title','like','%'.$search.'%') 
+                    ->orWhere('posts.id','like','%'.$search.'%')
+                    ->paginate(2);  
+      // dd($posts);
+        return view('admin.posts.view',['posts'=>$posts]);
+    }
+
 }

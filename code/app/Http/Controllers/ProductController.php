@@ -42,24 +42,88 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         //dd(implode(" ",$request->sizes));
         $product = new Product;
-        $size = implode(",", $request->sizes);
         $product::create([
             'name'=> $request['name'],
             'price' => $request['price'],
-            'amount' => $request['amount'],
             'description' => $request['details'],
             'user_id'=> auth()->user()->id,
             'img1' => request()->image->store('img/product', 'public'),
             'discount'=> $request['discount'],
-            'category_id' => $request['kind'],
+            'category_id' => $id,
             'kind'=> $request['category'],
             'type' => $request['type'],
-            'sizes' => $size
         ]);
+        if ($id=='1') {
+            $cloth = new \App\Cloth;
+            $cloth::create([
+                'product_id'=> $id,
+                'size(XS)' => $request['sizesXS'],
+                'size(S)' => $request['sizesS'],
+                'size(M)' => $request['sizesM'],
+                'size(L)' => $request['sizesL'],
+                'size(XL)' => $request['sizesXL'],
+                'size(XXL)' => $request['sizesXXL']
+            ]);
+        } elseif ($id=='2') {
+            $mask = new \App\Mask;
+            if ($request['sizes']=="25*25") {
+                $mask::create([
+                    'product_id'=> $id,
+                    'size(25*25)'=> $request['amount']
+                ]);
+            } elseif ($request['sizes']=="50*50") {
+                $mask::create([
+                    'product_id'=> $id,
+                    'size(50*50)'=> $request['amount']
+                ]);
+            } elseif ($request['sizes']=="60*60") {
+                $mask::create([
+                    'product_id'=> $id,
+                    'size(60*60)'=> $request['amount']
+                ]);
+            }
+        } elseif ($id=='3') {
+            $soap = new \App\Soap;
+            if ($request['sizes']=="50g") {
+                $soap::create([
+                    'product_id'=> $id,
+                    'size(50g)'=> $request['amount']
+                ]);
+            } elseif ($request['sizes']=="100g") {
+                $soap::create([
+                    'product_id'=> $id,
+                    'size(100g)'=> $request['amount']
+                ]);
+            } elseif ($request['sizes']=="200g") {
+                $soap::create([
+                    'product_id'=> $id,
+                    'size(200g)'=> $request['amount']
+                ]);
+            }
+        } elseif ($id=='4') {
+            $spice = new \App\Spice;
+            $spice::create([
+                'product_id'=> $id,
+                'size(100g)'=> $request['sizes100'],
+                'size(200g)'=> $request['sizes200'],
+                'size(400g)'=> $request['sizes400']
+            ]);
+        } elseif ($id=='5') {
+            $shoe = new \App\Shoe;
+            $shoe::create([
+                'product_id'=> $id,
+                'size(6)'=>$request['sizes6'],
+                'size(7)'=>$request['sizes7'],
+                'size(8)'=>$request['sizes8'],
+                'size(9)'=>$request['sizes9'],
+                'size(10)'=>$request['sizes10'],
+                'size(11)'=>$request['sizes11']
+            ]);
+        }
         return redirect('/profile');
     }
 
