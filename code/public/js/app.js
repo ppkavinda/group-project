@@ -27265,10 +27265,10 @@ var staticRenderFns = [
           _vm._v("Athwela.io")
         ])
       ]),
-      _vm._v("\r\n    All rights reserved.\r\n    "),
+      _vm._v("\n    All rights reserved.\n    "),
       _c("div", { staticClass: "float-right d-none d-sm-inline-block" }, [
         _c("b", [_vm._v("Version")]),
-        _vm._v(" 1.0.0\r\n    ")
+        _vm._v(" 1.0.0\n    ")
       ])
     ])
   }
@@ -29716,7 +29716,7 @@ var content = __webpack_require__(106);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("2fbd7bea", content, false, {});
+var update = __webpack_require__(3)("1813ad36", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -29740,7 +29740,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.inputfile[data-v-64fbd914] {\r\n\twidth: 0.1px;\r\n\theight: 0.1px;\r\n\topacity: 0;\r\n\toverflow: hidden;\r\n\tposition: absolute;\r\n\tz-index: -1;\n}\r\n", ""]);
+exports.push([module.i, "\n.inputfile[data-v-64fbd914] {\n\twidth: 0.1px;\n\theight: 0.1px;\n\topacity: 0;\n\toverflow: hidden;\n\tposition: absolute;\n\tz-index: -1;\n}\n", ""]);
 
 // exports
 
@@ -33108,7 +33108,7 @@ var render = function() {
               staticClass: "col-md-10 offset-md-2 form-text text-muted",
               attrs: { id: "passwordHelpBlock" }
             },
-            [_vm._v("\r\n            Max file size : 100M\r\n        ")]
+            [_vm._v("\n            Max file size : 100M\n        ")]
           ),
           _vm._v(" "),
           _vm.errors.video
@@ -33348,7 +33348,7 @@ var content = __webpack_require__(132);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("715bcce4", content, false, {});
+var update = __webpack_require__(3)("4c8804bb", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -33537,7 +33537,7 @@ var content = __webpack_require__(137);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("225a3b27", content, false, {});
+var update = __webpack_require__(3)("0176c4d4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -33572,6 +33572,75 @@ exports.push([module.i, "\na[data-v-5c4c2156] {\n  text-transform: uppercase;\n}
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -33652,7 +33721,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onClick: function onClick() {
             var _this = this;
 
-            if (!this.product.quantity) {
+            if (!(parseInt(this.product.quantity) > 0)) {
                 this.errors.quantity = ['Invalid quantity'];
                 return;
             }
@@ -33660,7 +33729,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 window.Event.$emit('added-to-cart', res.data);
             }).catch(function (err) {
                 _this.errors.quantity = ["Invalid quantity"];
-                // TODO replace to open the login model
                 if (err.response.status == 401) {
                     // console.log(err.response) 
                     window.location.replace('/login');
@@ -33669,7 +33737,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         clearErrors: function clearErrors() {
             this.errors = {
-                quantity: []
+                quantity: [],
+                size: []
             };
         }
     },
@@ -33693,106 +33762,149 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "rating1" }, [
-      _c("span", { staticClass: "starRating" }, [
-        _c("input", {
-          attrs: { disabled: "", id: "rate5", type: "radio", value: "5" },
-          domProps: { checked: _vm.getRating == 5 }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "rate5" } }, [_vm._v("5")]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { disabled: "", id: "rate4", type: "radio", value: "4" },
-          domProps: { checked: _vm.getRating == 4 }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "rate4" } }, [_vm._v("4")]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { disabled: "", id: "rate3", type: "radio", value: "3" },
-          domProps: { checked: _vm.getRating == 3 }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "rate3" } }, [_vm._v("3")]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { disabled: "", id: "rate2", type: "radio", value: "2" },
-          domProps: { checked: _vm.getRating == 2 }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "rate2" } }, [_vm._v("2")]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { disabled: "", id: "rate1", type: "radio", value: "1" },
-          domProps: { checked: _vm.getRating == 1 }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "rate1" } }, [_vm._v("1")])
+    _c("div", { staticClass: "row" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "item-info-product " }, [
+          _c("div", { staticClass: "info-product-price" }, [
+            _c("span", { staticClass: "item_price", attrs: { id: "price" } }, [
+              _vm._v(
+                "LKR " + _vm._s(_vm.product.price - _vm.product.discount * 0.01)
+              )
+            ]),
+            _vm._v(" "),
+            _vm.product.discount
+              ? _c("del", { staticStyle: { color: "red" } }, [
+                  _vm._v("LKR " + _vm._s(_vm.product.price))
+                ])
+              : _vm._e()
+          ])
+        ])
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "color-quality" }, [
-      _c("div", { staticClass: "color-quality-right" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.product.quantity,
-              expression: "product.quantity"
-            }
-          ],
-          staticClass: "p-1",
-          attrs: { id: "quantity", type: "number", min: "1" },
-          domProps: { value: _vm.product.quantity },
-          on: {
-            click: _vm.clearErrors,
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+    _c("div", { staticClass: "row" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "rating1 item-info-product" }, [
+          _c("span", { staticClass: "starRating" }, [
+            _c("input", {
+              attrs: { disabled: "", id: "rate5", type: "radio", value: "5" },
+              domProps: { checked: _vm.getRating == 5 }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "rate5" } }, [_vm._v("5")]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { disabled: "", id: "rate4", type: "radio", value: "4" },
+              domProps: { checked: _vm.getRating == 4 }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "rate4" } }, [_vm._v("4")]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { disabled: "", id: "rate3", type: "radio", value: "3" },
+              domProps: { checked: _vm.getRating == 3 }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "rate3" } }, [_vm._v("3")]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { disabled: "", id: "rate2", type: "radio", value: "2" },
+              domProps: { checked: _vm.getRating == 2 }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "rate2" } }, [_vm._v("2")]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { disabled: "", id: "rate1", type: "radio", value: "1" },
+              domProps: { checked: _vm.getRating == 1 }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "rate1" } }, [_vm._v("1")])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _vm._m(3),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "item-info-product" }, [
+          _c("div", { staticClass: "info-product-price" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.product.quantity,
+                  expression: "product.quantity"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "quantity", type: "number", min: "1" },
+              domProps: { value: _vm.product.quantity },
+              on: {
+                click: _vm.clearErrors,
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.product, "quantity", $event.target.value)
+                }
               }
-              _vm.$set(_vm.product, "quantity", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _vm.errors.quantity.length
-          ? _c("small", { staticClass: "invalid-feedback d-block pl-3" }, [
-              _vm._v(_vm._s(_vm.errors.quantity[0]))
-            ])
-          : _vm._e()
+            }),
+            _vm._v(" "),
+            _vm.errors.quantity.length
+              ? _c("small", {
+                  staticClass: "invalid-feedback d-block pl-3",
+                  domProps: { textContent: _vm._s(_vm.errors.quantity[0]) }
+                })
+              : _vm._e()
+          ])
+        ])
       ])
     ]),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "occasion-cart",
-        staticStyle: { position: "relative", top: "3rem", width: "40%" }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "snipcart-details top_brand_home_details item_add single-item p-3 minicart-showing"
-          },
-          [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "item-info-product" }, [
+          _c("div", { staticClass: "info-product-price" }, [
             _c(
-              "a",
+              "div",
               {
-                staticClass: "hvr-outline-out button2",
-                on: { click: _vm.onClick }
+                staticClass: "occasion-cart",
+                staticStyle: { position: "relative", top: "3rem", width: "40%" }
               },
-              [_vm._v("Add to cart")]
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "snipcart-details top_brand_home_details item_add single-item p-3 minicart-showing"
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "hvr-outline-out button2",
+                        on: { click: _vm.onClick }
+                      },
+                      [_vm._v("Add to cart")]
+                    )
+                  ]
+                )
+              ]
             )
-          ]
-        )
-      ]
-    )
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -33800,8 +33912,73 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "quantity" } }, [
-      _c("h5", [_vm._v("Quality :")])
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "item-info-product " }, [
+        _c("div", { staticClass: "info-product-price" }, [
+          _c("label", { attrs: { for: "price" } }, [
+            _c("b", [_vm._v("Price ")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "item-info-product " }, [
+        _c("div", { staticClass: "info-product-price" }, [
+          _c("label", { attrs: { for: "price" } }, [
+            _c("b", [_vm._v("Ratings ")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "item-info-product" }, [
+          _c("div", { staticClass: "info-product-price" }, [
+            _c(
+              "label",
+              { staticClass: "col-form-label", attrs: { for: "size" } },
+              [_c("b", [_vm._v("Size")])]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "item-info-product" }, [
+          _c("div", { staticClass: "info-product-price" }, [
+            _c("select", {
+              staticClass: "form-control",
+              attrs: { id: "size", name: "sizes" }
+            })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "item-info-product" }, [
+        _c("div", { staticClass: "info-product-price" }, [
+          _c(
+            "label",
+            { staticClass: "col-form-label", attrs: { for: "amount" } },
+            [_c("b", [_vm._v("Quantity")])]
+          )
+        ])
+      ])
     ])
   }
 ]
@@ -33876,7 +34053,7 @@ var content = __webpack_require__(142);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("ce09be2e", content, false, {});
+var update = __webpack_require__(3)("af3a1654", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -34628,7 +34805,7 @@ var content = __webpack_require__(155);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("27be9986", content, false, {});
+var update = __webpack_require__(3)("395809fd", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -35258,7 +35435,7 @@ var content = __webpack_require__(162);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("5bb6bfd4", content, false, {});
+var update = __webpack_require__(3)("725296d6", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -35282,7 +35459,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.paypal-button-label[data-v-1104a225] {\r\n    padding-bottom: 20px;\n}\r\n", ""]);
+exports.push([module.i, "\n.paypal-button-label[data-v-1104a225] {\n    padding-bottom: 20px;\n}\n", ""]);
 
 // exports
 
@@ -35492,7 +35669,7 @@ var render = function() {
                 }
               }),
               _vm._v(
-                "\r\n                    Use my address as the shipping address\r\n            "
+                "\n                    Use my address as the shipping address\n            "
               )
             ]
           ),
@@ -35528,7 +35705,7 @@ var render = function() {
                 }
               }),
               _vm._v(
-                "\r\n                Add different delivery details\r\n            "
+                "\n                Add different delivery details\n            "
               )
             ]
           )
@@ -36031,25 +36208,25 @@ var render = function() {
                 _vm._v(" "),
                 _c("span", { staticClass: "col-md-7" }, [
                   _vm._v(
-                    "\r\n                    " +
+                    "\n                    " +
                       _vm._s(prod.name) +
-                      "\r\n                "
+                      "\n                "
                   )
                 ]),
-                _vm._v("\r\n                ×\r\n                "),
+                _vm._v("\n                ×\n                "),
                 _c("span", { staticClass: "col-md-1" }, [
                   _vm._v(
-                    "\r\n                    " +
+                    "\n                    " +
                       _vm._s(prod.qty) +
-                      "\r\n                "
+                      "\n                "
                   )
                 ]),
-                _vm._v("\r\n                =\r\n                "),
+                _vm._v("\n                =\n                "),
                 _c("span", { staticClass: "col-md-3" }, [
                   _vm._v(
-                    "\r\n                    LKR " +
+                    "\n                    LKR " +
                       _vm._s(prod.price) +
-                      "\r\n                "
+                      "\n                "
                   )
                 ])
               ])
@@ -36257,7 +36434,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _vm._v(
-        "\r\n                if above details are correct you can pay from here\r\n            "
+        "\n                if above details are correct you can pay from here\n            "
       ),
       _c(
         "button",

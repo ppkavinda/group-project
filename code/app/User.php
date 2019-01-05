@@ -53,7 +53,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product::class);
     }
-
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
     // helpers
     public function isAdmin()
     {
@@ -67,5 +70,4 @@ class User extends Authenticatable
     {
         return $this->role <= 3;
     }
-    
 }
