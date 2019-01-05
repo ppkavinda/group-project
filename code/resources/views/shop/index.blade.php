@@ -1,6 +1,5 @@
 @extends('shop.master')
 @section('content')
-
 <!-- Modal1 -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
@@ -122,7 +121,7 @@
     <div class="banner_bottom_agile_info">
 	    <div class="container">
             <div class="banner_bottom_agile_info_inner_w3ls row">
-				<div class="col-md-5 wthree_banner_bottom_grid_three_left1 grid">
+				<div class="col-md-4 wthree_banner_bottom_grid_three_left1 grid">
 					<a href="/quickView/{{$latest[0]['id']}}">
 						<figure class="effect-roxy">
 							<img src="/storage/{{$latest[0]['img1']}}" alt=" " class="img-fluid"  style="width:510px; height:400px;" />
@@ -133,11 +132,12 @@
 						</figure>
 					</a>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<br><br><br>
-					<center><h1 class="newestProduct">Our<span style="color:red;"> Newest </span>Products</h1></center>		
+					
+					<center><h3 class="wthree_text_info">Newest<span> Arrivals</span></h3></center>		
 				</div>
-					<div class="col-md-5 wthree_banner_bottom_grid_three_left1 grid">
+					<div class="col-md-4 wthree_banner_bottom_grid_three_left1 grid">
 					<a href="/quickView/{{$latest[1]['id']}}">
 						<figure class="effect-roxy">
 							<img src="/storage/{{$latest[1]['img1']}}" alt=" " class="img-responsive" style="width:510px; height:400px;"/>
@@ -153,7 +153,7 @@
 		 </div> 
     </div>
 	<!-- schedule-bottom -->
-	<div class="schedule-bottom">
+	<!-- <div class="schedule-bottom">
 		<div class="row">
 			<div class="col-md-6 agileinfo_schedule_bottom_left">
 				<img src="/dist/img/mid.jpg" alt=" " class="img-responsive" />
@@ -185,7 +185,7 @@
 			</div>
 			<div class="clearfix"> </div>
 		</div>
-	</div>
+	</div> -->
 <!-- //schedule-bottom -->
   <!-- banner-bootom-w3-agileits -->
 	@include('shop.partials.trending')					

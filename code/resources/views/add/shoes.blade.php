@@ -7,13 +7,11 @@
                 <div class="w3layouts_mail_grid">
                     <div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
                         <div class="agileits_mail_grid_right1 agile_mail_grid_right1">
-                            <form action="/postAdd" method="post" enctype="multipart/form-data">
+                            <form action="/postAdd/{{'5'}}" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="radio-inline">
-                                            <input type="radio" name="kind" value="5" checked>&nbsp Shoes and Slippers
-                                        </label>
+                                        <h3>Shoes and Slippers</h3>
                                     </div>
                                 </div>
                                 <hr>
@@ -23,12 +21,6 @@
                                             <label for="name" id="labels">&nbsp Name of the product &nbsp</label>
                                             <br>
                                             <input type ="text" id="select" name="name" required>    
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="amount" id="labels">&nbsp Amount &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="amount" required>
                                         </div>
                                     </div>
                                 </div>
@@ -57,24 +49,32 @@
                                         <div class="form-group">
                                             <label for="sizes" id="labels">&nbsp Sizes &nbsp</label>
                                             <br>
+                                            <div class="row p-3">
+                                                <div class="col-sm-4">
+                                                <label for="sizes6" id="labels">6"</label>
+                                                <input type ="number" name="sizes6" style="width:50px">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <label for="sizes7" id="labels">7"</label>
+                                                <input type ="number" name="sizes7" style="width:50px">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                <label for="sizes8" id="labels">8"</label>
+                                                <input type ="number" name="sizes8" value="XS" style="width:50px">
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                <input type ="checkbox" name="sizes[]" value="5" checked>&nbsp5
+                                                <label for="sizes9" id="labels">9"</label>
+                                                <input type ="number" name="sizes9" value="XS" style="width:50px">
                                                 </div>
                                                 <div class="col-sm-4">
-                                                <input type ="checkbox" name="sizes[]" value="6">&nbsp6
+                                                <label for="sizes10" id="labels">10"</label>
+                                                <input type ="number" name="sizes10" value="XS" style="width:50px">
                                                 </div>
                                                 <div class="col-sm-4">
-                                                <input type ="checkbox" name="sizes[]" value="7">&nbsp7
-                                                </div>
-                                                <div class="col-sm-4">
-                                                <input type ="checkbox" name="sizes[]" value="8">&nbsp8
-                                                </div>
-                                                <div class="col-sm-4">
-                                                <input type ="checkbox" name="sizes[]" value="9">&nbsp9
-                                                </div>
-                                                <div class="col-sm-4">
-                                                <input type ="checkbox" name="sizes[]" value="10">&nbsp10
+                                                <label for="sizes11" id="labels">11"</label>
+                                                <input type ="number" name="sizes11" value="XS" style="width:50px">
                                                 </div>
                                             </div>    
                                         </div>
