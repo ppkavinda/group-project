@@ -1,7 +1,24 @@
 @extends('admin.master')
 
 @section('content')
+
+<body class="hold-transition sidebar-mini">
 <div class="content-wrapper">
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Posts</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item active">Edit Post</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+</section>
 <div class="contact">
   <div class="container-wide">
 	<h3 class="w3l_header w3_agileits_header">Add new <span>post</span></h3>
@@ -15,5 +32,6 @@
     </div>
 </div>
 </diV>
+
 
 @endsection

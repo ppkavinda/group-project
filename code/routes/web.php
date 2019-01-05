@@ -97,30 +97,60 @@ Route::get('/home', 'HomeController@index')->name('home');
 //sachintha
 
 
-// admin
+// admin-admin
 Route::view('/admin', 'admin.index');
-Route::match(['get','post'], '/admin/add-category', 'CategoryController@addCategory');
-Route::match(['get','post'], '/admin/edit-category/{id}', 'CategoryController@editCategory');
-Route::match(['get','post'], '/admin/delete-category/{id}', 'CategoryController@deleteCategory');
-Route::get('/admin/view-category', 'CategoryController@viewCategories');
+
+Route::match(['get','post'],'/admin/add-category','CategoryController@addCategory');
+Route::match(['get','post'],'/admin/edit-category/{id}','CategoryController@editCategory');
+Route::match(['get','post'],'/admin/delete-category/{id}','CategoryController@deleteCategory');
+Route::get('/admin/view-category','CategoryController@viewCategories');
+Route::get('/admin/serach-category','CategoryController@search');
 //Route::match(['get','post'],'/admin/search-category','CategoryController@searchCategory');
 //courses
 
+//course-sachintha
+Route::match(['get','post'],'/admin/add-course','CourseController@addCourse');
+Route::match(['get','post'],'/admin/edit-course/{id}','CourseController@editCourse');
+Route::match(['get','post'],'/admin/delete-course/{id}','CourseController@deleteCourse');
 
-Route::match(['get','post'], '/admin/add-course', 'CourseController@addCourse');
-Route::match(['get','post'], '/admin/edit-course/{id}', 'CourseController@editCourse');
-Route::match(['get','post'], '/admin/delete-course/{id}', 'CourseController@deleteCourse');
+Route::get('/admin/view-course','CourseController@viewCourses');
+Route::get('/admin/search-course','CourseController@search');
+//view inquery-Sachintha
+Route::get('/admin/view-inquiry','InquiryController@viewInquire');
+Route::get('/admin/delete-inquiry/{id}','InquiryController@deleteInquire');
 
-Route::get('/admin/view-course', 'CourseController@viewCourses');
 
-Route::get('/admin/view-inquiry', 'InquiryController@viewInquire');
-Route::get('/admin/delete-inquiry/{id}', 'InquiryController@deleteInquire');
+Route::get('/admin/view-users','UserController@user_Details');
+Route::get('/admin/search-users','UserController@user_Details');
+Route::post('/admin/search-users','UserController@search_user');
+//user-sachintha
+Route::get('/admin/view-course/posts/{id}','PostController@admin_viewPosts_course');
 
-//Users
-Route::get('/admin/view-users', 'UserController@user_Details');
-Route::get('/admin/search-users', 'UserController@user_Details');
+Route::get('/admin/view-posts','PostController@adminviewPosts');
+Route::get('/admin/view-users','UserController@user_Details');
 
-Route::post('/admin/search-users', 'UserController@search_user');
+///post-sachintha
+Route::get('/admin/search-post','PostController@search');
+Route::get('/admin/delete-post/{id}','PostController@deletePost');
+Route::post('/admin/delete-post/{id}','PostController@deletePost');
+
+///comments- sachintha
+Route::get('/admin/view-comments','CommentController@view_comments');
+Route::get('/admin/search-comments','CommentController@search');
+Route::get('/admin/search-comments/{id}','CommentController@admin_viewComments_on_post');
+
+Route::get('/admin/delete-comment/{id}','CommentController@deleteComment');
+Route::post('/admin/delete-comment/{id}','CommentController@deleteComment');
+
+//generate PDF
+
+Route::get('/admin/courses/generate-pdf','CourseController@generatePDF');
+
+
+
+
+
+
 
 Route::get('test', function () {
     return new App\Mail\Welcome(factory('App\User')->make());
@@ -155,12 +185,12 @@ Route::post('/postAdd/{id}', 'ProductController@store');
 
 Route::get('/admin/post', 'PostController@adminindex');
 
+
 Route::get('/admin/profile', 'AdminController@index')->middleware('auth');
 //Route::get('/profile', 'UserController@index')->middleware('auth');
 //Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
 //Route::post('/users/{user}/edit', 'AdminController@edit');
 //Route::get('/user', 'UserController@get');
-
 
 Route::get('YourAdvertisements','ProductController@index');
 Route::get('YourAdvertisements/{productId}/delete','ProductController@destroy');
@@ -171,6 +201,7 @@ Route::post('/YourAdvertisements/{productId}/update','ProductController@update')
 Route::get('/categories', 'ProductController@allAdvertisements');
 Route::get('/categories/{kind}/{type}/{category_id}', 'ProductController@viewKindAdvertisements');
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
+
 Route::get('/categories/{kind}/{category_id}', 'ProductController@viewOnlyKindAdvertisements');
 Route::get('/quickView/{id}', 'ProductController@quickViewAdvertisement');
 Route::get('/categories/{kind}/{type}', 'ProductController@viewKindAdvertisements');
@@ -178,4 +209,5 @@ Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
 
 Route::post('/categories/priceRange', 'ProductController@priceRange');
 Route::get('/trendingProduct','ShopController@getTrendingProducts');
+
 
