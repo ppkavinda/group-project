@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     /**
@@ -28,7 +29,6 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -37,9 +37,8 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Product $product) {
-        // dd($request->ratings);
-
+    public function store(Request $request, Product $product)
+    {
         $request->validate([
             'body' => 'required|min:4',
             // 'user_id' => 'exists:users,id|required',

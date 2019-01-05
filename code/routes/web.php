@@ -48,7 +48,8 @@ Route::get('/categories/jewellery', function () {
 Route::post('/products', 'ProductController@store');
 Route::get('/products/{product}', 'ProductController@show')->name('products.show');
 
-Route::post('/reviews/{product}/create', 'ReviewController@store')->name('reviews.store');
+Route::post('/reviews/{product}/create', 'ReviewController@store')->name('reviews.store')
+        ->middleware("HasPurchasedTheProduct");
 
 Route::get('/cart', 'CartController@index');
 Route::post('/cart/{product}', 'CartController@store');

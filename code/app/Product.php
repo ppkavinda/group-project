@@ -11,24 +11,34 @@ class Product extends Model
 
     protected $guarded = [];
 
-    public function clothes(){
+    public function clothes()
+    {
         return $this->hasMany(Cloth::class);
     }
     
-    public function masks(){
+    public function masks()
+    {
         return $this->hasMany(Mask::class);
     }
 
-    public function soaps(){
+    public function soaps()
+    {
         return $this->hasMany(Soap::class);
     }
 
-    public function spices(){
+    public function spices()
+    {
         return $this->hasMany(Spice::class);
     }
 
-    public function shoes(){
+    public function shoes()
+    {
         return $this->hasMany(Shoe::class);
+    }
+
+    public function sizes()
+    {
+        return $this->category_id;
     }
     
     public function searchableAs()
