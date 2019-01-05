@@ -31,7 +31,7 @@
              <div class="form-group row">
                 <label for="inputContact" class="col-sm-2 col-form-label">Contact Number</label>
                 <div class="col-sm-8">
-                    <input type="Number" name="contact" class="form-control" 
+                    <input type="Number" name="telephone" class="form-control" 
                         id="inputContact"  placeholder="Enter your contact Number">
                     <i aria-hidden="true" ></i>
                 </div>

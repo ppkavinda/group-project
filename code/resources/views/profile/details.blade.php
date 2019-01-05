@@ -1,9 +1,19 @@
 <h3 class="w3l_header mt-4 mb-5">Edit your <span>details</span></h3>
 <div class="container">
-<div class="row">
-    <div class="col-md-6">
+  <div class="row">
+    <div class="col-md-8">
         <form action="/users/{{ auth()->user()->id }}/edit" method="POST">
             @csrf
+            <!-- image upload -->
+                <fieldset class="fieldset">
+                    <h3 class="fieldset-title">Upload your picture</h3> 
+                        <div class="mx-auto" style="width: 35rem;">  
+                            <center>         
+                                <img class="img-fluid" src="/pubic/dist/image/avatar5.png" style="width:200px; height:200px; float:left; border-radius:50%; margin-right:25px;">
+                            </center>
+                            <input type="file" name="profile_pic">
+                        </div>
+            </fieldset>
             <fieldset class="fieldset">
             <h2 class="fieldset-title">Personal Info</h2>
             <!-- email address -->
@@ -11,7 +21,7 @@
                 <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
                     <input type="text" name="email" class="form-control" id="staticEmail" 
-                        value="{{ auth()->user()->email }}" placeholder="Change your email" required>
+                        value="{{ auth()->user()->email }}" placeholder="Change your email" >
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                 </div>
             </div>
@@ -20,7 +30,7 @@
                 <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
                     <input type="text" name="name" class="form-control" id="inputName" 
-                        value="{{ auth()->user()->name }}" placeholder="Change your name" required>
+                        value="{{ auth()->user()->name }}" placeholder="Change your name" >
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                 </div>
             </div>
@@ -29,7 +39,7 @@
                 <label for="inputNic" class="col-sm-2 col-form-label">NIC</label>
                 <div class="col-sm-10">
                     <input type="text" name="nic" class="form-control" id="inputNic" 
-                        value="{{ auth()->user()->nic }}" placeholder="Change your NIC" required>
+                        value="{{ auth()->user()->nic }}" placeholder="Change your NIC">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                 </div>
             </div>
@@ -50,14 +60,14 @@
             <div class="form-group row">
                 <label for="inputContact" class="col-sm-2 col-form-label">Contact Number</label>
                 <div class="col-sm-10">
-                    <input type="text" name="contact" class="form-control" 
+                    <input type="text" name="telephone" class="form-control" 
                         id="inputContact"  placeholder="Enter your contact Number">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                 </div>
             </div>
             <!-- Address Line1 -->
              <div class="form-group row">
-                <label for="inputAddress" class="col-sm-2 col-form-label">Delivery Address</label>
+                <label for="inputAddress" class="col-sm-2 col-form-label">Your Address</label>
                 <div class="col-sm-10">
                     <input type="text" name="address1" class="form-control" 
                         id="address1"  placeholder="Line number 1">
@@ -66,7 +76,7 @@
             </div>
             <!-- Address Line2 -->
             <div class="form-group row">
-                <label for="inputAddress" class="col-sm-2 col-form-label">Delivery Address</label>
+                <label for="inputAddress" class="col-sm-2 col-form-label">Your Address(optional)</label>
                 <div class="col-sm-10">
                     <input type="text" name="address2" class="form-control" 
                         id="address2"  placeholder="Line number 2">
@@ -86,7 +96,7 @@
             <div class="form-group row">
                 <label for="inputAddress" class="col-sm-2 col-form-label">Postal Code</label>
                 <div class="col-sm-10">
-                    <input type="text" name="postalcode" class="form-control" 
+                    <input type="text" name="postal_code" class="form-control" 
                         id="postal_code"  placeholder="Postal Code">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                 </div>
@@ -102,7 +112,7 @@
             <div class="form-group row">
                 <label for="inputCourse" class="col-sm-2 col-form-label">Courses conducting</label>
                 <div class="col-sm-10">
-                    <select name="courses[]" class="form-control col-md-15" id="coursesAvailable">
+                    <select name="courses" class="form-control col-md-15" id="coursesConducting">
                         <option value="" disabled selected>Select your conducting courses</option>
                             @foreach($courses as $course)
                                 <option  value="{{ $course->id }}">{{ $course->title }}</option>
@@ -133,7 +143,7 @@
             <div class="form-group row">
                 <label for="inputExperience" class="col-sm-2 ">Experience Level</label>
                     <div class="col-sm-10">
-                    <select name="days" class="form-control col-md-15" id="experience">
+                    <select name="e" class="form-control col-md-15" id="experience">
                             <option value="" disabled selected>Select your relevant experience level</option>
                             <option value="1">Less than 1 year</option>   
                             <option value="2">1-3 years</option> 
@@ -171,22 +181,11 @@
                     <center><a href="YourAdvertisements"><font color=white>Your Advertisements &nbsp &nbsp</font></a><i class="fa fa-angle-right"></i></center>
                 </div>
             </div>
+        </div>
     </div>
-     
-            <!-- image upload -->
-            <div class="col-md-6">
-                <fieldset class="fieldset">
-                    <h3 class="fieldset-title">Upload your picture</h3> 
-                        <div class="mx-auto" style="width: 35rem;">  
-                            <center>         
-                                <img src="/pubic/dist/image/avatar5.png" style="width:200px; height:200px; float:left; border-radius:50%; margin-right:25px;">
-                            </center>
-                            <input type="file" name="profile_pic">
-                        </div>
-                </fieldset>
-            </div>
-
-            <input type="submit" class="btn offset-md-2 btn-primary" value="Update Your Details">
+    <br>
+    <div>
+        <input type="submit" class="btn offset-md-2 btn-primary" value="Update Your Details">
     </div>
 </div>
 

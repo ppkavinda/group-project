@@ -31,18 +31,27 @@ class UserController extends Controller
 
     public function edit(Request $request, User $user)
     {
+        $request->validate([
+            'address1' => 'required|min:10',
+            'city' => 'required|string',
+            'postal_code' => ['required', 'min:5', 'max:5', 'regex:/^[0-9]{5}$/u'],
+            'telephone' => ['required', 'min:9', 'regex:/^((0{2}|\+)\d{11}|0\d{9})$/']
+        ]);
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->nic = $request->nic;
-        $user->contact = $request->contact;
+        $user->telephone = $request->telephone;
         $user->address1 = $request->address1;
         $user->address2 = $request->address2;
         $user->city = $request->city;
         $user->postal_code = $request->postal_code;
         $user->description = $request->description;
         $user->profile_pic = $request->profile_pic;
-        
-
+        $user->courses= $request->courses;
+        $user->days= $request->days;
+        $user->experience= $request->experience;
+        $user->education= $request->education;
         $user->save();
         return $user;
     }
