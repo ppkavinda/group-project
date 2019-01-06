@@ -83,12 +83,12 @@
 						</li>
 						@guest
 						<li class="active nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}"> 
-							<a class="nav-link menu__link" data-toggle="modal" data-target="#myModal">
+							<a class="nav-link menu__link" href="{{ route('login') }}">
 							<i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
 								<!-- <button class="btn btn-primary" >Login In</button> -->
 						</li>
 						<li class="nav-item menu__item {{ Request::is('register') ? 'menu__item--current' : '' }}">
-								<a class="nav-link menu__link"  data-toggle="modal" data-target="#myModal1">
+								<a class="nav-link menu__link" href="{{ route('register') }}" >
 								<i class="fa fa-user" aria-hidden="true"></i> Sign Up </a>
 						</li>
 						@else
