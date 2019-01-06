@@ -23,12 +23,14 @@ class UserController extends Controller
 
         $role=$user->role;
         //dd($role);
+        $courses = $user->courses;
         if($role == 1)
         {
-          return view('admin.profile.index', ['user'=>$user]);
+         
+          return view('admin.profile.index', ['user'=>$user],['courses'=>$courses]);
         }
 
-        $courses = $user->courses;
+        
       
         return view('profile.index', ['user'=>$user],['courses'=>$courses]);
     }
@@ -96,9 +98,19 @@ class UserController extends Controller
      
      }
      
+     public function user_Details(){	
+        	
+        $users = \App\User::all();	
+        $roles=DB::table('roles')->get();
+       //dd($users);
+        return view('admin.users.view',['users'=>$users],['roles'=>$roles]);	
+         
+     }	
+         
+ 
 
   
- }
+ 
    
 // Update Password
     public function updatePassword(Request $request) {
@@ -112,5 +124,28 @@ class UserController extends Controller
         }
         echo 'here update query for password';
     }
+
+   
+    
+    public function editRole(Request $request,$id= null)
+    { 
+        
+        if($request->isMethod('post')){
+            $data = $request->all();
+
+            User::where(['id'=>$id])->update(['role'=>$data['category_id']
+            ]);
+            return redirect('/admin/view-users');
+        }
+        $roles=DB::table('roles')->get();
+        $usersdetails =User::where(['id'=>$id])->first();
+        //dd($courseDetails);
+        return view('admin.users.edit')->with(compact(['roles','usersdetails']));
+    }
+   
+    public function view_user_details(){
+
+    }
 }
+
 

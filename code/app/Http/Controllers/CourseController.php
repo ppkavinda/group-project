@@ -15,6 +15,7 @@ use PDF;
 
 class CourseController extends Controller
 {
+
     public function index() {
         $courses = \App\Course::get();
 	    return view('study.courses.index', ['courses' => $courses]);
@@ -112,7 +113,7 @@ class CourseController extends Controller
     }
 
     public function viewCourses(){
-        $courses = \App\Course::paginate(2);
+        $courses = \App\Course::paginate(5);
      //   dd($courses);
         return view('admin.course.view')->with(compact('courses'));
     }
@@ -137,7 +138,7 @@ class CourseController extends Controller
         $search =$request->get("search");
         $courses=\App\Course::where('courses.title','like','%'.$search.'%') 
                     ->orWhere('courses.subtitle','like','%'.$search.'%') 
-                    ->paginate(2);  
+                    ->paginate(5);  
        // dd($courses);
         $this->generatePDF($courses);
     
@@ -146,7 +147,7 @@ class CourseController extends Controller
 
     public function generatePDF()
     {
-        $courses = \App\Course::paginate(2);
+        $courses = \App\Course::paginate(5);
         $pdf= PDF::loadview('admin.course.view',compact('courses'));
         return $pdf->download('courses.pdf');
     }

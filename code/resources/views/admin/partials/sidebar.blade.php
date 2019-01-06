@@ -125,12 +125,17 @@
                   <p>Search</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="/admin/search-users" class="nav-link">
+                  <i class="fa fa-gear nav-icon"></i>
+                  <p>Manage role</p>
+                </a>
+              </li>
             </ul>
           </li>
           <a href="index3.html" class="brand-link">
-    <img src="/dist/img/logo.jpg"  alt="logo"  class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light"> Learining Centre</span>
+    
+      <span class="brand-text font-weight-light"> Learning Centre</span>
     </a>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -141,18 +146,6 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/admin/add-category" class="nav-link">
-                  <i class="fa fa-edit nav-icon"></i>
-                  <p>Add Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/view-category" class="nav-link">
-                  <i class="fa fa-edit nav-icon"></i>
-                  <p>Edit Category</p>
-                </a>
-              </li>
               <li class="nav-item">
                 <a href="/admin/view-category" class="nav-link">
                   <i class="fa fa-table nav-icon"></i>
@@ -254,8 +247,7 @@
           
           
           <a href="index3.html" class="brand-link">
-    <img src="/dist/img/logo.jpg"  alt="logo"  class="brand-image img-circle elevation-3"
-           style="opacity: .8">
+    
       <span class="brand-text font-weight-light"> Shopping Centre</span>
     </a>
     <li class="nav-item has-treeview">
@@ -267,15 +259,8 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-            
               <li class="nav-item">
-                <a href="/admin/view-inquiry" class="nav-link">
-                  <i class="fa fa-edit nav-icon"></i>
-                  <p>Add Product</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/view-inquiry" class="nav-link">
+                <a href="/admin/view-products" class="nav-link">
                   <i class="fa fa-table nav-icon"></i>
                   <p>View Product</p>
                 </a>
@@ -284,24 +269,18 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-order"></i>
-              <i class="nav-icon fas fa-clipboard-check"></i>
+              <i class="nav-icon fa fa-file"></i>
               <p>
                 Order
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-            
+          
               <li class="nav-item">
-                <a href="/admin/view-inquiry" class="nav-link">
-                  <i class="fa fa-edit nav-icon"></i>
-                  <p>Add Order</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/view-inquiry" class="nav-link">
-                  <i class="fa fa-table nav-icon"></i>
+                <a href="/admin/view-orders" class="nav-link">
+               
+                  <i class="fa fa-file nav-icon"></i>
                   <p>View Order</p>
                 </a>
               </li>

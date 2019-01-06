@@ -65,9 +65,8 @@
                     <th>Body</th>
                     <th>Post id</th>
                     <th>Post title</th>
-                    
+                    <th>User Name</th>                   
                     <th>User id</th>
-                    <th>User Name</th>
                     <th>Create At</th>
                    
                     <th width="250" >Actions</th>

@@ -102,7 +102,7 @@
                     <td width="300" style="text-align: center">
                     <a href="{{url('posts/'.$post->id ) }}" class="btn btn-secondary btn mini" 
                     onclick="return confirm('Do you want to see this details?')" >View</a>
-                    <a href="{{url('posts/'.$post->id ) }}" class="btn btn-primary btn mini" 
+                    <a href="{{url('posts/'.$post->id.'/edit' ) }}" class="btn btn-primary btn mini" 
                     onclick="return confirm('Do you want to edit this details?')" >Edit</a>
                     
                     <a href="{{ url('/admin/delete-post/'.$post->id)}}"class="btn btn-danger btn mini" 
@@ -135,7 +135,7 @@
             </div>
             
             <div class="col-sm-6">
-            {{$posts->links()}}
+            
      
             </div>    
             

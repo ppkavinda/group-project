@@ -72,4 +72,11 @@ class OrderController extends Controller
         $order->telephone = $request->delivery['telephone'] ?: auth()->user()->telephone;
         $order->save();
     }
+
+    public function view_Order_table(){
+        $orders=\App\Order::all();
+       //dd($orders);
+        return view('admin.order.view')->with(compact('orders'));
+
+    }
 }

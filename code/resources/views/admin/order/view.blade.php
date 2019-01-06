@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Courses Table</h1>
+            <h1>Orders Table</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-              <li class="breadcrumb-item active">Courses Table</li>
+              <li class="breadcrumb-item active">Orders Table</li>
             </ol>
           </div>
         </div>
@@ -30,7 +30,7 @@
     
       <div class="col-sm-6">
       <div class="col-md-6">
-                <input class="form-control" id="myInput" type="text" placeholder="Search...">
+                <input class="form-control" id="myInput" type="text" placeholder="Search Order">
                 <br>
             </div>
         <!-- <form action="/admin/search-course" method="get">
@@ -61,7 +61,7 @@
                 </div>
 
               @endif
-                <h3 class="card-title">Courses</h3>
+                <h3 class="card-title">Products</h3>
               </div>
               <!-- /.card-header -->
               <div class="row">
@@ -71,44 +71,45 @@
              <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th style="width: 40px" color="solid black">Course ID</th>
-                    <th>Category Name</th>
-                    <th>Course Name</th>
-                    <th>Sub Title</th>
-                    <th>Description</th>
+                    <th style="width: 40px" color="solid black">Product ID</th>
+                    <th>Product Name</th>
+                    <th>Unit Price</th>
+                    <th>amount</th>
+                    <th>reserved</th>
+                   
+                    
+                    <th>User id</th>
+                    
+                   
+                    <th>category id</th>
+                    <th>ratings</th>
+                    <th>kind</th>
+                    <th>Type</th>
+                    <th>sizes</th>
                     <!--<th>Cover Image</th>
                     
                     <th>updated_at</th> -->
-                    <th width="250" >Actions</th>
+                    
                   
                   </tr>
                   </thead>
                   <tbody id="myTable">
                   
-                  @foreach($courses as $course)
+                  @foreach($orders as $order)
                    
                    <tr>
-                    <td><b>{{$course->id}}</b></td>
-                    <td><b>{{$course->category->title}}</b></td>
-                    <td><b>{{$course->title}}</b></td>
-                    <td><b>{{$course->subtitle}}</b></td>
-                    <td><b>{{$course->description}}</b></td>
-                  <!--  <td><img class="img-fluid" src="/storage/{{$course->cover_img}}" style="width:150px; "></td>-
+                    <td><b>{{$order->id}}</b></td>
+                    <td><b>{{$order->status}}</b></td>
+                    <td><b>{{$order->address1}}</b>,<b>{{$order->address2}}</b></td>
+                   
+                    <td><b>{{$order->postal_code	}}</b></td>
                     
-                    <td><b> {{$course->updated_at}} </b>  </td>-->
-                    <td width="300" style="text-align: center">
-
-                    <a href="{{url('/admin/edit-course/'.$course->id) }}" class="btn btn-primary btn mini" 
-                    onclick="return confirm('Do you want to edit this details?')" >Edit</a>
                     
-                    <a href="{{ url('/admin/delete-course/'.$course->id)}}"class="btn btn-danger btn mini" 
-                     onclick="return confirm('Are You Sure ?')">Delete</a>
-                  
-                    
-                    <a href="{{ url('/admin/view-course/posts/'.$course->id)}}"class="btn btn-info btn mini" 
-                     onclick="return confirm('Do You want to see ?')">See  Posts</a>
-                    
-                    </td> 
+                    <td><b>{{$order->telephone}}</b></td>
+                   
+                    <td><b>{{$order->payment_id}}</b></td>
+                    <td><b>{{$order->user_id}}</b></td>
+                   
                     </tr>
                 
                  @endforeach
@@ -118,7 +119,7 @@
                   
                 
                 </table>
-                {{$courses->links()}}
+               
               </div>
               <!-- /.card-body -->
               

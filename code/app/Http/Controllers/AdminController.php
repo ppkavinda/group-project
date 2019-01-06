@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\User;
 class AdminController extends Controller
 {
@@ -30,4 +31,15 @@ class AdminController extends Controller
     {
         return $user;
     }
+
+    public function main()
+    {
+        $user = auth()->user();
+        //dd($user);
+            return view('admin.index');
+        
+
+    }
+
+   
 }
