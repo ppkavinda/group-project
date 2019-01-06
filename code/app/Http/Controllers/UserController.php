@@ -106,4 +106,5 @@ class UserController extends Controller
         }
         echo 'here update query for password';
     }
+    
 }

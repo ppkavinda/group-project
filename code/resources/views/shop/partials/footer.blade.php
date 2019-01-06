@@ -17,10 +17,12 @@
 						<div class="col-md-4 sign-gd">
 							<h4>Shopping <span>Center</span> </h4>
 							<ul>
-								<li><a href="/shop">Home</a></li>
-								<li><a href="/clothes">Clothes</a></li>
-								<li><a href="/slippers">Slippers</a></li>
-								<li><a href="/shoes">Shoes</a></li>
+								<li><a href="/shop">Shopping Center</a></li>
+								<li><a href="/categories/{{'1'}}">Clothes</a></li>
+								<li><a href="/categories/{{'5'}}">Shoes & Slippers</a></li>
+								<li><a href="/categories/{{'2'}}">Masks</a></li>
+								<li><a href="/categories/{{'3'}}">Soap</a></li>
+								<li><a href="/categories/{{'4'}}">Spices</a></li>
 								<li><a href="/about">About</a></li>
 								<li><a href="/contact">Contact</a></li>
 							</ul>
@@ -28,9 +30,8 @@
 						<div class="col-md-4 sign-gd">
 							<h4>Learning <span>Center</span> </h4>
 							<ul>
-								<li><a href="/study">Home</a></li>
-								<li><a href="/register">Sign Up</a></li>
-								<li><a href="/login">Sign In</a></li>
+								<li><a href="/">Home</a></li>
+								<li><a href="/study">Learning Center</a></li>
 								<li><a href="/courses">Courses</a></li>
 								<li><a href="/about">About</a></li>
 								<li><a href="/contact">Contact</a></li>
@@ -55,22 +56,10 @@
 									</div>
 									<div class="w3-address-right">
 										<h6>Email Address</h6>
-										<p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
+										<p>Email :<a href="mailto:vidahta@gov.com"> vidatha@gov.com</a></p>
 									</div>
 									<div class="clearfix"> </div>
 								</div>
-								<!--<div class="w3-address-grid">
-									<div class="w3-address-left">
-										<i class="fa fa-map-marker" aria-hidden="true"></i>
-									</div>
-									<div class="w3-address-right">
-										<h6>Location</h6>
-										<p>Divisional Secretariat Office, Udawaththa Rd, Malabe.
-										
-										</p>
-									</div>
-									<div class="clearfix"> </div>
-								</div>-->
 							</div>
 						</div>
 						<div class="clearfix"></div>

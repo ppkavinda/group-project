@@ -38,7 +38,7 @@
                                     <div class="form-group">
                                         <label for="amount" id="labels">&nbsp Name of the product &nbsp</label>
                                         <br>
-                                        <input type ="number" id="select" name="amount" required>    
+                                        <input multi class="form-control" type ="number" id="select" name="amount" min="1" required>    
                                     </div>
                                 </div>
                                 </div>
@@ -84,13 +84,13 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="price" id="labels">&nbsp Price(one piece Rs.) &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="price">
+                                            <input multi class="form-control" type="number" id="select" min="0" name="price">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="discount" id="labels">&nbsp Discount(one piece Rs.) &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="discount" required>
+                                            <input multi class="form-control" type="number" id="select" name="discount" min="0" >
                                         </div>
                                     </div>
                                 </div>

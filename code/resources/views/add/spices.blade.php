@@ -53,15 +53,15 @@
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                 <label for="sizes100" id="labels">100g</label>
-                                                <input type ="number" name="sizes100" style="width:75px;">
+                                                <input type ="number" name="sizes100" min="1" style="width:75px;">
                                                 </div>
                                                 <div class="col-sm-4">
                                                 <label for="sizes200" id="labels">200g</label>
-                                                <input type ="number" name="sizes200" style="width:75px;">
+                                                <input type ="number" name="sizes200" min="1" style="width:75px;">
                                                 </div>
                                                 <div class="col-sm-4">
                                                 <label for="sizes400" id="labels">400g</label>
-                                                <input type ="number" name="sizes400" style="width:75px;">
+                                                <input type ="number" name="sizes400" min="1" style="width:75px;">
                                                 </div>
                                             </div>     
                                         </div>
@@ -86,13 +86,13 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="price" id="labels">&nbsp Price(Per Packet Rs.) &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="price" required>
+                                            <input multi class="form-control" type="number" id="select" name="price" min="0" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="discount" id="labels">&nbsp Discount(Per Packect Rs.) &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="discount" required>
+                                            <input multi class="form-control" type="number" id="select" name="discount" min="0">
                                         </div>
                                     </div>
                                 </div>

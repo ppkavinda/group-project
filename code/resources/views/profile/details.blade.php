@@ -169,12 +169,6 @@
         </form>
             <br>
          
-            <!-- Add advertisment -->
-            <div class="col-md-5">
-                <div class="viewAdd">
-                    <center><a href="YourAdvertisements"><font color=white>Your Advertisements &nbsp &nbsp</font></a><i class="fa fa-angle-right"></i></center>
-                </div>
-            </div>
     </div>
      
             <!-- image upload -->
@@ -191,6 +185,12 @@
             </div>
 
             <input type="submit" class="btn offset-md-2 btn-primary" value="Update Your Details">
+            <!-- Add advertisment -->
+            <div class="col-md-5">
+                <a href="YourAdvertisements" class="btn btn-dark">Your Advertisements &nbsp &nbsp<i class="fa fa-angle-right"></i></a>
+            </div>
+            <br>
     </div>
+    <br>
 </div>
 

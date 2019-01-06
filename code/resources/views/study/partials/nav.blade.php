@@ -41,32 +41,9 @@
 							<a class="nav-link menu__link" href="/">Home<span class="sr-only">(current)</span></a>
 						</li>
 
-						<li class="nav-item menu__item {{ Request::is('study') ? 'menu__item--current' : '' }}">
-							<a class="nav-link menu__link" href="/study">Learning Center</a>
+						<li class="nav-item menu__item {{ Request::is('shop') ? 'menu__item--current' : '' }}">
+							<a class="nav-link menu__link" href="/shop">ShoppingCenter</a>
 						</li>
-						<!-- <li class="nav-item dropdown menu__item">
-							<a href="#" class="nav-link dropdown-toggle menu__link" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-
-								Categories
-								<span class="fa fa-caret-down"></span>
-							</a>
-							<ul class="dropdown-menu multi-column columns-3" area-labelledby="navbarDropdown">
-								<div class="agile_inner_drop_nav_info row">
-									<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-										<a><img src="/dist/img/top2.jpg" alt="categories"/></a>
-									</div>
-									<div class="col-sm-3 multi-gd-img">
-										<ul class="multi-column-dropdown">
-											<li><a href="/categories/{{'1'}}">Clothes</a></li>
-											<li><a href="/categories/{{'2'}}">Masks</a></li>
-											<li><a href="/categories/{{'3'}}">Soap</a></li>
-											<li><a href="/categories/{{'4'}}">Spices</a></li>
-											<li><a href="/categories/{{'5'}}">Shoes</a></li>
-										</ul>
-									</div>
-								</div>
-							</ul>
-						</li> -->
 						<li class="nav-item menu__item {{ Request::is('courses*') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/courses">Courses</a>
 						</li>
@@ -80,7 +57,7 @@
 					<ul class="navbar-nav menu__list ml-auto"> 
 						<li class=" nav-item menu__item">
 							<div class="wthreecartaits wthreecartaits2 cart cart box_1" id="testcart" title="Go to Shopping center"> 
-								<a href="/shop" class="w3view-cart"><i class="fa fa-cart-arrow-down" ></i></a>
+								<a href="/study" class="w3view-cart"><i class="fa fa-book" ></i></a>
 							</div>
 						</li>
 <<<<<<< HEAD
