@@ -189,5 +189,6 @@
         <button type="submit" class="btn offset-md-2 btn-primary">Update Profile
         </button>
     </div>
+    <br>
 </div>
 

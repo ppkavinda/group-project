@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Category;
 use App\Course;
 use Image;
+use PDF;
 
 class CourseController extends Controller
 {
@@ -102,7 +103,7 @@ class CourseController extends Controller
                
             ]);
            // dd($filename);
-            return redirect('/admin/view-course')->with('flash_message_success','Category edited Sucessfully!');
+            return redirect('/admin/view-course')->with('flash_message_success','Courses edited Sucessfully!');
         }
         $categories = Category::get();
         $courseDetails =Course::where(['id'=>$id])->first();
@@ -111,23 +112,47 @@ class CourseController extends Controller
     }
 
     public function viewCourses(){
-        $courses = \App\Course::get();
-        //dd($courses);
+        $courses = \App\Course::paginate(2);
+     //   dd($courses);
         return view('admin.course.view')->with(compact('courses'));
     }
 
-    public function deleteCourse($id = null){
+    public function deleteCourse($id = null)
+    {
         if(!empty($id)){
             Course::where(['id'=> $id])->delete();
-            return redirect()->back()->with('flash_message_success','Category deleted Sucessfully!');
+            return redirect()->back()->with('flash_message_success','Courses deleted Sucessfully!');
         }
 
     }
 
-    public function indexAdmin() {
+    public function indexAdmin() 
+    {
         $courses = \App\Course::get();
 	    return view('admin.course.select', ['courses' => $courses]);
     }
+
+    public function search(Request $request)
+    {
+        $search =$request->get("search");
+        $courses=\App\Course::where('courses.title','like','%'.$search.'%') 
+                    ->orWhere('courses.subtitle','like','%'.$search.'%') 
+                    ->paginate(2);  
+       // dd($courses);
+        $this->generatePDF($courses);
+    
+        return view('admin.course.view',['courses'=>$courses]);
+    }
+
+    public function generatePDF()
+    {
+        $courses = \App\Course::paginate(2);
+        $pdf= PDF::loadview('admin.course.view',compact('courses'));
+        return $pdf->download('courses.pdf');
+    }
+
+
+ 
 
     
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use DB;
 use App\User;
 use App\Order;
@@ -11,6 +12,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+
 class UserController extends Controller
 {
     public function __consctuct()
@@ -22,14 +24,21 @@ class UserController extends Controller
     {
         $user = auth()->user();
         $orders = Order::all();
-        
+        $products=$order->products;
         $courses = $user->courses;
-        
+        return $products;
         return view('profile.index',compact('user','orders','courses','products'));
     }
     
-    public function show (User $user) {
+    public function show(User $user)
+    {
         $courses = $user->courses;
+        $role=$user->role;
+        // dd($user);
+        if ($role == 1) {
+            return view('admin.profile.index', compact('user'));
+        }
+
         return view('profile.index', compact('user'));
     }
 
@@ -65,26 +74,42 @@ class UserController extends Controller
     {
         return auth()->user();
     }
-    
-
-//myOrders
-
-    // public function myOrder(User $user){
-
        
-        
-    // }
+    public function search_user(Request $request)
+    {
+        $request->validate([
+             'search_users' => 'required',
+         ]);
+        $search = $request->input('search_users');
+        if ($search != "") {
+            $users= \App\User::join('roles', 'users.role', '=', 'roles.id')
+                             ->select('users.*', 'roles.role')
+                             ->where('name', 'LIKE', '%'. $search .'%')
+                             ->orWhere('email', 'LIKE', '%'.$search .'%')
+                             ->orWhere('nic', 'LIKE', '%'.$search .'%')
+                             ->orWhere('roles.role', 'LIKE', '%'. $search .'%')
+                             ->get();
+            if (count($users) > 0) {
+                return view('admin.users.search')->withDetails($users)->withQuery($search);
+            }
+             
+            //dd($users);\
+            return view('admin.users.search')->withMessage("No Users Found! ");
+        }
+    }
    
-// Update Password
-    public function updatePassword(Request $request) {
+    // Update Password
+    public function updatePassword(Request $request)
+    {
         $oldPassword = $request->oldPassword;
         $newPassword = $request->newPassword;
         if(!Hash::check($oldPassword, Auth::user()->password)){
           return back()->with('msg','The specified password does not match to your password'); //when user enter wrong password as current password
         }else{
             $request->user()->fill(['password' => Hash::make($newPassword)])->save(); //updating password into user table
-           return back()->with('msg','Password has been updated');
+            return back()->with('msg', 'Password has been updated');
         }
         echo 'here update query for password';
     }
+    
 }

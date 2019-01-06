@@ -33604,19 +33604,91 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 // import AddToCartButton from './AddToCartButton'
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['initialProduct'],
+    props: ['initialProduct', 'initialSizes'],
     // components: {AddToCartButton},
     data: function data() {
         return {
             product: {
                 quantity: 1
+                // size: 'a',
             },
+            sizes: {},
             errors: {
-                quantity: []
+                quantity: [],
+                size: []
             }
         };
     },
@@ -33652,15 +33724,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onClick: function onClick() {
             var _this = this;
 
-            if (!this.product.quantity) {
+            console.log(this.sizes[this.product.size], this.product.quantity);
+            if (!this.sizes[this.product.size]) {
+                this.errors.quantity = ['Invalid input'];
+                return;
+            }
+            if (!(parseInt(this.product.quantity) > 0)) {
                 this.errors.quantity = ['Invalid quantity'];
                 return;
             }
+            if (!(parseInt(this.product.quantity) <= this.sizes[this.product.size])) {
+                this.errors.quantity = ['Only ' + this.sizes[this.product.size] + ' left'];
+                return;
+            }
             axios.post('/cart/' + this.product.id, this.product).then(function (res) {
+                _this.sizes[_this.product.size] -= parseInt(_this.product.quantity);
                 window.Event.$emit('added-to-cart', res.data);
             }).catch(function (err) {
                 _this.errors.quantity = ["Invalid quantity"];
-                // TODO replace to open the login model
                 if (err.response.status == 401) {
                     // console.log(err.response) 
                     window.location.replace('/login');
@@ -33669,18 +33750,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         clearErrors: function clearErrors() {
             this.errors = {
-                quantity: []
+                quantity: [],
+                size: []
             };
         }
     },
     computed: {
         getRating: function getRating() {
             return Math.round(this.product.ratings);
+        },
+        sizesAsArray: function sizesAsArray() {
+            var sz = this.sizes;
+            delete sz.id;
+            delete sz.product_id;
+            delete sz.created_at;
+            delete sz.updated_at;
+
+            Object.keys(sz).forEach(function (s) {
+                if (s[0] == 'r') delete sz[s];
+                if (!sz[s]) delete sz[s];
+            });
+            return Object.keys(sz);
         }
     },
     created: function created() {
+        var _this2 = this;
+
+        this.sizes = JSON.parse(this.initialSizes);
         this.product = JSON.parse(this.initialProduct);
+
         Vue.set(this.product, 'quantity', 1);
+        Vue.set(this.product, 'size', this.sizesAsArray[0]);
+        // Vue.set(this.product, 'previousSize',  '')
+
+        window.Event.$on('removed-from-cart', function (product) {
+            _this2.sizes[product.product.options.size] += parseInt(product.product.qty);
+        });
     }
 });
 
@@ -33693,106 +33798,193 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "rating1" }, [
-      _c("span", { staticClass: "starRating" }, [
-        _c("input", {
-          attrs: { disabled: "", id: "rate5", type: "radio", value: "5" },
-          domProps: { checked: _vm.getRating == 5 }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "rate5" } }, [_vm._v("5")]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { disabled: "", id: "rate4", type: "radio", value: "4" },
-          domProps: { checked: _vm.getRating == 4 }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "rate4" } }, [_vm._v("4")]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { disabled: "", id: "rate3", type: "radio", value: "3" },
-          domProps: { checked: _vm.getRating == 3 }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "rate3" } }, [_vm._v("3")]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { disabled: "", id: "rate2", type: "radio", value: "2" },
-          domProps: { checked: _vm.getRating == 2 }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "rate2" } }, [_vm._v("2")]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { disabled: "", id: "rate1", type: "radio", value: "1" },
-          domProps: { checked: _vm.getRating == 1 }
-        }),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "rate1" } }, [_vm._v("1")])
+    _c("div", { staticClass: "row" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "item-info-product " }, [
+          _c("div", { staticClass: "info-product-price" }, [
+            _c("span", { staticClass: "item_price", attrs: { id: "price" } }, [
+              _vm._v(
+                "LKR " + _vm._s(_vm.product.price - _vm.product.discount * 0.01)
+              )
+            ]),
+            _vm._v(" "),
+            _vm.product.discount
+              ? _c("del", { staticStyle: { color: "red" } }, [
+                  _vm._v("LKR " + _vm._s(_vm.product.price))
+                ])
+              : _vm._e()
+          ])
+        ])
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "color-quality" }, [
-      _c("div", { staticClass: "color-quality-right" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.product.quantity,
-              expression: "product.quantity"
-            }
-          ],
-          staticClass: "p-1",
-          attrs: { id: "quantity", type: "number", min: "1" },
-          domProps: { value: _vm.product.quantity },
-          on: {
-            click: _vm.clearErrors,
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.product, "quantity", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _vm.errors.quantity.length
-          ? _c("small", { staticClass: "invalid-feedback d-block pl-3" }, [
-              _vm._v(_vm._s(_vm.errors.quantity[0]))
-            ])
-          : _vm._e()
+    _c("div", { staticClass: "row" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "rating1 item-info-product" }, [
+          _c("span", { staticClass: "starRating" }, [
+            _c("input", {
+              attrs: { disabled: "", id: "rate5", type: "radio", value: "5" },
+              domProps: { checked: _vm.getRating == 5 }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "rate5" } }, [_vm._v("5")]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { disabled: "", id: "rate4", type: "radio", value: "4" },
+              domProps: { checked: _vm.getRating == 4 }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "rate4" } }, [_vm._v("4")]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { disabled: "", id: "rate3", type: "radio", value: "3" },
+              domProps: { checked: _vm.getRating == 3 }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "rate3" } }, [_vm._v("3")]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { disabled: "", id: "rate2", type: "radio", value: "2" },
+              domProps: { checked: _vm.getRating == 2 }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "rate2" } }, [_vm._v("2")]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { disabled: "", id: "rate1", type: "radio", value: "1" },
+              domProps: { checked: _vm.getRating == 1 }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "rate1" } }, [_vm._v("1")])
+          ])
+        ])
       ])
     ]),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "occasion-cart",
-        staticStyle: { position: "relative", top: "3rem", width: "40%" }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "snipcart-details top_brand_home_details item_add single-item p-3 minicart-showing"
-          },
-          [
+    _c("div", { staticClass: "row" }, [
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "item-info-product" }, [
+          _c("div", { staticClass: "info-product-price" }, [
             _c(
-              "a",
+              "select",
               {
-                staticClass: "hvr-outline-out button2",
-                on: { click: _vm.onClick }
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.product.size,
+                    expression: "product.size"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "size", name: "sizes" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.product,
+                      "size",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
               },
-              [_vm._v("Add to cart")]
+              _vm._l(_vm.sizesAsArray, function(size, index) {
+                return _c("option", { key: index }, [_vm._v(_vm._s(size))])
+              })
             )
-          ]
-        )
-      ]
-    )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _vm._m(3),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "item-info-product" }, [
+          _c("div", { staticClass: "info-product-price" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.product.quantity,
+                  expression: "product.quantity"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "quantity", type: "number", min: "1" },
+              domProps: { value: _vm.product.quantity },
+              on: {
+                change: _vm.clearErrors,
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.product, "quantity", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors.quantity.length
+              ? _c("small", {
+                  staticClass: "invalid-feedback d-block pl-3",
+                  domProps: { textContent: _vm._s(_vm.errors.quantity[0]) }
+                })
+              : _vm._e()
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "item-info-product" }, [
+          _c("div", { staticClass: "info-product-price" }, [
+            _c(
+              "div",
+              {
+                staticClass: "occasion-cart",
+                staticStyle: { position: "relative", top: "3rem", width: "40%" }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "snipcart-details top_brand_home_details item_add single-item p-3 minicart-showing"
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "hvr-outline-out button2",
+                        on: { click: _vm.onClick }
+                      },
+                      [_vm._v("Add to cart")]
+                    )
+                  ]
+                )
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -33800,8 +33992,60 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "quantity" } }, [
-      _c("h5", [_vm._v("Quality :")])
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "item-info-product " }, [
+        _c("div", { staticClass: "info-product-price" }, [
+          _c("label", { attrs: { for: "price" } }, [
+            _c("b", [_vm._v("Price ")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "item-info-product " }, [
+        _c("div", { staticClass: "info-product-price" }, [
+          _c("label", { attrs: { for: "price" } }, [
+            _c("b", [_vm._v("Ratings ")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "item-info-product" }, [
+        _c("div", { staticClass: "info-product-price" }, [
+          _c(
+            "label",
+            { staticClass: "col-form-label", attrs: { for: "size" } },
+            [_c("b", [_vm._v("Size")])]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "item-info-product" }, [
+        _c("div", { staticClass: "info-product-price" }, [
+          _c(
+            "label",
+            { staticClass: "col-form-label", attrs: { for: "amount" } },
+            [_c("b", [_vm._v("Quantity")])]
+          )
+        ])
+      ])
     ])
   }
 ]
@@ -34064,7 +34308,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeItem: function removeItem(item) {
             var _this = this;
 
-            axios.delete('/cart/' + item.rowId).then(function (res) {
+            axios.delete('/cart/' + item.rowId, { data: item }).then(function (res) {
 
                 Vue.delete(_this.items, item.rowId);
 
@@ -34072,7 +34316,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.disableCheckout = _this.items == null || !Object.keys(_this.items);
 
                 // emit an event to catch from cartBadge
-                window.Event.$emit('removed-from-cart', { rowId: item.rowId, qty: item.qty });
+                window.Event.$emit('removed-from-cart', { rowId: item.rowId, qty: item.qty, product: item });
 
                 // TODO: redirect to better place
                 // redirect to /shop if no products in the cart
@@ -34080,6 +34324,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (err) {
                 console.log(err);
             });
+        },
+        displayName: function displayName(item) {
+            console.log(item.options.size);
+            return item.name + (' (' + item.options.size + ')');
         },
         closeModel: function closeModel(e) {
             this.show = false;
@@ -34171,7 +34419,9 @@ var render = function() {
                             _c("a", {
                               staticClass: "minicart-name",
                               attrs: { href: "/products/" + item.id },
-                              domProps: { textContent: _vm._s(item.name) }
+                              domProps: {
+                                textContent: _vm._s(_vm.displayName(item))
+                              }
                             })
                           ]),
                           _vm._v(" "),

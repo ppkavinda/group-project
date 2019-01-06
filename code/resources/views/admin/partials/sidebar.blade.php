@@ -39,7 +39,13 @@
               
             </ul>
           </li>
-          <li class="nav-item has-treeview">
+          <li class="nav-item">
+              <a href="/profile" class="nav-link">
+                <i class="fa fa-user nav-icon"></i>
+                <p> My Profile</p>
+              </a>
+            </li>
+      <!--    <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>
@@ -50,19 +56,19 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="admin/profile" class="nav-link">
+              <a href="/admin/profile" class="nav-link">
                 <i class="fa fa-user nav-icon"></i>
                 <p> My Details</p>
               </a>
               </li>
               <li class="nav-item">
-              <a href="admin/profile" class="nav-link">
+              <a href="/profile" class="nav-link">
                 <i class="fa fa-book nav-icon"></i>
                 <p> My Courses</p>
               </a>
               </li>
               <li class="nav-item">
-              <a href="admin/profile" class="nav-link">
+              <a href="/profile" class="nav-link">
                 <i class="fa fa-shopping-cart nav-icon"></i>
                 <p> Cart</p>
               </a>
@@ -74,7 +80,7 @@
               </a>
               </li>
             </ul>
-        </li>
+        </li>-->
           
        <!--- <a class="nav-link active profile-nav-link" id="v-pills-details-tab" 
              href="#v-pills-details" role="tab" 
@@ -115,7 +121,7 @@
               </li>
               <li class="nav-item">
                 <a href="/admin/search-users" class="nav-link">
-                  <i class="fa fa-user nav-icon"></i>
+                  <i class="fa fa-search nav-icon"></i>
                   <p>Search</p>
                 </a>
               </li>
@@ -193,16 +199,29 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="/admin/add-category" class="nav-link">
-                  <i class="fa fa-edit nav-icon"></i>
-                  <p>Add Posts</p>
+                <a href="/admin/view-posts" class="nav-link">
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>View Posts</p>
                 </a>
               </li>
+              </ul>
+          </li> 
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-comment"></i>
+              <p>
+              Comments
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="/admin/view-category" class="nav-link">
-                  <i class="fa fa-edit nav-icon"></i>
-                  <p>Edit Posts</p>
+                <a href="/admin/view-comments" class="nav-link">
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>View Comments</p>
                 </a>
               </li>
               </ul>
@@ -214,6 +233,7 @@
               <p>
                 Inquiry
                 <i class="fa fa-angle-left right"></i>
+                <span class="badge badge-light">{{$count}}</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -233,11 +253,61 @@
             </ul>
           </li>
           
+          
           <a href="index3.html" class="brand-link">
     <img src="/dist/img/logo.jpg"  alt="logo"  class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light"> Shopping Centre</span>
     </a>
+    <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-product-hunt"></i>
+              <p>
+                Product
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              <li class="nav-item">
+                <a href="/admin/view-inquiry" class="nav-link">
+                  <i class="fa fa-edit nav-icon"></i>
+                  <p>Add Product</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/view-inquiry" class="nav-link">
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>View Product</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-order"></i>
+              <i class="nav-icon fas fa-clipboard-check"></i>
+              <p>
+                Order
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            
+              <li class="nav-item">
+                <a href="/admin/view-inquiry" class="nav-link">
+                  <i class="fa fa-edit nav-icon"></i>
+                  <p>Add Order</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/view-inquiry" class="nav-link">
+                  <i class="fa fa-table nav-icon"></i>
+                  <p>View Order</p>
+                </a>
+              </li>
+            </ul>
+          </li>
          <!-- <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fa fa-th"></i>

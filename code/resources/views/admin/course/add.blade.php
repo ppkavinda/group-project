@@ -96,9 +96,13 @@
                   @endif
                   <div class="form-group">
                     <label for="categoryName">Cover image</label>
+                    <div>
+                    <img id="show" src="#" alt="your image" class="img-rounded" />
+                    </div>
                     <div class="input-default-wrapper mt-3">
-
-                    <input type="file" name="cover_img" id="cover_img" class="form-control">
+                    
+                    <input type="file" name="cover_img" id="cover_img" class="form-control"
+                    onchange="readURL(this)" accept="image/gif, image/jpeg, image/png">
 
                     <label class="label-for-default-js rounded-right mb-3" for="file-with-current">
 
@@ -143,18 +147,22 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- FastClick -->
-<script src="../../plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<script>
+function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
+            reader.onload = function (e) {
+                $('#show')
+                    .attr('src', e.target.result)
+                    .width(200)
+                   
+            };
 
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+ </script>
 
 </body>
 </html>

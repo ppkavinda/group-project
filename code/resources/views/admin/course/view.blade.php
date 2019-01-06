@@ -24,6 +24,25 @@
 
     <section class="content">
       <div class="container-fluid">
+      <div class="row">
+    
+      <div class="col-sm-6">
+        <form action="/admin/search-course" method="get">
+          <div class="input-group">
+                <input type="search" name="search"class="form-control" placeholder="Enter Course Name">
+                <span class="input-group-prepend">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </span>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-6">
+      <a href="{{ url('/admin/courses/generate-pdf')}}"class="btn btn-info btn mini" 
+                     onclick="return confirm('Are You sure?')">See  Posts</a>
+     
+     </diV>
+     </div>
+     <br>
         <div class="row">
           <div class="col-md-12">
             <div class="card">
@@ -40,25 +59,26 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-             <table class="table table-bordered">
+             <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th style="width: 40px" color="solid black">Course ID</th>
                     <th>Category Name</th>
-                    <th>Title</th>
+                    <th>Course Name</th>
                     <th>Sub Title</th>
                     <th>Description</th>
                     <!--<th>Cover Image</th>
                     
                     <th>updated_at</th> -->
-                    <th class="center">Actions</th>
+                    <th width="250" >Actions</th>
                   
                   </tr>
                   </thead>
                   <tbody>
                   
                   @foreach($courses as $course)
-                  <tr>
+                   
+                   <tr>
                     <td><b>{{$course->id}}</b></td>
                     <td><b>{{$course->category->title}}</b></td>
                     <td><b>{{$course->title}}</b></td>
@@ -67,18 +87,17 @@
                   <!--  <td><img class="img-fluid" src="/storage/{{$course->cover_img}}" style="width:150px; "></td>-
                     
                     <td><b> {{$course->updated_at}} </b>  </td>-->
-                    <td class="left" width="200px">
+                    <td width="300" style="text-align: center">
 
                     <a href="{{url('/admin/edit-course/'.$course->id) }}" class="btn btn-primary btn mini" 
                     onclick="return confirm('Do you want to edit this details?')" >Edit</a>
                     
-                    <a href="{{ url('admin/delete-course/'.$course->id)}}"class="btn btn-danger btn mini" 
+                    <a href="{{ url('/admin/delete-course/'.$course->id)}}"class="btn btn-danger btn mini" 
                      onclick="return confirm('Are You Sure ?')">Delete</a>
-                     <br>
+                  
                     
-                    <br>
-                    <a href="{{ url('admin/delete-course/'.$course->id)}}"class="btn btn-info btn mini" 
-                     onclick="return confirm('Do You want to see ?')">Post</a>
+                    <a href="{{ url('/admin/view-course/posts/'.$course->id)}}"class="btn btn-info btn mini" 
+                     onclick="return confirm('Do You want to see ?')">See  Posts</a>
                     
                     </td> 
                     </tr>
@@ -86,10 +105,11 @@
                  @endforeach
                 
                   </tbody>
-        
+               
                   
                 
                 </table>
+                {{$courses->links()}}
               </div>
               <!-- /.card-body -->
               

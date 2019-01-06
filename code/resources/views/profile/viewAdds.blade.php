@@ -45,7 +45,6 @@
                         <label for="addDetails" class="col-sm-3 col-form-label">&nbsp Details</label>
                         <div class="col-sm-9">
                             <textarea name="addDetails" id="details" cols="44"rows="2">{{$posts[$x]['description']}}</textarea>
-                           
                         </div>
                     </div>
                     <div class="form-group row">

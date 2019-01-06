@@ -1,7 +1,10 @@
-@extends('study.master')
+@extends('admin.master')
 
 @section('content')
+<body class="hold-transition sidebar-mini">
 
+  <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
 <div class="contact">
     <div class="container-wide">
         <h3 class="w3l_header w3_agileits_header">Add new <span>post</span></h3>
@@ -13,6 +16,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 @endsection
