@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-        <form action="/users/{{ auth()->user()->id }}/edit" method="POST">
+        <form method="POST" action="/users/{{ auth()->user()->id }}/edit" >
             @csrf
             <!-- image upload -->
                 <fieldset class="fieldset">
@@ -165,7 +165,7 @@
                             <option value="2">GCE A/L</option> 
                             <option value="3">Bachelor's degree</option>           
                             <option value="4">Master's degree</option>           
-                            <option value="5">Doctorate degree</option>                     
+                            <option value="5">Doctorate </option>                     
                     </select>
                 </div>
             </div>
@@ -185,7 +185,9 @@
     </div>
     <br>
     <div>
-        <input type="submit" class="btn offset-md-2 btn-primary" value="Update Your Details">
+    
+        <button type="submit" class="btn offset-md-2 btn-primary">Update Profile
+        </button>
     </div>
 </div>
 

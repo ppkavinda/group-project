@@ -18160,8 +18160,19 @@ h2.resp-accordion:first-child {
   display: grid;
 }
 
+/* For device width smaller than 400px: */
+
 .bg-img {
+  background-repeat: no-repeat;
   background: url(/dist/img/bg.jpg);
+}
+
+/* For device width 400px and larger: */
+
+@media only screen and (min-device-width: 400px) {
+  .bg-img {
+    background: url(/dist/img/bg.jpg);
+  }
 }
 
 .checked {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\User;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -20,8 +21,11 @@ class UserController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $orders = Order::all();
+        
         $courses = $user->courses;
-        return view('profile.index', ['user'=>$user],['courses'=>$courses]);
+        
+        return view('profile.index',compact('user','orders','courses','products'));
     }
     
     public function show (User $user) {
@@ -57,18 +61,26 @@ class UserController extends Controller
     }
     
 
-    public function get()
+    public function get(User $user)
     {
         return auth()->user();
     }
     
+
+//myOrders
+
+    // public function myOrder(User $user){
+
+       
+        
+    // }
    
 // Update Password
     public function updatePassword(Request $request) {
         $oldPassword = $request->oldPassword;
         $newPassword = $request->newPassword;
         if(!Hash::check($oldPassword, Auth::user()->password)){
-          return back()->with('msg','The specified password does not match the database password'); //when user enter wrong password as current password
+          return back()->with('msg','The specified password does not match to your password'); //when user enter wrong password as current password
         }else{
             $request->user()->fill(['password' => Hash::make($newPassword)])->save(); //updating password into user table
            return back()->with('msg','Password has been updated');
