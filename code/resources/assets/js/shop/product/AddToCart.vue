@@ -54,9 +54,9 @@
         <div class="col-md-3">
             <div class="item-info-product">
                 <div class="info-product-price">
-                    <select class="form-control" id="size" name="sizes">
+                    <select class="form-control" id="size" name="sizes" v-model="product.size">
                         <!-- @for($x=0; $x< count(explode(",",$product->sizes)); $x++) -->
-                        <!-- <option>{{explode(",",$product->sizes)[$x]}}</option> -->
+                        <option v-for="(size, index) in sizesAsArray" :key="index">{{ size }}</option>
                         <!-- @endfor -->
                     </select>
                 </div>
@@ -74,7 +74,7 @@
         <div class="col-md-3">
             <div class="item-info-product">
                 <div class="info-product-price">
-                    <input id="quantity" type="number" @click="clearErrors" min="1" 
+                    <input id="quantity" type="number" @change="clearErrors" min="1" 
                         v-model="product.quantity" class="form-control">
                     <small v-if="errors.quantity.length" v-text="errors.quantity[0]" class="invalid-feedback d-block pl-3">
                     </small>
@@ -103,15 +103,18 @@
 // import AddToCartButton from './AddToCartButton'
   
 export default {
-    props: ['initialProduct',],
+    props: ['initialProduct', 'initialSizes'],
     // components: {AddToCartButton},
     data () {
         return {
             product: {
                 quantity: 1,
+                // size: 'a',
             },
+            sizes: {},
             errors: {
                 quantity: [],
+                size: [],
             },
         }
     },
@@ -143,12 +146,22 @@ export default {
         //         })
         // },
         onClick () {
+            console.log(this.sizes[this.product.size], this.product.quantity)
+            if (!this.sizes[this.product.size]) {
+                this.errors.quantity = ['Invalid input']
+                return
+            }
             if (! (parseInt(this.product.quantity) > 0)) {
                 this.errors.quantity = ['Invalid quantity']
                 return
             }
+            if ( !(parseInt(this.product.quantity) <= this.sizes[this.product.size])) {
+                this.errors.quantity = [`Only ${this.sizes[this.product.size]} left`]
+                return
+            }
             axios.post(`/cart/${this.product.id}`, this.product)
                 .then(res => {
+                    this.sizes[this.product.size] -= parseInt(this.product.quantity)
                     window.Event.$emit('added-to-cart', res.data)
                 })
                 .catch(err => {
@@ -169,11 +182,32 @@ export default {
     computed: {
         getRating () {
             return Math.round(this.product.ratings)
+        },
+        sizesAsArray () {
+            let sz = this.sizes
+            delete sz.id
+            delete sz.product_id
+            delete sz.created_at
+            delete sz.updated_at
+
+            Object.keys(sz).forEach( s => {
+                if (s[0] == 'r') delete sz[s]
+                if (!sz[s]) delete sz[s]
+            })
+            return Object.keys(sz)
         }
     },
     created () {
+        this.sizes = JSON.parse(this.initialSizes)
         this.product = JSON.parse(this.initialProduct)
+
         Vue.set(this.product, 'quantity', 1)
+        Vue.set(this.product, 'size',  this.sizesAsArray[0])
+        // Vue.set(this.product, 'previousSize',  '')
+
+        window.Event.$on('removed-from-cart', (product) => {
+            this.sizes[product.product.options.size] += parseInt(product.product.qty)
+        })
     }
 }
 </script>

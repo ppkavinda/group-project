@@ -30,8 +30,6 @@ class CreateProductsTable extends Migration
             $table->string('kind');
             $table->string('type');
             $table->timestamps();
-
-           
         });
     }
 

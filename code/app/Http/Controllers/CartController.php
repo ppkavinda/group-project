@@ -42,7 +42,8 @@ class CartController extends Controller
      */
     public function store(Request $request, Product $product)
     {
-        if ($request->quantity > $product->amount) {
+        // return $product->previousSize;
+        if ($request->quantity > $product->sizes{$request->size}) {
             abort(422, "Invalid quantity");
         }
 
@@ -51,11 +52,17 @@ class CartController extends Controller
             $product->name,
             $request->quantity,
             $product->price,
-            ['img1' => $product->img1, 'img2' => $product->img2, 'img3' => $product->img3]
+            ['img1' => $product->img1, 'img2' => $product->img2, 'img3' => $product->img3, 'size' => $request->size]
         );
-        
-        DB::table('products')->where('id', '=', $product->id)->decrement('amount', $request->quantity);
-        DB::table('products')->where('id', '=', $product->id)->increment('reserved', $request->quantity);
+
+        // switch ($product->category_id) {
+        // case 4:
+        // DB::table('products')->where('id', '=', $product->id)->decrement('amount', $request->quantity);
+        // DB::table('products')->where('id', '=', $product->id)->increment('reserved', $request->quantity);
+        $product->sizes->decrement($request->size, $request->quantity);
+        $product->sizes->increment('reserved' . $request->size, $request->quantity);
+        // break;
+        // }
 
         return $cartItem;
     }
@@ -102,9 +109,17 @@ class CartController extends Controller
 
         $updated = \Cart::update($rowId, $request->quantity);
 
-        DB::table('products')->where('id', '=', $previousItem->id)->decrement('amount', $increment);
-        DB::table('products')->where('id', '=', $previousItem->id)->increment('reserved', $increment);
+        // DB::table('products')->where('id', '=', $previousItem->id)->decrement('amount', $increment);
+        // DB::table('products')->where('id', '=', $previousItem->id)->increment('reserved', $increment);
         
+        // switch ($product->category_id) {
+        // case 4:
+        $product->sizes->decrement($request->size, $increment);
+        $product->sizes->increment('reserved' . $request->size, $increment);
+        // break;
+
+        // }
+
         return ['cart' => ['count' => \Cart::count(), 'updated' => $updated]];
     }
 
@@ -114,12 +129,20 @@ class CartController extends Controller
      * @param  \App\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy($rowId)
+    public function destroy(Request $request, $rowId)
     {
         $deleted = \Cart::get($rowId);
+        $product = Product::find($deleted->id);
+        // return $product->sizes{$deleted->options->size};
 
-        DB::table('products')->where('id', '=', $deleted->id)->increment('amount', $deleted->qty);
-        DB::table('products')->where('id', '=', $deleted->id)->decrement('reserved', $deleted->qty);
+        // DB::table('products')->where('id', '=', $deleted->id)->increment('amount', $deleted->qty);
+        // DB::table('products')->where('id', '=', $deleted->id)->decrement('reserved', $deleted->qty);
+
+        // switch ($product->category_id) {
+        // case 4:
+        $product->sizes->increment($deleted->options->size, $deleted->qty);
+        $product->sizes->decrement('reserved' . $deleted->options->size, $deleted->qty);
+        // }
         
         \Cart::remove($rowId);
 

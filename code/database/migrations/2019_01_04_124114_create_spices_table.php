@@ -17,11 +17,11 @@ class CreateSpicesTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('size(100g)')->nullable();
-            $table->integer('reserved(100g)')->nullable();
+            $table->integer('reservedsize(100g)')->default(0);
             $table->integer('size(200g)')->nullable();
-            $table->integer('reserved(200g)')->nullable();
+            $table->integer('reservedsize(200g)')->default(0);
             $table->integer('size(400g)')->nullable();
-            $table->integer('reserved(400g)')->nullable();
+            $table->integer('reservedsize(400g)')->default(0);
             $table->timestamps();
         });
     }
