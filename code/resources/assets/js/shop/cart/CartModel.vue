@@ -5,7 +5,7 @@
         <ul v-if="Object.keys(items).length" class="list-group list-group-flush bg-light">
             <li v-for="(item, index) in items" :key="index" class="minicart-item row"> 
                 <div class="col-md-6 my-auto"> 
-                    <a class="minicart-name" :href="'/products/' + item.id" v-text="displayName(item)"></a>
+                    <a class="minicart-name" :href="'/quickView/' + item.id" v-text="displayName(item)"></a>
                 </div>
                 <div class="minicart-details-quantity col-md-2 my-auto">
                     <input type="number" class="form-control" @blur="updateItem(item)" v-model="item.qty" min="1" name="quantity">

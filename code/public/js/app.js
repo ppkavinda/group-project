@@ -34418,7 +34418,7 @@ var render = function() {
                           _c("div", { staticClass: "col-md-6 my-auto" }, [
                             _c("a", {
                               staticClass: "minicart-name",
-                              attrs: { href: "/products/" + item.id },
+                              attrs: { href: "/quickView/" + item.id },
                               domProps: {
                                 textContent: _vm._s(_vm.displayName(item))
                               }
