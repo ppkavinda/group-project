@@ -184,8 +184,7 @@ class ProductController extends Controller
     {
         $addPosts = Product::get();
         $category_id = 0;
-        $latest = Product::latest()->limit(2)->get();
-        return view('shop.mens', ['addPosts'=> $addPosts,'category_id'=>$category_id, 'latest'=> $latest]);
+        return view('shop.mens', ['addPosts'=> $addPosts,'category_id'=>$category_id]);
     }
 
     //get specific category and type product

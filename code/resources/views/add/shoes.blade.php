@@ -52,29 +52,29 @@
                                             <div class="row p-3">
                                                 <div class="col-sm-4">
                                                 <label for="sizes6" id="labels">6"</label>
-                                                <input type ="number" name="sizes6" style="width:50px">
+                                                <input type ="number" name="sizes6" style="width:50px" min="1">
                                                 </div>
                                                 <div class="col-sm-4">
                                                 <label for="sizes7" id="labels">7"</label>
-                                                <input type ="number" name="sizes7" style="width:50px">
+                                                <input type ="number" name="sizes7" style="width:50px" min="1">
                                                 </div>
                                                 <div class="col-sm-4">
                                                 <label for="sizes8" id="labels">8"</label>
-                                                <input type ="number" name="sizes8" value="XS" style="width:50px">
+                                                <input type ="number" name="sizes8" value="XS" style="width:50px" min="1">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                 <label for="sizes9" id="labels">9"</label>
-                                                <input type ="number" name="sizes9" value="XS" style="width:50px">
+                                                <input type ="number" name="sizes9" value="XS" style="width:50px" min="1">
                                                 </div>
                                                 <div class="col-sm-4">
                                                 <label for="sizes10" id="labels">10"</label>
-                                                <input type ="number" name="sizes10" value="XS" style="width:50px">
+                                                <input type ="number" name="sizes10" value="XS" style="width:50px" min="1">
                                                 </div>
                                                 <div class="col-sm-4">
                                                 <label for="sizes11" id="labels">11"</label>
-                                                <input type ="number" name="sizes11" value="XS" style="width:50px">
+                                                <input type ="number" name="sizes11" value="XS" style="width:50px" min="1">
                                                 </div>
                                             </div>    
                                         </div>
@@ -99,13 +99,13 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="price" id="labels">&nbsp Price(pair of shoes or slippers Rs.) &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="price" required>
+                                            <input multi class="form-control" type="number" id="select" name="price" min="0" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="discount" id="labels">&nbsp Discount(one cloth Rs.) &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="discount" required>
+                                            <input multi class="form-control" type="number" id="select" name="discount" min="0">
                                         </div>
                                     </div>
                                 </div>

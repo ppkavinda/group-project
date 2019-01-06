@@ -233,6 +233,7 @@
               <p>
                 Inquiry
                 <i class="fa fa-angle-left right"></i>
+                <span class="badge badge-light">{{$count}}</span>
               </p>
             </a>
             <ul class="nav nav-treeview">

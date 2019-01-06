@@ -104,13 +104,13 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="price" id="labels">&nbsp Price(one cloth Rs.) &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="price" required>
+                                            <input multi class="form-control" type="number" id="select" name="price" min="0" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="discount" id="labels">&nbsp Discount(one cloth Rs.) &nbsp</label>
-                                            <input multi class="form-control" type="number" id="select" name="discount" required>
+                                            <input multi class="form-control" type="number" id="select" name="discount" min="1">
                                         </div>
                                     </div>
                                 </div>
