@@ -7,19 +7,20 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class OrderPlaced extends Notification
+class CommentSubmited extends Notification
 {
     use Queueable;
 
-    public $order_id;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($order_id)
+    public $comment_id;
+
+    public function __construct($comment_id)
     {
-        $this->order_id = $order_id;
+        $this->comment_id = $comment_id;
     }
 
     /**
@@ -39,13 +40,6 @@ class OrderPlaced extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
 
     /**
      * Get the array representation of the notification.
@@ -56,7 +50,7 @@ class OrderPlaced extends Notification
     public function toArray($notifiable)
     {
         return [
-            'order_id' => $this->order_id
+            'comment_id'=> $this-> comment_id
         ];
-    }   
+    }
 }

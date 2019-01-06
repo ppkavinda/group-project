@@ -24,7 +24,7 @@ Route::get('/study', 'studyController@index');
 Auth::routes();
 
 // admin
-Route::view('/admin', 'admin.index');
+
 
 // profile
 Route::get('/profile', 'UserController@index')->middleware('auth');
@@ -102,7 +102,8 @@ Route::post('/inquiry', 'InquiryController@store');
 
 
 // admin-admin
-Route::view('/admin', 'admin.index');
+Route::get('/admin', 'InquiryController@countOfNotification');
+//Route::view('/admin', 'admin.index');
 
 Route::match(['get','post'], '/admin/add-category', 'CategoryController@addCategory');
 Route::match(['get','post'], '/admin/edit-category/{id}', 'CategoryController@editCategory');
@@ -218,3 +219,4 @@ Route::get('/categories/{kind}/{type}', 'ProductController@viewKindAdvertisement
 
 Route::post('/categories/priceRange', 'ProductController@priceRange');
 Route::get('/trendingProduct', 'ShopController@getTrendingProducts');
+Route::get('/test1','InquiryController@countOfNotification');
