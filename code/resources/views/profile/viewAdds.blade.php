@@ -1,7 +1,7 @@
 @extends('study.master')
 @section('content')
 <h3 class="w3l_header mt-4 mb-5">Your Post Advertisements</h3>
-@for($x=0; $x<count($posts); $x++)
+@for($x=0; $x< count($posts); $x++)
     <div class="advertisementBorder">
         <br>
         <div class="row">
@@ -30,14 +30,14 @@
                         <div class="form-group row">
                             <div class="col-sm-3">&nbsp Size/Weight</div>
                             <div class="col-sm-9">
-                                {{$posts[$x]['sizes']}}
+                                
                             </div>
                         </div>
                     </fieldset>
                         <div class="form-group row">
                             <label for="amount" class="col-sm-3 col-form-label">&nbsp Amount</label>
                             <div class="col-sm-9">
-                                <input  class="form-control" name="amount" type="text" id="size" value={{$posts[$x]['amount']}}>
+                                <input  class="form-control" name="amount" type="text" id="size">
                                 <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                             </div>
                         </div>

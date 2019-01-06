@@ -31,9 +31,9 @@
 </div>
 <div class="container p-3">
     <div class="text-center">
-        <div class="snipcart-details top_brand_home_details item_add single-item p-3 minicart-showing">
+        {{-- <div class="snipcart-details top_brand_home_details item_add single-item p-3 minicart-showing">
             <a class="hvr-outline-out button2 p-3" href="{{ route('shop') }}" style="color:black;"><h3>Shop More</h3></a>
-        </div>
+        </div> --}}
     </div>
     @include('shop.partials.newarrivals')
 </div>

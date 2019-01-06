@@ -21,14 +21,23 @@ class InquiryController extends Controller
         return redirect()->back();
     }
 
-    public function countOfNotification(){
-        $user = \App\User::where('role',1)->get();
-        $count = $user[0]->notifications->where('type','App\Notifications\InquirySubmited')->count();
-        return view('admin.index',['count'=>$count]);
-    }
+    // public function countOfNotification(){
+    //     $user = \App\User::where('role',1)->get();
+    //     $count = $user[0]->unreadNotifications->where('type','App\Notifications\CommentSubmited')->count();
+    //     dd($count);
+    //     return view('admin.index',['count'=>$count]);
+    // }
+
+    // public function readOfNotification(){
+    //     $user = \App\User::where('role',1)->get();
+    //     $user[0]->unreadNotifications->where('type','App\Notifications\InquirySubmited')->markAsRead();
+    //     return view('admin.index');
+    // }
 
     public function viewInquire(){
         $inquiries=\App\Inquiry::get();
+        $user = \App\User::where('role',1)->get();
+        $user[0]->unreadNotifications->where('type','App\Notifications\InquirySubmited')->markAsRead();
         return view('admin.inquiries.view')->with(compact('inquiries'));
 
     }
