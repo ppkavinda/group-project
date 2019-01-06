@@ -1,91 +1,89 @@
+@extends('layouts.app')
+@section('content')
 <template>
-<div class="modal fade" id="myModal1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-              	<div class="modal-header"> 
-                	<p class="login-box-msg" style="color:DodgerBlue;font-size:160%;"><b>Sign Up and Start Learning!</b></p>
-                	<button type="button" class="close" data-dismiss="modal" >&times;</button>
-                </div>
-
-                <div class="modal-body">
-                	<div class="login-logo">
-                    	<a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .6"></a>
-                	</div>
-                 <form method="POST" @submit.prevent="onSubmit" @keydown="clearError($event.target.name)">
-              
+<!-- background image -->
+<div class="bg-img">
+    <div class="container">
+        <div class="row justify-content-center"> 
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <p class="login-box-msg" style="color:DodgerBlue;font-size:200%;"><b>Sign Up and Start Learning!</b></p>
+                    </div>
+                    <!-- Logo -->
+                    <div class="login-logo">
+                        <a href="/"><img src="/dist/img/logo.jpg" alt="logo" style="width: 30%; opacity: .6"></a>
+                    </div>
+                <form method="POST" @submit.prevent="onSubmit" @keydown="clearError($event.target.name)">
+                <!-- Name -->
                  <div class="form-group row">
-                    <label for="name" class="col-md-4  text-md-right">Namewrite </label>
+                    <label for="name" class="col-md-4  text-md-right">Name </label>
                      <div class="col-md-6">
                          <input id="name" @blur="liveValidate('name')" type="text" class="form-control" name="name" v-model="user.name" placeholder="Name" required autofocus>
-
                         <span v-if="errors.name" :class="{'invalid-feedback d-block' : errors.name}">
                              <strong>{{ errors.name[0] }}</strong>
                         </span>
                      </div>
                  </div>
-
+                <!-- Email Address -->
                  <div class="form-group row">
                      <label for="email" class="col-md-4 col-form-label text-md-right">Email Address </label>
                          <div class="col-md-6">
                             <input id="email" @blur="liveValidate('email')" type="email" class="form-control" name="email" v-model="user.email" placeholder="E-mail" required>
-
                                 <span v-if="errors.email" :class="{'invalid-feedback d-block' : errors.email}">
                                     <strong>{{ errors.email[0] }}</strong>
                                  </span>
                          </div>
                  </div>
-
-          <div class="form-group row">
-              <label for="nic" class="col-md-4 col-form-label text-md-right">National ID No:</label>
-
-              <div class="col-md-6">
-                  <input type="text" @blur="liveValidate('nic')" name="nic" id="nic" class="form-control" v-model="user.nic" placeholder="NIC" pattern="[0-9]{9}[vV]{1}$" required>
-
-                    <span v-if="errors.nic" :class="{'invalid-feedback d-block' : errors.nic}">
-                        <strong>{{ errors.nic[0] }}</strong>
-                    </span>
-              </div>
-          </div>
-
-          <div class="form-group row">
-              <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-
-              <div class="col-md-6">
-                  <input id="password" @keyup="confirmPassword" type="password" class="form-control" v-model="user.password" name="password" placeholder="Password"  required>
-              </div>
-          </div>
-
-          <div class="form-group row">
-              <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
-
-              <div class="col-md-6">
-                  <input id="password-confirm" @keyup="confirmPassword" type="password" class="form-control" name="password_confirmation" v-model="user.password_confirmation" placeholder="Confirm Password" required>
-
-                    <span v-if="password.status" :class="password.class">
-                        <strong>{{ password.msg }}</strong>
-                    </span>
-              </div>
-          </div>
-
-          <div class="form-group row mb-0">
-              <div class="col-md-6 offset-md-4">
-                  <button type="submit" class="btn btn-primary">Join with us</button>
-                  <a class="btn btn-link" href="login">I already have membership</a>
-              </div>
-          </div>
-      </form>
-    </div>  
-   </div>
+                <!-- NIC -->
+                <div class="form-group row">
+                    <label for="nic" class="col-md-4 col-form-label text-md-right">National ID No:</label>
+                        <div class="col-md-6">
+                            <input type="text" @blur="liveValidate('nic')" name="nic" id="nic" class="form-control" v-model="user.nic" placeholder="NIC" pattern="[0-9]{9}[vV]{1}$" required>
+                                <span v-if="errors.nic" :class="{'invalid-feedback d-block' : errors.nic}">
+                                    <strong>{{ errors.nic[0] }}</strong>
+                                </span>
+                        </div>
+                </div>
+                <!-- Password -->
+                <div class="form-group row">
+                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                        <div class="col-md-6">
+                            <input id="password" @keyup="confirmPassword" type="password" class="form-control" v-model="user.password" name="password" placeholder="Password"  required>
+                        </div>
+                </div>
+                <!-- Confirm Password -->
+                <div class="form-group row">
+                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+                        <div class="col-md-6">
+                            <input id="password-confirm" @keyup="confirmPassword" type="password" class="form-control" name="password_confirmation" v-model="user.password_confirmation" placeholder="Confirm Password" required>
+                                <span v-if="password.status" :class="password.class">
+                                    <strong>{{ password.msg }}</strong>
+                                </span>
+                        </div>
+                </div>
+                <!-- Submit button -->
+                <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        <button type="submit" class="btn btn-primary">Join with us</button>
+                            <a class="btn btn-link" href="login">I already have membership</a>
+                    </div>
+                </div>
+                </form>
+                </div>  
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-    
 </template>
+@endsection
+
 
 <script>
 import axios from 'axios'
 
 export default {
-    data: function () {
+    data () {
         return {
             user: {
                 name: '',

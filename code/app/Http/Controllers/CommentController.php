@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\comment;
+use App\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function __construct () {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     /**
@@ -64,7 +65,7 @@ class CommentController extends Controller
      */
     public function show($post)
     {
-        $comments = Comment::with(['user'])->where('post_id','=', $post)->latest()->get();
+        $comments = Comment::with(['user'])->where('post_id', '=', $post)->latest()->get();
         return response()->json($comments);
     }
 
@@ -110,5 +111,46 @@ class CommentController extends Controller
         }
 
         return back();
+    }
+
+    public function view_comments()
+    {
+        $comments = \App\Comment::paginate(5);
+
+        return view('admin.comments.view')->with(compact('comments'));
+    }
+    public static function search(Request $request)
+    {   
+        
+        $search = $request->get("search");
+        
+        $comments = \App\Comment::where('comments.id','like','%'.$search.'%') 
+                    ->orWhere('comments.body','like','%'.$search.'%')
+                    ->orWhere('comments.user_id','like','%'.$search.'%')
+                    ->orWhere('comments.post_id','like','%'.$search.'%')
+                    ->paginate(5);  
+      // dd($posts);
+        return view('admin.comments.view',['comments'=>$comments]);
+    }
+
+
+    public function admin_viewComments_on_post(Request $request,$id= null)
+    {
+        $commentcount = \App\Comment::where(['comments.post_id'=>$id])->count();
+        $comments = \App\Comment::where(['comments.post_id'=>$id])->paginate(5);
+        
+        // dd($comments);
+        return view('admin.comments.view')->with(compact(['comments','commentcount']));
+        
+    }
+
+    public function deleteComment($id = null)
+    {
+        if(!empty($id)){
+            \App\Comment::where(['id'=> $id])->delete();
+            return redirect()->back()->with('flash_message_success','Comment deleted Sucessfully!');
+           
+        }
+
     }
 }

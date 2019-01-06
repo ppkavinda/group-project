@@ -2,20 +2,113 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\Notifications\OrderPlaced;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class CheckoutController extends Controller
 {
-    public function __construct () {
+    public function __construct()
+    {
         $this->middleware('auth');
         // dd(\Cart::count());
     }
-    public function index() {
-        if (\Cart::count() < 1) return redirect('/products/1');
-        return view('shop.cart.checkout');
+    public function index()
+    {
+        if (\Cart::count() < 1) {
+            return redirect('/products/1');
+        }
+
+        $successful = false;
+
+        if (request()->order_id) {
+            $successful = true;
+        }
+        return view('shop.cart.checkout', compact('successful'));
     }
 
-    public function storeDetails(Request $request) {
+    /**
+     * after paying for a order, if it successfull, payhere will redirect to here
+     */
+    public function success(Request $request)
+    {
+        \Cart::destroy();
+
+        $order = Order::with('products')->find($request->order_id);
+
+        if (!$request->session()->get('notification_sent')) {
+            foreach ($order->products as $product) {
+                Notification::send($product->user, new OrderPlaced($order->id));
+            }
+        }
+        
+        $request->session()->put('notification_sent', true);
+
+        return view('shop.cart.success', compact('order'));
+    }
+
+    /**
+     * after paying for a order, if it fails, payhere will redirect to here
+     */
+    public function cancel(Request $request)
+    {
+        dd('cancel', $request);
+    }
+    
+    /**
+     * NOT USED, HANDLED BY server.js
+     * store the payment & order data
+     * after payment is completed
+     * triggerd by payhere
+     */
+    public function notify(Request $request)
+    {
+        $request->validate([
+            'merchant_id' => 'required',
+            'order_id' => 'required',
+            'payment_id' => 'required',
+            'payhere_amount' => 'required',
+            'payhere_currency' => 'required',
+            'status_code' => 'required',
+            'md5sig' => 'required',
+        ]);
+
+        $md5sig = $request->$md5sig;
+
+        $local_md5sig = strtoupper(
+            md5(
+                $request->merchant_id . $request->order_id .
+                $request->payhere_amount .
+                $request->payhere_currency .
+                $request->status_code . strtoupper(md5('honda1'))
+            )
+        );
+        if (($local_md5sig != $md5sig) or ($request->status_code != 2)) {
+            return;
+        }
+
+        DB::transaction(function () {
+            $order = Order::find($request->order_id);
+            $order->payment_id = $request->payment_id;
+            $order->status = 1; // ( placed & payed )
+
+            $payment = Payment::create([
+                'id' => $request->payment_id,
+                'amount' => $request->payhere_amount,
+                'currency_' => $request->payhere_currency,
+                'status_code' => $request->status_code,
+                'user_id' => auth()->id(),
+                'order_id' => $request->order_id,
+            ]);
+        });
+    }
+
+    /**
+     * store the user's data before place an order
+     */
+    public function storeDetails(Request $request)
+    {
         $request->validate([
             'address1' => 'required|min:10',
             'city' => 'required|string',
@@ -30,8 +123,6 @@ class CheckoutController extends Controller
         $user->postal_code = $request->postal_code;
         $user->telephone = $request->telephone;
         $user->save();
-        // dd(auth()->user());
         return $request;
     }
-    
 }

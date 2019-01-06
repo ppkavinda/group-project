@@ -2,34 +2,42 @@
 <div class="tab-pane" :class="{'active': initialActive}">
     <br><br>
     <div class="form-group">
-        <label for="Address1" class="col-form-label">Address Line 1</label>
-        <input type="text" name="address1" id="Address1" class="form-control" v-model="details.address1" required>
-        <small v-if="errors.address1 && errors.address1.length" class="form-text text-danger" v-text="errors.address1[0]"></small>
+        <label for="Address1" class="col-form-label">Your Address</label>
+        <input type="text" name="address1" id="Address1" class="form-control" 
+            v-model="details.address1" placeholder="Address line 1" required>
+        <small v-if="errors.address1 && errors.address1.length" 
+            class="form-text text-danger" v-text="errors.address1[0]"></small>
     </div>
     <div class="form-group">
-        <label for="Address2" class="col-form-label">Address Line 2 (optional)</label>
-        <input type="text" name="address" id="Address2" class="form-control" v-model="details.address2">
+        <label for="Address2" class="col-form-label">Your Address (optional)</label>
+        <input type="text" name="address" id="Address2" class="form-control" placeholder="Address line 2" v-model="details.address2">
     </div>
     <div class="row">
         <div class="col-sm-8 pl-0">
             <div class="form-group">
                 <label for="City" class="col-form-label">City</label>
-                <input type="text" name="City" id="City" class="form-control" v-model="details.city" required>
-            <small v-if="errors.city && errors.city.length" class="form-text text-danger" v-text="errors.city[0]"></small>
+                <input type="text" name="City" id="City" class="form-control" 
+                    v-model="details.city" required>
+                <small v-if="errors.city && errors.city.length" 
+                    class="form-text text-danger" v-text="errors.city[0]"></small>
             </div>
         </div>
         <div class="col-sm-4 pr-0">
             <div class="form-group">
                 <label for="postal_code" class="col-form-label">Postal Code / Zip Code</label>
-                <input type="text" name="postal_code" id="postal_code" class="form-control" v-model="details.postal_code" required>
-                <small v-if="errors.postal_code && errors.postal_code.length" class="form-text text-danger" v-text="errors.postal_code[0]"></small>
+                <input type="text" name="postal_code" id="postal_code" 
+                    class="form-control" v-model="details.postal_code" required>
+                <small v-if="errors.postal_code && errors.postal_code.length" 
+                    class="form-text text-danger" v-text="errors.postal_code[0]"></small>
             </div>
         </div>
     </div>
     <div class="form-group">
         <label for="telephone" class="col-form-label">Telephone</label>
-        <input type="text" name="telephone" id="telephone" class="form-control" v-model="details.telephone" required>
-        <small v-if="errors.telephone && errors.telephone.length" class="form-text text-danger" v-text="errors.telephone[0]"></small>
+        <input type="text" name="telephone" id="telephone" class="form-control" 
+            v-model="details.telephone" required>
+        <small v-if="errors.telephone && errors.telephone.length" 
+            class="form-text text-danger" v-text="errors.telephone[0]"></small>
     </div>
     <ul class="pagination wizard pagination-pager d-block">
         <li class="next page-item pull-right">
@@ -60,12 +68,18 @@ export default {
         }
     },
     methods: {
+        /**
+         * store user details 
+         */
         onNext () {
             axios.post('/checkout/details', this.details)
                 .then( res => {
                     console.log(res.data)
+                    
+                    this.user = res.data
                     this.errors = {}
-                    this.$emit('gotoShipping')
+
+                    this.$emit('gotoShipping', res.data)
                 })
                 .catch (err => {
                     console.log(err.response.data.errors)
@@ -75,7 +89,7 @@ export default {
     },
     created () {
         this.details = JSON.parse(this.initialDetails)
-        // console.log(this.details)
+        console.log(this.details)
     }
 }
 </script>

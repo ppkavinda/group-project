@@ -5,7 +5,7 @@
         <ul v-if="Object.keys(items).length" class="list-group list-group-flush bg-light">
             <li v-for="(item, index) in items" :key="index" class="minicart-item row"> 
                 <div class="col-md-6 my-auto"> 
-                    <a class="minicart-name" :href="'/products/' + item.id" v-text="item.name"></a>
+                    <a class="minicart-name" :href="'/products/' + item.id" v-text="displayName(item)"></a>
                 </div>
                 <div class="minicart-details-quantity col-md-2 my-auto">
                     <input type="number" class="form-control" @blur="updateItem(item)" v-model="item.qty" min="1" name="quantity">
@@ -15,7 +15,7 @@
                 </div>
                 <div class="minicart-details-remove col-md-1 my-auto">
                     <button type="button" class="minicart-remove" @click="removeItem(item)" 
-                        :disabled="url=='/checkout'" data-minicart-idx="0">x</button>            
+                         data-minicart-idx="0">x</button>            
                 </div>            
             </li>
         </ul>    
@@ -47,6 +47,7 @@ export default {
         };
     },
     computed: {
+        // subtotal of cart
         total () {
             let total = 0
             for (let key in this.items) {
@@ -56,33 +57,54 @@ export default {
         },
         url () {
             return window.location.pathname
-        }
+        },
     },
     methods: {
+        /**
+         * send the updated quantity to \Cart
+         * triggered when user change the quantity of a product in cart
+         */
         updateItem (item) {
             if (item.qty < 1) return
 
-            axios.put(`/cart/${item.rowId}`, {quantity: item.qty})
+            axios.put(`/cart/${item.rowId}`, {rowId: item.rowId, quantity: item.qty})
                 .then(res => {
-                    window.Event.$emit('updated-cart', res.data.cart.count)
+                    // emit an event to catch from cartBadge
+                    window.Event.$emit('updated-cart', {rowId:item.rowId, qty:res.data.cart.updated.qty})
                     console.log(res)
                 })
                 .catch(err => {
-                    console.log(err)
+                    console.log(err, err.response.data.message)
                 })
         },
+        /**
+         * remove an item from the cart
+         */
         removeItem (item) {
-            window.Event.$emit('removed-from-cart', {qty: item.qty})
 
-            axios.delete(`/cart/${item.rowId}`)
+            axios.delete(`/cart/${item.rowId}`, { data: item})
                 .then(res => {
+
                     Vue.delete(this.items, item.rowId)
-                    // console.log(Object.keys(this.items))
-                    this.disableCheckout = this.items == null || Object.keys(this.items)
+
+                    // disable checkout button if cart is empty
+                    this.disableCheckout = this.items == null || !Object.keys(this.items)
+
+                    // emit an event to catch from cartBadge
+                    window.Event.$emit('removed-from-cart', {rowId:item.rowId, qty: item.qty, product: item})
+                    
+                    // TODO: redirect to better place
+                    // redirect to /shop if no products in the cart
+                    if (!Object.keys(this.items).length && this.url == '/checkout') window.location.replace('/shop')
+                    
                 })
                 .catch(err => {
                     console.log(err)
             })
+        },
+        displayName(item) {
+            console.log(item.options.size)
+            return item.name + ` (${item.options.size})`
         },
         closeModel (e) {
             this.show = false

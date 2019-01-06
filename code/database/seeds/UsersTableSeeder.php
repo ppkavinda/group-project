@@ -56,6 +56,14 @@ class UsersTableSeeder extends Seeder
             'api_token' => str_random(60),
             'role' => 4
         ]);
+        DB::table('users')->insert([
+            'name' => 'heshan',
+            'email' => 'heshan@gmail.com',
+            'password' => bcrypt('heshan55875'),
+            'nic' => '951121088v',
+            'api_token' => str_random(60),
+            'role' => 4
+        ]);
         DB::table('customers')->insert([
             'id' => 4,
         ]);

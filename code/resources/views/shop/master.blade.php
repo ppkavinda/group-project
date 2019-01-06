@@ -24,13 +24,14 @@
 </head>
 <body>
 	<div id="app">
-		@include('study.partials.nav')
+		@include('shop.nav')
 		@yield('content')
 		@include('shop.partials.footer')
 		
 		<cart-model initial-items="{{ json_encode(Cart::content()) }}"></cart-model>
 	</div>
 	<!-- //footer -->
+	@stack('scripts')
 
 <script src="/js/manifest.js"></script>
 <script src="/js/vendor.js"></script>
@@ -86,7 +87,7 @@ $(document).ready(function () {
 // } else {
 //   console.error(demo.error);
 // }
-	</script>
+	// </script>
 <!-- //stats -->
 <!-- start-smoth-scrolling -->
 <script type="text/javascript">
@@ -98,7 +99,7 @@ $(document).ready(function () {
 	});
 </script>
 <!-- here stars scrolling icon -->
-	<script type="text/javascript">
+	<script>
 		$(document).ready(function() {
 			/*
 				var defaults = {
@@ -112,9 +113,7 @@ $(document).ready(function () {
 			$().UItoTop({ easingType: 'easeOutQuart' });
 								
 			});
-	</script>
-	@stack('scripts')
-<!-- //here ends scrolling icon -->
+	// </script>
 
 
 </body>

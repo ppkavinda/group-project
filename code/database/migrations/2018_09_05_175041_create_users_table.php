@@ -20,13 +20,13 @@ class CreateUsersTable extends Migration
             $table->string('nic')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->text('description')->nullable();
-            $table->string('profile_pic')->default('/storage//img//avaters//avatar5.png');
+            $table->string('telephone')->nullable();
             $table->text('address1')->nullable();
             $table->text('address2')->nullable();
             $table->text('city')->nullable();
-            $table->string('postal_code')->nullable();
-            $table->string('telephone')->nullable();
+            $table->integer('postal_code')->nullable();
+            $table->text('description')->nullable();
+            $table->string('profile_pic')->default('/dist/img/avatar5.png');
             $table->string('api_token', 60)->unique();
             $table->rememberToken();
             $table->integer('role')->default(4);
