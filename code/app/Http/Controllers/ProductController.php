@@ -21,10 +21,8 @@ class ProductController extends Controller
 
     public function index()
     {
-        $idNo= auth()->user()->id;
-        $posts = Product::where('user_id', $idNo)->get();
-        $postsCount= Product::count();
-        return view('profile.viewAdds', ['posts'=>$posts]);
+        $posts = auth()->user()->products;
+        return view('profile.viewAdds', ['posts'=>$posts[1]]);
     }
 
     /**

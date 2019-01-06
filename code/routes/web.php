@@ -102,8 +102,8 @@ Route::post('/inquiry', 'InquiryController@store');
 
 
 // admin-admin
-Route::get('/admin', 'InquiryController@countOfNotification');
-//Route::view('/admin', 'admin.index');
+//Route::get('/admin', 'InquiryController@countOfNotification');
+Route::view('/admin', 'admin.index');
 
 Route::match(['get','post'], '/admin/add-category', 'CategoryController@addCategory');
 Route::match(['get','post'], '/admin/edit-category/{id}', 'CategoryController@editCategory');
