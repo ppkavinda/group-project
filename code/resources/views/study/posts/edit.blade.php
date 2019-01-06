@@ -34,7 +34,7 @@
                             </div>
                             <button class="btn btn-primary" type="submit">Save</button>
                         </form> --}}
-                        <post-editor post-id="{{ $post->id }}" />
+                        <post-editor post-id="{{ $post->id }}" initial-post="{{ $post }}" />
 					</div>
                 </div>
 		    </div>

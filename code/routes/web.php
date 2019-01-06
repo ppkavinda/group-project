@@ -155,6 +155,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 Route::get('test', function () {
+    $p = App\Product::where('category_id', 2)->first();
+    dd($p->sizes);
     // return new App\Mail\Welcome(factory('App\User')->make());
     // dd(auth()->user());
     // auth()->user()->nofity(new \App\Notifications\OrderPlaced);
