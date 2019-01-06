@@ -33677,15 +33677,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // import AddToCartButton from './AddToCartButton'
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['initialProduct'],
+    props: ['initialProduct', 'initialSizes'],
     // components: {AddToCartButton},
     data: function data() {
         return {
             product: {
                 quantity: 1
+                // size: 'a',
             },
+            sizes: {},
             errors: {
-                quantity: []
+                quantity: [],
+                size: []
             }
         };
     },
@@ -33721,11 +33724,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         onClick: function onClick() {
             var _this = this;
 
+            console.log(this.sizes[this.product.size], this.product.quantity);
+            if (!this.sizes[this.product.size]) {
+                this.errors.quantity = ['Invalid input'];
+                return;
+            }
             if (!(parseInt(this.product.quantity) > 0)) {
                 this.errors.quantity = ['Invalid quantity'];
                 return;
             }
+            if (!(parseInt(this.product.quantity) <= this.sizes[this.product.size])) {
+                this.errors.quantity = ['Only ' + this.sizes[this.product.size] + ' left'];
+                return;
+            }
             axios.post('/cart/' + this.product.id, this.product).then(function (res) {
+                _this.sizes[_this.product.size] -= parseInt(_this.product.quantity);
                 window.Event.$emit('added-to-cart', res.data);
             }).catch(function (err) {
                 _this.errors.quantity = ["Invalid quantity"];
@@ -33745,11 +33758,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         getRating: function getRating() {
             return Math.round(this.product.ratings);
+        },
+        sizesAsArray: function sizesAsArray() {
+            var sz = this.sizes;
+            delete sz.id;
+            delete sz.product_id;
+            delete sz.created_at;
+            delete sz.updated_at;
+
+            Object.keys(sz).forEach(function (s) {
+                if (s[0] == 'r') delete sz[s];
+                if (!sz[s]) delete sz[s];
+            });
+            return Object.keys(sz);
         }
     },
     created: function created() {
+        var _this2 = this;
+
+        this.sizes = JSON.parse(this.initialSizes);
         this.product = JSON.parse(this.initialProduct);
+
         Vue.set(this.product, 'quantity', 1);
+        Vue.set(this.product, 'size', this.sizesAsArray[0]);
+        // Vue.set(this.product, 'previousSize',  '')
+
+        window.Event.$on('removed-from-cart', function (product) {
+            _this2.sizes[product.product.options.size] += parseInt(product.product.qty);
+        });
     }
 });
 
@@ -33829,7 +33865,51 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(2),
+    _c("div", { staticClass: "row" }, [
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("div", { staticClass: "item-info-product" }, [
+          _c("div", { staticClass: "info-product-price" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.product.size,
+                    expression: "product.size"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { id: "size", name: "sizes" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.product,
+                      "size",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              _vm._l(_vm.sizesAsArray, function(size, index) {
+                return _c("option", { key: index }, [_vm._v(_vm._s(size))])
+              })
+            )
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _vm._m(3),
@@ -33850,7 +33930,7 @@ var render = function() {
               attrs: { id: "quantity", type: "number", min: "1" },
               domProps: { value: _vm.product.quantity },
               on: {
-                click: _vm.clearErrors,
+                change: _vm.clearErrors,
                 input: function($event) {
                   if ($event.target.composing) {
                     return
@@ -33940,27 +34020,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "item-info-product" }, [
-          _c("div", { staticClass: "info-product-price" }, [
-            _c(
-              "label",
-              { staticClass: "col-form-label", attrs: { for: "size" } },
-              [_c("b", [_vm._v("Size")])]
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("div", { staticClass: "item-info-product" }, [
-          _c("div", { staticClass: "info-product-price" }, [
-            _c("select", {
-              staticClass: "form-control",
-              attrs: { id: "size", name: "sizes" }
-            })
-          ])
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "item-info-product" }, [
+        _c("div", { staticClass: "info-product-price" }, [
+          _c(
+            "label",
+            { staticClass: "col-form-label", attrs: { for: "size" } },
+            [_c("b", [_vm._v("Size")])]
+          )
         ])
       ])
     ])
@@ -34241,7 +34308,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeItem: function removeItem(item) {
             var _this = this;
 
-            axios.delete('/cart/' + item.rowId).then(function (res) {
+            axios.delete('/cart/' + item.rowId, { data: item }).then(function (res) {
 
                 Vue.delete(_this.items, item.rowId);
 
@@ -34249,7 +34316,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.disableCheckout = _this.items == null || !Object.keys(_this.items);
 
                 // emit an event to catch from cartBadge
-                window.Event.$emit('removed-from-cart', { rowId: item.rowId, qty: item.qty });
+                window.Event.$emit('removed-from-cart', { rowId: item.rowId, qty: item.qty, product: item });
 
                 // TODO: redirect to better place
                 // redirect to /shop if no products in the cart
@@ -34257,6 +34324,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (err) {
                 console.log(err);
             });
+        },
+        displayName: function displayName(item) {
+            console.log(item.options.size);
+            return item.name + (' (' + item.options.size + ')');
         },
         closeModel: function closeModel(e) {
             this.show = false;
@@ -34348,7 +34419,9 @@ var render = function() {
                             _c("a", {
                               staticClass: "minicart-name",
                               attrs: { href: "/products/" + item.id },
-                              domProps: { textContent: _vm._s(item.name) }
+                              domProps: {
+                                textContent: _vm._s(_vm.displayName(item))
+                              }
                             })
                           ]),
                           _vm._v(" "),

@@ -17,24 +17,24 @@ class CreateClothsTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('size(XS)')->nullable();
-            $table->integer('reserved(XS)')->nullable();
+            $table->integer('reservedsize(XS)')->default(0);
             $table->integer('size(S)')->nullable();
-            $table->integer('reserved(S)')->nullable();
+            $table->integer('reservedsize(S)')->default(0);
             $table->integer('size(M)')->nullable();
-            $table->integer('reserved(M)')->nullable();
+            $table->integer('reservedsize(M)')->default(0);
             $table->integer('size(L)')->nullable();
-            $table->integer('reserved(L)')->nullable();
+            $table->integer('reservedsize(L)')->default(0);
             $table->integer('size(XL)')->nullable();
-            $table->integer('reserved(XL)')->nullable();
+            $table->integer('reservedsize(XL)')->default(0);
             $table->integer('size(XXL)')->nullable();
-            $table->integer('reserved(XXL)')->nullable();
+            $table->integer('reservedsize(XXL)')->default(0);
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     
+
      * @return void
      */
     public function down()

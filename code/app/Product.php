@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use Searchable;
+    // use Searchable;
 
     protected $guarded = [];
 
@@ -36,9 +36,19 @@ class Product extends Model
         return $this->hasMany(Shoe::class);
     }
 
-    public function sizes()
+    public function getSizesAttribute()
     {
-        return $this->category_id;
+        if ($this->category_id == 1) {
+            return $this->clothes[0];
+        } elseif ($this->category_id == 2) {
+            return $this->masks[0];
+        } elseif ($this->category_id == 3) {
+            return $this->soaps[0];
+        } elseif ($this->category_id == 4) {
+            return $this->spices[0];
+        } elseif ($this->category_id == 5) {
+            return $this->shoes[0];
+        }
     }
     
     public function searchableAs()

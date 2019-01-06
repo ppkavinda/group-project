@@ -45,7 +45,7 @@ class OrderController extends Controller
             
             // store the products related to the order
             foreach (\Cart::content() as $key => $product) {
-                $order->products()->attach($product->id, ['price' => $product->price, 'amount' => $product->qty]);
+                $order->products()->attach($product->id, ['price' => $product->price, 'amount' => $product->qty, 'size' => $product->options->size]);
             }
         });
 
