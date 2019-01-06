@@ -40,8 +40,8 @@
 						<li class="nav-item menu__item {{ Request::is('/') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/">Home<span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item menu__item {{ Request::is('study') ? 'menu__item--current' : '' }}">
-							<a class="nav-link menu__link" href="/study">Learning Center</a>
+						<li class="nav-item menu__item {{ Request::is('shop') ? 'menu__item--current' : '' }}">
+							<a class="nav-link menu__link" href="{{ route('shop') }}">Shopping Center</a>
 						</li>
 						<li class="nav-item dropdown menu__item">
 							<a href="#" class="nav-link dropdown-toggle menu__link" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -74,8 +74,8 @@
 					</ul>
 					<ul class="navbar-nav menu__list ml-auto"> 
 						<li class=" nav-item menu__item">
-							<div class="wthreecartaits wthreecartaits2 cart cart box_1" id="testcart" title="Go to Shopping center"> 
-								<a href="/shop" class="w3view-cart"><i class="fa fa-cart-arrow-down" ></i></a>
+							<div class="wthreecartaits wthreecartaits2 cart cart box_1" id="testcart" title="Go to Learning center"> 
+								<a href="{{ route('study') }}" class="w3view-cart"><i class="fa fa-book" ></i></a>
 							</div>
 						</li>
 						<li class="nav-item menu__item {{ Request::is('/cart') ? 'menu__item--current' : '' }}">

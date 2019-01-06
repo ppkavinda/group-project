@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Notification;
 */
 Route::view('/', 'welcome.home')->name('home');
 
-Route::get('/study', 'studyController@index');
+Route::get('/study', 'studyController@index')->name('study');
 
 // authenticating routes
 Auth::routes();
@@ -37,7 +37,7 @@ Route::post('/updatePassword', 'UserController@updatePassword');
 
 
 // shop
-Route::get('/shop', 'ShopController@viewLatestAndRatingProducts');
+Route::get('/shop', 'ShopController@viewLatestAndRatingProducts')->name('shop');
 
 Route::view('/categories/men', 'shop.mens')->name('categories.men');
 Route::view('/categories/woman', 'shop.woman')->name('categories.women');
@@ -46,7 +46,7 @@ Route::get('/categories/jewellery', function () {
 })->name('categories.jewellery');
 
 Route::post('/products', 'ProductController@store');
-Route::get('/products/{product}', 'ProductController@show')->name('products.show');
+// Route::get('/products/{product}', 'ProductController@show')->name('products.show');
 
 Route::post('/reviews/{product}/create', 'ReviewController@store')->name('reviews.store')
         ->middleware("HasPurchasedTheProduct");
@@ -203,7 +203,7 @@ Route::get('/categories/{kind}/{type}/{category_id}', 'ProductController@viewKin
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
 
 Route::get('/categories/{kind}/{category_id}', 'ProductController@viewOnlyKindAdvertisements');
-Route::get('/quickView/{product}', 'ProductController@quickViewAdvertisement');
+Route::get('/quickView/{product}', 'ProductController@quickViewAdvertisement')->name('products.show');
 Route::get('/categories/{kind}/{type}', 'ProductController@viewKindAdvertisements');
 
 Route::post('/categories/priceRange', 'ProductController@priceRange');
