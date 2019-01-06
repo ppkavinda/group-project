@@ -41,8 +41,8 @@
 							<a class="nav-link menu__link" href="/">Home<span class="sr-only">(current)</span></a>
 						</li>
 
-						<li class="nav-item menu__item {{ Request::is('shop') ? 'menu__item--current' : '' }}">
-							<a class="nav-link menu__link" href="/shop">ShoppingCenter</a>
+						<li class="nav-item menu__item {{ Request::is('study') ? 'menu__item--current' : '' }}">
+							<a class="nav-link menu__link" href="{{ route('study') }}">Learning Center</a>
 						</li>
 						<li class="nav-item menu__item {{ Request::is('courses*') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/courses">Courses</a>
@@ -57,7 +57,7 @@
 					<ul class="navbar-nav menu__list ml-auto"> 
 						<li class=" nav-item menu__item">
 							<div class="wthreecartaits wthreecartaits2 cart cart box_1" id="testcart" title="Go to Shopping center"> 
-								<a href="/study" class="w3view-cart"><i class="fa fa-book" ></i></a>
+								<a href="{{ route('shop') }}" class="w3view-cart"><i class="fa fa-cart-arrow-down" ></i></a>
 							</div>
 						</li>
 						<li class="nav-item menu__item {{ Request::is('/cart') ? 'menu__item--current' : '' }}">
