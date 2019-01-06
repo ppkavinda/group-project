@@ -29,8 +29,16 @@
             </div>
              <div class="form-group row">
                 <label for="inputContact" class="col-sm-2 col-form-label">Contact Number</label>
+<<<<<<< HEAD
                 <div class="col-sm-10">
                     <input type="Number" name="contact" class="form-control" 
+||||||| merged common ancestors
+                <div class="col-sm-8">
+                    <input type="Number" name="contact" class="form-control" 
+=======
+                <div class="col-sm-8">
+                    <input type="Number" name="telephone" class="form-control" 
+>>>>>>> 8708affabc777cac330de464fb238ad18cdbe202
                         id="inputContact"  placeholder="Enter your contact Number">
                     <i aria-hidden="true" ></i>
                 </div>
