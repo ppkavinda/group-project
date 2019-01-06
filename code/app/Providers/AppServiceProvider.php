@@ -22,8 +22,10 @@ class AppServiceProvider extends ServiceProvider
         });
         view()->composer('admin.partials.sidebar', function ($view){
             $user = \App\User::where('role',1)->get();
-            $count = $user[0]->notifications->where('type','App\Notifications\InquirySubmited')->count();
-            $view->with('count', $count);
+            $inquiryCount = $user[0]->unreadNotifications->where('type','App\Notifications\InquirySubmited')->count();
+            $commentCount = $user[0]->unreadNotifications->where('type','App\Notifications\CommentSubmited')->count();
+            $postCount = $user[0]->unreadNotifications->where('type','App\Notifications\PostSubmitted')->count();
+            $view->with('inquiryCount', $inquiryCount)->with('commentCount',$commentCount)->with('postCount',$postCount);
         });
     }
 

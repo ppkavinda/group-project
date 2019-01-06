@@ -196,6 +196,7 @@
               <p>
                Posts
                 <i class="fa fa-angle-left right"></i>
+                <span class="badge badge-light">{{$postCount}}</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -214,6 +215,7 @@
               <p>
               Comments
                 <i class="fa fa-angle-left right"></i>
+                <span class="badge badge-light">{{$commentCount}}</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -233,7 +235,7 @@
               <p>
                 Inquiry
                 <i class="fa fa-angle-left right"></i>
-                <span class="badge badge-light">{{$count}}</span>
+                <span class="badge badge-light">{{$inquiryCount}}</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
