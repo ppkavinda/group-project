@@ -36,9 +36,9 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="amount" id="labels">&nbsp Name of the product &nbsp</label>
+                                        <label for="amount" id="labels">&nbsp Amount &nbsp</label>
                                         <br>
-                                        <input type ="number" id="select" name="amount" required>    
+                                        <input multi class="form-control" type ="number" id="select" name="amount" min="0" required>    
                                     </div>
                                 </div>
                             </div>
@@ -82,14 +82,14 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="price" id="labels">&nbsp Price(one of masks Rs.) &nbsp</label>
-                                        <input multi class="form-control" type="number" id="select" name="price">
+                                        <label for="price" id="labels">&nbsp Price(one of mask Rs.) &nbsp</label>
+                                        <input multi class="form-control" type="number" id="select" name="price" min="0" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="discount" id="labels">&nbsp Discount(one cloth Rs.) &nbsp</label>
-                                        <input multi class="form-control" type="number" id="select" name="discount" required>
+                                        <label for="discount" id="labels">&nbsp Discount(one mask Rs.) &nbsp</label>
+                                        <input multi class="form-control" type="number" id="select" name="discount" min="1" >
                                     </div>
                                 </div>
                             </div>
