@@ -17,20 +17,19 @@ class CreateShoesTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('size(6)')->nullable();
-            $table->integer('reserved(6)')->nullable();
+            $table->integer('reservedsize(6)')->default(0);
             $table->integer('size(7)')->nullable();
-            $table->integer('reserved(7)')->nullable();
+            $table->integer('reservedsize(7)')->default(0);
             $table->integer('size(8)')->nullable();
-            $table->integer('reserved(8)')->nullable();
+            $table->integer('reservedsize(8)')->default(0);
             $table->integer('size(9)')->nullable();
-            $table->integer('reserved(9)')->nullable();
+            $table->integer('reservedsize(9)')->default(0);
             $table->integer('size(10)')->nullable();
-            $table->integer('reserved(10)')->nullable();
+            $table->integer('reservedsize(10)')->default(0);
             $table->integer('size(11)')->nullable();
-            $table->integer('reserved(11)')->nullable();
+            $table->integer('reservedsize(11)')->default(0);
             $table->timestamps();
         });
-
     }
 
     /**

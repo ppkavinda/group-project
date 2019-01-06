@@ -5,7 +5,7 @@
         <ul v-if="Object.keys(items).length" class="list-group list-group-flush bg-light">
             <li v-for="(item, index) in items" :key="index" class="minicart-item row"> 
                 <div class="col-md-6 my-auto"> 
-                    <a class="minicart-name" :href="'/products/' + item.id" v-text="item.name"></a>
+                    <a class="minicart-name" :href="'/products/' + item.id" v-text="displayName(item)"></a>
                 </div>
                 <div class="minicart-details-quantity col-md-2 my-auto">
                     <input type="number" class="form-control" @blur="updateItem(item)" v-model="item.qty" min="1" name="quantity">
@@ -57,7 +57,7 @@ export default {
         },
         url () {
             return window.location.pathname
-        }
+        },
     },
     methods: {
         /**
@@ -82,7 +82,7 @@ export default {
          */
         removeItem (item) {
 
-            axios.delete(`/cart/${item.rowId}`)
+            axios.delete(`/cart/${item.rowId}`, { data: item})
                 .then(res => {
 
                     Vue.delete(this.items, item.rowId)
@@ -91,7 +91,7 @@ export default {
                     this.disableCheckout = this.items == null || !Object.keys(this.items)
 
                     // emit an event to catch from cartBadge
-                    window.Event.$emit('removed-from-cart', {rowId:item.rowId, qty: item.qty})
+                    window.Event.$emit('removed-from-cart', {rowId:item.rowId, qty: item.qty, product: item})
                     
                     // TODO: redirect to better place
                     // redirect to /shop if no products in the cart
@@ -101,6 +101,10 @@ export default {
                 .catch(err => {
                     console.log(err)
             })
+        },
+        displayName(item) {
+            console.log(item.options.size)
+            return item.name + ` (${item.options.size})`
         },
         closeModel (e) {
             this.show = false

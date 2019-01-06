@@ -16,13 +16,18 @@ class CheckoutTest extends TestCase
      */
     public function test_checkout_details_form_can_be_submited_successfully()
     {
+        $this->withoutExceptionHandling();
+        
         $this->be(factory('App\User')->create());
         $product = factory('App\Product')->create();
         $cart = \Cart::add(
-            $product->id, $product->name, 2, $product->price, 
+            $product->id,
+            $product->name,
+            2,
+            $product->price,
             ['img1' => $product->img1, 'img2' => $product->img2, 'img3' => $product->img3]
         );
-// dd(auth()->user());
+        // dd(auth()->user());
         $response = $this->json('POST', 'checkout/details', [
             'address1' => "asdf asdfasd asdf asdfj",
             'address2' =>  'asdfsdfasdflfjaslj asldkfj ',

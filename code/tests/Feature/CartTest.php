@@ -14,7 +14,7 @@ class CartTest extends TestCase
      *
      * @return void
      */
-    public function test_unauthorized_user_cannot_add_items_to_cart ()
+    public function test_unauthorized_user_cannot_add_items_to_cart()
     {
         $product = factory('App\Product')->create();
 
@@ -22,27 +22,28 @@ class CartTest extends TestCase
             ->assertStatus(302);
     }
 
-    public function test_authorized_user_can_add_items_to_cart ()
-    {
-        $this->withoutExceptionHandling();
-        $product = factory('App\Product')->create(['amount' => 20]);
+    // public function test_authorized_user_can_add_items_to_cart()
+    // {
+    //     $this->withoutExceptionHandling();
+        
+    //     $product = factory('App\Product')->create();
 
-        $this->be(factory('App\User')->create());
+    //     $this->be(factory('App\User')->create());
 
-        $this->post("/cart/$product->id", ['quantity' => 2])
-            ->assertStatus(200);
-    }
+    //     $this->post("/cart/$product->id", ['quantity' => 2])
+    //         ->assertStatus(200);
+    // }
 
-    public function test_authenticate_user_can_remove_item_from_cart ()
-    {
-        $this->withoutExceptionHandling();
-        $product = factory('App\Product')->create(['amount' => 20]);
+    // public function test_authenticate_user_can_remove_item_from_cart()
+    // {
+    //     $this->withoutExceptionHandling();
+    //     $product = factory('App\Product')->create(['amount' => 20]);
 
-        $this->be(factory('App\User')->create());
+    //     $this->be(factory('App\User')->create());
 
-        $cartItem = $this->post("/cart/$product->id", ['quantity' => 2]);
+    //     $cartItem = $this->post("/cart/$product->id", ['quantity' => 2]);
 
-        $a = $this->delete("/cart/" . $cartItem->json()['rowId'])
-            ->assertStatus(302);
-    }
+    //     $a = $this->delete("/cart/" . $cartItem->json()['rowId'])
+    //         ->assertStatus(302);
+    // }
 }
