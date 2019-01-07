@@ -149,156 +149,91 @@
             </div>
             </fieldset>
 
-             <!-- only the facilitator can view this part -->
-             @if (auth()->user()->isFacilitator())  
-            <!-- Facilitator user details -->
-            <fieldset class="fieldset">
-            <h3 class="fieldset-title">Facilitator's Details</h3> 
-            <!-- Courses coducting -->
-            <div class="form-group row">
-                <label for="inputCourse" class="col-sm-2 col-form-label">Courses conducting</label>
-                <div class="col-sm-10">
-                    <select name="courses" class="form-control col-md-15" id="coursesConducting">
-                            <option>Select one...</option>
-                            <option value="" disabled selected>Select your conducting course</option>
-                            <option value="1">Soap Manufacturing</option>
-                            <option value="2">Candle Manufacturing</option> 
-                            <option value="3">Spices Manufacturing</option> 
-                            <option value="4">Rubber products Manufacturing</option>           
-                    </select>
-                </div>
-            </div>
-
-            <!-- Available days -->
-            <div class="form-group row">
-                <label for="inputDays" class="col-sm-2 col-form-label">Available days</label>
-                    <div class="col-sm-10">
-                    <select name="days" class="form-control col-md-15" id="availableDays">
-                            <option>Select one...</option>
-                            <option value="" disabled selected>Select your available days</option>
-                            <option value="8">Whole week</option> 
-                            <option value="1">Monday</option>   
-                            <option value="2">Tuesday</option> 
-                            <option value="3">Wednesday</option>           
-                            <option value="4">Thursday</option>           
-                            <option value="5">Friday</option>           
-                            <option value="6">Saturday</option>           
-                            <option value="7">Sunday</option>                                      
-                        </select>
+                <!-- only the facilitator can view this part -->
+            @if (auth()->user()->isFacilitator())  
+                <!-- Facilitator user details -->
+                <fieldset class="fieldset">
+                    <h3 class="fieldset-title">Facilitator's Details</h3> 
+                    <!-- Courses coducting -->
+                    <div class="form-group row">
+                        <label for="inputCourse" class="col-sm-2 col-form-label">Courses conducting</label>
+                        <div class="col-sm-10">
+                            <select name="courses" class="form-control col-md-15" id="coursesConducting">
+                                    <option>Select one...</option>
+                                    <option value="" disabled selected>Select your conducting course</option>
+                                    <option value="1">Soap Manufacturing</option>
+                                    <option value="2">Candle Manufacturing</option> 
+                                    <option value="3">Spices Manufacturing</option> 
+                                    <option value="4">Rubber products Manufacturing</option>           
+                            </select>
+                        </div>
                     </div>
-            </div>
-            <!-- Experience Level -->
-            <div class="form-group row">
-                <label for="inputExperience" class="col-sm-2 ">Experience Level</label>
-                    <div class="col-sm-10">
-                    <select name="e" class="form-control col-md-15" id="experience">
-                            <option value="" disabled selected>Select your relevant experience level</option>
-                            <option value="1">Less than 1 year</option>   
-                            <option value="2">1-3 years</option> 
-                            <option value="3">3-5 years</option>           
-                            <option value="4">5-8years</option>           
-                            <option value="5">8-10years</option>           
-                            <option value="6">10+ years</option>                
-                    </select>
+
+                    <!-- Available days -->
+                    <div class="form-group row">
+                        <label for="inputDays" class="col-sm-2 col-form-label">Available days</label>
+                            <div class="col-sm-10">
+                            <select name="days" class="form-control col-md-15" id="availableDays">
+                                    <option>Select one...</option>
+                                    <option value="" disabled selected>Select your available days</option>
+                                    <option value="8">Whole week</option> 
+                                    <option value="1">Monday</option>   
+                                    <option value="2">Tuesday</option> 
+                                    <option value="3">Wednesday</option>           
+                                    <option value="4">Thursday</option>           
+                                    <option value="5">Friday</option>           
+                                    <option value="6">Saturday</option>           
+                                    <option value="7">Sunday</option>                                      
+                                </select>
+                            </div>
                     </div>
-            </div>
+                    <!-- Experience Level -->
+                    <div class="form-group row">
+                        <label for="inputExperience" class="col-sm-2 ">Experience Level</label>
+                            <div class="col-sm-10">
+                            <select name="e" class="form-control col-md-15" id="experience">
+                                    <option value="" disabled selected>Select your relevant experience level</option>
+                                    <option value="1">Less than 1 year</option>   
+                                    <option value="2">1-3 years</option> 
+                                    <option value="3">3-5 years</option>           
+                                    <option value="4">5-8years</option>           
+                                    <option value="5">8-10years</option>           
+                                    <option value="6">10+ years</option>                
+                            </select>
+                            </div>
+                    </div>
 
-            <!-- Education Level -->
-            <div class="form-group row">
-                <label for="inputExperience" class="col-sm-2 col-form-label">Education Level</label>
-                <div class="col-sm-10">
-                    <select name="education" class="form-control col-md-15" id="eduction">
-                            <option value="" disabled selected>Select your your highest level of education </option>
-                            <option value="1">GCE O/L</option>   
-                            <option value="2">GCE A/L</option> 
-                            <option value="3">Bachelor's degree</option>           
-                            <option value="4">Master's degree</option>           
-                            <option value="5">Doctorate </option>                     
-                    </select>
-                </div>
-            </div>
-        </fieldset>
-        @endif
-
-        <center>  
-            <button type="submit" class="btn offset-md-2 btn-primary">Update Profile
-            </button>
-        </center>
+                    <!-- Education Level -->
+                    <div class="form-group row">
+                        <label for="inputExperience" class="col-sm-2 col-form-label">Education Level</label>
+                        <div class="col-sm-10">
+                            <select name="education" class="form-control col-md-15" id="eduction">
+                                    <option value="" disabled selected>Select your your highest level of education </option>
+                                    <option value="1">GCE O/L</option>   
+                                    <option value="2">GCE A/L</option> 
+                                    <option value="3">Bachelor's degree</option>           
+                                    <option value="4">Master's degree</option>           
+                                    <option value="5">Doctorate </option>                     
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+            @endif
+            <center>  
+                <button type="submit" class="btn offset-md-2 btn-primary">Update Profile
+                </button>
+            </center>
         
         </form>
-            <br>
-<<<<<<< HEAD
-=======
-         
-<<<<<<< HEAD
-||||||| merged common ancestors
-            <!-- Add advertisment -->
-            <div class="col-md-5">
-                <div class="viewAdd">
-                    <center><a href="YourAdvertisements"><font color=white>Your Advertisements &nbsp &nbsp</font></a><i class="fa fa-angle-right"></i></center>
-                </div>
+        <br>
+        <!-- Add advertisment -->
+        <div class="col-md-5">
+            <div class="viewAdd">
+                <center><a href="YourAdvertisements"><font color=white>Your Advertisements &nbsp &nbsp</font></a><i class="fa fa-angle-right"></i></center>
             </div>
-=======
-            <!-- Add advertisment -->
-            <div class="col-md-5">
-                <div class="viewAdd">
-                    <center><a href="YourAdvertisements"><font color=white>Your Advertisements &nbsp &nbsp</font></a><i class="fa fa-angle-right"></i></center>
-                </div>
-            </div>
->>>>>>> 0f76b4d797d29da220b5007049d562f6a75507f7
         </div>
->>>>>>> 8708affabc777cac330de464fb238ad18cdbe202
     </div>
-<<<<<<< HEAD
-    <br>
+    </div>
   
-        
-    
-=======
-<<<<<<< HEAD
-     
-            <!-- image upload -->
-            <div class="col-md-6">
-                <fieldset class="fieldset">
-                    <h3 class="fieldset-title">Upload your picture</h3> 
-                        <div class="mx-auto" style="width: 35rem;">  
-                            <center>         
-                                <img src="/pubic/dist/image/avatar5.png" style="width:200px; height:200px; float:left; border-radius:50%; margin-right:25px;">
-                            </center>
-                            <input type="file" name="profile_pic">
-                        </div>
-                </fieldset>
-            </div>
-
-            <input type="submit" class="btn offset-md-2 btn-primary" value="Update Your Details">
-            <!-- Add advertisment -->
-            <div class="col-md-5">
-                <a href="YourAdvertisements" class="btn btn-dark">Your Advertisements &nbsp &nbsp<i class="fa fa-angle-right"></i></a>
-            </div>
-            <br>
-||||||| merged common ancestors
-     
-            <!-- image upload -->
-            <div class="col-md-6">
-                <fieldset class="fieldset">
-                    <h3 class="fieldset-title">Upload your picture</h3> 
-                        <div class="mx-auto" style="width: 35rem;">  
-                            <center>         
-                                <img src="/pubic/dist/image/avatar5.png" style="width:200px; height:200px; float:left; border-radius:50%; margin-right:25px;">
-                            </center>
-                            <input type="file" name="profile_pic">
-                        </div>
-                </fieldset>
-            </div>
-
-            <input type="submit" class="btn offset-md-2 btn-primary" value="Update Your Details">
-=======
-    <br>
-    <div>
-        <input type="submit" class="btn offset-md-2 btn-primary" value="Update Your Details">
->>>>>>> 8708affabc777cac330de464fb238ad18cdbe202
-    </div>
->>>>>>> 0f76b4d797d29da220b5007049d562f6a75507f7
-    <br>
 </div>
 
