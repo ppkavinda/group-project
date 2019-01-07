@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->double('price');
-            $table->integer('amount');
             $table->integer('reserved')->default(0);
             $table->text('description');
             $table->integer('user_id');
@@ -30,10 +29,7 @@ class CreateProductsTable extends Migration
             $table->double('ratings')->default(0);
             $table->string('kind');
             $table->string('type');
-            $table->string('sizes');
             $table->timestamps();
-
-           
         });
     }
 

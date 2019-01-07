@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use DB;
 use App\User;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+
 class UserController extends Controller
 {
     public function __consctuct()
@@ -23,26 +25,27 @@ class UserController extends Controller
 
         $role=$user->role;
         //dd($role);
+
         $courses = $user->courses;
         if($role == 1)
         {
          
           return view('admin.profile.index', ['user'=>$user],['courses'=>$courses]);
+
         }
 
         
       
-        return view('profile.index', ['user'=>$user],['courses'=>$courses]);
+        return view('profile.index', ['user'=>$user], ['courses'=>$courses]);
     }
     
-    public function show (User $user) {
+    public function show(User $user)
+    {
         $courses = $user->courses;
         $role=$user->role;
-       // dd($user);
-        if($role == 1)
-      
-        {
-          return view('admin.profile.index',compact('user'));
+        // dd($user);
+        if ($role == 1) {
+            return view('admin.profile.index', compact('user'));
         }
 
         return view('profile.index', compact('user'));
@@ -72,26 +75,25 @@ class UserController extends Controller
         return auth()->user();
     }
 
-     public function search_user(Request $request )
-     {
-         $request->validate([
+    public function search_user(Request $request)
+    {
+        $request->validate([
              'search_users' => 'required',
          ]);
-         $search = $request->input('search_users');
-         if( $search != "")
-         {
-             $users= \App\User::join('roles', 'users.role', '=', 'roles.id')
+        $search = $request->input('search_users');
+        if ($search != "") {
+            $users= \App\User::join('roles', 'users.role', '=', 'roles.id')
                              ->select('users.*', 'roles.role')
                              ->where('name', 'LIKE', '%'. $search .'%')
                              ->orWhere('email', 'LIKE', '%'.$search .'%')
                              ->orWhere('nic', 'LIKE', '%'.$search .'%')
                              ->orWhere('roles.role', 'LIKE', '%'. $search .'%')
                              ->get();
-             if(count($users) > 0)
-             {
-                 return view('admin.users.search')->withDetails($users)->withQuery($search);
-             }
+            if (count($users) > 0) {
+                return view('admin.users.search')->withDetails($users)->withQuery($search);
+            }
              
+
          //dd($users);\
          return view('admin.users.search')->withMessage("No Users Found! "); 
          }
@@ -109,25 +111,23 @@ class UserController extends Controller
          
  
 
-  
  
    
-// Update Password
-    public function updatePassword(Request $request) {
+    // Update Password
+    public function updatePassword(Request $request)
+    {
         $oldPassword = $request->oldPassword;
         $newPassword = $request->newPassword;
-        if(!Hash::check($oldPassword, Auth::user()->password)){
-          return back()->with('msg','The specified password does not match the database password'); //when user enter wrong password as current password
-        }else{
+        if (!Hash::check($oldPassword, Auth::user()->password)) {
+            return back()->with('msg', 'The specified password does not match the database password'); //when user enter wrong password as current password
+        } else {
             $request->user()->fill(['password' => Hash::make($newPassword)])->save(); //updating password into user table
-           return back()->with('msg','Password has been updated');
+            return back()->with('msg', 'Password has been updated');
         }
         echo 'here update query for password';
     }
 
-   
-    
-    public function editRole(Request $request, $id = null)
+ public function editRole(Request $request, $id = null)
     { 
         
         if($request->isMethod('post')){
@@ -152,5 +152,9 @@ class UserController extends Controller
 
    
 }
+
+
+
+    
 
 

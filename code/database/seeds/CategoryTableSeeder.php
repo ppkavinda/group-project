@@ -12,13 +12,16 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
         \App\Category::create([
-            'title' => 'ditergent'
-        ]);
-        \App\Category::create([
-            'title' => 'jewellary'
-        ]);
-        \App\Category::create([
             'title' => 'clothes'
+        ]);
+        \App\Category::create([
+            'title' => 'masks'
+        ]);
+        \App\Category::create([
+            'title' => 'soap'
+        ]);
+        \App\Category::create([
+            'title' => 'spices'
         ]);
     }
 }

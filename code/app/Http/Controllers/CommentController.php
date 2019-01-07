@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Comment;
 use Illuminate\Http\Request;
+// use Illuminate\Notifications\Notification;
+use App\Notifications\CommentSubmited;
+use Illuminate\Support\Facades\Notification;
 
 class CommentController extends Controller
 {
@@ -52,10 +55,13 @@ class CommentController extends Controller
             'post_id' => $post,
             'parent_id' => $request->parent_id ?: null // optional
         ]);
-
+        $user = Post::find($post)->auther;
+        $admin = \App\User::where('role','1')->get();
+        Notification::send($user, new CommentSubmited($comment->id));
+        Notification::send($admin, new CommentSubmited($comment->id));
         return $comment->load('user');
     }
-
+   
     /**
      * NOT USED
      * Display the specified resource.
@@ -116,6 +122,8 @@ class CommentController extends Controller
     public function view_comments()
     {
         $comments = \App\Comment::paginate(5);
+        $user = \App\User::where('role',1)->get();
+        $user[0]->unreadNotifications->where('type','App\Notifications\CommentSubmited')->markAsRead();
 
         return view('admin.comments.view')->with(compact('comments'));
     }

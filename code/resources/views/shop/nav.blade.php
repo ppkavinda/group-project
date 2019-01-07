@@ -11,7 +11,7 @@
 				</h1>
 			</div>
 			<div class="col-md-4 header-middle">
-				<form action="{{ route('search.study') }}" method="GET">
+				<form action="{{ route('search.shop') }}" method="GET">
 					<input type="search" name="q" placeholder="Search here..." required="">
 					<input type="submit" value=" ">
 				</form>
@@ -40,8 +40,8 @@
 						<li class="nav-item menu__item {{ Request::is('/') ? 'menu__item--current' : '' }}">
 							<a class="nav-link menu__link" href="/">Home<span class="sr-only">(current)</span></a>
 						</li>
-						<li class="nav-item menu__item {{ Request::is('study') ? 'menu__item--current' : '' }}">
-							<a class="nav-link menu__link" href="/study">Learning Center</a>
+						<li class="nav-item menu__item {{ Request::is('shop') ? 'menu__item--current' : '' }}">
+							<a class="nav-link menu__link" href="{{ route('shop') }}">Shopping Center</a>
 						</li>
 						<li class="nav-item dropdown menu__item">
 							<a href="#" class="nav-link dropdown-toggle menu__link" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -74,8 +74,8 @@
 					</ul>
 					<ul class="navbar-nav menu__list ml-auto"> 
 						<li class=" nav-item menu__item">
-							<div class="wthreecartaits wthreecartaits2 cart cart box_1" id="testcart" title="Go to Shopping center"> 
-								<a href="/shop" class="w3view-cart"><i class="fa fa-cart-arrow-down" ></i></a>
+							<div class="wthreecartaits wthreecartaits2 cart cart box_1" id="testcart" title="Go to Learning center"> 
+								<a href="{{ route('study') }}" class="w3view-cart"><i class="fa fa-book" ></i></a>
 							</div>
 						</li>
 						<li class="nav-item menu__item {{ Request::is('/cart') ? 'menu__item--current' : '' }}">
@@ -83,12 +83,12 @@
 						</li>
 						@guest
 						<li class="active nav-item menu__item {{ Request::is('login') ? 'menu__item--current' : '' }}"> 
-							<a class="nav-link menu__link" data-toggle="modal" data-target="#myModal">
+							<a class="nav-link menu__link" href="{{ route('login') }}">
 							<i class="fa fa-user" aria-hidden="true"></i> Sign In </a>
 								<!-- <button class="btn btn-primary" >Login In</button> -->
 						</li>
 						<li class="nav-item menu__item {{ Request::is('register') ? 'menu__item--current' : '' }}">
-								<a class="nav-link menu__link"  data-toggle="modal" data-target="#myModal1">
+								<a class="nav-link menu__link" href="{{ route('register') }}" >
 								<i class="fa fa-user" aria-hidden="true"></i> Sign Up </a>
 						</li>
 						@else

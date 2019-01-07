@@ -67,6 +67,10 @@
                         <small class="text-danger">{{ $errors->first('body') }}</small>
                         <br>
                     @endif
+                    @if (session('error'))
+                        <small class="text-danger">{{ session('error')}}</small>
+                        <br>
+                    @endif
                     <input type="submit" value="ADD REVIEW">
                 </form>
             </div>
