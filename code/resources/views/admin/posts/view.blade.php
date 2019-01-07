@@ -96,27 +96,18 @@
                     
                     </td>
                     
-                   
-                   
-                    
-                   
                     <td>{{date('M j,Y H:i',strtotime($post->created_at))	}} </td>
                     <td>{{date('M j,Y H:i',strtotime($post->updated_at)) }}</td>
                     <td width="300" style="text-align: center">
-                    <a href="{{url('posts/'.$post->id ) }}" class="btn btn-secondary btn mini" 
-                    onclick="return confirm('Do you want to see this details?')" >View</a>
-                    <a href="{{url('posts/'.$post->id.'/edit' ) }}" class="btn btn-primary btn mini" 
-                    onclick="return confirm('Do you want to edit this details?')" >Edit</a>
-                    
-                    <a href="{{ url('/admin/delete-post/'.$post->id)}}"class="btn btn-danger btn mini" 
-                     onclick="return confirm('Are You Sure ?')">Delete</a>
-                      <br>
-                      <br>
-                     <a href="{{ url('/admin/search-comments/'.$post->id)}}"class="btn btn-info btn mini" 
-                     onclick="return confirm('Do you want to see this details?')">View Comments</a>
-                    
-                    
-                    
+                      <a href="{{url('posts/'.$post->id ) }}" class="btn btn-secondary btn mini" >View</a>
+                      <a href="{{url('posts/'.$post->id.'/edit' ) }}" class="btn btn-primary btn mini" >Edit</a>
+                      
+                      <a href="{{ url('/admin/delete-post/'.$post->id)}}"class="btn btn-danger btn mini" 
+                      onclick="return confirm('Are You Sure ?')">Delete</a>
+                        <br>
+                        <br>
+                      <a href="{{ url('/admin/search-comments/'.$post->id)}}"class="btn btn-info btn mini" 
+                      onclick="return confirm('Do you want to see this details?')">View Comments</a>
                     </td> 
                     </tr>
                 
@@ -125,12 +116,7 @@
                 <b>No Post</b>
                 @endif
                   </tbody>
-               
-                  
-                
                 </table>
-                
-             
               </div>
            
               <!-- /.card-body -->

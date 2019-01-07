@@ -100,22 +100,13 @@
                 <thead>
                   <tr>
                     <th style="width: 40px" color="solid black">ID</th>
-                    
                     <th>name</th>
                     <th width="200">email</th>
                     <th>nic</th>
-                    
                     <th>Address</th>
-                   
                     <th>telephone</th>
                     <th>role</th>
                     <th>Action</th>
-                   
-                   
-                    
-                  
-                    
-                  
                   </tr>
                 </thead>
                 <tbody>
@@ -134,36 +125,15 @@
                   @endif
                   </td>
                   <td>
-                 
                   <a href="{{url('/admin/edit-users/'.$user->id) }}" class="btn btn-primary btn mini" >Promote</a>
-                    
-  
-               
-                 
                  </td>
-
                 </tr>
                 @endforeach
-                  
-                 
-                  
-                
-               
-                
                </tbody>
-        
-                  
-                
                </table>
               </div>
               <!-- /.card-body -->
-              
             </div>
-            
-            
-            
-            
-          
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
