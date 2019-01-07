@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-md-6">
                 <br>
-                <img class="img-fluid" src="{{ $product->img1 }}" height="200px" width="auto" alt="Computer Hope">
+                <img class="img-fluid" src="/storage/{{ $product->img1 }}" height="200px" width="auto" alt="Computer Hope">
             </div>
 
             @include('shop.products.details')

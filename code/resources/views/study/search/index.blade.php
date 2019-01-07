@@ -1,4 +1,4 @@
-@extends('shop.master')
+@extends('study.master')
 @section('content')
 <div class="container">
     <ul class="row">

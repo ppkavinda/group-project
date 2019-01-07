@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\User;
 use App\Product;
 use Illuminate\Http\Request;
@@ -318,4 +319,42 @@ class ProductController extends Controller
         }
         return view('shop.mens', ['addPosts'=> $addPosts, 'category_id'=>$category_id]);
     }
+
+
+    public function viewProducttable()
+    {
+            $products=\App\Product::get();
+           //dd($products);
+        return view('admin.product.view',compact('products'));
+    }
+
+    public function search(Request $request)
+    {
+        $search =$request->get("search");
+        $products=\App\Product::where('products.id','like','%'.$search.'%')
+                ->orWhere('products.name','like','%'.$search.'%')
+                ->orWhere('products.price','like','%'.$search.'%')
+                ->get(); 
+        //dd($products);
+        return view('admin.product.view',compact('products'));
+    }
+
+    public function deleteProduct($id= null)
+    {
+        if(!empty($id)){
+            \App\Product::where(['id'=>$id])->delete();
+            return redirect()->back()->with('flash_message_success','Product : ' .$id.' deleted ');
+        }
+
+    }
+    public function view_Product($id=null){
+      
+      $products = Product::where(['id'=>$id])->first();
+
+      //dd($products);
+      return view('admin.product.index')->with(compact('products'));
+  
+    }
+
+    
 }
