@@ -1,5 +1,6 @@
 @extends('study.master')
 @section('content')
+
 <div class="row">
 <!-- sidebar -->
   <div class="col-2 bg-light pt-3" style="height:100vh">
@@ -21,15 +22,22 @@
             data-toggle="pill" href="#v-pills-orders" role="tab" 
             aria-controls="v-pills-orders" aria-selected="false">
                 <i class="fa fa-list" aria-hidden="true"></i> My Orders
+                
         </a>
     <!-- except the customer other users can add products -->
     @if (auth()->user()->isAdmin() || auth()->user()->isFacilitator()||auth()->user()->isEntrepreneur()) 
     <!-- Add Product -->
+        <a class="nav-link profile-nav-link" id="v-pills-profile-tab" 
+            data-toggle="pill" href="#v-pills-sold" role="tab" 
+            aria-controls="v-pills-profile" aria-selected="false">
+                <i class="fa fa-cart-arrow-down"></i> Received Orders
+        </a>
         <a class="nav-link profile-nav-link" id="v-pills-addProduct-tab" 
             data-toggle="pill" href="#v-pills-addProduct" role="tab" 
             aria-controls="v-pills-profile" aria-selected="false">
                 <i class="fa fa-edit"></i> Add Product
         </a>
+        
     @endif
     <!-- Settings -->
         <a class="nav-link profile-nav-link" id="v-pills-settings-tab" 
@@ -47,6 +55,10 @@
       <div class="tab-pane fade" id="v-pills-courses" role="tabpanel" aria-labelledby="v-pills-orders-tab">
           @include('profile.courses')
       </div>
+      <div class="tab-pane fade" id="v-pills-sold" role="tabpanel" aria-labelledby="v-pills-sold-tab">
+          @include('profile.sold')
+      </div>
+      
       <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
         @include('profile.orders')
       </div>
