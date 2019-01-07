@@ -1,6 +1,14 @@
 <h3 class="w3l_header mt-4 mb-5">Select a category</h3>
 <hr>
 <div class="container">
+
+    <!-- Add advertisment -->
+    <div class="col-md-5">
+        <div class="viewAdd">
+            <center><a href="YourAdvertisements"><font color=white>Update your product details &nbsp &nbsp</font></a><i class="fa fa-angle-right"></i></center>
+        </div>
+    </div>
+    <br>
     <div class="col-5">
         <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center" style="font-size:20px">
