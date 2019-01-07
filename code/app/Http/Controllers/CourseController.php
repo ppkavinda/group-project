@@ -154,6 +154,12 @@ class CourseController extends Controller
 
     }
 
+    public function enroll_details(Request $request,$id = null)
+    {
+        $course = \App\Course::find($id);
+        return  view('admin.course.enroll', ['course' => $course]);
+    }
+
 
  
 

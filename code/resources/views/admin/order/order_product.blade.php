@@ -17,7 +17,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-              <li class="breadcrumb-item active">Orders  Product Table</li>
+              <li class="breadcrumb-item active">  Products Table</li>
             </ol>
           </div>
         </div>
@@ -46,7 +46,7 @@
       
      
       <div class="col-sm-4">
-      <a href="{{ url('/admin/courses/generate-pdf')}}"class="btn btn-info btn mini" 
+     <!-- <a href="{{ url('/admin/courses/generate-pdf')}}"class="btn btn-info btn mini" 
                      onclick="return confirm('Are You sure?')">Convert to  Pdf</a>
      
      </diV>
@@ -68,7 +68,8 @@
                 <h3 class="card-title">Orders Products</h3>
               </div>
               <!-- /.card-header -->
-              <div class="row">
+        </div>
+        <div class="row">
             
         </div>
               <div class="card-body">
@@ -76,17 +77,14 @@
                 <thead>
                   <tr>
                     <th style="width: 40px" color="solid black">Product ID</th>
-                    <th>Order id</th>
-                    <th>Order status</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>Telephone</th>
-                   
-                    <th>Payment ID</th>
-                    <th>Product ID</th>
-                    <th>Product Name</th>
+                    <th>Product name</th>
+                    <th>price</th>
+                    <th>amount</th>
                     <th>User ID</th>
-                    
+                    <th>discount</th>
+                    <th>kind</th>
+                    <th>size</th>
+                    <th>created at</th>
                     <!--<th>Cover Image</th>
                     
                     <th>updated_at</th> -->
@@ -96,19 +94,18 @@
                   </thead>
                   <tbody id="myTable">
                   
-                  @foreach($order_products as $order_product)
+                  @foreach($order->products as $product)
                    
                    <tr>
-                    <td>{{$order_product->id}}</td>
-                    <td>{{$order_product->order_id}}</td>
-                    <td>{{$order_product->status}}</td>
-                    <td>{{$order_product->address1}},{{$order_product->address2}}</td>
-                    <td>{{$order_product->city}}</td>
-                    <td>{{$order_product->telephone}}</td>
-                    <td>{{$order_product->payment_id}}</td>
-                    <td>{{$order_product->product_id}}</td>
-                    <td>{{$order_product->name}}</td>
-                    <td>{{$order_product->user_id}}</td>
+                    <td>{{$product->id}}</td>
+                    <td>{{$product->name}}</td>
+                    <td>{{$product->price}}</td>
+                    <td>{{$product->amount}}</td>
+                    <td>{{$product->user_id}}</td>
+                    <td>{{$product->discount}}</td>
+                    <td>{{$product->kind}}</td>
+                    <td>{{$product->size}}</td>
+                    <td>{{date('M j,Y H:i',strtotime($product->created_at))}}</td>
                     </tr>
                 
                  @endforeach
