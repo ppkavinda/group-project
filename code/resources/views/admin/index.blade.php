@@ -91,7 +91,7 @@
         <div class="row">
           <section class="col-lg-7 connectedSortable mt-3 pt-3">
           <div class="col-sm-6">
-            <h4 class="m-0 text-dark"><b>Purchase Histroy</b></h4>
+            <h4 class="m-0 text-dark"><b>Order Histroy</b></h4>
             <br>
           </div><!-- /.col -->
               <canvas id="myChart" width="800" height="400"></canvas>

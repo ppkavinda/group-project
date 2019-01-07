@@ -108,12 +108,6 @@
                   <p>Search</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="/admin/search-users" class="nav-link">
-                  <i class="fa fa-gear nav-icon"></i>
-                  <p>Manage role</p>
-                </a>
-              </li>
             </ul>
           </li>
           <a href="index3.html" class="brand-link">

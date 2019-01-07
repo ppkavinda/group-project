@@ -109,7 +109,7 @@
                     <br>
                     <br>
                     <a href="{{ url('/admin/view-course/entroll/'.$course->id)}}"class="btn btn-info btn mini" >
-                     See  Enroll Users</a>
+                     View  Enrolled Users</a>
                     
                     </td> 
                     </tr>
