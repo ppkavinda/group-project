@@ -89,23 +89,12 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
-          <!-- Left col -->
           <section class="col-lg-7 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-            <!-- sales chart -->
-            <area-chart></area-chart>
-            <!-- /.card -->
-
-            <!-- DIRECT CHAT -->
-
-            <!--/.direct-chat -->
-            <!-- chat box -->
-            <chat-box></chat-box>
-
-            <!-- TO DO List -->
-            <todo-list></todo-list>
-            <!-- /.card -->
-          </section>
+            
+            
+          
+          
+          <section>
           <!-- /.Left col -->
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-5 connectedSortable">
@@ -116,8 +105,7 @@
 
             <!-- /.card -->
 
-            <!-- Calendar -->
-            <Calendar></Calendar>
+           
 
             <!-- /.card -->
           </section>
