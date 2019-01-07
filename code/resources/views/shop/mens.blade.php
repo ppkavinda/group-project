@@ -187,7 +187,7 @@
                             <div class="row">
                                 <b class="col-md-5 align-text-center col-form-label-md">&nbspFrom(LKR)&nbsp</b>
                                 {{-- <label for="staticEmail2" class="sr-only col-md-1">From(LKR)</label> --}}
-                                <input type="number" class="form-control mb-2 mr-sm-2 col-md-3" id="selectFrom" name="fromValue" min="0" required>
+                                <input type="number" class="form-control mb-2 mr-sm-2 col-md-4" id="selectFrom" name="fromValue" min="0" required>
                             </div>
                         </div>
                         <div class="form-group col-md-3">
