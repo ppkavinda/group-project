@@ -57,7 +57,8 @@ class PostController extends Controller
             ) {
                 return redirect("/courses/{$post->course->id}");
             }
-        if((request()->user()->role)==1)
+            $role=request()->user()->role;
+        if($role ==1)
         {
             return view('admin.posts.index', compact('post'));
         }
@@ -231,7 +232,7 @@ class PostController extends Controller
 
     public function adminviewPosts()
     {
-        $posts= \App\Post::paginate(3);
+        $posts= \App\Post::all();
        
         
        //dd($posts);
@@ -260,7 +261,10 @@ class PostController extends Controller
         
         $posts=\App\Post::where('posts.title','like','%'.$search.'%') 
                     ->orWhere('posts.id','like','%'.$search.'%')
-                    ->paginate(2);  
+                    ->orWhere('posts.course_id','like','%'.$search.'%')
+                    ->orWhere('posts.created_at','like','%'.$search.'%')
+                    ->orWhere('posts.updated_at','like','%'.$search.'%')
+                    ->get();
       // dd($posts);
         return view('admin.posts.view',['posts'=>$posts]);
     }

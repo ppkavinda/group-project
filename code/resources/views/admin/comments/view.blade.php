@@ -26,7 +26,7 @@
       <div class="container-fluid">
       <div class="row">
     
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <form action="/admin/search-comments" method="get">
           <div class="input-group">
                 <input type="search" name="search"class="form-control" placeholder="Enter Comments id">
@@ -65,9 +65,8 @@
                     <th>Body</th>
                     <th>Post id</th>
                     <th>Post title</th>
-                    
+                    <th>User Name</th>                   
                     <th>User id</th>
-                    <th>User Name</th>
                     <th>Create At</th>
                    
                     <th width="250" >Actions</th>

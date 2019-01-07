@@ -85,7 +85,7 @@
                     <a href="{{ url('admin/edit-category/'.$category->id)}}" class="btn btn-primary btn mini"  
                     onclick="return confirm('Do you want to edit this details?')">Edit</a>
                     <a href="{{ url('admin/delete-category/'.$category->id)}}"class="btn btn-danger btn mini"
-                    onclick="return confirm('Are you sure?')">Delete</a></span>
+                   >Delete</a></span>
                       
                       </td> 
                       </tr>
