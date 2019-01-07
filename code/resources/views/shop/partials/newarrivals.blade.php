@@ -42,4 +42,5 @@
 				</div>	
 			</div>
 		</div>
+	</div>
 	<!-- //new_arrivals --> 
