@@ -36,7 +36,7 @@
 </script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 <script src="/js/morris.js"></script>
 <!-- Sparkline -->
@@ -63,6 +63,6 @@
 {{-- <script src="/js/demo.js"></script> --}}
 
 
-
+@stack('scripts')
 </body>
 </html>

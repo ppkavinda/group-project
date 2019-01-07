@@ -97,14 +97,19 @@
                       <td><b> {{$course->updated_at}} </b>  </td>--> --}}
                       <td width="300" style="text-align: center">
 
-                      <a href="{{url('/admin/edit-course/'.$course->id) }}" class="btn btn-primary btn mini" >Edit</a>
-                      
-                      <a href="{{ url('/admin/delete-course/'.$course->id)}}"class="btn btn-danger btn mini" 
-                      onclick="return confirm('Are You Sure ?')">Delete</a>
-
-                      <a href="{{ url('/admin/view-course/posts/'.$course->id)}}"class="btn btn-info btn mini">See Posts</a>
-                      
-                      </td> 
+                    <a href="{{url('/admin/edit-course/'.$course->id) }}" class="btn btn-primary btn mini" >Edit</a>
+                    
+                    <a href="{{ url('/admin/delete-course/'.$course->id)}}"class="btn btn-danger btn mini" 
+                     onclick="return confirm('Are You Sure ?')">Delete</a>
+                  
+                    
+                    <a href="{{ url('/admin/view-course/posts/'.$course->id)}}"class="btn btn-info btn mini">See  Posts</a>
+                    <br>
+                    <br>
+                    <a href="{{ url('/admin/view-course/entroll/'.$course->id)}}"class="btn btn-info btn mini" >
+                     View  Enrolled Users</a>
+                    
+                    </td> 
                     </tr>
                 
                  @endforeach
