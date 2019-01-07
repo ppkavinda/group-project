@@ -84,23 +84,29 @@
                 </div>
             </div>	
         </div>
+	<div class="new_arrivals_agile_w3ls_info"> 
+		<div class="container">
+            <h3 class="wthree_text_info">Related <span>products</span></h3>
+            <hr>
+        </div>
+	</div>
         <div class="container">
             <div class="row">
                 <?php
                     $count=0;
-                    if(count($sameKindOfProduct)<=5){
+                    if(count($sameKindOfProduct)<=4){
                         $count=count($sameKindOfProduct);
                     }else{
-                        $count = 5;
+                        $count = 4;
                     }
                 ?>
                 @for($x=0; $x<$count; $x++)
                     @if($post[0]['id'] != $sameKindOfProduct[$x]['id'])
-                        <div class="col-md-2 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
+                        <div class="col-md-3 product-men">
+                            <div class="men-pro-item simpleCart_shelfItem" style="height:380px;">
                                 <div class="men-thumb-item">
-                                    <img src="/storage/{{$sameKindOfProduct[$x]['img1']}}" alt="" class="pro-image-front img-fluid" style="width:175px; height:175px;">
-                                    <img src="/storage/{{$sameKindOfProduct[$x]['img1']}}" alt="" class="pro-image-back img-fluid" style="width:175px; height:175px;">
+                                    <img src="/storage/{{$sameKindOfProduct[$x]['img1']}}" alt="" class="pro-image-front img-fluid">
+                                    <img src="/storage/{{$sameKindOfProduct[$x]['img1']}}" alt="" class="pro-image-back img-fluid">
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
                                             <a href="/quickView/{{$sameKindOfProduct[$x]['id']}}" class="link-product-add-cart">Quick View</a>
@@ -111,8 +117,7 @@
                                     @endif
                                 </div>
                                 <div class="item-info-product ">
-                                    <h3><a href="/quickView/{{$sameKindOfProduct[$x]['id']}}">{{$sameKindOfProduct[$x]['name']}}</a></h3>
-                                    <h4><a href="/quickView/{{$sameKindOfProduct[$x]['id']}}">Available Sizes :{{$sameKindOfProduct[$x]['sizes']}}</a></h4>
+                                    <h4><a href="/quickView/{{$sameKindOfProduct[$x]['id']}}">{{$sameKindOfProduct[$x]['name']}}</a></h4>
                                     <div class="info-product-price">
                                         <span class="item_price">Rs.{{$sameKindOfProduct[$x]['price']-$sameKindOfProduct[$x]['discount']}}</span>
                                         @if($sameKindOfProduct[$x]['discount']!=null)
