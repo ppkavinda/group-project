@@ -122,6 +122,8 @@ class CommentController extends Controller
     public function view_comments()
     {
         $comments = \App\Comment::paginate(5);
+        $user = \App\User::where('role',1)->get();
+        $user[0]->unreadNotifications->where('type','App\Notifications\CommentSubmited')->markAsRead();
 
         return view('admin.comments.view')->with(compact('comments'));
     }

@@ -27,9 +27,20 @@ class UserController extends Controller
         $orders = $user->orders;
         $posts = $user->posts; 
         
-        
-        //return Order::with('products')->get();
+       
         return view('profile.index',compact('user','courses','orders','products','posts'));
+
+        $role=$user->role;
+        //dd($role);
+
+        $courses = $user->courses;
+        if($role == 1)
+        {
+         
+          return view('admin.profile.index', ['user'=>$user],['courses'=>$courses]);
+
+        }
+
     }
     
     public function show(User $user)
@@ -103,10 +114,25 @@ class UserController extends Controller
                 return view('admin.users.search')->withDetails($users)->withQuery($search);
             }
              
-            //dd($users);\
-            return view('admin.users.search')->withMessage("No Users Found! ");
-        }
-    }
+
+         //dd($users);\
+         return view('admin.users.search')->withMessage("No Users Found! "); 
+         }
+     
+     }
+     
+     public function user_Details(){	
+        	
+        $users = \App\User::all();	
+       $roles=DB::table('roles')->get();
+       //dd($users);
+        return view('admin.users.view',['users'=>$users],['roles'=>$roles]);	
+         
+     }	
+         
+ 
+
+ 
    
     // Update Password
     public function updatePassword(Request $request)
@@ -121,5 +147,35 @@ class UserController extends Controller
         }
         echo 'here update query for password';
     }
-    
+
+ public function editRole(Request $request, $id = null)
+    { 
+        
+        if($request->isMethod('post')){
+            $data = $request->all();
+
+            User::where(['id'=>$id])->update(['role'=>$data['category_id']
+            ]);
+            return redirect('/admin/view-users');
+        }
+        $roles=DB::table('roles')->get();
+        $usersdetails =User::where(['id'=>$id])->first();
+        //dd($courseDetails);
+        return view('admin.users.edit')->with(compact(['roles','usersdetails']));
+    }
+   
+    public function view_user(Request $request ,$id=null)
+    {
+
+        $users = \App\User::where(['users.id'=>$id])->get();
+       return view('admin.users.view')->with(compact('users'));
+    }
+
+   
 }
+
+
+
+    
+
+

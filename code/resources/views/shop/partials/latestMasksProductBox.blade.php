@@ -1,9 +1,9 @@
 @for($x=0; $x<count($latestMasks); $x++)
 	<div class="col-md-3 product-men">
-		<div class="men-pro-item simpleCart_shelfItem">
+		<div class="men-pro-item simpleCart_shelfItem" style="height:380px;" >
 			<div class="men-thumb-item">
-				<img src="/storage/{{$latestMasks[$x]['img1']}}" alt="" class="pro-image-front img-fluid" style="width:200px; height:200px;">
-				<img src="/storage/{{$latestMasks[$x]['img1']}}" alt="" class="pro-image-back img-fluid" style="width:200px; height:200px;">
+				<img src="/storage/{{$latestMasks[$x]['img1']}}" alt="" class="pro-image-front img-fluid" >
+				<img src="/storage/{{$latestMasks[$x]['img1']}}" alt="" class="pro-image-back img-fluid" >
 					<div class="men-cart-pro">
 						<div class="inner-men-cart-pro">
 							<a href="/quickView/{{$latestMasks[$x]['id']}}" class="link-product-add-cart">Quick View</a>

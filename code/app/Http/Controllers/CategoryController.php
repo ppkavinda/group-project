@@ -30,7 +30,8 @@ class CategoryController extends Controller
     
     }
 
-    public function editCategory(Request $request,$id= null){
+    public function editCategory(Request $request,$id= null)
+    {
         if($request->isMethod('post')){
 
             $request->validate([

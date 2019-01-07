@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    // use Searchable;
+    use Searchable;
 
     public function searchableAs()
     {

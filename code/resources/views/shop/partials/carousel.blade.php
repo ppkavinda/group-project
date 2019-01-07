@@ -13,7 +13,7 @@
 					<div class="carousel-caption">
 						<h3>The Biggest <span>Sale</span></h3>
 						<p>Special for today</p>
-						<a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+						<a class="hvr-outline-out button2" href="{{ route('shop') }}">Shop Now </a>
 					</div>
 				</div>
 			</div>
@@ -22,7 +22,7 @@
 					<div class="carousel-caption">
 						<h3>Summer <span>Collection</span></h3>
 						<p>New Arrivals On Sale</p>
-						<a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+						<a class="hvr-outline-out button2" href="{{ route('shop') }}">Shop Now </a>
 					</div>
 				</div>
 			</div>
@@ -31,7 +31,7 @@
 					<div class="carousel-caption">
 						<h3>The Biggest <span>Sale</span></h3>
 						<p>Special for today</p>
-						<a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+						<a class="hvr-outline-out button2" href="{{ route('shop') }}">Shop Now </a>
 					</div>
 				</div>
 			</div>
@@ -40,7 +40,7 @@
 					<div class="carousel-caption">
 						<h3>Summer <span>Collection</span></h3>
 						<p>New Arrivals On Sale</p>
-						<a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+						<a class="hvr-outline-out button2" href="{{ route('shop') }}">Shop Now </a>
 					</div>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 					<div class="carousel-caption">
 						<h3>The Biggest <span>Sale</span></h3>
 						<p>Special for today</p>
-						<a class="hvr-outline-out button2" href="mens.html">Shop Now </a>
+						<a class="hvr-outline-out button2" href="{{ route('shop') }}">Shop Now </a>
 					</div>
 				</div>
 			</div> 
