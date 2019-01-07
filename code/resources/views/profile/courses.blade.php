@@ -31,23 +31,3 @@
             @endif  
         </div>
     </div>
-    <!-- uploaded posts -->
-    <div class="col-md-6">
-        @if (auth()->user()->isFacilitator()||auth()->user()->isAdmin())
-        <h5 class="m-3">Your Posts
-            <a href="/posts/create" class="btn btn-primary ml-3">New Post</a>
-            <a href="/videos/upload" class="btn btn-primary ml-3">Upload Video</a>
-        </h5>
-        <ul class="list-group m-2">
-        @foreach ($user->posts as $post)
-                <li class="list-group-item"><a href="posts/{{ $post->id }}/edit">{{ $post->title }}</a><br>
-                    <small><a class="text-dark" href="posts/{{ $post->id }}"><i class="fa fa-eye"></i> View</a></small> |
-                    <small><a class="text-dark" href="posts/{{ $post->id }}/edit"><i class="fa fa-edit"></i> Edit</a></small> |
-                    <small><a class="text-danger" href="posts/{{ $post->id }}/delete"><i class="fa fa-remove"></i> Delete</a></small>
-                </li>
-        @endforeach
-        </ul>
-        @endif
-        <h5 class="m-3">In order to publish posts in this site, you have to register as a <a href="#">Facilitator</a></h5>
-    </div>
-</div>

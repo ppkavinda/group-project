@@ -9,13 +9,13 @@
                     <h3 class="fieldset-title">Upload your picture</h3> 
                         <div class="mx-auto" style="width: 35rem;">  
                             <center>         
-                                <img class="img-fluid" src="/pubic/dist/image/avatar5.png" style="width:200px; height:200px; float:left; border-radius:50%; margin-right:25px;">
+                                <img class="img-fluid" src="/dist/img/avatar5.png" style="width:200px; height:200px; float:left; border-radius:50%; margin-right:25px;">
                             </center>
                             <input type="file" name="profile_pic">
                         </div>
             </fieldset>
             <fieldset class="fieldset">
-            <h2 class="fieldset-title">Personal Info</h2>
+            <h2 class="fieldset-title" class="pt-3 mt-3">Personal Info</h2>
             <!-- email address -->
             <div class="form-group row">
                 <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
@@ -227,11 +227,6 @@
         </form>
         <br>
         <!-- Add advertisment -->
-        <div class="col-md-5">
-            <div class="viewAdd">
-                <center><a href="YourAdvertisements"><font color=white>Your Advertisements &nbsp &nbsp</font></a><i class="fa fa-angle-right"></i></center>
-            </div>
-        </div>
     </div>
     </div>
   

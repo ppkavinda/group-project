@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
 <!-- sidebar -->
-  <div class="col-2 bg-light pt-3" style="height:25vh">
+  <div class="col-2 bg-light pt-3" style="height:100vh">
     <div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
     <!-- Mydetails -->
         <a class="nav-link active profile-nav-link" id="v-pills-details-tab" 
@@ -41,11 +41,11 @@
   </div>
   <div class="col-10">
     <div class="tab-content" id="v-pills-tabContent">
-      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+      <div class="tab-pane fade show active" id="v-pills-details" role="tabpanel" aria-labelledby="v-pills-home-tab">
          @include('profile.details') 
       </div>
-      <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
-        
+      <div class="tab-pane fade" id="v-pills-courses" role="tabpanel" aria-labelledby="v-pills-orders-tab">
+          @include('profile.courses')
       </div>
       <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
         @include('profile.orders')
