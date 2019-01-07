@@ -105,8 +105,8 @@ Route::post('/inquiry', 'InquiryController@store');
 
 // admin-admin
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', 'InquiryController@countOfNotification');
-    //Route::view('/admin', 'admin.index');
+    //Route::get('/admin', 'InquiryController@countOfNotification');
+    Route::view('/admin', 'admin.index');
 
     Route::get('/admin', 'AdminController@main');
   
@@ -183,7 +183,7 @@ Route::get('test', function () {
 
 Auth::routes();
 
-//selling post
+//selling Products
 Route::get('soap', function () {
     return view('add.soap');
 });
@@ -216,6 +216,8 @@ Route::get('/admin/profile', 'AdminController@index')->middleware('Admin');
 //Route::post('/users/{user}/edit', 'AdminController@edit');
 //Route::get('/user', 'UserController@get');
 
+Route::post('postAdd/{id}', 'ProductController@store');
+
 Route::get('YourAdvertisements', 'ProductController@index');
 Route::get('YourAdvertisements/{productId}/delete', 'ProductController@destroy');
 Route::post('/YourAdvertisements/{productId}/update', 'ProductController@update');
@@ -233,3 +235,5 @@ Route::get('/categories/{kind}/{type}', 'ProductController@viewKindAdvertisement
 Route::post('/categories/priceRange', 'ProductController@priceRange');
 Route::get('/trendingProduct', 'ShopController@getTrendingProducts');
 Route::get('/test1', 'InquiryController@countOfNotification');
+
+
