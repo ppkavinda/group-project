@@ -49,4 +49,11 @@ class InquiryController extends Controller
         }
 
     }
+
+    public function Inquirenofi(){
+        $inqcount=\App\Inquiry::count();
+        dd($inqcount);
+        return view('admin.partials.sidebar')->with(compact($inqcount));
+    }
+
 }

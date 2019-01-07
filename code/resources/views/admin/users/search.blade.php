@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Table</h1>
+            <h1>Users Table</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-              <li class="breadcrumb-item active">User</li>
+              <li class="breadcrumb-item active">Users table</li>
             </ol>
           </div>
         </div>
@@ -107,6 +107,9 @@
                     <th>Email</th>
                     <th>NIC</th>
                     <th>Role</th>
+                    <th>Address</th>
+                    <th>telephone</th>
+                    
                    
                     <th class="center">Actions</th>
                   
@@ -120,7 +123,9 @@
                   <td>{{$user->email}}</td>
                   <td>{{$user->nic}}</td>
                   <td>{{$user->role}}</td>
-                  <td> </td>
+                  <td>{{$user->address1}}{{$user->address2}}</td>
+                  <td>{{$user->contact}}</td>
+                  <td><a href="{{url('/admin/edit-users/'.$user->id) }}" class="btn btn-primary btn mini" >Promote</a> </td>
                   </tr>
                 @endforeach
                   

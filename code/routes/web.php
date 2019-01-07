@@ -102,11 +102,14 @@ Route::post('/inquiry', 'InquiryController@store');
 //sachintha
 
 
+
 // admin-admin
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', 'InquiryController@countOfNotification');
     //Route::view('/admin', 'admin.index');
 
+    Route::get('/admin', 'AdminController@main');
+  
     Route::match(['get','post'], '/admin/add-category', 'CategoryController@addCategory');
     Route::match(['get','post'], '/admin/edit-category/{id}', 'CategoryController@editCategory');
     Route::match(['get','post'], '/admin/delete-category/{id}', 'CategoryController@deleteCategory');
@@ -125,7 +128,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     //view inquery-Sachintha
     Route::get('/admin/view-inquiry', 'InquiryController@viewInquire');
     Route::get('/admin/delete-inquiry/{id}', 'InquiryController@deleteInquire');
-
 
     Route::get('/admin/view-users', 'UserController@user_Details');
     Route::get('/admin/search-users', 'UserController@user_Details');
@@ -150,8 +152,21 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/delete-comment/{id}', 'CommentController@deleteComment');
 
     //generate PDF
+    Route::get('/admin/view-course/coursePdf','CourseController@generatePDF');
 
-    Route::get('/admin/courses/generate-pdf', 'CourseController@generatePDF');
+
+    Route::get('/admin/view-products','ProductController@viewProducttable');
+    Route::get( '/admin/delete-product/{id}','ProductController@deleteProduct');
+    Route::post( '/admin/delete-product/{id}','ProductController@deleteProduct');
+    Route::get( '/admin/view-product/{id}','ProductController@view_Product');
+
+    Route::get('/admin/search-product','ProductController@search');
+    Route::get('/admin/view-orders','OrderController@view_Order_table');
+    Route::get('/admin/search-order','OrderController@search');
+
+    Route::get('/admin/order-product','OrderController@view_order_product_table');
+
+    Route::get('/admin/view-user/{id}','UserController@view_user');
 });
 
 Route::get('test', function () {
@@ -188,6 +203,13 @@ Route::get('mask', function () {
 Route::get('shoes', function () {
     return view('add.shoes');
 });
+
+Route::post('/postAdd', 'ProductController@store');
+
+Route::get('/admin/post', 'PostController@adminindex');
+
+
+Route::get('/admin/profile', 'AdminController@index')->middleware('Admin');
 
 //Route::get('/profile', 'UserController@index')->middleware('auth');
 //Route::get('/profile/{user}', 'UserController@show')->name('user.profile');
