@@ -59,8 +59,18 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
-        }							
-</script>
+        }
+
+    function checkForm(form){
+        if(Number(form.discount.value)>Number(form.price.value)){
+            alert("Error: Discount price should lass than normal price!!");
+            return false;
+
+        }else{
+			return true;
+        }
+    }
+</script>							
 
 </body>
 </html>

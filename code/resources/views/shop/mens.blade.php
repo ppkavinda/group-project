@@ -39,7 +39,7 @@
 						 </div>
 				</div>
 	   <!--//w3_short-->
-	</div>
+        </div>
 </div>
 <div class="banner-bootom-w3-agileits">
 	<div class="container">
@@ -202,11 +202,11 @@
                                 <b for="type" id="labels" class="col-md-4 align-text-middle">Category</b>
                                 <select class="form-control mb-2 mr-sm-2 col-md-6" id="selectCategory" name="category">
                                     <option>All</option>
-                                    <option>Clothes</option>
-                                    <option>Shoes and Slippers</option>
-                                    <option>Soap</option>
-                                    <option>Spices</option>
-                                    <option>Masks</option>
+                                    <option {{ $category_id == 1 ? 'selected' : '' }}>Clothes</option>
+                                    <option {{ $category_id == 2 ? 'selected' : '' }}>Masks</option>
+                                    <option {{ $category_id == 3 ? 'selected' : '' }}>Soap</option>
+                                    <option {{ $category_id == 4 ? 'selected' : '' }}>Spices</option>
+                                    <option {{ $category_id == 5 ? 'selected' : '' }}>Shoes / Slippers</option>
                                 </select>
                             </div>
                         </div>
@@ -243,11 +243,14 @@
                             </div>
                         </div>
                     @endfor
+                    
                 </div>
+                <div class="pull-right">{{ $addPosts->links() }}</div>
             </div>
 	</div>
 </div>
 <br>
+</div>
 
 <script type="text/javascript">
     function checkForm(form){
