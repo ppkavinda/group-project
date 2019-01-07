@@ -256,7 +256,7 @@ class ProductController extends Controller
     //get all product
     public function allAdvertisements(Request $request)
     {
-        $addPosts = Product::get();
+        $addPosts = Product::paginate(9);
         $category_id = 0;
         return view('shop.mens', ['addPosts'=> $addPosts,'category_id'=>$category_id]);
     }
@@ -264,21 +264,21 @@ class ProductController extends Controller
     //get specific category and type product
     public function viewKindAdvertisements(Request $request, $kind, $type, $category_id)
     {
-        $addPosts = Product::where('kind', $kind)->where('type', $type)->get();
+        $addPosts = Product::where('kind', $kind)->where('type', $type)->paginate(9);
         return view('shop.mens', ['addPosts'=>$addPosts, 'category_id'=>$category_id]);
     }
 
     //get all product in this category
     public function viewAdvertisements(Request $request, $category_id)
     {
-        $addPosts= Product::where('category_id', $category_id)->get();
+        $addPosts= Product::where('category_id', $category_id)->paginate(9);
         return view('shop.mens', ['addPosts'=>$addPosts,'category_id'=>$category_id]);
     }
 
     //get spices
     public function viewOnlyKindAdvertisements(Request $request, $kind, $category_id)
     {
-        $addPosts = Product::where('kind', $kind)->get();
+        $addPosts = Product::where('kind', $kind)->paginate(9);
         return view('shop.mens', ['addPosts'=>$addPosts, 'category_id'=>$category_id]);
     }
 
@@ -288,7 +288,6 @@ class ProductController extends Controller
         $post = $product;
         $user = $product->user;
         $sameKindOfProduct = Product::where('kind', $post[0]['kind'])->get();
-
         return view('shop.products.single', ['product' => $product, 'user'=>$user, 'sameKindOfProduct'=>$sameKindOfProduct]);
     }
 

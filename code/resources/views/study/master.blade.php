@@ -67,13 +67,7 @@
             return false;
 
         }else{
-			var value = confirm('Post this advertisement!!');
-			if(value==false){
-				return false;
-			}else{
-				return true;
-			}
-
+			return true;
         }
     }
 </script>							
