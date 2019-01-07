@@ -7,9 +7,14 @@ use App\Product;
 
 class ShopController extends Controller
 {
-    public function viewLatestTwoProduct(Request $request){
+    public function viewLatestAndRatingProducts(Request $request){
         $latest = Product::latest()->limit(2)->get();
-        return view('shop.index',['latest'=>$latest]);
+        $latestClothes = Product::latest()->where('category_id', 1)->limit(8)->get();
+        $latestMasks = Product::latest()->where('category_id',2)->limit(8)->get();
+        $latestShoes = Product::latest()->where('category_id',5)->limit(8)->get();
+        $latestSpices = Product::latest()->where('category_id',4)->limit(8)->get();
+        $topRatingProduct = Product::orderBy('ratings','decs')->limit(2)->get();
+        return view('shop.index',['latest'=>$latest, 'latestClothes'=>$latestClothes, 'latestMasks'=>$latestMasks, 'latestShoes'=>$latestShoes, 'latestSpices'=>$latestSpices,'topRatingProduct'=>$topRatingProduct]);
     }
 
     public function getTrendingProducts(Request $request){

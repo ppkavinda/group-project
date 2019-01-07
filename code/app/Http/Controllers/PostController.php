@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use \App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use App\Notifications\PostSubmitted;
+use Illuminate\Support\Facades\Notification;
 
 
 class PostController extends Controller
@@ -95,7 +97,8 @@ class PostController extends Controller
             'user_id' => auth()->id(),
             'course_id' => $request->course_id,
         ]);
-
+        $admin = \App\User::where('role','1')->get();
+        Notification::send($admin, new PostSubmitted($post->id));
         return $post;
     }
 
@@ -220,7 +223,9 @@ class PostController extends Controller
                     ->select('posts.*','users.name')
                     ->where(['posts.course_id'=>$id])->get();
         
-          // dd($postscount);
+        // dd($postscount);
+        $user = \App\User::where('role',1)->get();
+        $user[0]->unreadNotifications->where('type','App\Notifications\PostSubmitted')->markAsRead();
         return view('admin.course.posts')->with(compact(['posts','postscount']));
         
     }

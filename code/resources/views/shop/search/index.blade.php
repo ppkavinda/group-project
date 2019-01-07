@@ -1,13 +1,13 @@
 @extends('shop.master')
 @section('content')
 <div class="container">
-<ul class="row">
+<ul class="row m-3">
     @foreach($products as $product)
     <div class="col-md-3 product-men">
-            <div class="men-pro-item simpleCart_shelfItem">
+            <div class="men-pro-item simpleCart_shelfItem" style="height:380px;">
                 <div class="men-thumb-item">
-                    <img src="{{ $product['img1']}}" alt="" class="pro-image-front img-fluid" style="width:200px; height:200px;">
-                    <img src="{{$product['img1']}}" alt="" class="pro-image-back img-fluid" style="width:200px; height:200px;">
+                    <img src="{{ '/storage/' . $product['img1']}}" alt="{{ $product->name }}" class="pro-image-front img-fluid">
+                    <img src="{{ '/storage/' . $product['img1']}}" alt=" {{ $product->name }}" class="pro-image-back img-fluid">
                     <div class="men-cart-pro">
                         <div class="inner-men-cart-pro">
                         <a href="{{ route('products.show', $product->id)}}" class="link-product-add-cart">Quick View</a>

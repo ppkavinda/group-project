@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Notifications\OrderPlaced;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class CheckoutController extends Controller
 {
@@ -34,6 +36,14 @@ class CheckoutController extends Controller
         \Cart::destroy();
 
         $order = Order::with('products')->find($request->order_id);
+
+        if (!$request->session()->get('notification_sent')) {
+            foreach ($order->products as $product) {
+                Notification::send($product->user, new OrderPlaced($order->id));
+            }
+        }
+        
+        $request->session()->put('notification_sent', true);
 
         return view('shop.cart.success', compact('order'));
     }

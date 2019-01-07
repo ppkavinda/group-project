@@ -16,6 +16,12 @@
             aria-controls="v-pills-profile" aria-selected="false">
                 <i class="fa fa-book"></i> My Courses
         </a>
+    <!-- Add Product -->
+        <a class="nav-link profile-nav-link" id="v-pills-addProduct-tab" 
+            data-toggle="pill" href="#v-pills-addProduct" role="tab" 
+            aria-controls="v-pills-profile" aria-selected="false">
+                <i class="fa fa-book"></i> Add Product
+        </a>
     <!-- MyOrders -->
         <a class="nav-link profile-nav-link" id="v-pills-messages-tab" 
             data-toggle="pill" href="#v-pills-orders" role="tab" 
@@ -43,6 +49,9 @@
       </div>
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
         @include('profile.courses')
+      </div>
+      <div class="tab-pane fade" id="v-pills-addProduct" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        @include('profile.addPost')
       </div>
       <div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
         @include('profile.orders')
