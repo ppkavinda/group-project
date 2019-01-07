@@ -46,7 +46,7 @@ class Product extends Model
             case 3:
                 return $this->soaps[0];
             case 4:
-                return $this->spices[0];
+                return $this->shoes[0];
             case 5:
                 return $this->shoes[0];
         }

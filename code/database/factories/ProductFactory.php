@@ -14,7 +14,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'img1' => 'img/products/sample.png',
         'img2' => 'img/products/sample.png',
         'img3' => 'img/products/sample.png',
-        'category_id' => $faker->numberBetween(1, 5),
+        'category_id' => $faker->numberBetween(1, 4),
         'kind' => $faker->words(2, true),
         'type' => $faker->words(2, true),
         // 'sizes' => $faker->randomElement(['M', 'S', 'L']),

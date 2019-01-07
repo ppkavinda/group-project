@@ -44,7 +44,7 @@
       </div>
       <div class="col-sm-6">
       <a href="/admin/view-course/coursePdf"class="btn btn-info btn mini" 
-                     onclick="return confirm('Are You sure?')">Convert to  Pdf</a>
+                     onclick="return confirm('Are You sure?')">Download as PDF</a>
      
      </diV>
      </div>
@@ -86,37 +86,30 @@
                   <tbody id="myTable">
                   
                   @foreach($courses as $course)
-                   
-                   <tr>
-                    <td><b>{{$course->id}}</b></td>
-                    <td><b>{{$course->category->title}}</b></td>
-                    <td><b>{{$course->title}}</b></td>
-                    <td><b>{{$course->subtitle}}</b></td>
-                    <td><b>{{$course->description}}</b></td>
-                  <!--  <td><img class="img-fluid" src="/storage/{{$course->cover_img}}" style="width:150px; "></td>-
-                    
-                    <td><b> {{$course->updated_at}} </b>  </td>-->
-                    <td width="300" style="text-align: center">
+                    <tr>
+                      <td><b>{{$course->id}}</b></td>
+                      <td><b>{{$course->category->title}}</b></td>
+                      <td><b>{{$course->title}}</b></td>
+                      <td><b>{{$course->subtitle}}</b></td>
+                      <td><b>{{$course->description}}</b></td>
+                    {{-- <!--  <td><img class="img-fluid" src="/storage/{{$course->cover_img}}" style="width:150px; "></td>-
+                      
+                      <td><b> {{$course->updated_at}} </b>  </td>--> --}}
+                      <td width="300" style="text-align: center">
 
-                    <a href="{{url('/admin/edit-course/'.$course->id) }}" class="btn btn-primary btn mini" 
-                    onclick="return confirm('Do you want to edit this details?')" >Edit</a>
-                    
-                    <a href="{{ url('/admin/delete-course/'.$course->id)}}"class="btn btn-danger btn mini" 
-                     onclick="return confirm('Are You Sure ?')">Delete</a>
-                  
-                    
-                    <a href="{{ url('/admin/view-course/posts/'.$course->id)}}"class="btn btn-info btn mini" 
-                     onclick="return confirm('Do You want to see ?')">See  Posts</a>
-                    
-                    </td> 
+                      <a href="{{url('/admin/edit-course/'.$course->id) }}" class="btn btn-primary btn mini" >Edit</a>
+                      
+                      <a href="{{ url('/admin/delete-course/'.$course->id)}}"class="btn btn-danger btn mini" 
+                      onclick="return confirm('Are You Sure ?')">Delete</a>
+
+                      <a href="{{ url('/admin/view-course/posts/'.$course->id)}}"class="btn btn-info btn mini">See Posts</a>
+                      
+                      </td> 
                     </tr>
                 
                  @endforeach
                 
                   </tbody>
-               
-                  
-                
                 </table>
                 {{$courses->links()}}
               </div>
