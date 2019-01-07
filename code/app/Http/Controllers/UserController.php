@@ -28,11 +28,6 @@ class UserController extends Controller
         $orders = $user->orders;
         $posts = $user->posts;
 
-        if ($role == 1) {
-            return view('admin.profile.index', ['user'=>$user], ['courses'=>$courses]);
-        }
-
-        
         return view('profile.index', compact('user', 'courses', 'orders', 'products', 'posts'));
     }
     
