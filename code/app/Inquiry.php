@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class inquiry extends Model
+class Inquiry extends Model
 {
     protected $fillable = ['name','subject','email','message'];
 }

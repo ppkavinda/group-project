@@ -42,8 +42,10 @@
                           <option value="0">Select Role</option>
                          
                           @foreach( $roles as $role)
-
+                          @if(($role->id)  != 4)
                           <option value="{{$role->id}}">{{ $role->role }}</option>
+                          @continue
+                          @endif
                           @endforeach
                    </select>
                 </div>

@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use DB;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller as Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -22,21 +23,12 @@ class UserController extends Controller
     public function index()
     {
         $user = auth()->user();
-
         $role=$user->role;
-        //dd($role);
-
         $courses = $user->courses;
-        if($role == 1)
-        {
-         
-          return view('admin.profile.index', ['user'=>$user],['courses'=>$courses]);
+        $orders = $user->orders;
+        $posts = $user->posts;
 
-        }
-
-        
-      
-        return view('profile.index', ['user'=>$user], ['courses'=>$courses]);
+        return view('profile.index', compact('user', 'courses', 'orders', 'products', 'posts'));
     }
     
     public function show(User $user)
@@ -53,19 +45,34 @@ class UserController extends Controller
 
     public function edit(Request $request, User $user)
     {
+        $request->validate([
+            'address1' => 'required|min:10',
+            'city' => 'required|string',
+            // 'postal_code' => 'required|min:5|max:5|regex:/^[0-9]{5}$/u',
+            // 'telephone' => 'required|min:9|regex:/^((0{2}|\+)\d{11}|0\d{9})$/',
+            'postal_code' => ['required', 'min:5', 'max:5', 'regex:/^[0-9]{5}$/u'],
+            'telephone' => ['required', 'min:9', 'regex:/^((0{2}|\+)\d{11}|0\d{9})$/'],
+            // 'profile_pic'=>[ 'required|image|mimes:jpeg,png,jpg,gif|max:2048']
+
+        ]);
+        
         $user->name = $request->name;
         $user->email = $request->email;
         $user->nic = $request->nic;
-        $user->contact = $request->contact;
+        $user->telephone = $request->telephone;
         $user->address1 = $request->address1;
         $user->address2 = $request->address2;
         $user->city = $request->city;
         $user->postal_code = $request->postal_code;
         $user->description = $request->description;
-        $user->profile_pic = $request->profile_pic;
-        
-
+        // $user->profile_pic = $filename;
+        $user->courses= $request->courses;
+        $user->days= $request->days;
+        $user->experience= $request->experience;
+        $user->education= $request->education;
         $user->save();
+        //     return view('profile.index')
+//          ->withDetails($users)->withMessage("Profile Successfully updated");
         return $user;
     }
     
@@ -92,22 +99,19 @@ class UserController extends Controller
             if (count($users) > 0) {
                 return view('admin.users.search')->withDetails($users)->withQuery($search);
             }
-             
 
-         //dd($users);\
-         return view('admin.users.search')->withMessage("No Users Found! "); 
-         }
+            //dd($users);\
+            return view('admin.users.search')->withMessage("No Users Found! ");
+        }
+    }
      
-     }
-     
-     public function user_Details(){	
-        	
-        $users = \App\User::all();	
-       $roles=DB::table('roles')->get();
-       //dd($users);
-        return view('admin.users.view',['users'=>$users],['roles'=>$roles]);	
-         
-     }	
+    public function user_Details()
+    {
+        $users = \App\User::all();
+        $roles=DB::table('roles')->get();
+        //dd($users);
+        return view('admin.users.view', ['users'=>$users], ['roles'=>$roles]);
+    }
          
  
 
@@ -119,7 +123,7 @@ class UserController extends Controller
         $oldPassword = $request->oldPassword;
         $newPassword = $request->newPassword;
         if (!Hash::check($oldPassword, Auth::user()->password)) {
-            return back()->with('msg', 'The specified password does not match the database password'); //when user enter wrong password as current password
+            return back()->with('msg', 'The specified password does not match to your password'); //when user enter wrong password as current password
         } else {
             $request->user()->fill(['password' => Hash::make($newPassword)])->save(); //updating password into user table
             return back()->with('msg', 'Password has been updated');
@@ -127,10 +131,9 @@ class UserController extends Controller
         echo 'here update query for password';
     }
 
- public function editRole(Request $request, $id = null)
-    { 
-        
-        if($request->isMethod('post')){
+    public function editRole(Request $request, $id = null)
+    {
+        if ($request->isMethod('post')) {
             $data = $request->all();
 
             User::where(['id'=>$id])->update(['role'=>$data['category_id']
@@ -143,18 +146,25 @@ class UserController extends Controller
         return view('admin.users.edit')->with(compact(['roles','usersdetails']));
     }
    
-    public function view_user(Request $request ,$id=null)
+    public function view_user(Request $request, $id=null)
     {
-
         $users = \App\User::where(['users.id'=>$id])->get();
-       return view('admin.users.view')->with(compact('users'));
+        return view('admin.users.view')->with(compact('users'));
     }
-
-   
-}
-
-
-
     
-
-
+    public function promote(Request $request)
+    {
+        $request->validate([
+            'role' => [
+                'required',
+                Rule::in([2, 3])
+            ]
+        ]);
+        DB::table('promotion')->insert([
+            'tobeRole' => $request->role,
+            'prevRole' => auth()->user()->role,
+            'user_id' => auth()->user()->id
+        ]);
+        return back()->with('message', 'Request sent!');
+    }
+}

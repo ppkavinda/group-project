@@ -152,21 +152,28 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/delete-comment/{id}', 'CommentController@deleteComment');
 
     //generate PDF
-    Route::get('/admin/view-course/coursePdf','CourseController@generatePDF');
+    Route::get('/admin/view-course/coursePdf', 'CourseController@generatePDF');
 
 
-    Route::get('/admin/view-products','ProductController@viewProducttable');
-    Route::get( '/admin/delete-product/{id}','ProductController@deleteProduct');
-    Route::post( '/admin/delete-product/{id}','ProductController@deleteProduct');
-    Route::get( '/admin/view-product/{id}','ProductController@view_Product');
+    Route::get('/admin/view-products', 'ProductController@viewProducttable');
+    Route::get('/admin/delete-product/{id}', 'ProductController@deleteProduct');
+    Route::post('/admin/delete-product/{id}', 'ProductController@deleteProduct');
+    Route::get('/admin/view-product/{id}', 'ProductController@view_Product');
 
-    Route::get('/admin/search-product','ProductController@search');
-    Route::get('/admin/view-orders','OrderController@view_Order_table');
-    Route::get('/admin/search-order','OrderController@search');
+    Route::get('/admin/search-product', 'ProductController@search');
+    Route::get('/admin/view-orders', 'OrderController@view_Order_table');
+    Route::get('/admin/search-order', 'OrderController@search');
 
-    Route::get('/admin/order-product','OrderController@view_order_product_table');
+   // Route::get('/admin/order-product','OrderController@view_order_product_table');
+    Route::get('admin/edit-users/{id}','UserController@editRole');
+    Route::post('admin/edit-users/{id}','UserController@editRole');
 
     Route::get('/admin/view-user/{id}','UserController@view_user');
+
+    Route::get('/admin/view-course/entroll/{id}','CourseController@enroll_details');
+   
+    Route::get('/admin/view-order/product/{id}','OrderController@view_Products_On_order');
+
 });
 
 Route::get('test', function () {
@@ -236,4 +243,4 @@ Route::post('/categories/priceRange', 'ProductController@priceRange');
 Route::get('/trendingProduct', 'ShopController@getTrendingProducts');
 Route::get('/test1', 'InquiryController@countOfNotification');
 
-
+Route::post('/promotion', 'UserController@promote');

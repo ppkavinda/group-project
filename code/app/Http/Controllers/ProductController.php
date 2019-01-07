@@ -24,22 +24,18 @@ class ProductController extends Controller
     {
         $posts = auth()->user()->products;
         $sizes = array();
-        for($x=0; $x<count($posts); $x++){
+        for ($x=0; $x<count($posts); $x++) {
             $category_id = $posts[$x]['category_id'];
-            if($category_id==1){
-                $sizes[$x]=\App\Cloth::where('product_id',$posts[$x]['id'])->get();
-
-            }elseif($category_id==2){
-                $sizes[$x]=\App\Mask::where('product_id',$posts[$x]['id'])->get();
-
-            }elseif($category_id==3){
-                $sizes[$x]=\App\Soap::where('product_id',$posts[$x]['id'])->get();
-
-            }elseif($category_id==4){
-                $sizes[$x]=\App\Spice::where('product_id',$posts[$x]['id'])->get();
-
-            }elseif($category_id==5){
-                $sizes[$x]=\App\Shoe::where('product_id',$posts[$x]['id'])->get();
+            if ($category_id==1) {
+                $sizes[$x]=\App\Cloth::where('product_id', $posts[$x]['id'])->get();
+            } elseif ($category_id==2) {
+                $sizes[$x]=\App\Mask::where('product_id', $posts[$x]['id'])->get();
+            } elseif ($category_id==3) {
+                $sizes[$x]=\App\Soap::where('product_id', $posts[$x]['id'])->get();
+            } elseif ($category_id==4) {
+                $sizes[$x]=\App\Spice::where('product_id', $posts[$x]['id'])->get();
+            } elseif ($category_id==5) {
+                $sizes[$x]=\App\Shoe::where('product_id', $posts[$x]['id'])->get();
             }
         }
         //dd($sizes[2]);
@@ -84,7 +80,6 @@ class ProductController extends Controller
                 'size(XL)' => $request['sizesXL'],
                 'size(XXL)' => $request['sizesXXL']
             ]);
-
         } elseif ($id=='2') {
             if ($request['sizes']=="25*25") {
                 $mask=\App\Mask::create([
@@ -178,8 +173,8 @@ class ProductController extends Controller
             'price'=> $request['price'],
             'discount'=> $request['discount'],
         ]);
-        if($category_id==1){
-            \App\Cloth::where('product_id',$id)->update([
+        if ($category_id==1) {
+            \App\Cloth::where('product_id', $id)->update([
                 'size(XS)' => $request['size(XS)'],
                 'size(S)' => $request['size(S)'],
                 'size(M)' => $request['size(M)'],
@@ -187,30 +182,26 @@ class ProductController extends Controller
                 'size(XL)' => $request['size(XL)'],
                 'size(XXL)' => $request['size(XXL)']
             ]);
-
-        }elseif($category_id==2){
-            \App\Mask::where('product_id',$id)->update([
+        } elseif ($category_id==2) {
+            \App\Mask::where('product_id', $id)->update([
                 'size(25*25)'=> $request['size(25*25)'],
                 'size(50*50)' => $request['size(50*50)'],
                 'size(60*60)' => $request['size(60*60)']
             ]);
-
-        }elseif($category_id==3){
-            \App\Soap::where('product_id',$id)->update([
+        } elseif ($category_id==3) {
+            \App\Soap::where('product_id', $id)->update([
                 'size(50g)'=> $request['size(50g)'],
                 'size(100g)' => $request['size(100g)'],
                 'size(200g)' => $request['size(200g)']
             ]);
-
-        }elseif($category_id==4){
-            \App\Spice::where('product_id',$id)->update([
+        } elseif ($category_id==4) {
+            \App\Spice::where('product_id', $id)->update([
                 'size(100g)'=> $request['size(100g)'],
                 'size(200g)' => $request['size(200g)'],
                 'size(400g)' => $request['size(400g)']
             ]);
-
-        }elseif($category_id==5){
-            \App\Shoe::where('product_id',$id)->update([
+        } elseif ($category_id==5) {
+            \App\Shoe::where('product_id', $id)->update([
                 'size(6)'=> $request['size(6)'],
                 'size(7)' => $request['size(7)'],
                 'size(8)' => $request['size(8)'],
@@ -234,21 +225,16 @@ class ProductController extends Controller
         $category_id = $productId->category_id;
         $id = $productId->id;
 
-        if($category_id==1){
-            \App\Cloth::where('product_id',$id)->delete();
-
-        }elseif($category_id==2){
-            \App\Mask::where('product_id',$id)->delete();
-
-        }elseif($category_id==3){
-            \App\Soap::where('product_id',$id)->delete();
-
-        }elseif($category_id==4){
-            \App\Spice::where('product_id',$id)->delete();
-
-        }elseif($category_id==5){
-            \App\Shoe::where('product_id',$id)->delete();
-            
+        if ($category_id==1) {
+            \App\Cloth::where('product_id', $id)->delete();
+        } elseif ($category_id==2) {
+            \App\Mask::where('product_id', $id)->delete();
+        } elseif ($category_id==3) {
+            \App\Soap::where('product_id', $id)->delete();
+        } elseif ($category_id==4) {
+            \App\Spice::where('product_id', $id)->delete();
+        } elseif ($category_id==5) {
+            \App\Shoe::where('product_id', $id)->delete();
         }
         return redirect()->back();
     }
@@ -322,38 +308,34 @@ class ProductController extends Controller
 
     public function viewProducttable()
     {
-            $products=\App\Product::get();
-           //dd($products);
-        return view('admin.product.view',compact('products'));
+        $products=\App\Product::get();
+        //dd($products);
+        return view('admin.product.view', compact('products'));
     }
 
     public function search(Request $request)
     {
         $search =$request->get("search");
-        $products=\App\Product::where('products.id','like','%'.$search.'%')
-                ->orWhere('products.name','like','%'.$search.'%')
-                ->orWhere('products.price','like','%'.$search.'%')
-                ->get(); 
+        $products=\App\Product::where('products.id', 'like', '%'.$search.'%')
+                ->orWhere('products.name', 'like', '%'.$search.'%')
+                ->orWhere('products.price', 'like', '%'.$search.'%')
+                ->get();
         //dd($products);
-        return view('admin.product.view',compact('products'));
+        return view('admin.product.view', compact('products'));
     }
 
     public function deleteProduct($id= null)
     {
-        if(!empty($id)){
+        if (!empty($id)) {
             \App\Product::where(['id'=>$id])->delete();
-            return redirect()->back()->with('flash_message_success','Product : ' .$id.' deleted ');
+            return redirect()->back()->with('flash_message_success', 'Product : ' .$id.' deleted ');
         }
-
     }
-    public function view_Product($id=null){
-      
-      $products = Product::where(['id'=>$id])->first();
+    public function view_Product($id=null)
+    {
+        $products = Product::where(['id'=>$id])->first();
 
-      //dd($products);
-      return view('admin.product.index')->with(compact('products'));
-  
+        //dd($products);
+        return view('admin.product.index')->with(compact('products'));
     }
-
-    
 }

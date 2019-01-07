@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Inquiry;
+use Illuminate\Http\Request;
 use App\Notifications\InquirySubmited;
 use Illuminate\Support\Facades\Notification;
 
 class InquiryController extends Controller
 {
-    public function store(Request $request){
-        $inquiry = \App\Inquiry::create([
+    public function store(Request $request)
+    {
+        $inquiry = Inquiry::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'subject' => $request['subject'],
             'message' => $request['message']
         ]);
-        $user = \App\User::where('role',1)->get();
+        $user = \App\User::where('role', 1)->get();
         Notification::send($user, new InquirySubmited($inquiry->id));
         return redirect()->back();
     }
@@ -34,26 +35,26 @@ class InquiryController extends Controller
     //     return view('admin.index');
     // }
 
-    public function viewInquire(){
-        $inquiries=\App\Inquiry::get();
-        $user = \App\User::where('role',1)->get();
-        $user[0]->unreadNotifications->where('type','App\Notifications\InquirySubmited')->markAsRead();
+    public function viewInquire()
+    {
+        $inquiries= Inquiry::get();
+        $user = \App\User::where('role', 1)->get();
+        $user[0]->unreadNotifications->where('type', 'App\Notifications\InquirySubmited')->markAsRead();
         return view('admin.inquiries.view')->with(compact('inquiries'));
-
     }
 
-    public function deleteInquire($id= null){
-        if(!empty($id)){
+    public function deleteInquire($id= null)
+    {
+        if (!empty($id)) {
             Inquiry::where(['id'=>$id])->delete();
-            return redirect()->back()->with('flash_message_success','Inquiry deleted Sucessfully!');
+            return redirect()->back()->with('flash_message_success', 'Inquiry deleted Sucessfully!');
         }
-
     }
 
-    public function Inquirenofi(){
+    public function Inquirenofi()
+    {
         $inqcount=\App\Inquiry::count();
         dd($inqcount);
         return view('admin.partials.sidebar')->with(compact($inqcount));
     }
-
 }
