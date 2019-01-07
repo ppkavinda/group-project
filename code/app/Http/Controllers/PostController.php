@@ -51,9 +51,11 @@ class PostController extends Controller
      */
     public function show(Post $post) {
         if (
-            !request()->user()->courses()
+            !(request()->user()->courses()
                 ->where('course_id', '=', $post->course->id)
                 ->count()
+                || request()->user()->role ==1
+                )
             ) {
                 return redirect("/courses/{$post->course->id}");
             }

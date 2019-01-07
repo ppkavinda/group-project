@@ -101,14 +101,11 @@ class OrderController extends Controller
         return view('admin.order.view',compact('orders'));
     }
     
-    public function view_order_product_table()
+    public function view_Products_On_order(Request $request,$id)
     {
-        $order_products = DB::table('order_product')
-                    ->join('orders', 'order_product.order_id', '=', 'orders.id')
-                    ->join('products', 'order_product.product_id', '=', 'products.id')
-                    ->select('order_product.id', 'order_product.order_id', 'order_product.product_id','order_product.amount','order_product.price','products.*','orders.*')
-                    ->get();
-        //dd($order_products);
-        return view('admin.order.order_product')->with(compact('order_products'));
+        $order = \App\Order::find($id);
+      //  dd($order->products);
+
+        return view('admin.order.order_product')->with(compact('order'));
     }
 }

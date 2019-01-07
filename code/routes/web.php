@@ -164,9 +164,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/view-orders','OrderController@view_Order_table');
     Route::get('/admin/search-order','OrderController@search');
 
-    Route::get('/admin/order-product','OrderController@view_order_product_table');
+   // Route::get('/admin/order-product','OrderController@view_order_product_table');
+    Route::get('admin/edit-users/{id}','UserController@editRole');
+    Route::post('admin/edit-users/{id}','UserController@editRole');
 
     Route::get('/admin/view-user/{id}','UserController@view_user');
+
+    Route::get('/admin/view-course/entroll/{id}','CourseController@enroll_details');
+   
+    Route::get('/admin/view-order/product/{id}','OrderController@view_Products_On_order');
 });
 
 Route::get('test', function () {

@@ -74,14 +74,14 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3>{{$posts_count}}</h3>
 
-                <p>Unique Visitors</p>
+                <p>Total Posts</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="/admin/view-users" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="/admin/view-posts" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -89,38 +89,16 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-7 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-            <!-- sales chart -->
-            <area-chart></area-chart>
-            <!-- /.card -->
+          <section class="col-lg-7 connectedSortable mt-3 pt-3">
+          <div class="col-sm-6">
+            <h4 class="m-0 text-dark"><b>Order Histroy</b></h4>
+            <br>
+          </div><!-- /.col -->
+              <canvas id="myChart" width="800" height="400"></canvas>
 
-            <!-- DIRECT CHAT -->
-
-            <!--/.direct-chat -->
-            <!-- chat box -->
-            <chat-box></chat-box>
-
-            <!-- TO DO List -->
-            <todo-list></todo-list>
-            <!-- /.card -->
           </section>
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <section class="col-lg-5 connectedSortable">
 
-            <!-- solid sales graph -->
-            <!-- line chart -->
-            <line-chart></line-chart>
-
-            <!-- /.card -->
-
-            <!-- Calendar -->
-            <Calendar></Calendar>
-
-            <!-- /.card -->
-          </section>
+         
           <!-- right col -->
         </div>
         <!-- /.row (main row) -->
@@ -131,3 +109,56 @@
 
 
 @endsection
+
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+          @foreach($order_history as $stat)
+              '{{ $stat->date }}',
+          @endforeach
+          ],
+            datasets: [{
+                label: '# of Orders',
+                data: [
+                  @foreach($order_history as $stat)
+                    {{ $stat->count }},
+                  @endforeach
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            },
+             legend: false
+        }
+    });
+    </script>
+@endpush
