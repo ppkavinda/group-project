@@ -84,22 +84,26 @@
                 </div>
             </div>	
         </div>
+<?php
+    $count=0;
+    if(count($sameKindOfProduct)<=4){
+        $count=count($sameKindOfProduct);
+    }else{
+        $count = 4;
+    }
+?>
+
+@if ($count)
 	<div class="new_arrivals_agile_w3ls_info"> 
 		<div class="container">
             <h3 class="wthree_text_info">Related <span>products</span></h3>
             <hr>
         </div>
-	</div>
+    </div>
+@endif
         <div class="container">
             <div class="row">
-                <?php
-                    $count=0;
-                    if(count($sameKindOfProduct)<=4){
-                        $count=count($sameKindOfProduct);
-                    }else{
-                        $count = 4;
-                    }
-                ?>
+
                 @for($x=0; $x<$count; $x++)
                     @if($post[0]['id'] != $sameKindOfProduct[$x]['id'])
                         <div class="col-md-3 product-men">
