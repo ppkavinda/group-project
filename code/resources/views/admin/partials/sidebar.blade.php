@@ -196,7 +196,9 @@
               <p>
                Posts
                 <i class="fa fa-angle-left right"></i>
-                <span class="badge badge-light">{{$postCount}}</span>
+                @if($postCount!=0)
+                  <span class="badge badge-light">{{$postCount}}</span>
+                @endif
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -215,7 +217,9 @@
               <p>
               Comments
                 <i class="fa fa-angle-left right"></i>
+                @if($commentCount!=0)
                 <span class="badge badge-light">{{$commentCount}}</span>
+                @endif
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -235,7 +239,9 @@
               <p>
                 Inquiry
                 <i class="fa fa-angle-left right"></i>
+                @if($inquiryCount!=0)
                 <span class="badge badge-light">{{$inquiryCount}}</span>
+                @endif
               </p>
             </a>
             <ul class="nav nav-treeview">

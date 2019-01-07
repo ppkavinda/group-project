@@ -7,7 +7,7 @@
                 <div class="w3layouts_mail_grid">
                     <div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
                         <div class="agileits_mail_grid_right1 agile_mail_grid_right1">
-                            <form action="/postAdd/{{'5'}}" method="post" enctype="multipart/form-data">
+                            <form action="/postAdd/{{'5'}}" method="post" enctype="multipart/form-data" onsubmit="return checkForm(this);">
                             @csrf
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -98,13 +98,13 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="price" id="labels">&nbsp Price(pair of shoes or slippers Rs.) &nbsp</label>
+                                            <label for="price" id="labels">&nbsp Price(pair of shoe or slipper LKR.) &nbsp</label>
                                             <input multi class="form-control" type="number" id="select" name="price" min="0" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="discount" id="labels">&nbsp Discount(one cloth Rs.) &nbsp</label>
+                                            <label for="discount" id="labels">&nbsp Discount(pair of shoe or slipper LKR.) &nbsp</label>
                                             <input multi class="form-control" type="number" id="select" name="discount" min="0">
                                         </div>
                                     </div>
