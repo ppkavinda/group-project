@@ -243,7 +243,9 @@
                             </div>
                         </div>
                     @endfor
+                    
                 </div>
+                <div class="pull-right">{{ $addPosts->links() }}</div>
             </div>
 	</div>
 </div>
