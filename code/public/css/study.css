@@ -22204,8 +22204,10 @@ p.copy-right a:hover {
 }
 
 .viewAdd {
-  background: #10707f;
+  background: #20c997;
   border: 1px solid #000;
+  width: 265px;
+  height: 35px;
 }
 
 .advertisementBorder {
@@ -22382,6 +22384,10 @@ p.copy-right a:hover {
   margin-top: 2em;
 }
 
+.label-primary {
+  background-color: #337ab7;
+}
+
 .col-center {
   float: none;
   margin: 0 auto;
@@ -22414,6 +22420,20 @@ p.copy-right a:hover {
   font-weight: 700;
   line-height: 75px;
   text-shadow: 1px 3px 1px black;
+}
+
+.profile-content {
+  padding: 20px;
+  background: #fff;
+  min-height: 460px;
+}
+
+.profile-content.fieldset-title {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaf1;
+  margin-bottom: 30px;
+  color: #616670;
+  font-size: 16px;
 }
 
 body {

@@ -23,11 +23,13 @@ class UserController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $orders = Order::all();
-        $products=$order->products;
         $courses = $user->courses;
-        return $products;
-        return view('profile.index',compact('user','orders','courses','products'));
+        $orders = $user->orders;
+        $posts = $user->posts; 
+        
+        
+        //return Order::with('products')->get();
+        return view('profile.index',compact('user','courses','orders','products','posts'));
     }
     
     public function show(User $user)
@@ -47,9 +49,17 @@ class UserController extends Controller
         $request->validate([
             'address1' => 'required|min:10',
             'city' => 'required|string',
+            // 'postal_code' => 'required|min:5|max:5|regex:/^[0-9]{5}$/u',
+            // 'telephone' => 'required|min:9|regex:/^((0{2}|\+)\d{11}|0\d{9})$/',
             'postal_code' => ['required', 'min:5', 'max:5', 'regex:/^[0-9]{5}$/u'],
-            'telephone' => ['required', 'min:9', 'regex:/^((0{2}|\+)\d{11}|0\d{9})$/']
+            'telephone' => ['required', 'min:9', 'regex:/^((0{2}|\+)\d{11}|0\d{9})$/'],
+            // 'profile_pic'=>[ 'required|image|mimes:jpeg,png,jpg,gif|max:2048']
+
         ]);
+        // $file = $request->file('profile_pic');
+                                
+        // $filename = $file->store('img', 'public');
+
 
         $user->name = $request->name;
         $user->email = $request->email;
@@ -60,13 +70,13 @@ class UserController extends Controller
         $user->city = $request->city;
         $user->postal_code = $request->postal_code;
         $user->description = $request->description;
-        $user->profile_pic = $request->profile_pic;
+        // $user->profile_pic = $filename;
         $user->courses= $request->courses;
         $user->days= $request->days;
         $user->experience= $request->experience;
         $user->education= $request->education;
         $user->save();
-        return $user;
+       // return view('profile.index')->withDetails($users)->withMessage("Profile Successfully updated");
     }
     
 

@@ -73,8 +73,11 @@
     background: antiquewhite;
   }
   .viewAdd{
-    background: #10707f;
+   
+    background:#20c997;
     border: 1px solid #000;
+    width:265px;
+    height: 35px;
   }
   .advertisementBorder{
     // border-radius: 20px;
@@ -244,4 +247,7 @@
     letter-spacing: 3px;
     padding: 8px 20px;
     margin-top: 2em;
+  }
+  .label-primary {
+    background-color: #337ab7;
   }

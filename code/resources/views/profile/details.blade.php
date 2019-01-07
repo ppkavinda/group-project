@@ -23,8 +23,14 @@
                     <input type="text" name="email" class="form-control" id="staticEmail" 
                         value="{{ auth()->user()->email }}" placeholder="Change your email" >
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
+            
             <!-- name -->
             <div class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">Name</label>
@@ -32,6 +38,11 @@
                     <input type="text" name="name" class="form-control" id="inputName" 
                         value="{{ auth()->user()->name }}" placeholder="Change your name" >
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
+                    @if ($errors->has('name'))
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
             <!-- NIC -->
@@ -41,6 +52,11 @@
                     <input type="text" name="nic" class="form-control" id="inputNic" 
                         value="{{ auth()->user()->nic }}" placeholder="Change your NIC">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
+                    @if ($errors->has('nic'))
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $errors->first('nic') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
             <!-- Description -->
@@ -50,6 +66,11 @@
                     <textarea name="description" class="form-control" id="description" 
                         placeholder="Say something about you..."></textarea>
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
+                    @if ($errors->has('description'))
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $errors->first('description') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
             </fieldset>
@@ -63,6 +84,11 @@
                     <input type="text" name="telephone" class="form-control" 
                         id="inputContact"  placeholder="Enter your contact Number">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
+                    @if ($errors->has('telephone'))
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $errors->first('telephone') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
             <!-- Address Line1 -->
@@ -72,15 +98,25 @@
                     <input type="text" name="address1" class="form-control" 
                         id="address1"  placeholder="Line number 1">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil" ></i>
+                    @if ($errors->has('address1'))
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $errors->first('address1') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
             <!-- Address Line2 -->
             <div class="form-group row">
-                <label for="inputAddress" class="col-sm-2 col-form-label">Your Address(optional)</label>
+                <label for="inputAddress" class="col-sm-2 col-form-label">Your Address</label>
                 <div class="col-sm-10">
                     <input type="text" name="address2" class="form-control" 
-                        id="address2"  placeholder="Line number 2">
+                        id="address2"  placeholder="Line number 2 optional">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
+                    @if ($errors->has('address2'))
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $errors->first('address2') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
             <!-- City -->
@@ -88,8 +124,13 @@
                 <label for="inputAddress" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-10">
                     <input type="text" name="city" class="form-control" 
-                        id="city"  placeholder="Line number 2">
+                        id="city"  placeholder="City">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil" ></i>
+                    @if ($errors->has('city'))
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $errors->first('city') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
             <!-- Postal Code -->
@@ -99,6 +140,11 @@
                     <input type="text" name="postal_code" class="form-control" 
                         id="postal_code"  placeholder="Postal Code">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
+                    @if ($errors->has('postal_code'))
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $errors->first('postal_code') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
             </fieldset>
@@ -113,10 +159,12 @@
                 <label for="inputCourse" class="col-sm-2 col-form-label">Courses conducting</label>
                 <div class="col-sm-10">
                     <select name="courses" class="form-control col-md-15" id="coursesConducting">
-                        <option value="" disabled selected>Select your conducting courses</option>
-                            @foreach($courses as $course)
-                                <option  value="{{ $course->id }}">{{ $course->title }}</option>
-                            @endforeach            
+                            <option>Select one...</option>
+                            <option value="" disabled selected>Select your conducting course</option>
+                            <option value="1">Soap Manufacturing</option>
+                            <option value="2">Candle Manufacturing</option> 
+                            <option value="3">Spices Manufacturing</option> 
+                            <option value="4">Rubber products Manufacturing</option>           
                     </select>
                 </div>
             </div>
@@ -172,23 +220,19 @@
         </fieldset>
         @endif
 
+        <center>  
+            <button type="submit" class="btn offset-md-2 btn-primary">Update Profile
+            </button>
+        </center>
+        
         </form>
             <br>
-         
-            <!-- Add advertisment -->
-            <div class="col-md-5">
-                <div class="viewAdd">
-                    <center><a href="YourAdvertisements"><font color=white>Your Advertisements &nbsp &nbsp</font></a><i class="fa fa-angle-right"></i></center>
-                </div>
-            </div>
         </div>
     </div>
     <br>
-    <div>
+  
+        
     
-        <button type="submit" class="btn offset-md-2 btn-primary">Update Profile
-        </button>
-    </div>
     <br>
 </div>
 
