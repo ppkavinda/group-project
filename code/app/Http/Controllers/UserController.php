@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use DB;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller as Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -103,7 +104,6 @@ class UserController extends Controller
             if (count($users) > 0) {
                 return view('admin.users.search')->withDetails($users)->withQuery($search);
             }
-             
 
             //dd($users);\
             return view('admin.users.search')->withMessage("No Users Found! ");
@@ -155,5 +155,21 @@ class UserController extends Controller
     {
         $users = \App\User::where(['users.id'=>$id])->get();
         return view('admin.users.view')->with(compact('users'));
+    }
+    
+    public function promote(Request $request)
+    {
+        $request->validate([
+            'role' => [
+                'required',
+                Rule::in([2, 3])
+            ]
+        ]);
+        DB::table('promotion')->insert([
+            'tobeRole' => $request->role,
+            'prevRole' => auth()->user()->role,
+            'user_id' => auth()->user()->id
+        ]);
+        return back()->with('message', 'Request sent!');
     }
 }
