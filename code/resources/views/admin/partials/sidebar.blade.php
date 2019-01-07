@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="/admin" class="brand-link">
     <div>
     <img src="/dist/img/logo.jpg"  alt="logo"  class="brand-image img-circle elevation-3"
            style="opacity: .8">
@@ -22,16 +22,10 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fa fa-dashboard"></i>
-              <p>
-                Posts
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
+            
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="/admin" class="nav-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Dashboard v1</p>
                 </a>
@@ -269,7 +263,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-file"></i>
+              <i class="nav-icon fa fa-clipboard"></i>
               <p>
                 Order
                 <i class="fa fa-angle-left right"></i>
@@ -282,6 +276,13 @@
                
                   <i class="fa fa-file nav-icon"></i>
                   <p>View Order</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/order-product" class="nav-link">
+               
+                  <i class="fa fa-product-hunt nav-icon"></i>
+                  <p>View Order Product</p>
                 </a>
               </li>
             </ul>
@@ -360,7 +361,7 @@
             </ul>
           </li> -->
          
-          <li class="nav-item has-treeview">
+         <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-table"></i>
               <p>
@@ -383,7 +384,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-header"></li>
+          <li class="nav-header"></li>-->
           
           
         </ul>

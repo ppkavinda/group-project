@@ -147,9 +147,11 @@ class CourseController extends Controller
 
     public function generatePDF()
     {
-        $courses = \App\Course::paginate(5);
-        $pdf= PDF::loadview('admin.course.view',compact('courses'));
-        return $pdf->download('courses.pdf');
+        $courses = \App\Course::all();
+        $pdf= PDF::loadview('admin.course.coursePDF',['courses'=>$courses]);
+        return $pdf->download('courseslist.pdf');
+       // dd($pdf);
+
     }
 
 

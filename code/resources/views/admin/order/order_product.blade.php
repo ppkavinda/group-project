@@ -17,7 +17,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-              <li class="breadcrumb-item active">Orders Table</li>
+              <li class="breadcrumb-item active">Orders  Product Table</li>
             </ol>
           </div>
         </div>
@@ -34,7 +34,7 @@
             </div>
             <div class="row">-->
         <div class="col-md-4">
-          <form action="/admin/search-order" method="get">
+          <form action="/admin/search-product" method="get">
             <div class="input-group">
                   <input type="search" name="search"class="form-control" placeholder="Enter Order Details">
                   <span class="input-group-prepend">
@@ -65,7 +65,7 @@
                 </div>
 
               @endif
-                <h3 class="card-title">Orders</h3>
+                <h3 class="card-title">Orders Products</h3>
               </div>
               <!-- /.card-header -->
               <div class="row">
@@ -75,16 +75,17 @@
              <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th style="width: 40px" color="solid black">Order ID</th>
-                    <th>Order Status</th>
+                    <th style="width: 40px" color="solid black">Product ID</th>
+                    <th>Order id</th>
+                    <th>Order status</th>
                     <th>Address</th>
                     <th>City</th>
-                    <th>Postal Code</th>
                     <th>Telephone</th>
                    
                     <th>Payment ID</th>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
                     <th>User ID</th>
-                    <th>Created By</th>
                     
                     <!--<th>Cover Image</th>
                     
@@ -95,22 +96,19 @@
                   </thead>
                   <tbody id="myTable">
                   
-                  @foreach($orders as $order)
+                  @foreach($order_products as $order_product)
                    
                    <tr>
-                    <td><b>{{$order->id}}</b></td>
-                    <td><b>{{$order->status}}</b></td>
-                    <td><b>{{$order->address1}}</b>,<b>{{$order->address2}}</b></td>
-                    <td><b>{{$order->city	}}</b></td>
-                    <td><b>{{$order->postal_code	}}</b></td>
-                    
-                    
-                    <td><b>{{$order->telephone}}</b></td>
-                   
-                    <td><b>{{$order->payment_id}}</b></td>
-                    <td><b><a href="{{url('/admin/view-user/'.$order->user_id)}}">{{$order->user_id}}</a></b></td>
-                    <td><b>{{date('M j,Y H:i',strtotime($order->created_at))	}}</b></td>
-                   
+                    <td>{{$order_product->id}}</td>
+                    <td>{{$order_product->order_id}}</td>
+                    <td>{{$order_product->status}}</td>
+                    <td>{{$order_product->address1}},{{$order_product->address2}}</td>
+                    <td>{{$order_product->city}}</td>
+                    <td>{{$order_product->telephone}}</td>
+                    <td>{{$order_product->payment_id}}</td>
+                    <td>{{$order_product->product_id}}</td>
+                    <td>{{$order_product->name}}</td>
+                    <td>{{$order_product->user_id}}</td>
                     </tr>
                 
                  @endforeach

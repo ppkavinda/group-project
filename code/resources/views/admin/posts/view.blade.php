@@ -60,8 +60,9 @@
                   <tr>
                     <th style="width: 40px" color="solid black">Post ID</th>
                     <th>Post Title</th>
-                    
+                    <th>course id</th>
                     <th>course name</th>
+                    <th>user id</th>
                     <th>user name</th>
                    <!-- <th>Cover imge </th>-->
                     <th>Published </th>
@@ -77,28 +78,30 @@
                  @if($posts->count()>0)
                   @foreach($posts as $post)
                   <tr>
-                    <td><b>{{$post->id}}</b></td>
-                    <td><b>{{$post->title}}</b></td>
-                    <td><b>{{$post->course->title}}</b></td>
-                    <td><b>{{$post->auther->name}}</b></td>
+                    <td>{{$post->id}}</td>
+                    <td>{{$post->title}}</td>
+                    <td>{{$post->course_id}}</td>
+                    <td>{{$post->course->title}}</td>
+                    <td>{{$post->user_id}}</td>
+                    <td>{{$post->auther->name}}</td>
                     <!--<td><img class="img-fluid" src="img/posts/covers/{{$post->cover_img}}" style="width:150px; "></td>-->
                     
                    
-                    <td><b>
+                    <td>
                     @if($post->published == 1)
                     Publish 
                     @else
                     Not Publish
                     @endif
                     
-                    </b></td>
+                    </td>
                     
                    
                    
                     
                    
-                    <td><b>{{date('M j,Y H:i',strtotime($post->created_at))	}} </b></td>
-                    <td><b>{{date('M j,Y H:i',strtotime($post->updated_at)) }}</b></td>
+                    <td>{{date('M j,Y H:i',strtotime($post->created_at))	}} </td>
+                    <td>{{date('M j,Y H:i',strtotime($post->updated_at)) }}</td>
                     <td width="300" style="text-align: center">
                     <a href="{{url('posts/'.$post->id ) }}" class="btn btn-secondary btn mini" 
                     onclick="return confirm('Do you want to see this details?')" >View</a>

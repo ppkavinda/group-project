@@ -149,8 +149,8 @@ Route::post('/admin/delete-comment/{id}','CommentController@deleteComment');
 
 
 //generate PDF
+Route::get('/admin/view-course/coursePdf','CourseController@generatePDF');
 
-Route::get('/admin/courses/generate-pdf','CourseController@generatePDF');
 
 Route::get('/admin/view-products','ProductController@viewProducttable');
 Route::get( '/admin/delete-product/{id}','ProductController@deleteProduct');
@@ -159,9 +159,11 @@ Route::get( '/admin/view-product/{id}','ProductController@view_Product');
 
 Route::get('/admin/search-product','ProductController@search');
 Route::get('/admin/view-orders','OrderController@view_Order_table');
+Route::get('/admin/search-order','OrderController@search');
 
+Route::get('/admin/order-product','OrderController@view_order_product_table');
 
-
+Route::get('/admin/view-user/{id}','UserController@view_user');
 
 
 

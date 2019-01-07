@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
@@ -204,10 +204,12 @@ class ProductController extends Controller
     }
     public function view_Product($id=null){
       
-      $products =Product::where(['id'=>$id])->first();
+      $products = Product::where(['id'=>$id])->first();
 
       //dd($products);
       return view('admin.product.index')->with(compact('products'));
   
     }
+
+    
 }

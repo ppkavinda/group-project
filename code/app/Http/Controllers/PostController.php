@@ -256,7 +256,9 @@ class PostController extends Controller
         
         $posts=\App\Post::where('posts.title','like','%'.$search.'%') 
                     ->orWhere('posts.id','like','%'.$search.'%')
-                    ->orWhere('posts.course')
+                    ->orWhere('posts.course_id','like','%'.$search.'%')
+                    ->orWhere('posts.created_at','like','%'.$search.'%')
+                    ->orWhere('posts.updated_at','like','%'.$search.'%')
                     ->get();
       // dd($posts);
         return view('admin.posts.view',['posts'=>$posts]);

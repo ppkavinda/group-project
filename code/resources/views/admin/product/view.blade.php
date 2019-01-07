@@ -25,24 +25,22 @@
     </section>
 
     <section class="content">
-      <div class="container-fluid">
-      <div class="row">
+    <div class="container-fluid">
+    <div class="row">
     
-      <div class="col-md-6">
+    <div class="col-md-4">
                 
                 
-     <form action="/admin/search-product" method="get">
+      <form action="/admin/search-product" method="get">
           <div class="input-group">
                 <input type="search" name="search"class="form-control" placeholder="Enter Product Details">
                 <span class="input-group-prepend">
                     <button type="submit" class="btn btn-primary">Search</button>
                 </span>
           </div>
-    </form>
+      </form>
+      </div>
     </div>
-      
-     
-     </div>
      <br>
         <div class="row">
           <div class="col-md-12">
@@ -100,7 +98,7 @@
                     <td>{{$product->reserved}}</td>
                     
                     
-                    <td><a href="{{url('/admin/user/'.$product->user_id)}}">{{$product->user_id}}</a></td>
+                    <td><a href="{{url('/admin/view-user/'.$product->user_id)}}">{{$product->user_id}}</a></td>
                    
                     <td>{{$product->category_id}}</td>
                     <td>{{$product->ratings}}</td>

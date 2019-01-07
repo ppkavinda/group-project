@@ -35,8 +35,12 @@ class AdminController extends Controller
     public function main()
     {
         $user = auth()->user();
-        //dd($user);
-            return view('admin.index');
+        $users_count=\App\User::count();
+        $courses_count=\App\Course::count();
+        $orders_count=\App\Order::count();
+        //dd($courses_count);
+
+            return view('admin.index')->with(compact(['users_count','courses_count','orders_count']));
         
 
     }

@@ -75,8 +75,37 @@ class OrderController extends Controller
 
     public function view_Order_table(){
         $orders=\App\Order::all();
-       //dd($orders);
+      //p dd($orders);
         return view('admin.order.view')->with(compact('orders'));
 
+    }
+
+    public function search(Request $request)
+    {
+        $search =$request->get("search");
+        $orders=\App\Order::where('orders.id','like','%'.$search.'%')
+                ->orWhere('orders.status','like','%'.$search.'%')
+                ->orWhere('orders.address1','like','%'.$search.'%')
+                ->orWhere('orders.address2','like','%'.$search.'%')
+                ->orWhere('orders.city','like','%'.$search.'%')
+                ->orWhere('orders.postal_code','like','%'.$search.'%')
+                ->orWhere('orders.telephone','like','%'.$search.'%')
+                ->orWhere('orders.payment_id','like','%'.$search.'%')
+                ->orWhere('orders.user_id','like','%'.$search.'%')
+                ->orWhere('orders.created_at','like','%'.$search.'%')
+                ->get(); 
+       // dd($orders);
+        return view('admin.order.view',compact('orders'));
+    }
+    
+    public function view_order_product_table()
+    {
+        $order_products = DB::table('order_product')
+                    ->join('orders', 'order_product.order_id', '=', 'orders.id')
+                    ->join('products', 'order_product.product_id', '=', 'products.id')
+                    ->select('order_product.id', 'order_product.order_id', 'order_product.product_id','order_product.amount','order_product.price','products.*','orders.*')
+                    ->get();
+        //dd($order_products);
+        return view('admin.order.order_product')->with(compact('order_products'));
     }
 }

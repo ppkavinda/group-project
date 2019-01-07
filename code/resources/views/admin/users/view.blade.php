@@ -121,7 +121,7 @@
                 <tbody>
                   @foreach($users as $user)
                 <tr>
-                  <td><a href="/admin/user/$user->id">{{$user->id}}</a></td>
+                 <td>>{{$user->id}}</td>
                   <td>{{$user->name}}</td>
                   <td>{{$user->email}}</td>
                   <td>{{$user->nic}}</td>

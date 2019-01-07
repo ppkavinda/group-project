@@ -101,7 +101,7 @@ class UserController extends Controller
      public function user_Details(){	
         	
         $users = \App\User::all();	
-        $roles=DB::table('roles')->get();
+       $roles=DB::table('roles')->get();
        //dd($users);
         return view('admin.users.view',['users'=>$users],['roles'=>$roles]);	
          
@@ -127,7 +127,7 @@ class UserController extends Controller
 
    
     
-    public function editRole(Request $request,$id= null)
+    public function editRole(Request $request, $id = null)
     { 
         
         if($request->isMethod('post')){
@@ -143,9 +143,14 @@ class UserController extends Controller
         return view('admin.users.edit')->with(compact(['roles','usersdetails']));
     }
    
-    public function view_user_details(){
+    public function view_user(Request $request ,$id=null)
+    {
 
+        $users = \App\User::where(['users.id'=>$id])->get();
+       return view('admin.users.view')->with(compact('users'));
     }
+
+   
 }
 
 

@@ -43,7 +43,7 @@
         </form>-->
       </div>
       <div class="col-sm-6">
-      <a href="{{ url('/admin/courses/generate-pdf')}}"class="btn btn-info btn mini" 
+      <a href="/admin/view-course/coursePdf"class="btn btn-info btn mini" 
                      onclick="return confirm('Are You sure?')">Convert to  Pdf</a>
      
      </diV>

@@ -26,7 +26,7 @@
       <div class="container-fluid">
       <div class="row">
     
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <form action="/admin/search-comments" method="get">
           <div class="input-group">
                 <input type="search" name="search"class="form-control" placeholder="Enter Comments id">
