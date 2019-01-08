@@ -67,18 +67,18 @@
                     <th style="width: 40px;" color="solid black">Product ID</th>
                     <th width="100">Product Name</th>
                     <th width="100">Unit Price</th>
-                    <th>reserved</th>
+                 
                    
                     
                     <th>User id</th>
                     
                    
-                    <th>category id</th>
-                    <th>discount</th>
+                   
                     <th>ratings</th>
+                    <th>category</th>
                     <th>kind</th>
                     <th>Type</th>
-                    
+                    {{-- <th>sizes</th> --}}
                     <!--<th>Cover Image</th>
                     
                     <th>updated_at</th> -->
@@ -100,8 +100,9 @@
                     
                     <td><a href="{{url('/admin/view-user/'.$product->user_id)}}">{{$product->user_id}}</a></td>
                    
-                    <td>{{$product->category->title}}</td>
+                   
                     <td>{{$product->ratings}}</td>
+                    <td>{{$product->category->title}}</td>
                     <td>{{$product->kind}}</td>
                     <td>{{$product->type}}</td>
                     {{-- <td>{{$product->sizes}}</td> --}}
