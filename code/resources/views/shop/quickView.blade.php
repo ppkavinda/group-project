@@ -1,5 +1,6 @@
 @extends('shop.master')
 @section('content')
+{{dd($post)}}
 <div class="page-head_agile_info_w3l">
 		<div class="container">
 			<h3>@if($post[0]['category_id']==1)
