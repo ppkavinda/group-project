@@ -66,14 +66,17 @@ class UserController extends Controller
         $user->postal_code = $request->postal_code;
         $user->description = $request->description;
         // $user->profile_pic = $filename;
-        $user->courses= $request->courses;
-        $user->days= $request->days;
-        $user->experience= $request->experience;
-        $user->education= $request->education;
+        if (auth()->user()->role == 2) {
+            $user->courses= $request->courses;
+            $user->days= $request->days;
+            $user->experience= $request->experience;
+            $user->education= $request->education;
+        }
         $user->save();
         //     return view('profile.index')
 //          ->withDetails($users)->withMessage("Profile Successfully updated");
-        return $user;
+        return back();
+        // return $user;
     }
     
 

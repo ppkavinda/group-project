@@ -27,30 +27,32 @@
 					</div>
 				</a>
 			</div>
-		<div class="col-md-7 bb-grids bb-middle-agileits-w3layouts">
-			<a href="/trendingProduct">
-				<div class="bb-middle-agileits-w3layouts grid">
-					<figure class="effect-roxy">
-						<img src="/dist/img/spicesTrending.jpg" alt=" " class="img-fluid" />
-						<figcaption>
-							<h3><span>Q</span>ulity </h3>
-							<p>Product</p>
-						</figcaption>			
-					</figure>
-				</div>
-			</a>
-			<a href="/trendingProduct">
-				<div class="bb-middle-agileits-w3layouts forth grid">
-					<figure class="effect-roxy">
-						<img src="/dist/img/bottom4.jpg" alt=" " class="img-fluid">
-						<figcaption>
-							<h3><span>G</span>ood </h3>
-							<p>Product</p>
-						</figcaption>		
-					</figure>
-				</div>
-			</a>
-			<div class="clearfix"></div>
+			
+			<div class="col-md-7 bb-grids bb-middle-agileits-w3layouts">
+				<a href="/trendingProduct">
+					<div class="bb-middle-agileits-w3layouts grid">
+						<figure class="effect-roxy">
+							<img src="/dist/img/spicesTrending.jpg" alt=" " class="img-fluid" />
+							<figcaption>
+								<h3><span>Q</span>ulity </h3>
+								<p>Product</p>
+							</figcaption>			
+						</figure>
+					</div>
+				</a>
+				<a href="/trendingProduct">
+					<div class="bb-middle-agileits-w3layouts forth grid">
+						<figure class="effect-roxy">
+							<img src="/dist/img/bottom4.jpg" alt=" " class="img-fluid">
+							<figcaption>
+								<h3><span>G</span>ood </h3>
+								<p>Product</p>
+							</figcaption>		
+						</figure>
+					</div>
+				</a>
+				<div class="clearfix"></div>
+			</div>
 		</div>
 	</div>
 </div>
