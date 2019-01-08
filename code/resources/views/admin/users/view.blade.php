@@ -116,7 +116,7 @@
                   <td>{{$user->name}}</td>
                   <td>{{$user->email}}</td>
                   <td>{{$user->nic}}</td>
-                  <td>{{$user->address1}} {{$user->address2}}{{$user->city}}</td>
+                  <td>{{$user->address1}} {{$user->address2}}  {{$user->city}}</td>
                   <td>{{$user->telephone}}</td>
                   <td>@if($user->isAdmin())Admin
                   @elseif($user-> isFacilitator())Facilitator

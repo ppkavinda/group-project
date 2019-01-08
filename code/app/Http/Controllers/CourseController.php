@@ -82,8 +82,8 @@ class CourseController extends Controller
             $request->validate([
                 
                 'course_title'      => 'required|min:5',
-                'course_subtitle'   => 'required|min:5|unique:courses,subtitle',
-                'course_description'=> 'required|min:5|unique:courses,description',
+                'course_subtitle'   => 'required|min:5',
+                'course_description'=> 'required|min:5',
                 'cover_img'         => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
 
             ]);

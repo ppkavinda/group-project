@@ -43,21 +43,14 @@
                         <div class="form-group row">
                             <label for="type" class="col-sm-4 col-form-label">&nbsp Type</label>
                             <div class="col-sm-6">
-                                <input type="text" id="type" value="{{$products->type}}">
+                                {{$products->type}}
                             </div>
                         </div>
                     </fieldset>
-                        <div class="form-group row">
-                            <label for="amount" class="col-sm-4 col-form-label">&nbsp Amount</label>
-                            <div class="col-sm-6">
-                                <input  class="form-control" name="amount" type="text" id="size" value="{{$products->amount}}">
-                                <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
-                            </div>
-                        </div>
                     <div class="form-group row">
                         <label for="addDetails" class="col-sm-4 col-form-label">&nbsp Details</label>
                         <div class="col-sm-6">
-                            <textarea name="addDetails" id="details" cols="44"rows="2" value="{{$products->description}}"></textarea>
+                            {{$products->description}}
                             
                         </div>
                     </div>
@@ -74,7 +67,7 @@
                         </div>
                     </div>
                     </fieldset> 
-                    <a class="btn btn-danger" href="" onclick="return confirm('Delete this advertisement!!')">Delete</a>
+                  
                 </form> 
             </div>
             <div class="col-md-4">
