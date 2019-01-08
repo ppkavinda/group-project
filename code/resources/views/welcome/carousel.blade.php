@@ -85,7 +85,7 @@
 						<div class="container">
 							<div class="carousel-caption">
 								<h3> Shopping<span> Sale</span></h3>
-								<p><b><span><font size="4px" color="white">Large Varieties Of Product</font></span></b></p>
+								<p><b><span><font size="4px" color="white">Large Varieties Of Products</font></span></b></p>
 								<a class="hvr-outline-out button2" href="/shop">Shopping Now </a>
 							</div>
 						</div>
@@ -93,9 +93,8 @@
 					<div class="carousel-item item2"> 
 						<div class="container">
 							<div class="carousel-caption">
-							<h3> Shopping<span> Sale</span></h3>
-								<p><b><span><font size="4px" color="white">Large Varieties Of Product</font></span></b></p>
-						
+								<h3> Shopping<span> Sale</span></h3>
+								<p><b><span><font size="4px" color="white">Large Varieties Of Products</font></span></b></p>
 								<a class="hvr-outline-out button2" href="/shop">Shopping Now</a>
 							</div>
 						</div>
@@ -103,8 +102,8 @@
 					<div class="carousel-item item3"> 
 						<div class="container">
 							<div class="carousel-caption">
-							<h3> Shopping<span> Sale</span></h3>
-								<p><b><span><font size="4px" color="white">Large Varieties Of Product</font></span></b></p>
+								<h3> Shopping<span> Sale</span></h3>
+								<p><b><span><font size="4px" color="white">Large Varieties Of Products</font></span></b></p>
 								<a class="hvr-outline-out button2" href="/shop">Shopping Now</a>
 							</div>
 						</div>
@@ -113,7 +112,7 @@
 						<div class="container">
 							<div class="carousel-caption">
 							<h3> Shopping<span> Sale</span></h3>
-								<p><b><span><font size="4px" color="white">Large Varieties Of Product</font></span></b></p>
+								<p><b><span><font size="4px" color="white">Large Varieties Of Products</font></span></b></p>
 								<a class="hvr-outline-out button2" href="/shop">Shopping Now </a>
 							</div>
 						</div>
@@ -122,7 +121,7 @@
 						<div class="container">
 							<div class="carousel-caption">
 							<h3> Shopping<span> Sale</span></h3>
-								<p><b><span><font size="4px" color="white">Large Varieties Of Product</font></span></b></p>
+								<p><b><span><font size="4px" color="white">Large Varieties Of Products</font></span></b></p>
 								<a class="hvr-outline-out button2" href="/shop">Shopping Now </a>
 							</div>
 						</div>

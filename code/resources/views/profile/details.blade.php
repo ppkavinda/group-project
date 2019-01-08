@@ -64,7 +64,7 @@
                 <label for="inputDesc" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
                     <textarea name="description" class="form-control" id="description" 
-                        placeholder="Say something about you..."></textarea>
+                        placeholder="Say something about you...">{{ auth()->user()->description }}</textarea>
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                     @if ($errors->has('description'))
                         <span class="invalid-feedback d-block" role="alert">
@@ -82,7 +82,7 @@
                 <label for="inputContact" class="col-sm-2 col-form-label">Contact Number</label>
                 <div class="col-sm-10">
                     <input type="text" name="telephone" class="form-control" 
-                        id="inputContact"  placeholder="Enter your contact Number">
+                        id="inputContact" value="{{ old('telephone') }}" placeholder="Enter your contact Number">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                     @if ($errors->has('telephone'))
                         <span class="invalid-feedback d-block" role="alert">
@@ -96,7 +96,7 @@
                 <label for="inputAddress" class="col-sm-2 col-form-label">Your Address</label>
                 <div class="col-sm-10">
                     <input type="text" name="address1" class="form-control" 
-                        id="address1"  placeholder="Line number 1">
+                        id="address1" value="{{ old('address1') }}" placeholder="Line number 1">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil" ></i>
                     @if ($errors->has('address1'))
                         <span class="invalid-feedback d-block" role="alert">
@@ -110,7 +110,7 @@
                 <label for="inputAddress" class="col-sm-2 col-form-label">Your Address</label>
                 <div class="col-sm-10">
                     <input type="text" name="address2" class="form-control" 
-                        id="address2"  placeholder="Line number 2 optional">
+                        id="address2" value="{{ old('address2') }}" placeholder="Line number 2 optional">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                     @if ($errors->has('address2'))
                         <span class="invalid-feedback d-block" role="alert">
@@ -124,7 +124,7 @@
                 <label for="inputAddress" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-10">
                     <input type="text" name="city" class="form-control" 
-                        id="city"  placeholder="City">
+                        id="city" value="{{ old('city') }}" placeholder="City">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil" ></i>
                     @if ($errors->has('city'))
                         <span class="invalid-feedback d-block" role="alert">
@@ -138,7 +138,7 @@
                 <label for="inputAddress" class="col-sm-2 col-form-label">Postal Code</label>
                 <div class="col-sm-10">
                     <input type="text" name="postal_code" class="form-control" 
-                        id="postal_code"  placeholder="Postal Code">
+                        id="postal_code" value="{{ old('postal_code') }}" placeholder="Postal Code">
                     <i aria-hidden="true" class="fa fa-pencil edit-pencil"></i>
                     @if ($errors->has('postal_code'))
                         <span class="invalid-feedback d-block" role="alert">

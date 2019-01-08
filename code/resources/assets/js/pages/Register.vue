@@ -1,8 +1,6 @@
-@extends('layouts.app')
-@section('content')
 <template>
 <!-- background image -->
-<div class="bg-img">
+<div>
     <div class="container">
         <div class="row justify-content-center"> 
             <div class="col-md-6">

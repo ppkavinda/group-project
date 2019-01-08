@@ -298,9 +298,9 @@ class ProductController extends Controller
             $category_id=2;
         }
         if ($category_id==0) {
-            $addPosts = Product::where('price', '>=', $priceFrom)->where('price', '<=', $priceTo)->get();
+            $addPosts = Product::where('price', '>=', $priceFrom)->where('price', '<=', $priceTo)->paginate(9);
         } else {
-            $addPosts = Product::where('category_id', $category_id)->where('price', '>=', $priceFrom)->where('price', '<=', $priceTo)->get();
+            $addPosts = Product::where('category_id', $category_id)->where('price', '>=', $priceFrom)->where('price', '<=', $priceTo)->paginate(9);
         }
         return view('shop.mens', ['addPosts'=> $addPosts, 'category_id'=>$category_id]);
     }

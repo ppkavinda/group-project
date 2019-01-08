@@ -12,7 +12,6 @@
 					@if(date_diff(date_create(date('Y-m-d')),$latestMasks[$x]['created_at'])->format("%a")< 7)
 						<span class="product-new-top">New</span>
 					@endif
-					
 			</div>
 			<div class="item-info-product ">
 				<h4><a href="/quickView/{{$latestMasks[$x]['id']}}">{{$latestMasks[$x]['name']}}</a></h4>

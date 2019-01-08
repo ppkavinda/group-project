@@ -6,6 +6,8 @@ use \App\Order;
 use \App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Notifications\OrderShipped;
+use Illuminate\Support\Facades\Notification;
 
 class OrderController extends Controller
 {
@@ -76,36 +78,45 @@ class OrderController extends Controller
         $order->save();
     }
 
-    public function view_Order_table(){
+    public function view_Order_table()
+    {
         $orders=\App\Order::all();
-      //p dd($orders);
+        //p dd($orders);
         return view('admin.order.view')->with(compact('orders'));
-
     }
 
     public function search(Request $request)
     {
         $search =$request->get("search");
-        $orders=\App\Order::where('orders.id','like','%'.$search.'%')
-                ->orWhere('orders.status','like','%'.$search.'%')
-                ->orWhere('orders.address1','like','%'.$search.'%')
-                ->orWhere('orders.address2','like','%'.$search.'%')
-                ->orWhere('orders.city','like','%'.$search.'%')
-                ->orWhere('orders.postal_code','like','%'.$search.'%')
-                ->orWhere('orders.telephone','like','%'.$search.'%')
-                ->orWhere('orders.payment_id','like','%'.$search.'%')
-                ->orWhere('orders.user_id','like','%'.$search.'%')
-                ->orWhere('orders.created_at','like','%'.$search.'%')
-                ->get(); 
-       // dd($orders);
-        return view('admin.order.view',compact('orders'));
+        $orders=\App\Order::where('orders.id', 'like', '%'.$search.'%')
+                ->orWhere('orders.status', 'like', '%'.$search.'%')
+                ->orWhere('orders.address1', 'like', '%'.$search.'%')
+                ->orWhere('orders.address2', 'like', '%'.$search.'%')
+                ->orWhere('orders.city', 'like', '%'.$search.'%')
+                ->orWhere('orders.postal_code', 'like', '%'.$search.'%')
+                ->orWhere('orders.telephone', 'like', '%'.$search.'%')
+                ->orWhere('orders.payment_id', 'like', '%'.$search.'%')
+                ->orWhere('orders.user_id', 'like', '%'.$search.'%')
+                ->orWhere('orders.created_at', 'like', '%'.$search.'%')
+                ->get();
+        // dd($orders);
+        return view('admin.order.view', compact('orders'));
     }
     
-    public function view_Products_On_order(Request $request,$id)
+    public function view_Products_On_order(Request $request, $id)
     {
         $order = \App\Order::find($id);
-      //  dd($order->products);
+        //  dd($order->products);
 
         return view('admin.order.order_product')->with(compact('order'));
+    }
+    
+    public function shipped(Request $request, Order $order, Product $product)
+    {
+        $order->status = 2;
+        $order->save();
+        Notification::send($order->user, new OrderShipped($order->id));
+
+        return back();
     }
 }

@@ -1,4 +1,3 @@
-
 <h3 class="w3l_header mt-4 mb-5">My <span>orders</span></h3>
 <div class="row">
 <div class="table-responsive">
@@ -26,7 +25,8 @@
               <td>{{$product->pivot->amount*$product->pivot->price}}</td>
               <td>{{$order->created_at}}</td>
               @if($order->status===0)
-              <td><span class="label label-primary"> Placed, not payed</span></td>
+              {{-- <td><span class="label label-primary"> Placed, not payed</span></td> --}}
+              <td> <span class="label label-info">Payed</span></td>
               @elseif($order->status===1)
               <td> <span class="label label-info">Payed</span></td>
               @elseif($order->status===2)
