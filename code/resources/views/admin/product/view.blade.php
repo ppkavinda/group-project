@@ -67,7 +67,6 @@
                     <th style="width: 40px;" color="solid black">Product ID</th>
                     <th width="100">Product Name</th>
                     <th width="100">Unit Price</th>
-                    <th>amount</th>
                     <th>reserved</th>
                    
                     
@@ -75,10 +74,11 @@
                     
                    
                     <th>category id</th>
+                    <th>discount</th>
                     <th>ratings</th>
                     <th>kind</th>
                     <th>Type</th>
-                    <th>sizes</th>
+                    
                     <!--<th>Cover Image</th>
                     
                     <th>updated_at</th> -->
@@ -94,17 +94,17 @@
                     <td>{{$product->id}}</td>
                     <td>{{$product->name}}</td>
                     <td>{{$product->price}}</td>
-                    <td>{{$product->amount}}</td>
                     <td>{{$product->reserved}}</td>
                     
                     
                     <td><a href="{{url('/admin/view-user/'.$product->user_id)}}">{{$product->user_id}}</a></td>
                    
                     <td>{{$product->category_id}}</td>
+                    <td>{{$product->discount}}</td>
                     <td>{{$product->ratings}}</td>
                     <td>{{$product->kind}}</td>
                     <td>{{$product->type}}</td>
-                    <td>{{$product->sizes}}</td>
+                   
                
                     <td width="300" style="text-align: center">
 
