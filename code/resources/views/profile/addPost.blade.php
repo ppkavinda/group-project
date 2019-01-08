@@ -1,4 +1,4 @@
-<h3 class="w3l_header mt-4 mb-5">Select a category</h3>
+<h3 class="w3l_header mt-4 mb-5">Select a <span>category</span></h3>
 <hr>
 
 <div class="col-md-5">

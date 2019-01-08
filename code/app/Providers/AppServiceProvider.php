@@ -40,9 +40,11 @@ class AppServiceProvider extends ServiceProvider
                 ->with('latestSpices', $latestSpices)
                 ->with('topRatingProduct', $topRatingProduct);
         });
-        view()->composer('profile.index', function($view){
-            $orderNotifications = auth()->user()->unreadNotifications->where('type','App\Notifications\OrderPlaced');
-            $view->with('orderNotifications',$orderNotifications);
+        view()->composer('profile.index', function ($view) {
+            $orderNotifications = auth()->user()->unreadNotifications->where('type', 'App\Notifications\OrderPlaced');
+            // $orders = \App\Orders::find($orderNotifications->data->order_id)->products;
+            $view->with('orderNotifications', $orderNotifications);
+            // ->with('orders', $orders);
         });
     }
 
