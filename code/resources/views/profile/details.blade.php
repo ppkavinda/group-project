@@ -226,13 +226,11 @@
         </center>
         
         </form>
-            <br>
         </div>
     </div>
-    <br>
-  
-        
-    
+    <div>
+        <input type="submit" class="btn offset-md-2 btn-primary" value="Update Your Details">
+    </div>
     <br>
 </div>
 
