@@ -4,7 +4,6 @@
 		<div class="container">
 			<h4>Trending Products
             </h4>
-			<!--/w3_short-->
 				 <div class="services-breadcrumb">
 						<div class="agile_inner_breadcrumb">
 
@@ -182,7 +181,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">View</button>
                 </form>
-                
+                <!-- All trending product -->
                 @if(count($allTopTrending)!=0)
                     <center><h1>Our <b>Trending</b> Products</h1></center>
                 @endif
@@ -216,6 +215,7 @@
                     @endfor
                 </div>
                 <hr>
+                <!-- clothes Trending -->
                 @if(count($clothesTopTrending)!=0)
                     <center><h1>Our <b>Trending</b> Clothes</h1></center>
                 @endif
@@ -248,6 +248,7 @@
                         </div>
                     @endfor
                 </div>
+                <!-- mask trending -->
                 @if(count($masksTopTrending)!=0)
                     <center><h1>Our <b>Trending</b> Masks</h1></center>
                 @endif
@@ -280,6 +281,7 @@
                         </div>
                     @endfor
                 </div>
+                <!-- shoes trending -->
                 @if(count($shoesTopTrending)!=0)
                     <center><h1>Our <b>Trending</b> Shoes And Slippers</h1></center>
                 @endif
@@ -312,6 +314,7 @@
                         </div>
                     @endfor
                 </div>
+                <!-- spices trending -->
                 @if(count($spicesTopTrending)!=0)
                     <center><h1>Our <b>Trending</b> Spices</h1></center>
                 @endif
@@ -344,6 +347,7 @@
                         </div>
                     @endfor
                 </div>
+                <!-- soap trending -->
                 @if(count($soapTopTrending)!=0)
                     <center><h1>Our <b>Trending</b> Soaps</h1></center>
                 @endif

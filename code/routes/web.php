@@ -45,7 +45,7 @@ Route::get('/categories/jewellery', function () {
     dd('jewellery');
 })->name('categories.jewellery');
 
-Route::post('/products', 'ProductController@store');
+//Route::post('/products', 'ProductController@store');
 // Route::get('/products/{product}', 'ProductController@show')->name('products.show');
 
 Route::post('/reviews/{product}/create', 'ReviewController@store')->name('reviews.store')
@@ -190,7 +190,7 @@ Route::get('test', function () {
 
 Auth::routes();
 
-//selling Products
+//Product adding forms
 Route::get('soap', function () {
     return view('add.soap');
 });
@@ -211,6 +211,7 @@ Route::get('shoes', function () {
     return view('add.shoes');
 });
 
+//add own products
 Route::post('/postAdd', 'ProductController@store');
 
 Route::get('/admin/post', 'PostController@adminindex');
@@ -223,8 +224,8 @@ Route::get('/admin/profile', 'AdminController@index')->middleware('Admin');
 //Route::post('/users/{user}/edit', 'AdminController@edit');
 //Route::get('/user', 'UserController@get');
 
+//Add, view, update, delete own products
 Route::post('postAdd/{id}', 'ProductController@store');
-
 Route::get('YourAdvertisements', 'ProductController@index');
 Route::get('YourAdvertisements/{productId}/delete', 'ProductController@destroy');
 Route::post('/YourAdvertisements/{productId}/update', 'ProductController@update');
@@ -234,13 +235,16 @@ Route::post('/YourAdvertisements/{productId}/update', 'ProductController@update'
 Route::get('/categories', 'ProductController@allAdvertisements');
 Route::get('/categories/{kind}/{type}/{category_id}', 'ProductController@viewKindAdvertisements');
 Route::get('/categories/{category_id}', 'ProductController@viewAdvertisements');
-
 Route::get('/categories/{kind}/{category_id}', 'ProductController@viewOnlyKindAdvertisements');
+
+//details about choose product
 Route::get('/quickView/{product}', 'ProductController@quickViewAdvertisement')->name('products.show');
 Route::get('/categories/{kind}/{type}', 'ProductController@viewKindAdvertisements');
 
+//view product in specific price range
 Route::post('/categories/priceRange', 'ProductController@priceRange');
+
+//view trending products
 Route::get('/trendingProduct', 'ShopController@getTrendingProducts');
-Route::get('/test1', 'InquiryController@countOfNotification');
 
 Route::post('/promotion', 'UserController@promote');

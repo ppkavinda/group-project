@@ -20,6 +20,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+     //view own addvertisements
     public function index()
     {
         $posts = auth()->user()->products;
@@ -57,6 +58,8 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    //store your own products
     public function store(Request $request, $id)
     {
         $product = Product::create([
@@ -164,6 +167,8 @@ class ProductController extends Controller
      * @param  \App\product  $product
      * @return \Illuminate\Http\Response
      */
+
+    //update own products
     public function update(Request $request, Product $productId)
     {
         $category_id = $productId->category_id;
@@ -219,6 +224,8 @@ class ProductController extends Controller
      * @param  \App\product  $product
      * @return \Illuminate\Http\Response
      */
+
+    //delete your own products
     public function destroy(Request $request, Product $productId)
     {
         $productId->delete();

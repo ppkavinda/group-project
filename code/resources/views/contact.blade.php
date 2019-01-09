@@ -3,7 +3,7 @@
 @section('content')
 
 @include('study.partials.banner')
-
+	<!-- contact details -->
 	<div class="contact">
 		<div class="container">
 			<h3 class="w3l_header w3_agileits_header1">Get in <span>Touch</span></h3>
@@ -38,7 +38,13 @@
 			</div>
 		</div>
 	</div>
+	<!-- contact details -->
+
+	<!-- location with google map -->
 	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15843.509724669504!2d79.95680622113868!3d6.905257443732301!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf7bc4d1d30bee97e!2zRGl2aXNpb25hbCBTZWNyZXRhcmlhdCBLYWR1d2VsYSDgtprgtqngt5Tgt4Dgt5ngtr0g4La04LeK4oCN4La74LeP4Lav4Lea4LeB4LeT4La6IOC2veC3muC2muC2uOC3iiDgtprgt4_gtrvgt4rgtrrgt4_gtr3gtro!5e0!3m2!1sen!2slk!4v1546680678151" width="1500" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+	<!-- location with google map -->
+	
+	<!-- inquiry submit -->
 	<div class="contact">
 		<div class="container">
 			<h3 class="w3l_header w3_agileits_header1">Inquiry <span>Info</span></h3>
@@ -68,6 +74,9 @@
 						</form>
 					</div>
 				</div>
+	<!-- inquiry submit -->
+
+				<!-- link to pabasara blog -->
 				<div class="col-md-6 agileits_mail_grid_left agileinfo_mail_grid_left">
 					<div class="agileits_mail_grid_lft_grid wthree_mail_grid_lft_grid">
 						<h4><span>Prabashvara Blog</span></h4>

@@ -1,1 +1,0 @@
-{{$topTrendingProducts[1][0]['id']}}
