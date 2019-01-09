@@ -2,8 +2,8 @@
 @section('content')
 <div class="page-head_agile_info_w3l">
 		<div class="container">
-			<h3>Trending Products
-            </h3>
+			<h4>Trending Products
+            </h4>
 			<!--/w3_short-->
 				 <div class="services-breadcrumb">
 						<div class="agile_inner_breadcrumb">
@@ -182,39 +182,17 @@
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">View</button>
                 </form>
-                <div class="men-wear-top">
-                    <div id="top" class="callbacks_container">
-                        <ul class="rslides callbacks callbacks1" id="slider3">
-                            <li id="callbacks1_s0" class="callbacks1_on" style="display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 500ms ease-in-out 0s;">
-                                <img class="img-responsive" src="images/banner2.jpg" alt=" ">
-                            </li>
-                            <li id="callbacks1_s1" class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out 0s;">
-                                <img class="img-responsive" src="images/banner5.jpg" alt=" ">
-                            </li>
-                            <li id="callbacks1_s2" class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out 0s;">
-                                <img class="img-responsive" src="images/banner2.jpg" alt=" ">
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="men-wear-bottom">
-                    <div class="col-sm-4 men-wear-left">
-                        <img class="img-responsive" src="images/bb2.jpg" alt=" ">
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+                
                 @if(count($allTopTrending)!=0)
                     <center><h1>Our <b>Trending</b> Products</h1></center>
                 @endif
                 <div class="row">
                     @for($x=0; $x<count($allTopTrending); $x++)
                         <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-pro-item simpleCart_shelfItem" style="height:380px;">
                                 <div class="men-thumb-item">
-                                    <img src="/storage/{{$allTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" style="width:200px; height:200px;">
-                                    <img src="/storage/{{$allTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" style="width:200px; height:200px;">
+                                    <img src="/storage/{{$allTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" >
+                                    <img src="/storage/{{$allTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" >
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
                                             <a href="/quickView/{{$allTopTrending[$x][0]['id']}}" class="link-product-add-cart">Quick View</a>
@@ -225,7 +203,7 @@
                                     @endif
                                 </div>
                                 <div class="item-info-product ">
-                                    <h3><a href="/quickView/{{$allTopTrending[$x][0]['id']}}">{{$allTopTrending[$x][0]['name']}}</a></h3>
+                                    <h4><a href="/quickView/{{$allTopTrending[$x][0]['id']}}">{{$allTopTrending[$x][0]['name']}}</a></h4>
                                     <div class="info-product-price">
                                         <span class="item_price">LKR.{{$allTopTrending[$x][0]['price']-$allTopTrending[$x][0]['discount']}}</span>
                                         @if($allTopTrending[$x][0]['discount']!=null)
@@ -244,10 +222,10 @@
                 <div class="row">
                     @for($x=0; $x<count($clothesTopTrending); $x++)
                         <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-pro-item simpleCart_shelfItem" style="height:380px;">
                                 <div class="men-thumb-item">
-                                    <img src="/storage/{{$clothesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" style="width:200px; height:200px;">
-                                    <img src="/storage/{{$clothesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" style="width:200px; height:200px;">
+                                    <img src="/storage/{{$clothesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" >
+                                    <img src="/storage/{{$clothesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" >
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
                                             <a href="/quickView/{{$clothesTopTrending[$x][0]['id']}}" class="link-product-add-cart">Quick View</a>
@@ -258,7 +236,7 @@
                                     @endif
                                 </div>
                                 <div class="item-info-product ">
-                                    <h3><a href="/quickView/{{$clothesTopTrending[$x][0]['id']}}">{{$clothesTopTrending[$x][0]['name']}}</a></h3>
+                                    <h4><a href="/quickView/{{$clothesTopTrending[$x][0]['id']}}">{{$clothesTopTrending[$x][0]['name']}}</a></h4>
                                     <div class="info-product-price">
                                         <span class="item_price">LKR.{{$clothesTopTrending[$x][0]['price']-$clothesTopTrending[$x][0]['discount']}}</span>
                                         @if($clothesTopTrending[$x][0]['discount']!=null)
@@ -276,10 +254,10 @@
                 <div class=row>
                     @for($x=0; $x<count($masksTopTrending); $x++)
                         <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-pro-item simpleCart_shelfItem" style="height:380px;">
                                 <div class="men-thumb-item">
-                                    <img src="/storage/{{$masksTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" style="width:200px; height:200px;">
-                                    <img src="/storage/{{$masksTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" style="width:200px; height:200px;">
+                                    <img src="/storage/{{$masksTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" >
+                                    <img src="/storage/{{$masksTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" >
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
                                             <a href="/quickView/{{$masksTopTrending[$x][0]['id']}}" class="link-product-add-cart">Quick View</a>
@@ -290,7 +268,7 @@
                                     @endif
                                 </div>
                                 <div class="item-info-product ">
-                                    <h3><a href="/quickView/{{$masksTopTrending[$x][0]['id']}}">{{$masksTopTrending[$x][0]['name']}}</a></h3>
+                                    <h4><a href="/quickView/{{$masksTopTrending[$x][0]['id']}}">{{$masksTopTrending[$x][0]['name']}}</a></h4>
                                     <div class="info-product-price">
                                         <span class="item_price">LKR.{{$masksTopTrending[$x][0]['price']-$masksTopTrending[$x][0]['discount']}}</span>
                                         @if($masksTopTrending[$x][0]['discount']!=null)
@@ -308,10 +286,10 @@
                 <div class=row>
                     @for($x=0; $x<count($shoesTopTrending); $x++)
                         <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-pro-item simpleCart_shelfItem" style="height:380px;">
                                 <div class="men-thumb-item">
-                                    <img src="/storage/{{$shoesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" style="width:200px; height:200px;">
-                                    <img src="/storage/{{$shoesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" style="width:200px; height:200px;">
+                                    <img src="/storage/{{$shoesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" >
+                                    <img src="/storage/{{$shoesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" >
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
                                             <a href="/quickView/{{$shoesTopTrending[$x][0]['id']}}" class="link-product-add-cart">Quick View</a>
@@ -322,7 +300,7 @@
                                     @endif
                                 </div>
                                 <div class="item-info-product ">
-                                    <h3><a href="/quickView/{{$shoesTopTrending[$x][0]['id']}}">{{$shoesTopTrending[$x][0]['name']}}</a></h3>
+                                    <h4><a href="/quickView/{{$shoesTopTrending[$x][0]['id']}}">{{$shoesTopTrending[$x][0]['name']}}</a></h4>
                                     <div class="info-product-price">
                                         <span class="item_price">LKR.{{$shoesTopTrending[$x][0]['price']-$shoesTopTrending[$x][0]['discount']}}</span>
                                         @if($shoesTopTrending[$x][0]['discount']!=null)
@@ -340,10 +318,10 @@
                 <div class=row>
                     @for($x=0; $x<count($spicesTopTrending); $x++)
                         <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-pro-item simpleCart_shelfItem" style="height:380px;">
                                 <div class="men-thumb-item">
-                                    <img src="/storage/{{$spicesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" style="width:200px; height:200px;">
-                                    <img src="/storage/{{$spicesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" style="width:200px; height:200px;">
+                                    <img src="/storage/{{$spicesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" >
+                                    <img src="/storage/{{$spicesTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" >
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
                                             <a href="/quickView/{{$spicesTopTrending[$x][0]['id']}}" class="link-product-add-cart">Quick View</a>
@@ -354,7 +332,7 @@
                                     @endif
                                 </div>
                                 <div class="item-info-product ">
-                                    <h3><a href="/quickView/{{$spicesTopTrending[$x][0]['id']}}">{{$spicesTopTrending[$x][0]['name']}}</a></h3>
+                                    <h4><a href="/quickView/{{$spicesTopTrending[$x][0]['id']}}">{{$spicesTopTrending[$x][0]['name']}}</a></h4>
                                     <div class="info-product-price">
                                         <span class="item_price">LKR.{{$spicesTopTrending[$x][0]['price']-$spicesTopTrending[$x][0]['discount']}}</span>
                                         @if($spicesTopTrending[$x][0]['discount']!=null)
@@ -372,10 +350,10 @@
                 <div class=row>
                     @for($x=0; $x<count($soapTopTrending); $x++)
                         <div class="col-md-4 product-men">
-                            <div class="men-pro-item simpleCart_shelfItem">
+                            <div class="men-pro-item simpleCart_shelfItem" style="height:380px;">
                                 <div class="men-thumb-item">
-                                    <img src="/storage/{{$soapTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" style="width:200px; height:200px;">
-                                    <img src="/storage/{{$soapTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" style="width:200px; height:200px;">
+                                    <img src="/storage/{{$soapTopTrending[$x][0]['img1']}}" alt="" class="pro-image-front img-fluid" >
+                                    <img src="/storage/{{$soapTopTrending[$x][0]['img1']}}" alt="" class="pro-image-back img-fluid" >
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
                                             <a href="/quickView/{{$soapTopTrending[$x][0]['id']}}" class="link-product-add-cart">Quick View</a>
@@ -386,7 +364,7 @@
                                     @endif
                                 </div>
                                 <div class="item-info-product ">
-                                    <h3><a href="/quickView/{{$soapTopTrending[$x][0]['id']}}">{{$soapTopTrending[$x][0]['name']}}</a></h3>
+                                    <h4><a href="/quickView/{{$soapTopTrending[$x][0]['id']}}">{{$soapTopTrending[$x][0]['name']}}</a></h4>
                                     <div class="info-product-price">
                                         <span class="item_price">LKR.{{$soapTopTrending[$x][0]['price']-$soapTopTrending[$x][0]['discount']}}</span>
                                         @if($soapTopTrending[$x][0]['discount']!=null)

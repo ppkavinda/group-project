@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+// use DB;
+use Illuminate\Support\Facades\DB;
+
 use App\User;
 class AdminController extends Controller
 {
@@ -38,9 +40,14 @@ class AdminController extends Controller
         $users_count=\App\User::count();
         $courses_count=\App\Course::count();
         $orders_count=\App\Order::count();
+        $posts_count=\App\Post::count();
+
+        $order_history = \DB::table('orders')->select(DB::raw('DATE(created_at) as date, COUNT(id) count'))
+            ->groupBy('date')->get();
+            // dd($order_history[0]->date);
         //dd($courses_count);
 
-            return view('admin.index')->with(compact(['users_count','courses_count','orders_count']));
+            return view('admin.index')->with(compact(['users_count','courses_count','orders_count', 'order_history','posts_count']));
         
 
     }

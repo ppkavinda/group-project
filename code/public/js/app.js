@@ -14402,66 +14402,11 @@ module.exports = Cancel;
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
+
 __webpack_require__(19);
 __webpack_require__(163);
 __webpack_require__(164);
 module.exports = __webpack_require__(165);
-||||||| merged common ancestors
-<<<<<<<<< Temporary merge branch 1
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(94)
-/* template */
-var __vue_template__ = __webpack_require__(95)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/pages/Register.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f409c60", Component.options)
-  } else {
-    hotAPI.reload("data-v-0f409c60", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-||||||||| merged common ancestors
-__webpack_require__(19);
-__webpack_require__(143);
-__webpack_require__(144);
-module.exports = __webpack_require__(145);
-=========
-__webpack_require__(19);
-__webpack_require__(163);
-__webpack_require__(164);
-module.exports = __webpack_require__(165);
->>>>>>>>> Temporary merge branch 2
-=======
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -14507,24 +14452,11 @@ if (false) {(function () {
 })()}
 
 module.exports = Component.exports
->>>>>>> c2e717a56b6a56de3bf857813e79bf6c4703b5ad
+
 
 
 /***/ }),
 /* 19 */
-<<<<<<< HEAD
-||||||| merged common ancestors
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(20);
-__webpack_require__(146);
-__webpack_require__(147);
-module.exports = __webpack_require__(148);
-
-
-/***/ }),
-/* 20 */
-=======
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(20);
@@ -14535,7 +14467,6 @@ module.exports = __webpack_require__(171);
 
 /***/ }),
 /* 20 */
->>>>>>> c2e717a56b6a56de3bf857813e79bf6c4703b5ad
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14592,25 +14523,6 @@ __webpack_require__(62);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_froala_wysiwyg___default.a);
 
-<<<<<<< HEAD
-Vue.component('content-panel', __webpack_require__(68));
-Vue.component('footer-bar', __webpack_require__(90));
-Vue.component('register', __webpack_require__(93));
-Vue.component('nav-bar', __webpack_require__(96));
-Vue.component('side-bar', __webpack_require__(99));
-Vue.component('user-details', __webpack_require__(102));
-Vue.component('post-viewer', __webpack_require__(105));
-Vue.component('post-editor', __webpack_require__(108));
-||||||| merged common ancestors
-Vue.component('content-panel', __webpack_require__(69));
-Vue.component('footer-bar', __webpack_require__(91));
-Vue.component('register', __webpack_require__(18));
-Vue.component('nav-bar', __webpack_require__(96));
-Vue.component('side-bar', __webpack_require__(99));
-Vue.component('user-details', __webpack_require__(102));
-Vue.component('post-viewer', __webpack_require__(105));
-Vue.component('post-editor', __webpack_require__(108));
-=======
 Vue.component('content-panel', __webpack_require__(69));
 Vue.component('footer-bar', __webpack_require__(91));
 Vue.component('register', __webpack_require__(94));
@@ -14619,52 +14531,25 @@ Vue.component('side-bar', __webpack_require__(100));
 Vue.component('user-details', __webpack_require__(103));
 Vue.component('post-viewer', __webpack_require__(111));
 Vue.component('post-editor', __webpack_require__(114));
->>>>>>> c2e717a56b6a56de3bf857813e79bf6c4703b5ad
 Vue.component('post-forum', __webpack_require__(120));
 Vue.component('video-upload', __webpack_require__(126));
 Vue.component('product-slider', __webpack_require__(130));
 Vue.component('add-to-cart', __webpack_require__(135));
-<<<<<<< HEAD
-Vue.component('cart-model', __webpack_require__(140));
-<<<<<<< HEAD
-<<<<<<< HEAD
-Vue.component('cart-badge', __webpack_require__(143));
-||||||| merged common ancestors
-Vue.component('cart-badge', __webpack_require__(150));
-=======
 Vue.component('cart-button', __webpack_require__(168));
 Vue.component('checkout-cart', __webpack_require__(153));
-||||||| merged common ancestors
 Vue.component('cart-button', __webpack_require__(168));
 Vue.component('checkout-cart', __webpack_require__(153));
-=======
 Vue.component('cart-button', __webpack_require__(143));
 Vue.component('checkout-cart', __webpack_require__(149));
->>>>>>> 2b69fd405591f1307732952bee804ede9bd6e420
-||||||| merged common ancestors
 Vue.component('cart-model', __webpack_require__(140));
-<<<<<<<<< Temporary merge branch 1
-Vue.component('cart-badge', __webpack_require__(143));
-||||||||| merged common ancestors
-Vue.component('cart-badge', __webpack_require__(150));
-=========
 Vue.component('cart-button', __webpack_require__(143));
 Vue.component('checkout-cart', __webpack_require__(149));
-=======
 Vue.component('add-to-cart-button', __webpack_require__(140));
 Vue.component('cart-model', __webpack_require__(144));
 Vue.component('cart-button', __webpack_require__(147));
 Vue.component('checkout-cart', __webpack_require__(153));
->>>>>>> c2e717a56b6a56de3bf857813e79bf6c4703b5ad
 
 Vue.config.productionTip = false;
-<<<<<<< HEAD
->>>>>>> 6b2fe65c3633ac5c3bbf94f49ac5afb99d0cfbc6
-||||||| merged common ancestors
->>>>>>>>> Temporary merge branch 2
-=======
->>>>>>> c2e717a56b6a56de3bf857813e79bf6c4703b5ad
-
 var app = new Vue({
     el: '#app'
 });
@@ -14683,17 +14568,10 @@ window.Popper = __webpack_require__(10).default;
  */
 
 try {
-<<<<<<< HEAD
-  window.$ = window.jQuery = __webpack_require__(5);
-  window.Bootstrap = __webpack_require__(21);
-  __webpack_require__(22);
-||||||| merged common ancestors
   window.$ = window.jQuery = __webpack_require__(5);
   window.Bootstrap = __webpack_require__(22);
-=======
   window.$ = window.jQuery = __webpack_require__(6);
   window.Bootstrap = __webpack_require__(22);
->>>>>>> c2e717a56b6a56de3bf857813e79bf6c4703b5ad
   __webpack_require__(23);
   __webpack_require__(24);
   __webpack_require__(25);
@@ -19404,20 +19282,8 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 
 var utils = __webpack_require__(1);
 var bind = __webpack_require__(11);
-<<<<<<< HEAD
 var Axios = __webpack_require__(30);
-||||||| merged common ancestors
-<<<<<<<<< Temporary merge branch 1
 var Axios = __webpack_require__(31);
-var defaults = __webpack_require__(6);
-||||||||| merged common ancestors
-var Axios = __webpack_require__(30);
-var defaults = __webpack_require__(6);
-=========
-var Axios = __webpack_require__(30);
-=======
-var Axios = __webpack_require__(31);
->>>>>>> c2e717a56b6a56de3bf857813e79bf6c4703b5ad
 var defaults = __webpack_require__(7);
 
 /**
@@ -27646,8 +27512,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -27746,7 +27610,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-img" }, [
+  return _c("div", [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-6" }, [
@@ -34036,7 +33900,13 @@ var render = function() {
           _c("div", { staticClass: "info-product-price" }, [
             _c("span", { staticClass: "item_price", attrs: { id: "price" } }, [
               _vm._v(
-                "LKR " + _vm._s(_vm.product.price - _vm.product.discount * 0.01)
+                "LKR " +
+                  _vm._s(
+                    parseFloat(
+                      _vm.product.price -
+                        _vm.product.price * _vm.product.discount * 0.01
+                    ).toFixed(2)
+                  )
               )
             ]),
             _vm._v(" "),

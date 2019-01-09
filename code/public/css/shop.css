@@ -18019,7 +18019,6 @@ h2.resp-accordion:first-child {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/chefBanner1.jpg) no-repeat;
   background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/chefBanner1.jpg) no-repeat;
   background-size: cover;
-  width: 600px;
   height: 600px;
 }
 
@@ -18092,7 +18091,6 @@ h2.resp-accordion:first-child {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(23, 22, 23, 0.2)), to(rgba(23, 22, 23, 0.5))), url(/dist/img/maskBanner.jpg) no-repeat;
   background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(/dist/img/maskBanner.jpg) no-repeat;
   background-size: cover;
-  width: 600px;
   height: 600px;
 }
 

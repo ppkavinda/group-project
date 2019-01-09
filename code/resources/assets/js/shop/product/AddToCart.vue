@@ -11,7 +11,7 @@
         <div class="col-md-3">
             <div class="item-info-product ">    
                 <div class="info-product-price">
-                    <span class="item_price" id="price">LKR {{ product.price - product.discount * .01 }}</span>
+                    <span class="item_price" id="price">LKR {{ parseFloat(product.price - product.price * product.discount * .01).toFixed(2) }}</span>
                     <del v-if="product.discount" style="color:red;">LKR {{ product.price }}</del>
                 </div>
             </div>

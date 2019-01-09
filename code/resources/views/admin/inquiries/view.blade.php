@@ -62,8 +62,6 @@
                     <td><b>{{$inquiry->email}}</b></td>
                     <td><b>{{$inquiry->subject}}</b></td>
                     <td><b>{{$inquiry->message	}}</b></td>
-                   
-                    
                     <td><b> {{$inquiry->updated_at}} </b>  </td>
                     <td class="left">
                     

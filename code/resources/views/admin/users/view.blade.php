@@ -100,32 +100,23 @@
                 <thead>
                   <tr>
                     <th style="width: 40px" color="solid black">ID</th>
-                    
                     <th>name</th>
                     <th width="200">email</th>
                     <th>nic</th>
-                    
                     <th>Address</th>
-                   
                     <th>telephone</th>
                     <th>role</th>
                     <th>Action</th>
-                   
-                   
-                    
-                  
-                    
-                  
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($users as $user)
                 <tr>
-                 <td>>{{$user->id}}</td>
+                 <td>{{$user->id}}</td>
                   <td>{{$user->name}}</td>
                   <td>{{$user->email}}</td>
                   <td>{{$user->nic}}</td>
-                  <td>{{$user->address1}} {{$user->address2}}{{$user->city}}</td>
+                  <td>{{$user->address1}} {{$user->address2}}  {{$user->city}}</td>
                   <td>{{$user->telephone}}</td>
                   <td>@if($user->isAdmin())Admin
                   @elseif($user-> isFacilitator())Facilitator
@@ -134,36 +125,15 @@
                   @endif
                   </td>
                   <td>
-                 
                   <a href="{{url('/admin/edit-users/'.$user->id) }}" class="btn btn-primary btn mini" >Promote</a>
-                    
-  
-               
-                 
                  </td>
-
                 </tr>
                 @endforeach
-                  
-                 
-                  
-                
-               
-                
                </tbody>
-        
-                  
-                
                </table>
               </div>
               <!-- /.card-body -->
-              
             </div>
-            
-            
-            
-            
-          
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
