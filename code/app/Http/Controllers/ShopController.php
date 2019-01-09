@@ -7,17 +7,16 @@ use App\Product;
 
 class ShopController extends Controller
 {
+    //get latest and top rating products
     public function viewLatestAndRatingProducts(Request $request){
         $latest = Product::latest()->limit(2)->get();
-        $latestClothes = Product::latest()->where('category_id', 1)->limit(8)->get();
-        $latestMasks = Product::latest()->where('category_id',2)->limit(8)->get();
-        $latestShoes = Product::latest()->where('category_id',5)->limit(8)->get();
-        $latestSpices = Product::latest()->where('category_id',4)->limit(8)->get();
         $topRatingProduct = Product::orderBy('ratings','decs')->limit(2)->get();
-        return view('shop.index',['latest'=>$latest, 'latestClothes'=>$latestClothes, 'latestMasks'=>$latestMasks, 'latestShoes'=>$latestShoes, 'latestSpices'=>$latestSpices,'topRatingProduct'=>$topRatingProduct]);
+        return view('shop.index',['latest'=>$latest, 'topRatingProduct'=>$topRatingProduct]);
     }
 
+//trending products
     public function getTrendingProducts(Request $request){
+        //get top 16 rating products in specific category
         $allTopRating = Product::orderBy('ratings','desc')->limit(16)->get();
         $clothesTopRating = Product::where('category_id', 1)->orderBy('ratings','desc')->limit(16)->get();
         $masksTopRating = Product::where('category_id', 2)->orderBy('ratings','desc')->limit(16)->get();
@@ -25,6 +24,7 @@ class ShopController extends Controller
         $spicesTopRating = Product::where('category_id', 4)->orderBy('ratings','desc')->limit(16)->get();
         $shoesTopRating = Product::where('category_id', 5)->orderBy('ratings','desc')->limit(16)->get();
 
+        //top 6 product in specific category
         $allTopTrending = $this->trendingProducts($allTopRating);
         $clothesTopTrending = $this->trendingProducts($clothesTopRating);
         $masksTopTrending = $this->trendingProducts($masksTopRating);
@@ -37,7 +37,7 @@ class ShopController extends Controller
          'shoesTopTrending'=>$shoesTopTrending]);
     }
 
-
+    //trending calculation
     public function trendingProducts($topRating){
         $marksForRating = array();
         $marksForLatest = array();

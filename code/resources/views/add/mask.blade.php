@@ -7,7 +7,7 @@
             <div class="w3layouts_mail_grid">
                 <div class="agileits_mail_grid_right agileits_w3layouts_mail_grid_right">
                     <div class="agileits_mail_grid_right1 agile_mail_grid_right1">
-                        <form action="/postAdd/{{'2'}}" method="post" enctype="multipart/form-data" onsubmit="return checkForm(this);">
+                        <form action="/postAdd/{{'2'}}" method="post" enctype="multipart/form-data">
                         @csrf
                             <div class="row">
                                 <div class="col-sm-4">
@@ -88,8 +88,8 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label for="discount" id="labels">&nbsp Discount(one mask LKR.) &nbsp</label>
-                                        <input multi class="form-control" type="number" id="select" name="discount" min="1" >
+                                        <label for="discount" id="labels">&nbsp Discount(%) &nbsp</label>
+                                        <input multi class="form-control" type="number" id="select" name="discount" step="0.01" min="0" max="99.99" >
                                     </div>
                                 </div>
                             </div>

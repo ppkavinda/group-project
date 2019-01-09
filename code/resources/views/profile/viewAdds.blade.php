@@ -206,9 +206,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="discount" class="col-sm-3 col-form-label">&nbsp Discount(LKR)</label>
+                        <label for="discount" class="col-sm-3 col-form-label">&nbsp Discount(%)</label>
                         <div class="col-sm-4">
-                        <input multi class="form-control" type="number" name="discount" value={{$posts[$x]['discount']}} required>
+                        <input multi class="form-control" type="number" name="discount" value={{$posts[$x]['discount']}} step="0.01" min="0" max="99.99">
                         </div>
                     </div>
                     <input type="submit" class="btn offset-md-3 btn-primary" value="Update">

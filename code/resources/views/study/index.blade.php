@@ -6,11 +6,11 @@
 <!-- banner -->
 	@include('study.partials.carousel')
 	<!-- //banner -->
-<!--grids-->
 	<div class="banner-bottom">
 		<div class="container">
 			<h3>Join with us, To be a <span class="fixed_w3">Successful Entrepreneur.</span> Start your journey <span class="fixed_w3"> Today! </span></h3>
 			<br /><br />
+			<!-- courses links -->
 			<h3><span class="fixed_w3">Top </span>Online Course Categories</h3>
 
 			<div class="agileits_banner_bottom_grids">
@@ -62,8 +62,10 @@
 
 		</div>
 	</div>
+<!-- courses links -->
+
 <!--shop links -->
-	<div class="banner-bottom">
+<div class="banner-bottom">
 	<div class="p-3 mb-2 bg-secondary text-white">
 		<div class="container">
 		<h3 class="w3l_header w3_agileits_header two">Our <span>Top Product</span></h3>
@@ -121,7 +123,7 @@
 		</div>
 		</div>
 	</div>
-<!-- //banner-bottom -->
+	<!-- shop links -->
 
 	<!-- services -->
 	<div class="services" id="services">
@@ -164,149 +166,30 @@
 			</div>
 		</div>
 	</div>
-<!-- testimonials -->		
-<!-- <div class="testimonials">
-		<div class="container">
-			<h3>Our Most Experienced Facilitator</h3>
-			<ul class="slides row">
-				<li class="col-md-6">
-					<div class="w3_event_right_grid">
-						<div class="w3layouts_event_right_para">
-							<p>How to make proper clothes for market. You can earn money easly. Quality of your
-							product is import bulid your own market.</p>
-							<div class="w3layouts_event_right_para_pos">
-								<i class="fa fa-quote-left" aria-hidden="true"></i>
-							</div>
-						</div>
-						<div class="w3_agile_event_right_grids">
-							<div class="col-xs-4 w3_agile_event_right_grid_left">
-								<img src="/dist/img/facilitator.jpg" alt=" " class="img-fluid" />
-							</div>
-							<div class="col-xs-8 w3_agile_event_right_grid_right">
-								<h4>P.T.S.Perera</h4>
-								<p>Traditional clothes designer</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
-				</li>
-				<li class="col-md-6">
-					<div class="w3_event_right_grid">
-						<div class="w3layouts_event_right_para">
-							<p>Nam tempus lobortis sem non ornare. Curabitur dignissim interdum sem, et mollis lorem. 
-								Mauris hendrerit, mi in aliquet egestas, nisi mi vestibulum turpis.</p>
-							<div class="w3layouts_event_right_para_pos">
-								<i class="fa fa-quote-left" aria-hidden="true"></i>
-							</div>
-						</div>
-						<div class="w3_agile_event_right_grids">
-							<div class="col-xs-4 w3_agile_event_right_grid_left">
-									<img src="/dist/img/facilitator.jpg" alt=" " class="img-fluid" />
-							</div>
-							<div class="col-xs-8 w3_agile_event_right_grid_right">
-								<h4>R.T.S.Gunawardhane</h4>
-								<p>Slippers and Shoes designer</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div> -->
-	<!-- //blog -->
-<!-- stats -->
-	<div class="stats" id="stats">
-	    <div class="container"> 
-			<div class="inner_w3l_agile_grids row">
-				<div class="col-md-3 w3layouts_stats_left w3_counter_grid">
-				   <i class="fa fa-laptop" aria-hidden="true"></i>
-					<p class="counter">{{$courseCount}}</p>
-					<h3>Courses</h3>
-				</div>
-				<div class="col-md-3 w3layouts_stats_left w3_counter_grid1">
-				    <i class="fa fa-smile-o" aria-hidden="true"></i>
-					<p class="counter">{{$users}}</p>
-					<h3>Members</h3>
-				</div>
-				<!--<div class="col-md-3 w3layouts_stats_left w3_counter_grid2">
-				<i class="fa fa-trophy" aria-hidden="true"></i>
-					<p class="counter">563</p>
-					<h3>Awards</h3>
-				</div>-->
-				<div class="col-md-3 w3layouts_stats_left w3_counter_grid3">
-				<i class="fa fa-user" aria-hidden="true"></i>
-					<p class="counter">{{$facilitatorCount}}</p>
-					<h3>Facilitators</h3>
-				</div>
+	<!-- services -->
+<!-- count of users,courses and facilitators -->
+<div class="stats" id="stats">
+	<div class="container"> 
+		<div class="inner_w3l_agile_grids row">
+			<div class="col-md-3 w3layouts_stats_left w3_counter_grid">
+				<i class="fa fa-laptop" aria-hidden="true"></i>
+				<p class="counter">{{$courseCount}}</p>
+				<h3>Courses</h3>
 			</div>
-   		</div>	
-	</div>
-<!-- //stats -->
-<!-- login -->
-	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content modal-info">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>	
-				</div>
-				<div class="modal-body modal-spa">
-					<div class="login-grids">
-						<div class="login">
-							<div class="login-bottom">
-								<h3>Sign up for free</h3>
-								<form>
-									<div class="sign-up">
-										<h4>Email :</h4>
-										<input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">	
-									</div>
-									<div class="sign-up">
-										<h4>Password :</h4>
-										<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
-										
-									</div>
-									<div class="sign-up">
-										<h4>Re-type Password :</h4>
-										<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
-										
-									</div>
-									<div class="sign-up">
-										<input type="submit" value="REGISTER NOW" >
-									</div>
-									
-								</form>
-							</div>
-							<div class="login-right">
-								<h3>Sign in with your account</h3>
-								<form>
-									<div class="sign-in">
-										<h4>Email :</h4>
-										<input type="text" value="Type here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type here';}" required="">	
-									</div>
-									<div class="sign-in">
-										<h4>Password :</h4>
-										<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
-										<a href="#">Forgot password?</a>
-									</div>
-									<div class="single-bottom">
-										<input type="checkbox"  id="brand" value="">
-										<label for="brand"><span></span>Remember Me.</label>
-									</div>
-									<div class="sign-in">
-										<input type="submit" value="SIGNIN" >
-									</div>
-								</form>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<p>By logging in you agree to our <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a></p>
-					</div>
-				</div>
+			<div class="col-md-3 w3layouts_stats_left w3_counter_grid1">
+				<i class="fa fa-smile-o" aria-hidden="true"></i>
+				<p class="counter">{{$users}}</p>
+				<h3>Members</h3>
+			</div>
+			<div class="col-md-3 w3layouts_stats_left w3_counter_grid3">
+			<i class="fa fa-user" aria-hidden="true"></i>
+				<p class="counter">{{$facilitatorCount}}</p>
+				<h3>Facilitators</h3>
 			</div>
 		</div>
-	</div>
-<!-- //login -->
-<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	</div>	
+</div>
+<!-- count of users,courses and facilitators -->
 
 
 @endsection

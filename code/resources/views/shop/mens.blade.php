@@ -1,5 +1,6 @@
 @extends('shop.master')
 @section('content')
+<!-- header name -->
 <div class="page-head_agile_info_w3l">
 		<div class="container">
 			<h3>@if($category_id==1)
@@ -16,7 +17,9 @@
                 {{"All"}}
             @endif
             </h3>
-			<!--/w3_short-->
+<!-- header name -->
+
+			<!-- header bottom view -->
 				 <div class="services-breadcrumb">
 						<div class="agile_inner_breadcrumb">
 
@@ -38,13 +41,16 @@
 							</ul>
 						 </div>
 				</div>
-	   <!--//w3_short-->
+
         </div>
 </div>
+<!-- header bottom view -->
+
+<!-- categories -->
+
 <div class="banner-bootom-w3-agileits">
 	<div class="container">
         <div class="row">
-            <!-- mens -->
             <div class="col-md-4 products-left">
                 <div class="css-treeview">
                     <h4>Categories</h4>
@@ -177,6 +183,9 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
+    <!-- categories -->
+
+            <!-- price range -->
             <div class="col-md-8 products-right">
                 <h5>Product <span>Price Range</span></h5>
                 <hr>
@@ -187,7 +196,7 @@
                             <div class="row">
                                 <b class="col-md-5 align-text-center col-form-label-md">&nbspFrom(LKR)&nbsp</b>
                                 {{-- <label for="staticEmail2" class="sr-only col-md-1">From(LKR)</label> --}}
-                                <input type="number" class="form-control mb-2 mr-sm-2 col-md-4" id="selectFrom" name="fromValue" min="0" required>
+                                <input type="number" class="form-control mb-2 mr-sm-2 col-md-4" id="selectFrom" name="fromValue" min="0" value="0" required>
                             </div>
                         </div>
                         <div class="form-group col-md-3">
@@ -213,8 +222,10 @@
                         <button type="submit" class="btn btn-primary mb-2">View</button>
                    </div>
                 </form>
-                <hr>
+            <!-- price range -->
 
+                <hr>
+                <!-- view products -->
                 <div class="row">
                     @for($x=0; $x<count($addPosts); $x++)
                         <div class="col-md-4 product-men">
@@ -234,7 +245,7 @@
                                 <div class="item-info-product ">
                                     <h4><a href="/quickView/{{$addPosts[$x]['id']}}">{{$addPosts[$x]['name']}}</a></h4>
                                     <div class="info-product-price">
-                                        <span class="item_price">LKR {{$addPosts[$x]['price']-$addPosts[$x]['discount']}}</span>
+                                        <span class="item_price">LKR {{round(($addPosts[$x]['price']*($addPosts[$x]['discount']-100)/100),2)}}</span>
                                         @if($addPosts[$x]['discount']!=null)
                                         <del>LKR {{$addPosts[$x]['price']}}</del>
                                         @endif
@@ -243,9 +254,13 @@
                             </div>
                         </div>
                     @endfor
+                <!-- view products -->
+
                     
                 </div>
+                <!-- paginate link -->
                 <div class="pull-right">{{ $addPosts->links() }}</div>
+                <!-- paginate link -->
             </div>
 	</div>
 </div>
