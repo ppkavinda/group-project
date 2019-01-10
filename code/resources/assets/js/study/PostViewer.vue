@@ -4,7 +4,7 @@
             <h3>
                 <a v-if="user.id == post.user_id" class="text-dark" :href="'/posts/' + post.id + '/edit'">
                     <span>{{ post.title | capitalize }}</span>
-                    
+               
                     <small class="pull-right p-1" style="font-size:.6em;"><i class="fa fa-pencil"></i> Edit</small>
                 </a>
                 <span v-else>{{ post.title | capitalize }}</span>
