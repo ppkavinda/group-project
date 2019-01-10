@@ -30733,7 +30733,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
 
 
 
@@ -31987,7 +31986,9 @@ var render = function() {
             _vm.post.id
               ? _c("li", { staticClass: "list-group-item" }, [
                   _c("div", { staticClass: "form-group" }, [
-                    _vm._v("\n                        See the saved post: "),
+                    _vm._v(
+                      "\n                            See the saved post: "
+                    ),
                     _c(
                       "a",
                       {
@@ -32111,7 +32112,7 @@ var staticRenderFns = [
                 "aria-controls": "collapseOne"
               }
             },
-            [_vm._v("\n            Show a Preview \n        ")]
+            [_vm._v("\n                    Show a Preview \n                ")]
           )
         ])
       ]
@@ -32184,6 +32185,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Comment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Comment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
 //
 //
 //

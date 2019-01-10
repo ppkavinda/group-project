@@ -245,7 +245,7 @@
                                 <div class="item-info-product ">
                                     <h4><a href="/quickView/{{$addPosts[$x]['id']}}">{{$addPosts[$x]['name']}}</a></h4>
                                     <div class="info-product-price">
-                                        <span class="item_price">LKR {{round(($addPosts[$x]['price']*($addPosts[$x]['discount']-100)/100),2)}}</span>
+                                        <span class="item_price">LKR {{round(($addPosts[$x]['price']*(100 - $addPosts[$x]['discount'])/100),2)}}</span>
                                         @if($addPosts[$x]['discount']!=null)
                                         <del>LKR {{$addPosts[$x]['price']}}</del>
                                         @endif

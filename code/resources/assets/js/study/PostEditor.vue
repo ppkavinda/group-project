@@ -1,5 +1,5 @@
 <template>
-    <div>
+<div>
     <div class="row">
         <div class="col-md-9 bg-light p-2">
             <div class="form-group">
@@ -76,22 +76,21 @@
     <!-- collapsing preview panel -->
     <div class="accordion" id="accordionExample">
         <div class="card-header" id="headingOne">
-        <h5 class="mb-0">
-            <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" 
-                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Show a Preview 
-            </button>
-        </h5>
+            <h5 class="mb-0">
+                <button class="btn btn-link dropdown-toggle" type="button" data-toggle="collapse" 
+                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Show a Preview 
+                </button>
+            </h5>
         </div>
-
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="card-body">
-            <post-viewer :initial-post="JSON.stringify(post)"/>
-        </div>
+            <div class="card-body">
+                <post-viewer :initial-post="JSON.stringify(post)"/>
+            </div>
         </div>
     </div>
     <!-- end preview -->
-    </div>
+</div>
 </template>
 
 <script>

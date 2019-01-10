@@ -3,7 +3,10 @@
     <div class="card bg-light p-3">
         <form @submit.prevent>
             <div class="form-group">
-                <textarea @keypress="clearError('body')" v-model="comment.body" class="form-control" name="body" rows="3" placeholder="Type your question here..." required></textarea>
+                <textarea @keypress="clearError('body')" v-model="comment.body" 
+                    class="form-control" name="body" rows="3" 
+                    placeholder="Type your question here..." required>
+                </textarea>
                 <small v-if="errors.body" class="form-text invalid-feedback d-block">{{ errors.body[0] }}</small>
 
             </div>
