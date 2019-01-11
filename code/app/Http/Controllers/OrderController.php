@@ -117,6 +117,8 @@ class OrderController extends Controller
         $order->save();
         Notification::send($order->user, new OrderShipped($order->id));
 
+        // Product::selectRaw('AVG(price) as total, user_id')->groupBy('user_id')->get();
+
         return back();
     }
 }

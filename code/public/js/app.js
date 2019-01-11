@@ -32489,7 +32489,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         // testing purposes
-        console.log('children', this.comment.id, this.children);
+        // console.log('children', this.comment.id, this.children)
     }
 });
 
@@ -33685,7 +33685,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             product: {
                 quantity: 1
-                // size: 'a',
             },
             sizes: {},
             errors: {
@@ -33700,29 +33699,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.product.quantity = 1;
             console.log('error');
         },
-
-        // onClick () {
-        //     if (this.product.quantity <= 0) {
-        //         this.$emit('invalidQuantity')
-        //         this.errors.quantity = ['Invalid quantity']
-        //         return
-        //     }
-        //     axios.post(`/cart/${this.product.id}`, this.product)
-        //         .then(res => {
-        //             window.Event.$emit('added-to-cart', res.data)
-        //         })
-        //         .catch(err => {
-        //             if (err.response.status == 422) {
-        //                 this.$emit('invalidQuantity')
-        //                 this.errors.quantity = ['Invalid quantity']
-        //             }
-        //             // TODO replace to open the login model
-        //             if (err.response.status == 401) {
-        //             // console.log(err.response) 
-        //                 window.location.replace('/login')
-        //             }
-        //         })
-        // },
         onClick: function onClick() {
             var _this = this;
 

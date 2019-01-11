@@ -1,35 +1,35 @@
 <template>
 <div class="card my-3 bg-light">
-<div class="card-body">
-    <button @click="deleteComment(comment)" v-if="authorized" type="button" class="close" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button> 
-    <img class="float-left mr-3" :src="comment.user.profile_pic" alt="avatar" width="50px">
-    <span class="card-title">
-        <a class="font-weight-bold text-capitalize" :href="'/profile/' +  comment.user.id">{{ comment.user.name }}</a>
-        <small class="font-weight-light">{{ comment.created_at | moment('calendar') }}</small>
-    </span>
-    <p class="card-text blockquote">{{ comment.body }}</p>
+    <div class="card-body">
+        <button @click="deleteComment(comment)" v-if="authorized" type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button> 
+        <img class="float-left mr-3" :src="comment.user.profile_pic" alt="avatar" width="50px">
+        <span class="card-title">
+            <a class="font-weight-bold text-capitalize" :href="'/profile/' +  comment.user.id">{{ comment.user.name }}</a>
+            <small class="font-weight-light">{{ comment.created_at | moment('calendar') }}</small>
+        </span>
+        <p class="card-text blockquote">{{ comment.body }}</p>
 
-    <comment @deleted="deleteSubComment" v-for="(child, i) in children" :key="i" :reply="false" :comment="child"></comment>
+        <comment @deleted="deleteSubComment" v-for="(child, i) in children" :key="i" :reply="false" :comment="child"></comment>
 
-    <a v-if="reply" href="#" @click.prevent="toggleReply" class="link link-primary btn-link"><small>{{ replyButton.msg }}</small></a>
-    <!-- add comment form -->
-    <div v-if="replyButton.show && reply" class="card bg-light p-3 m-3">
-        <form @submit.prevent>
-            <div class="form-group">
-                <textarea @keypress="clearError('body')" v-model="newComment.body" class="form-control" name="body" rows="3" 
-                    placeholder="Type your question here..." required>
-                </textarea>
-                <small v-if="errors.body" class="form-text invalid-feedback d-block">{{ errors.body[0] }}</small>
-            </div>
-            <div class="form-group">
-                <button @click="addComment" class="btn" :class="commentButton.class" type="submit">{{ commentButton.msg }}</button>
-            </div>
-        </form>
+        <a v-if="reply" href="#" @click.prevent="toggleReply" class="link link-primary btn-link"><small>{{ replyButton.msg }}</small></a>
+        <!-- add comment form -->
+        <div v-if="replyButton.show && reply" class="card bg-light p-3 m-3">
+            <form @submit.prevent>
+                <div class="form-group">
+                    <textarea @keypress="clearError('body')" v-model="newComment.body" class="form-control" name="body" rows="3" 
+                        placeholder="Type your question here..." required>
+                    </textarea>
+                    <small v-if="errors.body" class="form-text invalid-feedback d-block">{{ errors.body[0] }}</small>
+                </div>
+                <div class="form-group">
+                    <button @click="addComment" class="btn" :class="commentButton.class" type="submit">{{ commentButton.msg }}</button>
+                </div>
+            </form>
+        </div>
+        <!-- end add comment form -->
     </div>
-    <!-- end add comment form -->
-  </div>
 </div>
 </template>
 
@@ -79,7 +79,7 @@ export default {
         deleteSubComment (node) {
             axios.delete(`/comments/${node.id}`)
                 .then( res => {
-                    this.children.splice(this.children.indexOf(node),1);
+                    this.children.splice(this.children.indexOf(node), 1);
                 })
                 .catch(err => {
                     console.log(err)
@@ -130,7 +130,7 @@ export default {
     },
     mounted () {
         // testing purposes
-        console.log('children', this.comment.id, this.children)
+        // console.log('children', this.comment.id, this.children)
     }
 }
 </script>

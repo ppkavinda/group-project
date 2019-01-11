@@ -17,6 +17,24 @@ class VideoController extends Controller
         return view('study.videos.create', compact('courses'));
     }
 
+    public function getWeek()
+    {
+        $currentActive = Event::where('status', 1)->first();
+        if ($currentActive->type==1) {
+            $query = \DB::table('ifest_participants');
+        } elseif ($currentActive->type==2) {
+            $query = \DB::table('ics_participants');
+        } elseif ($currentActive->type==3) {
+            $query = \DB::table('ihack_participants');
+        } else {
+            $query = \DB::table('ucscevent_participants');
+        }
+        
+        return $query->select(DB::raw('DATE(created_at) as date, COUNT(event_id) count'))
+            ->where('event_id', $currentActive->id)
+            ->groupBy('date')->get();
+    }
+
     public function store(Request $request)
     {
         $request->validate([
